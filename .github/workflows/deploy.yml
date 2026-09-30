@@ -1,0 +1,72 @@
+name: Deploy to Cloudflare Pages
+
+# lab.bkan.dev 배포. main 에 push 되면 저장소 전용 파일을 걸러낸 산출물을 올리고
+# 라이브를 검증한다. bkan-dev 와 같은 골격.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Build dist (배포 제외 파일 필터)
+        run: |
+          rsync -a --delete \
+            --exclude '.git' --exclude '.github' --exclude '.gitignore' \
+            --exclude 'README.md' --exclude '_workspace' --exclude '.wrangler' --exclude '.fablize' \
+            ./ /tmp/dist/
+          test -f /tmp/dist/index.html
+          test -f /tmp/dist/404.html
+          test ! -e /tmp/dist/README.md
+          echo "dist files: $(find /tmp/dist -type f | wc -l)"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3.15.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy /tmp/dist --project-name=bkan-lab --branch=main --commit-dirty=true
+
+      # 본문 검증은 pages.dev 프로덕션 별칭에 한다. bkan.dev 존의 봇 방어가 GitHub 러너의
+      # HTML 요청을 403 challenge 로 막기 때문이다(bkan-blog 런에서 실측). 커스텀 도메인은
+      # challenge 를 안 받는 정적 자산으로만 본다.
+      - name: Verify live site
+        run: |
+          SITE=https://bkan-lab.pages.dev
+          CUSTOM=https://lab.bkan.dev
+          run_checks() {
+            home=$(curl -s -L -H 'Cache-Control: no-cache' "$SITE/")
+            fe=$(curl -s -L -H 'Cache-Control: no-cache' "$SITE/frontend/")
+            gh_og=$(curl -s -L "$SITE/frontend/ganghwa-2610/" | head -c 20000)
+            missing=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/no-such-page-$(date +%s)/")
+            custom_css=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$CUSTOM/assets/lab.css")
+            fail=0
+            check() { if [ "$2" = "1" ]; then echo "PASS  $1"; else echo "FAIL  $1"; fail=1; fi; }
+            check "home renders landing (bkan lab + /frontend/ link)" \
+                  "$(printf '%s' "$home" | grep -qF 'href="/frontend/"' && echo 1 || echo 0)"
+            check "frontend lists ganghwa" \
+                  "$(printf '%s' "$fe" | grep -qF 'href="/frontend/ganghwa-2610/"' && echo 1 || echo 0)"
+            check "ganghwa page has og:image" \
+                  "$(printf '%s' "$gh_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/ganghwa-2610/og.jpg' && echo 1 || echo 0)"
+            check "unknown path returns 404" "$([ "$missing" = "404" ] && echo 1 || echo 0)"
+            check "custom domain reachable (lab.bkan.dev/assets/lab.css)" \
+                  "$(printf '%s' "$custom_css" | grep -q '^200 text/css' && echo 1 || echo 0)"
+            return $fail
+          }
+          for attempt in 1 2 3; do
+            echo "--- attempt $attempt"
+            if run_checks; then exit 0; fi
+            sleep 10
+          done
+          exit 1

@@ -1,0 +1,130 @@
+/* bkan lab 공용 스타일. 청사진(cyanotype) 인화면을 모티프로 한다. */
+:root {
+  --cyan: #1b3a8c;
+  --cyan-deep: #0f2466;
+  --paper: #f3f6fb;
+  --fade: #8fa6d6;
+  --signal: #f2c14e;
+  --ink: #0f2466;
+  --ink-soft: #4a5a86;
+  --rule: #d5ddee;
+  --ground: var(--paper);
+  --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", serif;
+  --text: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e6ecf8; --ink-soft: #a9b8dc; --rule: #26396e; --ground: #0a1a4a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e6ecf8; --ink-soft: #a9b8dc; --rule: #26396e; --ground: #0a1a4a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 1rem/1.7 var(--text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-radius: 2px; }
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 3.5rem); }
+
+/* 인화면: 청색 바탕 + 종이 결 노이즈 + 가장자리 번짐 */
+.print {
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background-color: var(--cyan);
+  background-image:
+    radial-gradient(120% 90% at 20% 30%, transparent 55%, rgba(8, 20, 64, .55) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.print h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 100%;
+  letter-spacing: -.02em;
+  line-height: .92;
+  text-shadow: 0 0 .06em rgba(243, 246, 251, .55);
+}
+
+/* 한 번의 현상 연출: 바랜 청색에서 짙어지고 글자가 맺힌다 */
+@media (prefers-reduced-motion: no-preference) {
+  .print.develop { animation: develop 1.6s cubic-bezier(.2, .7, .1, 1) both; }
+  .print.develop h1, .print.develop .lede { animation: fix 1.6s cubic-bezier(.2, .7, .1, 1) both; }
+}
+@keyframes develop { from { background-color: var(--fade); } to { background-color: var(--cyan); } }
+@keyframes fix { from { filter: blur(10px); opacity: .25; } 60% { opacity: 1; } to { filter: blur(0); opacity: 1; } }
+
+/* 랜딩 히어로 */
+.hero { min-height: clamp(26rem, 72vh, 46rem); display: flex; align-items: flex-end; }
+.hero .wrap { width: 100%; padding-block: clamp(4rem, 12vh, 8rem) clamp(2.5rem, 7vh, 4.5rem); }
+.hero h1 { font-size: clamp(4.5rem, 23vw, 15rem); }
+.lede {
+  margin: 1.5rem 0 0;
+  max-width: 34rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.6;
+  color: #dfe6f6;
+}
+
+/* 좁은 인화 띠 (하위 페이지 머리) */
+.strip .wrap { padding-block: 2.75rem 2.25rem; }
+.strip h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); }
+.strip .lede { margin-top: .9rem; }
+.crumb { display: inline-block; margin-bottom: 1.4rem; font-size: .95rem; color: #dfe6f6; text-underline-offset: .25em; }
+
+/* 분류·실험 목록: 카드 대신 큰 글자 줄 */
+.shelf { list-style: none; margin: 0; padding: 0; }
+.shelf li { border-bottom: 1px solid var(--rule); }
+.shelf li:first-child { border-top: 1px solid var(--rule); }
+.shelf a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: .25rem 1.5rem;
+  padding-block: 1.6rem;
+  text-decoration: none;
+}
+.shelf .name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2rem, 6.5vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+}
+.shelf .count { color: var(--ink-soft); font-size: .95rem; white-space: nowrap; }
+.shelf .desc { grid-column: 1 / -1; max-width: 40rem; color: var(--ink-soft); }
+.shelf a:hover .name, .shelf a:focus-visible .name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
+
+/* 실험 항목: 썸네일 + 설명 */
+.entry a { grid-template-columns: minmax(0, 15rem) 1fr; align-items: center; gap: 1rem 2rem; }
+.entry img {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  display: block;
+  height: auto;
+  border-radius: 3px;
+  filter: saturate(.85);
+}
+.entry .name { display: block; font-size: clamp(1.6rem, 4.5vw, 2.4rem); }
+.entry .desc { display: block; grid-column: auto; margin: .5rem 0 0; }
+.entry .when { display: block; margin-top: .6rem; font-size: .9rem; color: var(--ink-soft); }
+@media (max-width: 40rem) {
+  .entry a { grid-template-columns: 1fr; }
+}
+
+.section { padding-block: clamp(2.5rem, 7vw, 4.5rem); }
+.foot { padding-block: 2.5rem 3rem; color: var(--ink-soft); font-size: .92rem; }
+.foot a { text-underline-offset: .2em; }
