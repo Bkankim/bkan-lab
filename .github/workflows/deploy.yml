@@ -49,6 +49,8 @@ jobs:
             home=$(curl -s -L -H 'Cache-Control: no-cache' "$SITE/")
             fe=$(curl -s -L -H 'Cache-Control: no-cache' "$SITE/frontend/")
             gh_og=$(curl -s -L "$SITE/frontend/ganghwa-2610/" | head -c 20000)
+            hj_og=$(curl -s -L "$SITE/frontend/hwajeong-2612/" | head -c 20000)
+            hj_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/hwajeong-2612/data.json")
             missing=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/no-such-page-$(date +%s)/")
             custom_css=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$CUSTOM/assets/lab.css")
             fail=0
@@ -59,6 +61,12 @@ jobs:
                   "$(printf '%s' "$fe" | grep -qF 'href="/frontend/ganghwa-2610/"' && echo 1 || echo 0)"
             check "ganghwa page has og:image" \
                   "$(printf '%s' "$gh_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/ganghwa-2610/og.jpg' && echo 1 || echo 0)"
+            check "frontend lists hwajeong" \
+                  "$(printf '%s' "$fe" | grep -qF 'href="/frontend/hwajeong-2612/"' && echo 1 || echo 0)"
+            check "hwajeong page has og:image" \
+                  "$(printf '%s' "$hj_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/hwajeong-2612/og.jpg' && echo 1 || echo 0)"
+            check "hwajeong data.json served as json" \
+                  "$(printf '%s' "$hj_data" | grep -q '^200 application/json' && echo 1 || echo 0)"
             check "unknown path returns 404" "$([ "$missing" = "404" ] && echo 1 || echo 0)"
             check "custom domain reachable (lab.bkan.dev/assets/lab.css)" \
                   "$(printf '%s' "$custom_css" | grep -q '^200 text/css' && echo 1 || echo 0)"

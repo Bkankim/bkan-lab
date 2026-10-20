@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>화정 임시 거처 찾기 (12월 이사)</title>
+<meta name="description" content="12월 이사 뒤 6개월 이상 살 집을 달빛마을 2단지에서 가까운 순으로 모았습니다. 두 AI가 따로 조사한 매물을 합쳐 값, 거리, 확인할 점을 나란히 보여줍니다.">
+<link rel="canonical" href="https://lab.bkan.dev/frontend/hwajeong-2612/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="화정 임시 거처 찾기 (12월 이사)">
+<meta property="og:description" content="달빛마을 2단지에서 가까운 방 2개 집을 값과 거리, 확인할 점으로 비교했습니다.">
+<meta property="og:image" content="https://lab.bkan.dev/frontend/hwajeong-2612/og.jpg?v=1">
+<meta property="og:url" content="https://lab.bkan.dev/frontend/hwajeong-2612/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+:root {
+  --ground: #f4f6fa; --card: #fff; --ink: #14213d; --soft: #55607a; --rule: #dde3ee;
+  --accent: #1b3a8c; --accent-ink: #fff; --warn-bg: #fff4d6; --warn-ink: #7a5300;
+  --bad-bg: #fde8e8; --bad-ink: #9b1c1c; --ok-ink: #17643a; --ok-bg: #e3f4ea;
+  --g-low: #2f8f5b; --g-mid: #1f6fb8; --g-high: #7b3fa8;
+  --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", serif;
+  --text: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0d1630; --card: #142042; --ink: #e8edf8; --soft: #a8b4d0; --rule: #26355f;
+    --accent: #8fb0ff; --accent-ink: #0d1630; --warn-bg: #3d3214; --warn-ink: #f5d58a;
+    --bad-bg: #3f1d22; --bad-ink: #f5b5b5; --ok-ink: #9fe0b8; --ok-bg: #173a29;
+    --g-low: #5cc48a; --g-mid: #6fa8e8; --g-high: #b98ae0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0d1630; --card: #142042; --ink: #e8edf8; --soft: #a8b4d0; --rule: #26355f;
+  --accent: #8fb0ff; --accent-ink: #0d1630; --warn-bg: #3d3214; --warn-ink: #f5d58a;
+  --bad-bg: #3f1d22; --bad-ink: #f5b5b5; --ok-ink: #9fe0b8; --ok-bg: #173a29;
+  --g-low: #5cc48a; --g-mid: #6fa8e8; --g-high: #b98ae0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 1.0625rem/1.65 var(--text); word-break: keep-all; overflow-wrap: break-word; }
+a { color: var(--accent); }
+.wrap { max-width: 70rem; margin: 0 auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+h2 { font-family: var(--display); font-size: clamp(1.35rem, 3.6vw, 1.75rem); line-height: 1.25; margin: 0 0 .75rem; letter-spacing: -.01em; }
+h3 { margin: 0; font-size: 1.1rem; line-height: 1.35; }
+section { padding-block: 2rem; border-top: 1px solid var(--rule); }
+
+/* 머리 */
+.top { background: #1b3a8c; color: #f3f6fb; padding-block: 2.25rem 2rem; }
+.top a { color: #f3f6fb; }
+.crumb { font-size: .9rem; opacity: .85; }
+.top h1 { font-family: var(--display); font-size: clamp(2rem, 7vw, 3.4rem); line-height: 1.05; margin: .6rem 0 .8rem; letter-spacing: -.02em; }
+.top p { margin: .25rem 0; max-width: 46rem; }
+.top .meta { font-size: .92rem; opacity: .85; margin-top: .9rem; }
+.conds { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; padding: 0; list-style: none; }
+.conds li { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: .2rem .75rem; font-size: .92rem; }
+
+/* 결론 */
+.verdict { font-size: 1.12rem; background: var(--card); border: 1px solid var(--rule); border-left: 6px solid var(--accent); border-radius: 12px; padding: 1rem 1.2rem; margin: 0 0 1.25rem; }
+.verdict p { margin: .35rem 0; }
+.picks { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)); }
+.pick { position: relative; }
+.pick .why { background: var(--ok-bg); color: var(--ok-ink); border-radius: 8px; padding: .5rem .7rem; font-size: .95rem; margin: .6rem 0 0; }
+.rank { position: absolute; top: .6rem; right: .6rem; z-index: 2; background: var(--accent); color: var(--accent-ink); font-weight: 700; border-radius: 999px; width: 2rem; height: 2rem; display: grid; place-items: center; }
+
+/* 지도 */
+#map { height: min(60vh, 30rem); border-radius: 12px; border: 1px solid var(--rule); z-index: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: .9rem; font-size: .92rem; color: var(--soft); margin-top: .6rem; }
+.dot { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; vertical-align: -.05rem; margin-right: .3rem; }
+.leaflet-popup-content { font: 400 .95rem/1.5 var(--text); }
+
+/* 필터 */
+.bar { position: relative; z-index: 5; background: var(--ground); border-bottom: 1px solid var(--rule); padding-block: .7rem; }
+.bar .wrap { display: flex; flex-direction: column; gap: .5rem; }
+.row { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.row b { font-size: .88rem; color: var(--soft); font-weight: 500; min-width: 3.2rem; }
+.chip { font: inherit; font-size: .95rem; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 999px; padding: .3rem .85rem; cursor: pointer; min-height: 2.25rem; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.count { margin-left: auto; color: var(--soft); font-size: .95rem; }
+select.chip { padding-right: .6rem; }
+@media (min-width: 640px) { .bar { position: sticky; top: env(safe-area-inset-top, 0px); } }
+.more-filters { display: none; }
+.bar.open .more-filters { display: flex; }
+.toggle { font-size: .9rem; }
+
+/* 카드 */
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr)); padding-block: 1.25rem; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.card.out { opacity: .72; }
+.ph { position: relative; aspect-ratio: 16 / 10; background: var(--rule); }
+.ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph .noimg { position: absolute; inset: 0; display: grid; place-items: center; color: var(--soft); font-size: .9rem; }
+.tags { position: absolute; left: .55rem; top: .55rem; display: flex; gap: .3rem; flex-wrap: wrap; }
+.tag { font-size: .8rem; font-weight: 600; padding: .12rem .55rem; border-radius: 999px; color: #fff; background: #4a5568; }
+.tag.g-하급 { background: var(--g-low); } .tag.g-중급 { background: var(--g-mid); } .tag.g-고급 { background: var(--g-high); }
+.tag.t-A { background: #b45309; }
+.body { padding: .9rem 1rem 1rem; display: flex; flex-direction: column; gap: .45rem; flex: 1; }
+.sub { color: var(--soft); font-size: .92rem; margin: 0; }
+.price { font-size: 1.2rem; font-weight: 600; margin: .15rem 0 0; }
+.price small { font-size: .9rem; font-weight: 400; color: var(--soft); }
+.cost { font-size: .95rem; margin: 0; }
+.dist { font-size: 1rem; margin: 0; font-weight: 500; }
+.dist .est { color: var(--soft); font-weight: 400; font-size: .88rem; }
+.facts { display: flex; flex-wrap: wrap; gap: .3rem; padding: 0; margin: .1rem 0; list-style: none; font-size: .9rem; }
+.facts li { background: var(--ground); border-radius: 6px; padding: .1rem .5rem; }
+.facts .yes::before { content: "✓ "; color: var(--ok-ink); }
+.facts .no::before { content: "✕ "; color: var(--bad-ink); }
+.need { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: .4rem .65rem; font-size: .9rem; margin: 0; }
+.fail { background: var(--bad-bg); color: var(--bad-ink); border-radius: 8px; padding: .4rem .65rem; font-size: .9rem; margin: 0; }
+.note { font-size: .88rem; color: var(--soft); margin: 0; }
+.links { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem; padding-top: .35rem; }
+.links a { font-size: .9rem; text-decoration: none; border: 1px solid var(--rule); border-radius: 8px; padding: .3rem .65rem; }
+.both { font-size: .8rem; color: var(--soft); }
+.loadmore { display: block; margin: 0 auto 2rem; font: inherit; font-size: 1rem; padding: .7rem 1.6rem; border-radius: 999px; border: 1px solid var(--accent); background: var(--card); color: var(--accent); cursor: pointer; }
+
+/* 표와 글 */
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: .95rem; }
+th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; background: var(--ground); }
+tr:last-child td { border-bottom: 0; }
+.cols { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); }
+.box { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.2rem; }
+.box h3 { margin-bottom: .4rem; }
+.box ul, .box ol { margin: .3rem 0; padding-left: 1.2rem; }
+.box li { margin: .25rem 0; }
+.src { font-size: .85rem; color: var(--soft); }
+details { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: .8rem 1.1rem; margin-top: .8rem; }
+summary { cursor: pointer; font-weight: 600; }
+footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-top: 1px solid var(--rule); }
+.loading { padding: 3rem 0; text-align: center; color: var(--soft); }
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(20, 33, 61, .08); }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="crumb" href="/frontend/">bkan lab / Frontend</a>
+    <h1>화정 임시 거처 찾기</h1>
+    <p>12월에 지금 집을 비우고, 다음 집을 구할 때까지 6개월 이상 살 곳을 찾습니다. 어머니가 일하시는 <b>달빛마을 2단지</b>에서 가까울수록 앞에 둡니다.</p>
+    <ul class="conds" aria-label="찾는 조건">
+      <li>월세 또는 중단기 임대</li><li>방 2개 + 거실</li><li>주차 1대</li><li>6개월 이상 + 연장</li><li>12/17~12/23 입주</li><li>냉장고·세탁기 있으면 좋음</li>
+    </ul>
+    <p class="meta" id="meta">불러오는 중</p>
+  </div>
+</header>
+
+<main id="app">
+  <div class="wrap loading">매물 정보를 불러오는 중입니다.</div>
+</main>
+
+<footer class="wrap" id="foot"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(() => {
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  // 만원 단위 숫자를 "1억 2,000" 꼴로
+  const won = v => {
+    if (v == null || isNaN(v)) return "?";
+    v = Math.round(Number(v));
+    if (v >= 10000) {
+      const eok = Math.floor(v / 10000), rest = v % 10000;
+      return rest ? `${eok}억 ${rest.toLocaleString("ko-KR")}` : `${eok}억`;
+    }
+    return v.toLocaleString("ko-KR");
+  };
+  const pyeong = m2 => m2 ? `${Math.round(m2)}㎡(약 ${Math.round(m2 / 3.3058)}평)` : null;
+  const GRADE_COLOR = { "하급": "var(--g-low)", "중급": "var(--g-mid)", "고급": "var(--g-high)" };
+  const GRADE_HEX = { "하급": "#2f8f5b", "중급": "#1f6fb8", "고급": "#7b3fa8" };
+  const TRACK = { A: "중단기 임대", B: "월세" };
+
+  const state = { grade: "전체", deal: "전체", type: "전체", dist: "전체", sort: "near", showOut: false, shown: 24 };
+  let DATA, LIST, map, layer;
+
+  const dealOf = x => x.track === "A" ? "중단기" : "월세";
+  const typeOf = x => x.type === "아파트" ? "아파트" : x.type === "오피스텔" ? "오피스텔" : "빌라·주택";
+
+  function distText(x) {
+    if (x.walk_min != null || x.drive_min != null) {
+      const p = [];
+      if (x.walk_min != null) p.push(`걸어서 ${x.walk_min}분`);
+      if (x.drive_min != null) p.push(`차로 ${x.drive_min}분`);
+      return `${p.join(" · ")} <span class="est">(지도 길찾기)</span>`;
+    }
+    if (x.dist_m == null) return `<span class="est">거리 미확인</span>`;
+    const km = x.dist_m >= 1000 ? `${(x.dist_m / 1000).toFixed(1)}km` : `${x.dist_m}m`;
+    return `직선 ${km} · 걸어서 약 ${x.est_walk_min}분 <span class="est">(추정)</span>`;
+  }
+
+  function priceText(x) {
+    if (x.track === "A") {
+      return `월 약 ${won(x.monthly_total)}만 <small>보증금 ${won(x.deposit)}만${x.rent_est ? " · 주 단위 요금 환산" : ""}</small>`;
+    }
+    return `보증금 ${won(x.deposit)} / 월 ${won(x.rent)} <small>+ 관리비 ${x.maint != null ? won(x.maint) + "만" : "미기재"}</small>`;
+  }
+
+  function facts(x) {
+    const f = [];
+    if (x.rooms != null) f.push(`<li>방 ${x.rooms}${x.baths ? ` · 욕실 ${x.baths}` : ""}</li>`);
+    if (x.area_m2) f.push(`<li>${pyeong(x.area_m2)}</li>`);
+    if (x.floor) f.push(`<li>${esc(x.floor)}${/층$/.test(x.floor) ? "" : "층"}</li>`);
+    if (x.layout === "ok") f.push(`<li class="yes">평면도로 구조 확인</li>`);
+    if (x.elevator === true) f.push(`<li class="yes">엘리베이터${x.elevator_inferred ? "(추정)" : ""}</li>`);
+    if (x.elevator === false) f.push(`<li class="no">엘리베이터 없음</li>`);
+    if (x.parking === "가능") f.push(`<li class="yes">주차</li>`);
+    else if (x.parking === "유료") f.push(`<li>주차 유료</li>`);
+    else if (x.parking === "불가") f.push(`<li class="no">주차 불가</li>`);
+    if (x.jeonip === "가능") f.push(`<li class="yes">전입 가능</li>`);
+    if (x.jeonip === "불가") f.push(`<li class="no">전입 불가</li>`);
+    const opt = (x.options || []).filter(o => /냉장고|세탁기|에어컨|침대/.test(o));
+    if (opt.length) f.push(`<li class="yes">${esc(opt.join("·"))}</li>`);
+    return f.join("");
+  }
+
+  function card(x, rank, why) {
+    const tags = [];
+    if (x.grade) tags.push(`<span class="tag g-${x.grade}">${x.grade}</span>`);
+    tags.push(`<span class="tag ${x.track === "A" ? "t-A" : ""}">${TRACK[x.track]}</span>`);
+    const img = x.img
+      ? `<img src="${esc(x.img)}" alt="${esc(x.name || "매물")} 사진" loading="lazy" decoding="async">`
+      : `<span class="noimg">사진 없음</span>`;
+    const need = (x.unknowns || []).length ? `<p class="need">확인 필요: ${esc(x.unknowns.join(", "))}</p>` : "";
+    const fail = x.status === "탈락" ? `<p class="fail">맞지 않는 점: ${esc((x.hard_fails || []).join(", "))}</p>` : "";
+    const warn = (x.warnings || []).length ? `<p class="fail">주의: ${esc(x.warnings.join(" / "))}</p>` : "";
+    const links = (x.sources || []).slice(0, 4).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.platform || "원문")}에서 보기</a>`).join("");
+    const both = (x.found_by || []).length > 1 ? `<span class="both">두 AI가 모두 찾은 매물</span>` : "";
+    return `<article class="card ${x.status === "탈락" ? "out" : ""} ${why ? "pick" : ""}" data-id="${esc(x.id)}">
+      ${rank ? `<span class="rank" aria-label="추천 ${rank}위">${rank}</span>` : ""}
+      <div class="ph">${img}<div class="tags">${tags.join("")}</div></div>
+      <div class="body">
+        <h3>${esc(x.name || x.type)}</h3>
+        <p class="sub">${esc(x.dong || "")} · ${esc(x.type || "")}${x.move_in ? ` · 입주 ${esc(x.move_in)}` : ""}</p>
+        <p class="price">${priceText(x)}</p>
+        <p class="cost">6개월 들어가는 돈 약 <b>${x.cost_6mo != null ? won(x.cost_6mo) + "만" : "?"}</b>${x.maint_missing ? " (관리비 빼고)" : ""}</p>
+        <p class="dist">${distText(x)}</p>
+        <ul class="facts">${facts(x)}</ul>
+        ${why ? `<p class="why">${esc(why)}</p>` : ""}
+        ${need}${fail}${warn}
+        ${x.note ? `<p class="note">${esc(x.note)}</p>` : ""}
+        <div class="links">${links}</div>
+        ${both}
+      </div>
+    </article>`;
+  }
+
+  function filtered() {
+    let L = LIST.filter(x => state.showOut || x.status !== "탈락");
+    if (state.grade !== "전체") L = L.filter(x => x.grade === state.grade);
+    if (state.deal !== "전체") L = L.filter(x => dealOf(x) === state.deal);
+    if (state.type !== "전체") L = L.filter(x => typeOf(x) === state.type);
+    if (state.dist !== "전체") L = L.filter(x => x.dist_m != null && x.dist_m <= Number(state.dist));
+    const key = {
+      near: x => x.dist_m ?? 1e9,
+      cost: x => x.cost_6mo ?? 1e9,
+      month: x => x.monthly_total ?? 1e9,
+    }[state.sort];
+    return L.sort((a, b) => (a.status === "탈락") - (b.status === "탈락") || key(a) - key(b));
+  }
+
+  function renderList() {
+    const L = filtered();
+    $("#count").textContent = `${L.length}곳`;
+    $("#grid").innerHTML = L.slice(0, state.shown).map(x => card(x)).join("") || `<p class="note">조건에 맞는 매물이 없습니다. 필터를 줄여 보세요.</p>`;
+    $("#more").hidden = L.length <= state.shown;
+    renderMarkers(L);
+  }
+
+  function renderMarkers(L) {
+    if (!map) return;
+    layer.clearLayers();
+    L.forEach(x => {
+      if (x.lat == null || x.lng == null) return;
+      const c = x.status === "탈락" ? "#9aa3b5" : (GRADE_HEX[x.grade] || "#4a5568");
+      window.L.circleMarker([x.lat, x.lng], { radius: 7, color: "#fff", weight: 1.5, fillColor: c, fillOpacity: .9 })
+        .bindPopup(`<b>${esc(x.name || x.type)}</b><br>${priceText(x).replace(/<small>|<\/small>/g, "")}<br>6개월 약 ${won(x.cost_6mo)}만<br><a href="#" data-jump="${esc(x.id)}">카드로 보기</a>`)
+        .addTo(layer);
+    });
+  }
+
+  function chips(name, values, label) {
+    return `<div class="row" role="group" aria-label="${label}"><b>${label}</b>${values.map(v =>
+      `<button type="button" class="chip" data-k="${name}" data-v="${esc(v[0])}" aria-pressed="${state[name] === v[0]}">${esc(v[1])}</button>`).join("")}</div>`;
+  }
+
+  function render() {
+    const d = DATA, s = d.summary || {};
+    $("#meta").textContent = `조회 ${d.meta.fetched}. 매물 ${d.meta.total}곳 중 조건에 맞을 수 있는 곳 ${d.meta.candidates}곳. 가격은 공개된 값이고 실제 계약 조건은 중개사 확인이 필요합니다.`;
+    const byId = Object.fromEntries(LIST.map(x => [x.id, x]));
+    const picks = (s.picks || []).map((p, i) => byId[p.id] ? card(byId[p.id], i + 1, p.why) : "").join("");
+    const g = d.meta.grade_cuts;
+
+    $("#app").innerHTML = `
+      <section class="wrap" aria-labelledby="h-verdict">
+        <h2 id="h-verdict">결론부터</h2>
+        <div class="verdict">${(s.verdict || []).map(t => `<p>${t}</p>`).join("")}</div>
+        <div class="picks">${picks}</div>
+      </section>
+
+      <section class="wrap" aria-labelledby="h-map">
+        <h2 id="h-map">지도로 보기</h2>
+        <div id="map" role="region" aria-label="매물 지도"></div>
+        <div class="legend">
+          <span><span class="dot" style="background:#e11d48"></span>달빛마을 2단지(기준)</span>
+          <span><span class="dot" style="background:${GRADE_HEX["하급"]}"></span>하급(6개월 ${won(g[0])}만 미만)</span>
+          <span><span class="dot" style="background:${GRADE_HEX["중급"]}"></span>중급(${won(g[1])}만 미만)</span>
+          <span><span class="dot" style="background:${GRADE_HEX["고급"]}"></span>고급(그 이상)</span>
+        </div>
+        <p class="note">아래 필터를 바꾸면 지도 점도 같이 바뀝니다. 점은 단지나 건물 대표 위치라 실제 동·호수와 조금 다를 수 있습니다.</p>
+      </section>
+
+      <div class="bar" id="bar">
+        <div class="wrap">
+          ${chips("grade", [["전체", "전체"], ["하급", "하급"], ["중급", "중급"], ["고급", "고급"]], "가격대")}
+          ${chips("sort", [["near", "가까운 순"], ["cost", "6개월 비용 순"], ["month", "월 비용 순"]], "정렬")}
+          ${chips("deal", [["전체", "전체"], ["월세", "월세"], ["중단기", "중단기 임대"]], "계약")}
+          <div class="row more-filters">${chips("type", [["전체", "전체"], ["아파트", "아파트"], ["빌라·주택", "빌라·주택"], ["오피스텔", "오피스텔"]], "집 종류")}</div>
+          <div class="row more-filters">${chips("dist", [["전체", "전체"], ["1000", "1km 안"], ["2000", "2km 안"]], "거리")}
+            <label class="chip"><input type="checkbox" id="showOut"> 조건 안 맞는 집도 보기</label></div>
+          <div class="row"><button type="button" class="chip toggle" id="toggle" aria-expanded="false">필터 더 보기</button><span class="count" id="count"></span></div>
+        </div>
+      </div>
+      <div class="wrap"><div class="grid" id="grid"></div><button type="button" class="loadmore" id="more">더 보기</button></div>
+
+      ${s.tracks ? `<section class="wrap" aria-labelledby="h-tracks"><h2 id="h-tracks">일반 임대와 단기임대 비교</h2>${s.tracks}</section>` : ""}
+      ${s.storage ? `<section class="wrap" aria-labelledby="h-storage"><h2 id="h-storage">짐 보관과 이사</h2>${s.storage}</section>` : ""}
+      ${s.knowhow ? `<section class="wrap" aria-labelledby="h-know"><h2 id="h-know">계약 전에 꼭 알아둘 것</h2>${s.knowhow}</section>` : ""}
+      ${s.method ? `<section class="wrap" aria-labelledby="h-method"><h2 id="h-method">어떻게 조사했나</h2>${s.method}</section>` : ""}
+    `;
+
+    $("#bar").addEventListener("click", e => {
+      const b = e.target.closest("button[data-k]");
+      if (b) {
+        state[b.dataset.k] = b.dataset.v; state.shown = 24;
+        $("#bar").querySelectorAll(`button[data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute("aria-pressed", x === b));
+        renderList();
+      }
+      if (e.target.id === "toggle") {
+        const open = $("#bar").classList.toggle("open");
+        e.target.setAttribute("aria-expanded", open);
+        e.target.textContent = open ? "필터 접기" : "필터 더 보기";
+      }
+    });
+    $("#showOut").addEventListener("change", e => { state.showOut = e.target.checked; state.shown = 24; renderList(); });
+    $("#more").addEventListener("click", () => { state.shown += 24; renderList(); });
+
+    if (window.L) {
+      const b = d.meta.base;
+      map = window.L.map("map", { scrollWheelZoom: false }).setView([b.lat, b.lng], 14);
+      window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap" }).addTo(map);
+      window.L.circleMarker([b.lat, b.lng], { radius: 10, color: "#fff", weight: 2, fillColor: "#e11d48", fillOpacity: 1 }).bindPopup("<b>달빛마을 2단지</b><br>거리 기준점").addTo(map);
+      layer = window.L.layerGroup().addTo(map);
+      $("#map").addEventListener("click", e => {
+        const a = e.target.closest("a[data-jump]");
+        if (!a) return;
+        e.preventDefault();
+        jump(a.dataset.jump);
+      });
+    } else {
+      $("#map").innerHTML = `<p class="note" style="padding:1rem">지도를 불러오지 못했습니다. 아래 목록은 그대로 볼 수 있습니다.</p>`;
+    }
+    renderList();
+    // 처음 열 때 후보 전체와 기준점이 한 화면에 들어오게 맞춘다
+    if (map && layer.getLayers().length) {
+      const bounds = window.L.featureGroup(layer.getLayers()).getBounds().extend([d.meta.base.lat, d.meta.base.lng]);
+      map.fitBounds(bounds, { padding: [20, 20], maxZoom: 15 });
+    }
+    $("#foot").innerHTML = `만든 사람 김병현. 조사 자료는 <a href="./data.json">data.json</a>에 있습니다. 실험 목록은 <a href="/frontend/">Frontend</a>에서 볼 수 있습니다.`;
+  }
+
+  function jump(id) {
+    const L = filtered(), i = L.findIndex(x => x.id === id);
+    if (i < 0) return;
+    if (i >= state.shown) { state.shown = i + 1; renderList(); }
+    const el = document.querySelector(`.grid [data-id="${CSS.escape(id)}"]`);
+    if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.style.outline = "3px solid var(--accent)"; setTimeout(() => el.style.outline = "", 2000); }
+  }
+
+  fetch("./data.json", { cache: "no-cache" })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d => { DATA = d; LIST = d.listings; render(); })
+    .catch(err => { $("#app").innerHTML = `<div class="wrap loading">자료를 불러오지 못했습니다(${esc(err.message)}). 잠시 뒤 새로고침해 주세요.</div>`; });
+})();
+</script>
+</body>
+</html>
