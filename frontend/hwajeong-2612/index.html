@@ -23,6 +23,7 @@
   --g-low: #2f8f5b; --g-mid: #1f6fb8; --g-high: #7b3fa8;
   --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", serif;
   --text: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --ease: cubic-bezier(.22, .7, .2, 1);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -116,7 +117,29 @@ select.chip { padding-right: .6rem; }
 .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem; padding-top: .35rem; }
 .links a { font-size: .9rem; text-decoration: none; border: 1px solid var(--rule); border-radius: 8px; padding: .3rem .65rem; }
 .both { font-size: .8rem; color: var(--soft); }
-.loadmore { display: block; margin: 0 auto 2rem; font: inherit; font-size: 1rem; padding: .7rem 1.6rem; border-radius: 999px; border: 1px solid var(--accent); background: var(--card); color: var(--accent); cursor: pointer; }
+/* 쪽 넘김: 포트폴리오(portfolio.bkan.dev) 작업 카드 페이저와 같은 모양·동작 */
+.listwrap { overflow-x: clip; padding-bottom: 2.5rem; }
+.pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-top: .5rem; }
+.pager-btn {
+  min-width: 40px; height: 40px; padding: 0 12px; border-radius: 999px;
+  font: inherit; font-size: .92rem; color: var(--soft);
+  background: var(--card); border: 1px solid var(--rule);
+  cursor: pointer; transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.pager-btn:hover:not([disabled]) { border-color: var(--accent); color: var(--ink); }
+.pager-btn[aria-current="page"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.pager-btn[disabled] { opacity: .4; cursor: default; }
+.pager-btn svg { width: .8rem; height: .8rem; }
+.pager-step { padding: 0 16px; }
+.pager-gap { color: var(--soft); padding: 0 2px; }
+@media (max-width: 640px) {
+  .pager { gap: 6px; }
+  .pager-btn { min-width: 36px; height: 36px; }
+  .pager-step { padding: 0; }
+  /* 좁은 화면은 화살표만 - 읽는 이름은 aria-label이 맡는다 */
+  .pager-label { display: none; }
+}
 
 /* 표와 글 */
 .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); }
@@ -134,9 +157,18 @@ details { background: var(--card); border: 1px solid var(--rule); border-radius:
 summary { cursor: pointer; font-weight: 600; }
 footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-top: 1px solid var(--rule); }
 .loading { padding: 3rem 0; text-align: center; color: var(--soft); }
-@media (prefers-reduced-motion: no-preference) {
-  .card { transition: transform .15s ease, box-shadow .15s ease; }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(20, 33, 61, .08); }
+/* 카드 위로 띄우기 + 윗변 빛줄(포트폴리오 작업 카드와 같은 손맛) */
+.card { position: relative; transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease); }
+.card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 3;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity .25s var(--ease);
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 28px rgba(20, 33, 61, .12); }
+.card:hover::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .card, .card::before { transition: none; }
+  .card:hover { transform: none; }
 }
 </style>
 </head>
@@ -180,8 +212,11 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
   const GRADE_HEX = { "하급": "#2f8f5b", "중급": "#1f6fb8", "고급": "#7b3fa8" };
   const TRACK = { A: "중단기 임대", B: "월세" };
 
-  const state = { grade: "전체", deal: "전체", type: "전체", dist: "전체", sort: "near", showOut: false, shown: 24 };
-  let DATA, LIST, map, layer;
+  const state = { grade: "전체", deal: "전체", type: "전체", dist: "전체", sort: "near", showOut: false, page: 1 };
+  const PER_PAGE = 6;
+  const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const CAN_ANIMATE = !REDUCED && typeof Element.prototype.animate === "function";
+  let DATA, LIST, CURRENT = [], map, layer, busy = false;
 
   const dealOf = x => x.track === "A" ? "중단기" : "월세";
   const typeOf = x => x.type === "아파트" ? "아파트" : x.type === "오피스텔" ? "오피스텔" : "빌라·주택";
@@ -266,12 +301,99 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
     return L.sort((a, b) => (a.status === "탈락") - (b.status === "탈락") || key(a) - key(b));
   }
 
+  // 필터·정렬이 바뀌면 목록을 다시 거르고 첫 쪽으로 돌아간다
   function renderList() {
-    const L = filtered();
-    $("#count").textContent = `${L.length}곳`;
-    $("#grid").innerHTML = L.slice(0, state.shown).map(x => card(x)).join("") || `<p class="note">조건에 맞는 매물이 없습니다. 필터를 줄여 보세요.</p>`;
-    $("#more").hidden = L.length <= state.shown;
-    renderMarkers(L);
+    CURRENT = filtered();
+    state.page = 1;
+    $("#count").textContent = `${CURRENT.length}곳`;
+    renderMarkers(CURRENT);
+    paintPage();
+    reveal($("#grid").querySelectorAll(".card"));
+  }
+
+  const totalPages = () => Math.max(1, Math.ceil(CURRENT.length / PER_PAGE));
+  const onPage = () => [...$("#grid").querySelectorAll(".card")];
+
+  function paintPage() {
+    const start = (state.page - 1) * PER_PAGE;
+    $("#grid").innerHTML = CURRENT.slice(start, start + PER_PAGE).map(x => card(x)).join("")
+      || `<p class="note">조건에 맞는 매물이 없습니다. 필터를 줄여 보세요.</p>`;
+    renderPager(totalPages());
+  }
+
+  // 1 … 현재-1 현재 현재+1 … 끝
+  function pageItems(total, cur) {
+    const out = [];
+    for (let i = 1; i <= total; i++) {
+      if (i === 1 || i === total || Math.abs(i - cur) <= 1) out.push(i);
+      else if (out[out.length - 1] !== 0) out.push(0);
+    }
+    return out;
+  }
+
+  const CHEV_L = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const CHEV_R = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  function renderPager(total) {
+    const pager = $("#pager"), p = state.page;
+    pager.hidden = total <= 1;
+    if (total <= 1) { pager.innerHTML = ""; return; }
+    const step = (to, cls, label, html, off) =>
+      `<button type="button" class="pager-btn pager-step ${cls}" data-page="${to}" aria-label="${label}"${off ? " disabled" : ""}>${html}</button>`;
+    pager.innerHTML =
+      step(p - 1, "pager-prev", "이전 페이지", `${CHEV_L}<span class="pager-label">이전</span>`, p === 1) +
+      pageItems(total, p).map(n => n === 0
+        ? `<span class="pager-gap" aria-hidden="true">…</span>`
+        : `<button type="button" class="pager-btn pager-num" data-page="${n}" aria-label="${n}페이지"${n === p ? ` aria-current="page"` : ""}>${n}</button>`).join("") +
+      step(p + 1, "pager-next", "다음 페이지", `<span class="pager-label">다음</span>${CHEV_R}`, p === total);
+  }
+
+  // 처음 보일 때 아래에서 20px 떠오르며 차례로 나타난다(화면에 들어올 때 한 번)
+  function reveal(cards) {
+    if (!CAN_ANIMATE || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      en.target.animate(
+        [{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "none" }],
+        { duration: 500, delay: Number(en.target.dataset.i) * 60, easing: "ease", fill: "backwards" });
+    }), { threshold: 0.1 });
+    [...cards].forEach((c, i) => { c.dataset.i = i % 6; io.observe(c); });
+  }
+
+  // 쪽 넘김: 다음 쪽이면 지금 카드가 왼쪽으로 빠지며 사라지고(150ms) 새 카드가 오른쪽에서 35ms 간격으로 들어온다(320ms). 이전 쪽은 반대.
+  function goPage(to, keep, afterSwap) {
+    if (busy || to === state.page || to < 1 || to > totalPages()) return;
+    const dir = to > state.page ? 1 : -1;
+    // 목록 머리가 화면 위로 올라가 있으면 먼저 스크롤을 시작해 카드가 바뀌는 동안 함께 움직이게 한다
+    const grid = $("#grid"), bar = $("#bar");
+    const sticky = getComputedStyle(bar).position === "sticky";
+    const offset = (sticky ? bar.offsetHeight : 0) + 16;
+    if (grid.getBoundingClientRect().top < offset) {
+      scrollTo({ top: grid.getBoundingClientRect().top + scrollY - offset, behavior: REDUCED ? "auto" : "smooth" });
+    }
+    const swap = () => {
+      state.page = to;
+      paintPage();
+      onPage().forEach((c, i) => {
+        if (!CAN_ANIMATE) return;
+        c.animate(
+          [{ opacity: 0, transform: `translateX(${dir * 28}px)` }, { opacity: 1, transform: "none" }],
+          { duration: 320, delay: i * 35, easing: "cubic-bezier(.22, .7, .2, 1)", fill: "backwards" });
+      });
+      // 이전·다음을 연달아 누를 수 있게 같은 버튼에 포커스를 돌린다(끝에 닿으면 현재 번호로)
+      const pager = $("#pager");
+      const f = (keep && pager.querySelector(`${keep}:not([disabled])`)) || pager.querySelector("[aria-current=page]");
+      if (f && keep !== null) f.focus({ preventScroll: true });
+      busy = false;
+      if (afterSwap) afterSwap();
+    };
+    if (!CAN_ANIMATE) { swap(); return; }
+    busy = true;
+    const outs = onPage().map(c => c.animate(
+      [{ opacity: 1, transform: "none" }, { opacity: 0, transform: `translateX(${-dir * 20}px)` }],
+      { duration: 150, easing: "ease-in", fill: "forwards" }));
+    Promise.all(outs.map(a => a.finished)).then(swap, swap);
   }
 
   function renderMarkers(L) {
@@ -328,9 +450,9 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
           <div class="row"><button type="button" class="chip toggle" id="toggle" aria-expanded="false">필터 더 보기</button><span class="count" id="count"></span></div>
         </div>
       </div>
-      <div class="wrap"><div class="grid" id="grid"></div><button type="button" class="loadmore" id="more">더 보기</button></div>
+      <div class="wrap listwrap"><div class="grid" id="grid" aria-live="polite"></div><nav class="pager" id="pager" aria-label="매물 카드 페이지" hidden></nav></div>
 
-      ${s.tracks ? `<section class="wrap" aria-labelledby="h-tracks"><h2 id="h-tracks">일반 임대와 단기임대 비교</h2>${s.tracks}</section>` : ""}
+      ${s.tracks ? `<section class="wrap" aria-labelledby="h-tracks"><h2 id="h-tracks">월세와 중단기 임대 비교</h2>${s.tracks}</section>` : ""}
       ${s.storage ? `<section class="wrap" aria-labelledby="h-storage"><h2 id="h-storage">짐 보관과 이사</h2>${s.storage}</section>` : ""}
       ${s.knowhow ? `<section class="wrap" aria-labelledby="h-know"><h2 id="h-know">계약 전에 꼭 알아둘 것</h2>${s.knowhow}</section>` : ""}
       ${s.method ? `<section class="wrap" aria-labelledby="h-method"><h2 id="h-method">어떻게 조사했나</h2>${s.method}</section>` : ""}
@@ -339,7 +461,7 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
     $("#bar").addEventListener("click", e => {
       const b = e.target.closest("button[data-k]");
       if (b) {
-        state[b.dataset.k] = b.dataset.v; state.shown = 24;
+        state[b.dataset.k] = b.dataset.v;
         $("#bar").querySelectorAll(`button[data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute("aria-pressed", x === b));
         renderList();
       }
@@ -349,8 +471,14 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
         e.target.textContent = open ? "필터 접기" : "필터 더 보기";
       }
     });
-    $("#showOut").addEventListener("change", e => { state.showOut = e.target.checked; state.shown = 24; renderList(); });
-    $("#more").addEventListener("click", () => { state.shown += 24; renderList(); });
+    $("#showOut").addEventListener("change", e => { state.showOut = e.target.checked; renderList(); });
+    $("#pager").addEventListener("click", e => {
+      const btn = e.target.closest(".pager-btn");
+      if (!btn || btn.disabled) return;
+      const keep = btn.classList.contains("pager-prev") ? ".pager-prev" : btn.classList.contains("pager-next") ? ".pager-next" : undefined;
+      goPage(Number(btn.dataset.page), keep);
+    });
+    reveal($(".picks").querySelectorAll(".card"));
 
     if (window.L) {
       const b = d.meta.base;
@@ -376,12 +504,19 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
     $("#foot").innerHTML = `만든 사람 김병현. 조사 자료는 <a href="./data.json">data.json</a>에 있습니다. 실험 목록은 <a href="/frontend/">Frontend</a>에서 볼 수 있습니다.`;
   }
 
+  // 지도에서 '카드로 보기'를 누르면 그 매물이 있는 쪽으로 넘긴 뒤 카드를 보여준다
   function jump(id) {
-    const L = filtered(), i = L.findIndex(x => x.id === id);
+    const i = CURRENT.findIndex(x => x.id === id);
     if (i < 0) return;
-    if (i >= state.shown) { state.shown = i + 1; renderList(); }
-    const el = document.querySelector(`.grid [data-id="${CSS.escape(id)}"]`);
-    if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.style.outline = "3px solid var(--accent)"; setTimeout(() => el.style.outline = "", 2000); }
+    const show = () => {
+      const el = document.querySelector(`.grid [data-id="${CSS.escape(id)}"]`);
+      if (!el) return;
+      el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+      el.style.outline = "3px solid var(--accent)";
+      setTimeout(() => el.style.outline = "", 2000);
+    };
+    const to = Math.floor(i / PER_PAGE) + 1;
+    if (to === state.page) show(); else goPage(to, null, show);
   }
 
   fetch("./data.json", { cache: "no-cache" })
