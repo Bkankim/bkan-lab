@@ -216,8 +216,6 @@ footer { padding-block: 2rem 3rem; color: var(--soft); font-size: .9rem; border-
     if (x.parking === "가능") f.push(`<li class="yes">주차</li>`);
     else if (x.parking === "유료") f.push(`<li>주차 유료</li>`);
     else if (x.parking === "불가") f.push(`<li class="no">주차 불가</li>`);
-    if (x.jeonip === "가능") f.push(`<li class="yes">전입 가능</li>`);
-    if (x.jeonip === "불가") f.push(`<li class="no">전입 불가</li>`);
     const opt = (x.options || []).filter(o => /냉장고|세탁기|에어컨|침대/.test(o));
     if (opt.length) f.push(`<li class="yes">${esc(opt.join("·"))}</li>`);
     return f.join("");
