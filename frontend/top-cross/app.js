@@ -1,11 +1,9 @@
 /* 테일즈 오브 판타지아 크로스 에디션 놓침 방지 안내
-   데이터는 data.json, 진행 상태는 localStorage, 사진은 IndexedDB(이 기기에만 저장). */
+   데이터는 data.json, 진행 상태는 localStorage(이 기기에만 저장). */
 (() => {
 'use strict';
 
 const STORE_KEY = 'topx:v1';
-const DB_NAME = 'topx-photos';
-const MAX_EDGE = 1600;
 
 const KIND = {
   item: '아이템', equip: '장비', ougi: '오의·특기', spell: '술', summon: '소환',
@@ -33,8 +31,6 @@ const ICON = {
   route: '<circle cx="6" cy="5.5" r="2"/><circle cx="18" cy="18.5" r="2"/><path d="M8 5.5h6.5a3.5 3.5 0 0 1 0 7h-5a3.5 3.5 0 0 0 0 7H16"/>',
   people: '<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.4c2.6-.2 4.4 1.4 5 4.4"/>',
   book: '<path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/><path d="M12 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/>',
-  camera: '<path d="M4 8.5h3l1.8-2.5h6.4L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.4"/>',
-  note: '<path d="M5.5 4h9l4 4v12h-13z"/><path d="M9 12h6M9 15.5h4"/>',
   check: '<path d="M5.5 12.5l4.2 4.2L18.5 8"/>',
   search: '<circle cx="11" cy="11" r="6.2"/><path d="M15.6 15.6L20 20"/>',
   close: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
@@ -50,86 +46,21 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const $ = (sel, root = document) => root.querySelector(sel);
 // 본문의 `이름` 표기는 이름 강조로 바꾼다
 const rich = s => esc(s).replace(/`([^`]+)`/g, '<span class="nm">$1</span>');
+// 일본어 원어는 한글 이름 뒤 괄호 안에 붙인다: 보아(ボア)
+const jpTag = jp => jp ? `<span class="jp" lang="ja">(${esc(jp)})</span>` : '';
+// 이름 뒤에 ' (설명)'이 붙어 있으면 원어는 본 이름 바로 뒤에: 애플구미(アップルグミ) (석상 밀기)
+const nameJp = (name, jp) => { const m = /^(.+?)( \(.+\))$/.exec(name || ''); return m ? `${esc(m[1])}${jpTag(jp)}${esc(m[2])}` : `${esc(name)}${jpTag(jp)}`; };
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---------- 상태 ---------- */
 function loadState() {
   try {
     const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
-    return { checked: raw.checked || {}, notes: raw.notes || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스' };
-  } catch { return { checked: {}, notes: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스' }; }
+    return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스' };
+  } catch { return { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스' }; }
 }
 let S = loadState();
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch { toast('이 브라우저에서는 진행 상태를 저장할 수 없습니다. 개인 정보 보호 모드를 꺼 주세요.'); } }
-
-/* ---------- 사진 저장소 ---------- */
-let dbp = null;
-function db() {
-  if (dbp) return dbp;
-  dbp = new Promise((res, rej) => {
-    if (!('indexedDB' in window)) return rej(new Error('no idb'));
-    const r = indexedDB.open(DB_NAME, 1);
-    r.onupgradeneeded = () => { const s = r.result.createObjectStore('photos', { keyPath: 'id' }); s.createIndex('entry', 'entry'); };
-    r.onsuccess = () => res(r.result);
-    r.onerror = () => rej(r.error);
-  });
-  return dbp;
-}
-async function tx(mode, fn) {
-  const d = await db();
-  return new Promise((res, rej) => {
-    const t = d.transaction('photos', mode);
-    const out = fn(t.objectStore('photos'));
-    t.oncomplete = () => res(out && 'result' in out ? out.result : undefined);
-    t.onerror = () => rej(t.error);
-  });
-}
-const photos = new Map(); // id -> {id, entry, blob, ts, url}
-async function loadPhotos() {
-  try {
-    const all = await tx('readonly', s => s.getAll());
-    for (const p of all || []) photos.set(p.id, { ...p, url: URL.createObjectURL(p.blob) });
-  } catch { /* 사진 기능 없이 동작 */ }
-}
-const photosOf = id => [...photos.values()].filter(p => p.entry === id).sort((a, b) => a.ts - b.ts);
-const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
-
-async function shrink(file) {
-  let src, w, h;
-  try { src = await createImageBitmap(file); w = src.width; h = src.height; }
-  catch {
-    src = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = URL.createObjectURL(file); });
-    w = src.naturalWidth; h = src.naturalHeight;
-  }
-  const k = Math.min(1, MAX_EDGE / Math.max(w, h));
-  const c = document.createElement('canvas');
-  c.width = Math.round(w * k); c.height = Math.round(h * k);
-  c.getContext('2d').drawImage(src, 0, 0, c.width, c.height);
-  return new Promise(res => c.toBlob(b => res(b || file), 'image/jpeg', 0.82));
-}
-async function addPhotos(entry, files) {
-  let n = 0;
-  for (const f of files) {
-    if (!f.type.startsWith('image/') && !/\.(heic|heif)$/i.test(f.name)) continue;
-    const blob = await shrink(f);
-    const p = { id: uid(), entry, blob, ts: Date.now() };
-    try { await tx('readwrite', s => s.put(p)); } catch { toast('사진을 저장하지 못했습니다. 기기 저장 공간을 확인해 주세요.'); return; }
-    photos.set(p.id, { ...p, url: URL.createObjectURL(blob) });
-    n++;
-  }
-  if (n) { toast(`사진 ${n}장을 붙였습니다.`); requestPersist(); }
-}
-async function removePhoto(id) {
-  await tx('readwrite', s => s.delete(id));
-  const p = photos.get(id); if (p) URL.revokeObjectURL(p.url);
-  photos.delete(id);
-}
-let persistAsked = false;
-async function requestPersist() {
-  if (persistAsked || !navigator.storage?.persist) return;
-  persistAsked = true;
-  try { await navigator.storage.persist(); } catch {}
-}
 
 /* ---------- 데이터 ---------- */
 let D, gates = [], gateById = {}, areaById = {}, entryById = {}, eraById = {};
@@ -171,26 +102,18 @@ function chips(e) {
 function entryHTML(e, opts = {}) {
   const d = deadlineOf(e);
   const g = d && gateById[d];
-  const ps = photosOf(e.id);
   const area = areaById[e.area];
   const done = isDone(e.id);
-  const note = S.notes[e.id];
   return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
     <button class="tick" data-act="check" aria-pressed="${done}" aria-label="${esc(e.name)} ${done ? '체크 해제' : '챙김으로 표시'}">${svg('check', 'ic tick-ic')}</button>
     <div class="body">
       <div class="head">
-        <h3>${esc(e.name)}</h3>${e.jp ? `<span class="jp" lang="ja">${esc(e.jp)}</span>` : ''}
+        <h3>${nameJp(e.name, e.jp)}</h3>
       </div>
       <div class="meta"><span class="kind">${KIND[e.kind] || esc(e.kind)}${e.char ? ` · ${esc(e.char)}` : ''}</span>${opts.showArea && area ? `<span class="where">${svg('pin', 'ic mini')}${esc(area.name)}</span>` : ''}${chips(e)}</div>
       <p class="how">${rich(e.how)}</p>
       ${e.tip ? `<p class="tip">${rich(e.tip)}</p>` : ''}
       ${g ? `<p class="due${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}${passed(g) ? '지난 관문' : '기한'}: ${esc(g.title)} 전</p>` : ''}
-      ${note ? `<p class="note-text">${esc(note)}</p>` : ''}
-      ${ps.length ? `<div class="thumbs">${ps.map(p => `<button class="thumb" data-act="view" data-photo="${p.id}" aria-label="붙인 사진 보기"><img src="${p.url}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
-      <div class="tools">
-        <label class="tool">${svg('camera')}<span>사진</span><input type="file" accept="image/*" multiple data-act="photo" hidden></label>
-        <button class="tool" data-act="note">${svg('note')}<span>${note ? '메모 고치기' : '메모'}</span></button>
-      </div>
     </div>
   </article>`;
 }
@@ -255,7 +178,6 @@ function viewHome() {
     <section class="stat-card">
       <div><span class="k">전체 진행</span><strong>${done}<small>/${total}</small></strong></div>
       <div><span class="k">놓치면 끝</span><strong>${D.entries.filter(e => has(e, 'missable') && isDone(e.id)).length}<small>/${D.entries.filter(e => has(e, 'missable')).length}</small></strong></div>
-      <div><span class="k">붙인 사진</span><strong>${photos.size}</strong></div>
     </section>
   </section>`;
 }
@@ -264,7 +186,7 @@ function viewHome() {
 let query = '';
 function matches(e, q) {
   const a = areaById[e.area];
-  return [e.name, e.jp, e.how, e.tip, a?.name, a?.jp, e.char, KIND[e.kind], S.notes[e.id]].join(' ').toLowerCase().includes(q);
+  return [e.name, e.jp, e.how, e.tip, a?.name, a?.jp, e.char, KIND[e.kind]].join(' ').toLowerCase().includes(q);
 }
 function filterList(list) {
   return list.filter(e => (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
@@ -301,7 +223,7 @@ function viewRoute() {
       const until = a.until && gateById[a.until];
       return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
         <summary>
-          <span class="a-name">${esc(a.name)}${a.jp ? `<span class="jp" lang="ja">${esc(a.jp)}</span>` : ''}</span>
+          <span class="a-name">${nameJp(a.name, a.jp)}</span>
           <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-count">${dn}/${all.length}</span></span>
           ${svg('chevron', 'ic chev')}
         </summary>
@@ -322,7 +244,7 @@ function viewChars() {
     <nav class="avatars" aria-label="캐릭터">
       ${CHARS.map(([ko, jp]) => {
         const n = D.entries.filter(e => e.char === ko).length;
-        return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">${esc(jp)} 항목 ${n}개</span></button>`;
+        return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">(${esc(jp)}) 항목 ${n}개</span></button>`;
       }).join('')}
     </nav>
     <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${list.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
@@ -342,7 +264,7 @@ function viewRefs() {
         <button role="tab" class="seg-b${pwMode === 'hidden' ? ' cur' : ''}" data-act="pw" data-mode="hidden" aria-selected="${pwMode === 'hidden'}">1. 숨은 정답 먼저</button>
         <button role="tab" class="seg-b${pwMode === 'normal' ? ' cur' : ''}" data-act="pw" data-mode="normal" aria-selected="${pwMode === 'normal'}">2. 정규 정답</button>
       </div>
-      <div class="pw-grid">${(R.password.grid || []).map((row, i) => `<div class="pw-row"><span class="pw-k">${i + 1}칸</span>${row.map((ch, j) => `<span class="pw-cell${seq[i] === j + 1 ? ' hit' : ''}" style="--d:${i * 90}ms"><b lang="ja">${esc(ch)}</b><small>${j + 1}번째</small></span>`).join('')}</div>`).join('')}</div>
+      <div class="pw-grid">${(R.password.grid || []).map((row, i) => `<div class="pw-row"><span class="pw-k">${i + 1}칸</span>${row.map((ch, j) => `<span class="pw-cell${seq[i] === j + 1 ? ' hit' : ''}" style="--d:${i * 90}ms"><b>${esc(ch).replace(/\(([^)]+)\)$/, '<span class="jp" lang="ja">($1)</span>')}</b><small>${j + 1}번째</small></span>`).join('')}</div>`).join('')}</div>
       <p class="pw-seq">각 칸에서 <strong>${seq.join(' · ')}</strong>번째를 고릅니다.</p>
       ${(R.password.notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}
     </section>`);
@@ -350,11 +272,11 @@ function viewRefs() {
   if (R.mystic) {
     blocks.push(`<section class="ref"><h2>비오의 5종</h2>
       <ul class="ref-list">${(R.mystic.common || []).map(t => `<li>${rich(t)}</li>`).join('')}</ul>
-      ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong lang="ja">${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd">${esc(m.cmd)}</p></div>`).join('')}
+      ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong>${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd">${esc(m.cmd)}</p></div>`).join('')}
     </section>`);
   }
   if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2><ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
-  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${r.jp ? ` <span class="jp" lang="ja">${esc(r.jp)}</span>` : ''}</span></div>`).join('')}</div></section>` : '';
+  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}</span></div>`).join('')}</div></section>` : '';
   blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes));
   blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes));
   blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes));
@@ -364,17 +286,12 @@ function viewRefs() {
   return `<section class="refs">${blocks.join('')}</section>`;
 }
 
-/* ---------- 뷰: 기록 ---------- */
+/* ---------- 뷰: 설정 ---------- */
 function viewRecords() {
-  const all = [...photos.values()].sort((a, b) => b.ts - a.ts);
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   return `<section class="records">
-    <section class="ref"><h2>붙인 사진</h2>
-      ${all.length ? `<div class="gallery">${all.map(p => { const e = entryById[p.entry]; return `<button class="g-item" data-act="view" data-photo="${p.id}"><img src="${p.url}" alt="" loading="lazy"><span>${esc(e ? e.name : '자유 기록')}</span></button>`; }).join('')}</div>` : '<p class="empty">아직 붙인 사진이 없습니다. 항목 카드의 사진 버튼으로 게임 화면을 찍어 붙이거나, 아래에서 자유 기록 사진을 추가하세요.</p>'}
-      <label class="wide">${svg('camera')}자유 기록 사진 추가<input type="file" accept="image/*" multiple data-act="photo-free" hidden></label>
-    </section>
     <section class="ref"><h2>이 기기에 저장됩니다</h2>
-      <p class="ref-p">체크, 메모, 사진은 이 브라우저 안에만 남고 어디에도 올라가지 않습니다. 아이폰 Safari는 오래 열지 않은 사이트의 저장 데이터를 지울 수 있으니 ${standalone ? '지금처럼 홈 화면 앱으로 쓰면서' : '공유 버튼의 「홈 화면에 추가」로 앱처럼 쓰고,'} 가끔 백업 파일을 받아 두세요.</p>
+      <p class="ref-p">체크와 위치는 이 브라우저 안에만 남고 어디에도 올라가지 않습니다. 아이폰 Safari는 오래 열지 않은 사이트의 저장 데이터를 지울 수 있으니 ${standalone ? '지금처럼 홈 화면 앱으로 쓰면서' : '공유 버튼의 「홈 화면에 추가」로 앱처럼 쓰고,'} 가끔 백업 파일을 받아 두세요.</p>
       <div class="row2">
         <button class="pill big" data-act="export">백업 파일 받기</button>
         <label class="pill big">백업 불러오기<input type="file" accept="application/json,.json" data-act="import" hidden></label>
@@ -386,10 +303,10 @@ function viewRecords() {
       </div>
     </section>
     <section class="ref muted"><h2>처음부터 다시</h2>
-      <p class="ref-p">2회차를 시작할 때 체크와 위치만 비웁니다. 메모와 사진은 남습니다.</p>
+      <p class="ref-p">2회차를 시작할 때 체크와 위치를 비웁니다.</p>
       <button class="pill" data-act="reset">체크와 위치 비우기</button>
     </section>
-    <p class="colophon">조사 기준: PSP 「なりきりダンジョンX」 수록 크로스 에디션(일본판)과 알렉스 팀 한글패치 0.95a. 일본 공략 위키, 실기 공략 영상, 국내외 커뮤니티를 교차 확인했고 확정되지 않은 항목은 판정을 함께 적었습니다. 갱신 ${esc(D.updated)}.</p>
+    <p class="colophon">조사 기준: PSP 「나리키리 던전 X(なりきりダンジョンX)」 수록 크로스 에디션(일본판)과 알렉스 팀 한글패치 0.95a. 일본 공략 위키, 실기 공략 영상, 국내외 커뮤니티를 교차 확인했고 확정되지 않은 항목은 판정을 함께 적었습니다. 갱신 ${esc(D.updated)}.</p>
   </section>`;
 }
 
@@ -409,18 +326,6 @@ function pickSheet() {
       <li><button class="pick-b${p === -1 ? ' cur' : ''}" data-act="set-pos" data-gate="">처음부터 (아직 아무 관문도 안 지남)</button></li>
       ${gates.map(g => `<li><button class="pick-b${g.idx === p ? ' cur' : ''}" data-act="set-pos" data-gate="${esc(g.id)}"><span class="pe">${esc(eraById[g.era]?.name || '')}</span>${esc(g.title)}</button></li>`).join('')}
     </ol>`;
-}
-function noteSheet(id) {
-  const e = entryById[id];
-  return `<h2 class="sheet-h">${esc(e.name)} 메모</h2>
-    <textarea class="note-in" rows="5" placeholder="예: 세이브 3번 슬롯, 상자는 오른쪽 기둥 뒤">${esc(S.notes[id] || '')}</textarea>
-    <div class="row2"><button class="pill big" data-act="note-save" data-id="${esc(id)}">메모 저장</button><button class="pill big ghost" data-act="sheet-close">닫기</button></div>`;
-}
-function viewerSheet(pid) {
-  const p = photos.get(pid); if (!p) return '';
-  const e = entryById[p.entry];
-  return `<figure class="viewer"><img src="${p.url}" alt="${esc(e ? e.name : '자유 기록')} 사진"><figcaption>${esc(e ? e.name : '자유 기록')} · ${new Date(p.ts).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' })}</figcaption></figure>
-    <div class="row2">${e ? `<button class="pill big" data-act="goto" data-id="${esc(e.id)}">항목으로 가기</button>` : ''}<button class="pill big ghost" data-act="photo-del" data-photo="${p.id}">사진 지우기</button></div>`;
 }
 function passSheet(g, left) {
   return `<h2 class="sheet-h">${esc(g.title)}</h2><p class="sheet-p">아직 체크하지 않은 영구손실 항목이 ${left.length}개 있습니다. 이 관문을 넘으면 그 회차에서는 다시 얻을 수 없습니다.</p>
@@ -460,15 +365,6 @@ function placeThumbs(root) {
 }
 function go(view) { S.view = view; save(); render(); }
 
-/* 체크 버튼만 바꿔서 스크롤과 열린 상태를 지킨다 */
-function refreshEntry(id) {
-  document.querySelectorAll(`[data-id="${CSS.escape(id)}"].entry`).forEach(el => {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = entryHTML(entryById[id], { showArea: !!el.querySelector('.where') });
-    const fresh = tmp.firstElementChild;
-    el.replaceWith(fresh);
-  });
-}
 function softRerender() {
   if (S.view === 'home') {
     // 링과 숫자를 갱신하되 목록은 그대로 둔다
@@ -508,28 +404,6 @@ document.addEventListener('click', async ev => {
       softRerender();
       break;
     }
-    case 'note': openSheet(noteSheet(id), 'form'); setTimeout(() => $('.note-in')?.focus(), 60); break;
-    case 'note-save': {
-      const v = $('.note-in').value.trim();
-      if (v) S.notes[id] = v; else delete S.notes[id];
-      save(); closeSheet(); refreshEntry(id); toast(v ? '메모를 저장했습니다.' : '메모를 지웠습니다.');
-      break;
-    }
-    case 'view': openSheet(viewerSheet(t.dataset.photo), 'photo'); break;
-    case 'photo-del': {
-      const p = photos.get(t.dataset.photo); await removePhoto(t.dataset.photo); closeSheet();
-      if (p) refreshEntry(p.entry); if (S.view === 'records') render({ keepScroll: true });
-      toast('사진을 지웠습니다.');
-      break;
-    }
-    case 'goto': {
-      closeSheet();
-      const e = entryById[id]; const a = areaById[e.area];
-      query = ''; S.view = 'route'; S.era = a ? a.era : S.era; openArea = e.area; save(); render();
-      const el = document.getElementById('e-' + id);
-      if (el) { el.scrollIntoView({ block: 'center', behavior: reduceMotion.matches ? 'auto' : 'smooth' }); el.classList.add('flash'); }
-      break;
-    }
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
     case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
@@ -557,18 +431,13 @@ document.addEventListener('click', async ev => {
     case 'pw': pwMode = t.dataset.mode; render({ keepScroll: true }); break;
     case 'theme': S.theme = t.dataset.theme; save(); applyTheme(); render({ keepScroll: true }); break;
     case 'export': exportBackup(); break;
-    case 'reset': openSheet(`<h2 class="sheet-h">체크와 위치를 비울까요</h2><p class="sheet-p">${Object.keys(S.checked).length}개 체크와 지금 위치가 사라집니다. 메모와 사진은 남습니다.</p><div class="row2"><button class="pill big ghost" data-act="sheet-close">그만두기</button><button class="pill big" data-act="reset-do">비우기</button></div>`, 'list'); break;
+    case 'reset': openSheet(`<h2 class="sheet-h">체크와 위치를 비울까요</h2><p class="sheet-p">${Object.keys(S.checked).length}개 체크와 지금 위치가 사라집니다.</p><div class="row2"><button class="pill big ghost" data-act="sheet-close">그만두기</button><button class="pill big" data-act="reset-do">비우기</button></div>`, 'list'); break;
     case 'reset-do': S.checked = {}; S.pos = null; save(); closeSheet(); render(); toast('체크와 위치를 비웠습니다.'); break;
   }
 });
 document.addEventListener('change', async ev => {
   const t = ev.target;
-  if (t.dataset.act === 'photo') {
-    const id = t.closest('.entry').dataset.id;
-    await addPhotos(id, [...t.files]); t.value = ''; refreshEntry(id); softRerender();
-  } else if (t.dataset.act === 'photo-free') {
-    await addPhotos('free', [...t.files]); t.value = ''; render({ keepScroll: true });
-  } else if (t.dataset.act === 'import') {
+  if (t.dataset.act === 'import') {
     await importBackup(t.files[0]); t.value = '';
   }
 });
@@ -598,12 +467,9 @@ function applyTheme() {
 }
 
 /* ---------- 백업 ---------- */
-const toDataURL = blob => new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(blob); });
 async function exportBackup() {
   toast('백업 파일을 만드는 중입니다.');
-  const ph = [];
-  for (const p of photos.values()) ph.push({ id: p.id, entry: p.entry, ts: p.ts, data: await toDataURL(p.blob) });
-  const body = JSON.stringify({ app: 'topx', version: 1, at: new Date().toISOString(), state: { checked: S.checked, notes: S.notes, pos: S.pos }, photos: ph });
+  const body = JSON.stringify({ app: 'topx', version: 2, at: new Date().toISOString(), state: { checked: S.checked, pos: S.pos } });
   const name = `topx-backup-${new Date().toISOString().slice(0, 10)}.json`;
   const file = new File([body], name, { type: 'application/json' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -619,23 +485,15 @@ async function importBackup(file) {
   try { j = JSON.parse(await file.text()); } catch { toast('백업 파일을 읽지 못했습니다. 이 페이지에서 받은 .json 파일인지 확인해 주세요.'); return; }
   if (j.app !== 'topx') { toast('이 페이지의 백업 파일이 아닙니다.'); return; }
   S.checked = { ...S.checked, ...(j.state?.checked || {}) };
-  S.notes = { ...S.notes, ...(j.state?.notes || {}) };
   if (j.state?.pos !== undefined) S.pos = j.state.pos;
   save();
-  let n = 0;
-  for (const p of j.photos || []) {
-    if (photos.has(p.id)) continue;
-    const blob = await (await fetch(p.data)).blob();
-    const rec = { id: p.id, entry: p.entry, blob, ts: p.ts };
-    try { await tx('readwrite', s => s.put(rec)); photos.set(p.id, { ...rec, url: URL.createObjectURL(blob) }); n++; } catch {}
-  }
   render({ keepScroll: true });
-  toast(`백업을 불러왔습니다. 사진 ${n}장을 더했습니다.`);
+  toast('백업을 불러왔습니다.');
 }
 
 /* ---------- 시작 ---------- */
 applyTheme();
-Promise.all([loadData(), loadPhotos()]).then(() => {
+loadData().then(() => {
   document.documentElement.classList.add('ready');
   render({ noScroll: true });
 }).catch(() => {
