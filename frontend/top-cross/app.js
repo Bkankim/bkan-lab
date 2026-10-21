@@ -112,10 +112,21 @@ function entryHTML(e, opts = {}) {
       </div>
       <div class="meta"><span class="kind">${KIND[e.kind] || esc(e.kind)}${e.char ? ` · ${esc(e.char)}` : ''}</span>${opts.showArea && area ? `<span class="where">${svg('pin', 'ic mini')}${esc(area.name)}</span>` : ''}${chips(e)}</div>
       <p class="how">${rich(e.how)}</p>
+      ${shots(e)}
       ${e.tip ? `<p class="tip">${rich(e.tip)}</p>` : ''}
       ${g ? `<p class="due${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}${passed(g) ? '지난 관문' : '기한'}: ${esc(g.title)} 전</p>` : ''}
     </div>
   </article>`;
+}
+// 위치 사진: data.json의 e.shots = [{f: 'shots/<파일>', cap, src, url}]
+function shots(e) {
+  if (!e.shots?.length) return '';
+  return `<div class="shots${e.shots.length > 1 ? ' multi' : ''}">${e.shots.map((p, i) => `<button class="shot" data-act="shot" data-i="${i}" aria-label="${esc(e.name)} 위치 사진 크게 보기"><img src="${esc(p.f)}" alt="${esc(p.cap || e.name + ' 위치')}" loading="lazy" decoding="async" width="${p.w || 640}" height="${p.h || 480}">${p.cap ? `<span class="shot-cap">${esc(p.cap)}</span>` : ''}</button>`).join('')}</div>`;
+}
+function shotSheet(e, i) {
+  const p = e.shots[i];
+  return `<figure class="viewer"><img src="${esc(p.f)}" alt="${esc(p.cap || e.name + ' 위치')}"><figcaption>${esc(e.name)}${p.cap ? ` · ${esc(p.cap)}` : ''}<br><span class="credit">사진 출처: ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.src || p.url)}</a>` : esc(p.src || '')}</span></figcaption></figure>
+    <div class="row2"><button class="pill big ghost" data-act="sheet-close" autofocus>닫기</button></div>`;
 }
 function ring(pct, label) {
   const r = 46, c = 2 * Math.PI * r;
@@ -404,6 +415,7 @@ document.addEventListener('click', async ev => {
       softRerender();
       break;
     }
+    case 'shot': openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
     case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
