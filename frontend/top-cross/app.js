@@ -1,0 +1,647 @@
+/* 테일즈 오브 판타지아 크로스 에디션 놓침 방지 안내
+   데이터는 data.json, 진행 상태는 localStorage, 사진은 IndexedDB(이 기기에만 저장). */
+(() => {
+'use strict';
+
+const STORE_KEY = 'topx:v1';
+const DB_NAME = 'topx-photos';
+const MAX_EDGE = 1600;
+
+const KIND = {
+  item: '아이템', equip: '장비', ougi: '오의·특기', spell: '술', summon: '소환',
+  ninjutsu: '닌자술', mystic: '비오의', recipe: '레시피', collect: '수집품',
+  title: '칭호', event: '이벤트', boss: '숨은 보스', tip: '요령'
+};
+const FLAG = {
+  missable: '놓치면 끝', link: '링크 상자', hidden: '숨김', cond: '조건부',
+  buy: '구매', best: '최강', warn: '주의'
+};
+const CHARS = [
+  ['크레스', 'クレス'], ['체스터', 'チェスター'], ['민트', 'ミント'], ['클라스', 'クラース'],
+  ['아체', 'アーチェ'], ['스즈', 'すず'], ['로디', 'ロンドリーネ']
+];
+const CHAR_KIND_ORDER = ['mystic', 'ougi', 'spell', 'summon', 'ninjutsu', 'equip', 'title', 'event', 'collect', 'item', 'recipe', 'boss', 'tip'];
+
+const ICON = {
+  present: '<circle cx="12" cy="13" r="4"/><path d="M12 3v2.5M4.5 6.5l1.8 1.8M19.5 6.5l-1.8 1.8M2.5 13H5M19 13h2.5M4 20h16"/>',
+  past: '<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l8-8"/>',
+  future: '<path d="M19 14.5A7.5 7.5 0 1 1 9.5 5a6 6 0 0 0 9.5 9.5z"/><path d="M17 3.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',
+  extra: '<path d="M7 4h10l3.5 5.5L12 20 3.5 9.5z"/><path d="M3.5 9.5h17M10 4l2 16 2-16"/>',
+  post: '<path d="M4.5 12a7.5 7.5 0 0 1 13.3-4.8L20 9.5"/><path d="M20 4.5v5h-5"/><path d="M19.5 12a7.5 7.5 0 0 1-13.3 4.8L4 14.5"/><path d="M4 19.5v-5h5"/>',
+  anytime: '<path d="M12 3.5v4M12 16.5v4M3.5 12h4M16.5 12h4M6.3 6.3l2.4 2.4M15.3 15.3l2.4 2.4M6.3 17.7l2.4-2.4M15.3 8.7l2.4-2.4"/>',
+  home: '<circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/>',
+  route: '<circle cx="6" cy="5.5" r="2"/><circle cx="18" cy="18.5" r="2"/><path d="M8 5.5h6.5a3.5 3.5 0 0 1 0 7h-5a3.5 3.5 0 0 0 0 7H16"/>',
+  people: '<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.4c2.6-.2 4.4 1.4 5 4.4"/>',
+  book: '<path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/><path d="M12 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/>',
+  camera: '<path d="M4 8.5h3l1.8-2.5h6.4L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.4"/>',
+  note: '<path d="M5.5 4h9l4 4v12h-13z"/><path d="M9 12h6M9 15.5h4"/>',
+  check: '<path d="M5.5 12.5l4.2 4.2L18.5 8"/>',
+  search: '<circle cx="11" cy="11" r="6.2"/><path d="M15.6 15.6L20 20"/>',
+  close: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+  theme: '<circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z" fill="currentColor" stroke="none"/>',
+  flag: '<path d="M6 21V4"/><path d="M6 4.5h11l-2.5 4 2.5 4H6"/>',
+  trash: '<path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13"/>',
+  pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+  chevron: '<path d="M9 6l6 6-6 6"/>'
+};
+const svg = (name, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICON[name] || ''}</svg>`;
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const $ = (sel, root = document) => root.querySelector(sel);
+// 본문의 `이름` 표기는 이름 강조로 바꾼다
+const rich = s => esc(s).replace(/`([^`]+)`/g, '<span class="nm">$1</span>');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+/* ---------- 상태 ---------- */
+function loadState() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    return { checked: raw.checked || {}, notes: raw.notes || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스' };
+  } catch { return { checked: {}, notes: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스' }; }
+}
+let S = loadState();
+function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch { toast('이 브라우저에서는 진행 상태를 저장할 수 없습니다. 개인 정보 보호 모드를 꺼 주세요.'); } }
+
+/* ---------- 사진 저장소 ---------- */
+let dbp = null;
+function db() {
+  if (dbp) return dbp;
+  dbp = new Promise((res, rej) => {
+    if (!('indexedDB' in window)) return rej(new Error('no idb'));
+    const r = indexedDB.open(DB_NAME, 1);
+    r.onupgradeneeded = () => { const s = r.result.createObjectStore('photos', { keyPath: 'id' }); s.createIndex('entry', 'entry'); };
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+  return dbp;
+}
+async function tx(mode, fn) {
+  const d = await db();
+  return new Promise((res, rej) => {
+    const t = d.transaction('photos', mode);
+    const out = fn(t.objectStore('photos'));
+    t.oncomplete = () => res(out && 'result' in out ? out.result : undefined);
+    t.onerror = () => rej(t.error);
+  });
+}
+const photos = new Map(); // id -> {id, entry, blob, ts, url}
+async function loadPhotos() {
+  try {
+    const all = await tx('readonly', s => s.getAll());
+    for (const p of all || []) photos.set(p.id, { ...p, url: URL.createObjectURL(p.blob) });
+  } catch { /* 사진 기능 없이 동작 */ }
+}
+const photosOf = id => [...photos.values()].filter(p => p.entry === id).sort((a, b) => a.ts - b.ts);
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+
+async function shrink(file) {
+  let src, w, h;
+  try { src = await createImageBitmap(file); w = src.width; h = src.height; }
+  catch {
+    src = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = URL.createObjectURL(file); });
+    w = src.naturalWidth; h = src.naturalHeight;
+  }
+  const k = Math.min(1, MAX_EDGE / Math.max(w, h));
+  const c = document.createElement('canvas');
+  c.width = Math.round(w * k); c.height = Math.round(h * k);
+  c.getContext('2d').drawImage(src, 0, 0, c.width, c.height);
+  return new Promise(res => c.toBlob(b => res(b || file), 'image/jpeg', 0.82));
+}
+async function addPhotos(entry, files) {
+  let n = 0;
+  for (const f of files) {
+    if (!f.type.startsWith('image/') && !/\.(heic|heif)$/i.test(f.name)) continue;
+    const blob = await shrink(f);
+    const p = { id: uid(), entry, blob, ts: Date.now() };
+    try { await tx('readwrite', s => s.put(p)); } catch { toast('사진을 저장하지 못했습니다. 기기 저장 공간을 확인해 주세요.'); return; }
+    photos.set(p.id, { ...p, url: URL.createObjectURL(blob) });
+    n++;
+  }
+  if (n) { toast(`사진 ${n}장을 붙였습니다.`); requestPersist(); }
+}
+async function removePhoto(id) {
+  await tx('readwrite', s => s.delete(id));
+  const p = photos.get(id); if (p) URL.revokeObjectURL(p.url);
+  photos.delete(id);
+}
+let persistAsked = false;
+async function requestPersist() {
+  if (persistAsked || !navigator.storage?.persist) return;
+  persistAsked = true;
+  try { await navigator.storage.persist(); } catch {}
+}
+
+/* ---------- 데이터 ---------- */
+let D, gates = [], gateById = {}, areaById = {}, entryById = {}, eraById = {};
+async function loadData() {
+  const r = await fetch('data.json', { cache: 'no-cache' });
+  if (!r.ok) throw new Error('data ' + r.status);
+  D = await r.json();
+  gates = [...D.gates].sort((a, b) => a.order - b.order);
+  gates.forEach((g, i) => { g.idx = i; gateById[g.id] = g; });
+  D.areas.forEach(a => areaById[a.id] = a);
+  D.entries.forEach(e => entryById[e.id] = e);
+  D.eras.forEach(e => eraById[e.id] = e);
+  if (!S.era) S.era = D.eras[0].id;
+}
+const isDone = id => !!S.checked[id];
+const has = (e, f) => (e.flags || []).includes(f);
+const posIdx = () => (S.pos && gateById[S.pos]) ? gateById[S.pos].idx : -1;
+const nextGate = () => gates[posIdx() + 1] || null;
+const passed = g => g.idx <= posIdx();
+function deadlineOf(e) { return e.deadline || areaById[e.area]?.until || null; }
+function segmentEntries(g) {
+  if (!g) return [];
+  return D.entries.filter(e => deadlineOf(e) === g.id);
+}
+function sortEntries(list) {
+  return [...list].sort((a, b) => (isDone(a.id) - isDone(b.id)) || (has(b, 'missable') - has(a, 'missable')) || ((areaById[a.area]?.order ?? 0) - (areaById[b.area]?.order ?? 0)));
+}
+function overdue() {
+  return D.entries.filter(e => { const d = deadlineOf(e); return d && gateById[d] && passed(gateById[d]) && has(e, 'missable') && !isDone(e.id); });
+}
+
+/* ---------- 렌더: 공통 조각 ---------- */
+function chips(e) {
+  const out = [];
+  for (const f of e.flags || []) if (FLAG[f]) out.push(`<span class="chip f-${f}">${FLAG[f]}</span>`);
+  if (e.conf && e.conf !== '확정') out.push(`<span class="chip conf" title="출처 판정">${esc(e.conf)}</span>`);
+  return out.join('');
+}
+function entryHTML(e, opts = {}) {
+  const d = deadlineOf(e);
+  const g = d && gateById[d];
+  const ps = photosOf(e.id);
+  const area = areaById[e.area];
+  const done = isDone(e.id);
+  const note = S.notes[e.id];
+  return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
+    <button class="tick" data-act="check" aria-pressed="${done}" aria-label="${esc(e.name)} ${done ? '체크 해제' : '챙김으로 표시'}">${svg('check', 'ic tick-ic')}</button>
+    <div class="body">
+      <div class="head">
+        <h3>${esc(e.name)}</h3>${e.jp ? `<span class="jp" lang="ja">${esc(e.jp)}</span>` : ''}
+      </div>
+      <div class="meta"><span class="kind">${KIND[e.kind] || esc(e.kind)}${e.char ? ` · ${esc(e.char)}` : ''}</span>${opts.showArea && area ? `<span class="where">${svg('pin', 'ic mini')}${esc(area.name)}</span>` : ''}${chips(e)}</div>
+      <p class="how">${rich(e.how)}</p>
+      ${e.tip ? `<p class="tip">${rich(e.tip)}</p>` : ''}
+      ${g ? `<p class="due${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}${passed(g) ? '지난 관문' : '기한'}: ${esc(g.title)} 전</p>` : ''}
+      ${note ? `<p class="note-text">${esc(note)}</p>` : ''}
+      ${ps.length ? `<div class="thumbs">${ps.map(p => `<button class="thumb" data-act="view" data-photo="${p.id}" aria-label="붙인 사진 보기"><img src="${p.url}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
+      <div class="tools">
+        <label class="tool">${svg('camera')}<span>사진</span><input type="file" accept="image/*" multiple data-act="photo" hidden></label>
+        <button class="tool" data-act="note">${svg('note')}<span>${note ? '메모 고치기' : '메모'}</span></button>
+      </div>
+    </div>
+  </article>`;
+}
+function ring(pct, label) {
+  const r = 46, c = 2 * Math.PI * r;
+  return `<svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+    <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--ring-a)"/><stop offset="1" stop-color="var(--ring-b)"/></linearGradient></defs>
+    <circle class="ring-track" cx="50" cy="50" r="${r}"/>
+    <circle class="ring-bar" cx="50" cy="50" r="${r}" stroke="url(#rg)" stroke-dasharray="${c}" stroke-dashoffset="${c}" data-target="${c * (1 - pct)}"/>
+  </svg><span class="sr">${esc(label)}</span>`;
+}
+function drawRings(root = document) {
+  root.querySelectorAll('.ring-bar').forEach(el => {
+    const t = el.dataset.target;
+    if (reduceMotion.matches) { el.style.strokeDashoffset = t; return; }
+    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.strokeDashoffset = t; }));
+  });
+}
+
+/* ---------- 뷰: 홈 ---------- */
+const orbLine = (all, left) => !all ? '이 관문에 걸린 영구손실 항목은 없습니다' : left ? `놓치면 끝 ${left}개 남음` : '이 관문 전에 챙길 것은 다 챙겼습니다';
+function viewHome() {
+  const g = nextGate();
+  const seg = segmentEntries(g);
+  const miss = seg.filter(e => has(e, 'missable'));
+  const left = miss.filter(e => !isDone(e.id));
+  const pct = miss.length ? (miss.length - left.length) / miss.length : 1;
+  const era = g ? g.era : 'post';
+  const late = overdue();
+  const total = D.entries.length, done = D.entries.filter(e => isDone(e.id)).length;
+  const here = S.pos && gateById[S.pos] ? gateById[S.pos].title : null;
+  const list = sortEntries(seg);
+  return `<section class="home">
+    <div class="orb-well">
+      ${ring(pct, g ? `이번 구간 놓침 항목 ${miss.length}개 중 ${miss.length - left.length}개 챙김` : '모든 관문 통과')}
+      <div class="orb">
+        <div class="sky"></div>
+        <div class="orb-ic">${svg(era)}</div>
+        <div class="orb-text">
+          <span class="orb-k">${g ? '다음 관문' : '모든 관문 통과'}</span>
+          <strong class="orb-t">${esc(g ? g.title : '엔딩 후 요소만 남았습니다')}</strong>
+          <span class="orb-s">${g ? orbLine(miss.length, left.length) : `전체 ${done}/${total}`}</span>
+        </div>
+      </div>
+    </div>
+    <div class="where-bar">
+      <div><span class="k">지금 위치</span><span class="v">${here ? `${esc(here)} 지남` : '처음부터'}</span></div>
+      <button class="pill" data-act="pick">위치 바꾸기</button>
+    </div>
+    <nav class="era-tiles" aria-label="시대로 바로 가기">
+      ${D.eras.map(x => `<button class="tile${x.id === era ? ' cur' : ''}" data-act="era" data-era="${x.id}">${svg(x.id)}<span>${esc(x.name)}</span></button>`).join('')}
+    </nav>
+    ${g ? `<section class="panel">
+      <header class="panel-h"><h2>${esc(g.title)} 전에</h2><p>${rich(g.desc || '')}</p></header>
+      ${list.length ? list.map(e => entryHTML(e, { showArea: true })).join('') : '<p class="empty">이 관문에 묶인 항목이 없습니다. 그대로 진행해도 됩니다.</p>'}
+      <button class="wide" data-act="pass">${svg('flag')}이 관문을 지났어요</button>
+    </section>` : ''}
+    ${late.length ? `<section class="panel late">
+      <header class="panel-h"><h2>지난 관문에서 못 챙긴 것</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p></header>
+      ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
+    </section>` : ''}
+    <section class="stat-card">
+      <div><span class="k">전체 진행</span><strong>${done}<small>/${total}</small></strong></div>
+      <div><span class="k">놓치면 끝</span><strong>${D.entries.filter(e => has(e, 'missable') && isDone(e.id)).length}<small>/${D.entries.filter(e => has(e, 'missable')).length}</small></strong></div>
+      <div><span class="k">붙인 사진</span><strong>${photos.size}</strong></div>
+    </section>
+  </section>`;
+}
+
+/* ---------- 뷰: 진행표 ---------- */
+let query = '';
+function matches(e, q) {
+  const a = areaById[e.area];
+  return [e.name, e.jp, e.how, e.tip, a?.name, a?.jp, e.char, KIND[e.kind], S.notes[e.id]].join(' ').toLowerCase().includes(q);
+}
+function filterList(list) {
+  return list.filter(e => (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
+}
+function viewRoute() {
+  const q = query.trim().toLowerCase();
+  const filters = `<div class="filters">
+      <label class="search">${svg('search')}<input type="search" placeholder="아이템, 기술, 지역 이름으로 찾기" value="${esc(query)}" data-act="q" enterkeyhint="search"></label>
+      <div class="toggles">
+        <button class="pill${S.onlyMiss ? ' on' : ''}" data-act="t-miss" aria-pressed="${S.onlyMiss}">놓치면 끝만</button>
+        <button class="pill${S.onlyLeft ? ' on' : ''}" data-act="t-left" aria-pressed="${S.onlyLeft}">남은 것만</button>
+      </div>
+    </div>`;
+  if (q) {
+    const hits = filterList(D.entries.filter(e => matches(e, q)));
+    return `<section class="route">${filters}<p class="count">${hits.length}개 찾음</p>${sortEntries(hits).map(e => entryHTML(e, { showArea: true })).join('') || '<p class="empty">찾는 이름이 없습니다. 일본어 이름이나 지역 이름으로도 찾아 보세요.</p>'}</section>`;
+  }
+  const era = S.era;
+  const eraGates = gates.filter(g => g.era === era);
+  const areas = D.areas.filter(a => a.era === era).sort((a, b) => a.order - b.order);
+  return `<section class="route">
+    <div class="seg" role="tablist" aria-label="시대">
+      <span class="seg-thumb" aria-hidden="true"></span>
+      ${D.eras.map(x => `<button role="tab" class="seg-b${x.id === era ? ' cur' : ''}" aria-selected="${x.id === era}" data-act="era-tab" data-era="${x.id}">${esc(x.name)}</button>`).join('')}
+    </div>
+    <p class="era-range">${esc(eraById[era]?.range || '')}</p>
+    ${eraGates.length ? `<ol class="gate-line">${eraGates.map(g => `<li class="${passed(g) ? 'passed' : ''}${nextGate() === g ? ' next' : ''}"><span class="dot"></span><span>${esc(g.title)}</span></li>`).join('')}</ol>` : ''}
+    ${filters}
+    ${areas.map(a => {
+      const list = filterList(D.entries.filter(e => e.area === a.id));
+      const all = D.entries.filter(e => e.area === a.id);
+      if (!all.length) return '';
+      const dn = all.filter(e => isDone(e.id)).length;
+      const until = a.until && gateById[a.until];
+      return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
+        <summary>
+          <span class="a-name">${esc(a.name)}${a.jp ? `<span class="jp" lang="ja">${esc(a.jp)}</span>` : ''}</span>
+          <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-count">${dn}/${all.length}</span></span>
+          ${svg('chevron', 'ic chev')}
+        </summary>
+        <div class="a-body">${list.length ? sortEntries(list).map(e => entryHTML(e)).join('') : '<p class="empty">조건에 맞는 항목이 없습니다.</p>'}</div>
+      </details>`;
+    }).join('')}
+  </section>`;
+}
+let openArea = null;
+
+/* ---------- 뷰: 캐릭터 ---------- */
+function viewChars() {
+  const c = S.char;
+  const list = D.entries.filter(e => e.char === c);
+  const byKind = CHAR_KIND_ORDER.map(k => [k, list.filter(e => e.kind === k)]).filter(([, l]) => l.length);
+  const dn = list.filter(e => isDone(e.id)).length;
+  return `<section class="chars">
+    <nav class="avatars" aria-label="캐릭터">
+      ${CHARS.map(([ko, jp]) => {
+        const n = D.entries.filter(e => e.char === ko).length;
+        return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">${esc(jp)} 항목 ${n}개</span></button>`;
+      }).join('')}
+    </nav>
+    <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${list.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
+    ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span>${l.filter(e => isDone(e.id)).length}/${l.length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
+  </section>`;
+}
+
+/* ---------- 뷰: 참고 ---------- */
+let pwMode = 'hidden';
+function viewRefs() {
+  const R = D.refs || {};
+  const blocks = [];
+  if (R.password) {
+    const seq = R.password[pwMode] || [];
+    blocks.push(`<section class="ref" id="r-password"><h2>${esc(R.password.title || '정령의 동굴 암호')}</h2>
+      <div class="seg small" role="tablist"><span class="seg-thumb" aria-hidden="true"></span>
+        <button role="tab" class="seg-b${pwMode === 'hidden' ? ' cur' : ''}" data-act="pw" data-mode="hidden" aria-selected="${pwMode === 'hidden'}">1. 숨은 정답 먼저</button>
+        <button role="tab" class="seg-b${pwMode === 'normal' ? ' cur' : ''}" data-act="pw" data-mode="normal" aria-selected="${pwMode === 'normal'}">2. 정규 정답</button>
+      </div>
+      <div class="pw-grid">${(R.password.grid || []).map((row, i) => `<div class="pw-row"><span class="pw-k">${i + 1}칸</span>${row.map((ch, j) => `<span class="pw-cell${seq[i] === j + 1 ? ' hit' : ''}" style="--d:${i * 90}ms"><b lang="ja">${esc(ch)}</b><small>${j + 1}번째</small></span>`).join('')}</div>`).join('')}</div>
+      <p class="pw-seq">각 칸에서 <strong>${seq.join(' · ')}</strong>번째를 고릅니다.</p>
+      ${(R.password.notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}
+    </section>`);
+  }
+  if (R.mystic) {
+    blocks.push(`<section class="ref"><h2>비오의 5종</h2>
+      <ul class="ref-list">${(R.mystic.common || []).map(t => `<li>${rich(t)}</li>`).join('')}</ul>
+      ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong lang="ja">${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd">${esc(m.cmd)}</p></div>`).join('')}
+    </section>`);
+  }
+  if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2><ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
+  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${r.jp ? ` <span class="jp" lang="ja">${esc(r.jp)}</span>` : ''}</span></div>`).join('')}</div></section>` : '';
+  blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes));
+  blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes));
+  blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes));
+  if (R.moria) blocks.push(`<section class="ref"><h2>모리아 갱도 하층</h2><ul class="ref-list">${R.moria.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
+  blocks.push(table('그레이드 숍', R.grade, 'cost', 'name', ' G', '', R.gradeNotes));
+  if (R.unresolved) blocks.push(`<section class="ref muted"><h2>끝까지 확정하지 못한 것</h2><ul class="ref-list">${R.unresolved.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
+  return `<section class="refs">${blocks.join('')}</section>`;
+}
+
+/* ---------- 뷰: 기록 ---------- */
+function viewRecords() {
+  const all = [...photos.values()].sort((a, b) => b.ts - a.ts);
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  return `<section class="records">
+    <section class="ref"><h2>붙인 사진</h2>
+      ${all.length ? `<div class="gallery">${all.map(p => { const e = entryById[p.entry]; return `<button class="g-item" data-act="view" data-photo="${p.id}"><img src="${p.url}" alt="" loading="lazy"><span>${esc(e ? e.name : '자유 기록')}</span></button>`; }).join('')}</div>` : '<p class="empty">아직 붙인 사진이 없습니다. 항목 카드의 사진 버튼으로 게임 화면을 찍어 붙이거나, 아래에서 자유 기록 사진을 추가하세요.</p>'}
+      <label class="wide">${svg('camera')}자유 기록 사진 추가<input type="file" accept="image/*" multiple data-act="photo-free" hidden></label>
+    </section>
+    <section class="ref"><h2>이 기기에 저장됩니다</h2>
+      <p class="ref-p">체크, 메모, 사진은 이 브라우저 안에만 남고 어디에도 올라가지 않습니다. 아이폰 Safari는 오래 열지 않은 사이트의 저장 데이터를 지울 수 있으니 ${standalone ? '지금처럼 홈 화면 앱으로 쓰면서' : '공유 버튼의 「홈 화면에 추가」로 앱처럼 쓰고,'} 가끔 백업 파일을 받아 두세요.</p>
+      <div class="row2">
+        <button class="pill big" data-act="export">백업 파일 받기</button>
+        <label class="pill big">백업 불러오기<input type="file" accept="application/json,.json" data-act="import" hidden></label>
+      </div>
+    </section>
+    <section class="ref"><h2>화면</h2>
+      <div class="seg small" role="tablist"><span class="seg-thumb" aria-hidden="true"></span>
+        ${[['auto', '기기 설정'], ['light', '밝게'], ['dark', '어둡게']].map(([k, v]) => `<button role="tab" class="seg-b${S.theme === k ? ' cur' : ''}" data-act="theme" data-theme="${k}" aria-selected="${S.theme === k}">${v}</button>`).join('')}
+      </div>
+    </section>
+    <section class="ref muted"><h2>처음부터 다시</h2>
+      <p class="ref-p">2회차를 시작할 때 체크와 위치만 비웁니다. 메모와 사진은 남습니다.</p>
+      <button class="pill" data-act="reset">체크와 위치 비우기</button>
+    </section>
+    <p class="colophon">조사 기준: PSP 「なりきりダンジョンX」 수록 크로스 에디션(일본판)과 알렉스 팀 한글패치 0.95a. 일본 공략 위키, 실기 공략 영상, 국내외 커뮤니티를 교차 확인했고 확정되지 않은 항목은 판정을 함께 적었습니다. 갱신 ${esc(D.updated)}.</p>
+  </section>`;
+}
+
+/* ---------- 시트(아래에서 올라오는 창) ---------- */
+const sheet = () => $('#sheet');
+function openSheet(html, cls = '') {
+  const s = sheet();
+  s.className = 'sheet ' + cls;
+  $('.sheet-in', s).innerHTML = html;
+  if (!s.open) s.showModal();
+}
+function closeSheet() { const s = sheet(); if (s.open) s.close(); }
+function pickSheet() {
+  const p = posIdx();
+  return `<h2 class="sheet-h">어디까지 왔나요</h2><p class="sheet-p">마지막으로 지난 관문을 고르세요. 그 다음 관문 전에 챙길 것을 첫 화면에 모아 드립니다.</p>
+    <ol class="pick">
+      <li><button class="pick-b${p === -1 ? ' cur' : ''}" data-act="set-pos" data-gate="">처음부터 (아직 아무 관문도 안 지남)</button></li>
+      ${gates.map(g => `<li><button class="pick-b${g.idx === p ? ' cur' : ''}" data-act="set-pos" data-gate="${esc(g.id)}"><span class="pe">${esc(eraById[g.era]?.name || '')}</span>${esc(g.title)}</button></li>`).join('')}
+    </ol>`;
+}
+function noteSheet(id) {
+  const e = entryById[id];
+  return `<h2 class="sheet-h">${esc(e.name)} 메모</h2>
+    <textarea class="note-in" rows="5" placeholder="예: 세이브 3번 슬롯, 상자는 오른쪽 기둥 뒤">${esc(S.notes[id] || '')}</textarea>
+    <div class="row2"><button class="pill big" data-act="note-save" data-id="${esc(id)}">메모 저장</button><button class="pill big ghost" data-act="sheet-close">닫기</button></div>`;
+}
+function viewerSheet(pid) {
+  const p = photos.get(pid); if (!p) return '';
+  const e = entryById[p.entry];
+  return `<figure class="viewer"><img src="${p.url}" alt="${esc(e ? e.name : '자유 기록')} 사진"><figcaption>${esc(e ? e.name : '자유 기록')} · ${new Date(p.ts).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' })}</figcaption></figure>
+    <div class="row2">${e ? `<button class="pill big" data-act="goto" data-id="${esc(e.id)}">항목으로 가기</button>` : ''}<button class="pill big ghost" data-act="photo-del" data-photo="${p.id}">사진 지우기</button></div>`;
+}
+function passSheet(g, left) {
+  return `<h2 class="sheet-h">${esc(g.title)}</h2><p class="sheet-p">아직 체크하지 않은 영구손실 항목이 ${left.length}개 있습니다. 이 관문을 넘으면 그 회차에서는 다시 얻을 수 없습니다.</p>
+    <ul class="ref-list">${left.slice(0, 8).map(e => `<li>${esc(e.name)}</li>`).join('')}${left.length > 8 ? `<li>그 밖에 ${left.length - 8}개</li>` : ''}</ul>
+    <div class="row2"><button class="pill big" data-act="sheet-close">돌아가서 챙기기</button><button class="pill big ghost" data-act="pass-force" data-gate="${esc(g.id)}">그래도 지났어요</button></div>`;
+}
+
+/* ---------- 토스트 ---------- */
+let toastT;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2600);
+}
+
+/* ---------- 라우팅·그리기 ---------- */
+const VIEWS = { home: viewHome, route: viewRoute, chars: viewChars, refs: viewRefs, records: viewRecords };
+function render(opts = {}) {
+  const v = VIEWS[S.view] ? S.view : 'home';
+  const main = $('#view');
+  const y = opts.keepScroll ? scrollY : 0;
+  main.innerHTML = VIEWS[v]();
+  main.dataset.view = v;
+  document.querySelectorAll('.tab').forEach(b => { const on = b.dataset.view === v; b.classList.toggle('cur', on); b.setAttribute('aria-current', on ? 'page' : 'false'); });
+  if (v === 'home') { const g = nextGate(); document.documentElement.dataset.era = g ? g.era : 'post'; }
+  else if (v === 'route') document.documentElement.dataset.era = S.era;
+  placeThumbs(main);
+  drawRings(main);
+  if (opts.keepScroll) scrollTo(0, y); else if (!opts.noScroll) scrollTo(0, 0);
+}
+function placeThumbs(root) {
+  root.querySelectorAll('.seg').forEach(seg => {
+    const cur = seg.querySelector('.seg-b.cur'), th = seg.querySelector('.seg-thumb');
+    if (!cur || !th) return;
+    th.style.width = cur.offsetWidth + 'px';
+    th.style.transform = `translateX(${cur.offsetLeft - 4}px)`;
+  });
+}
+function go(view) { S.view = view; save(); render(); }
+
+/* 체크 버튼만 바꿔서 스크롤과 열린 상태를 지킨다 */
+function refreshEntry(id) {
+  document.querySelectorAll(`[data-id="${CSS.escape(id)}"].entry`).forEach(el => {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = entryHTML(entryById[id], { showArea: !!el.querySelector('.where') });
+    const fresh = tmp.firstElementChild;
+    el.replaceWith(fresh);
+  });
+}
+function softRerender() {
+  if (S.view === 'home') {
+    // 링과 숫자를 갱신하되 목록은 그대로 둔다
+    const g = nextGate();
+    const miss = segmentEntries(g).filter(e => has(e, 'missable'));
+    const left = miss.filter(e => !isDone(e.id));
+    const bar = $('.ring-bar'); if (bar) { const c = 2 * Math.PI * 46; bar.style.strokeDashoffset = c * (1 - (miss.length ? (miss.length - left.length) / miss.length : 1)); }
+    const s = $('.orb-s'); if (s && g) s.textContent = orbLine(miss.length, left.length);
+    const st = $('.stat-card'); if (st) { const tmp = document.createElement('div'); tmp.innerHTML = viewHome(); st.replaceWith(tmp.querySelector('.stat-card')); }
+  } else if (S.view === 'route') {
+    document.querySelectorAll('details.area').forEach(d => {
+      const all = D.entries.filter(e => e.area === d.dataset.area);
+      const c = d.querySelector('.a-count'); if (c) c.textContent = `${all.filter(e => isDone(e.id)).length}/${all.length}`;
+    });
+  } else if (S.view === 'chars') {
+    document.querySelectorAll('.group').forEach(gr => {
+      const ids = [...gr.querySelectorAll('.entry')].map(x => x.dataset.id);
+      const sp = gr.querySelector('.group-h span'); if (sp) sp.textContent = `${ids.filter(isDone).length}/${ids.length}`;
+    });
+  }
+}
+
+/* ---------- 이벤트 ---------- */
+document.addEventListener('click', async ev => {
+  const t = ev.target.closest('[data-act]');
+  if (!t) return;
+  const act = t.dataset.act;
+  const entryEl = t.closest('.entry');
+  const id = t.dataset.id || entryEl?.dataset.id;
+  switch (act) {
+    case 'check': {
+      if (S.checked[id]) delete S.checked[id]; else S.checked[id] = Date.now();
+      save();
+      t.setAttribute('aria-pressed', String(!!S.checked[id]));
+      entryEl.classList.toggle('done', !!S.checked[id]);
+      if (S.checked[id] && !reduceMotion.matches) { entryEl.classList.remove('pop'); void entryEl.offsetWidth; entryEl.classList.add('pop'); }
+      softRerender();
+      break;
+    }
+    case 'note': openSheet(noteSheet(id), 'form'); setTimeout(() => $('.note-in')?.focus(), 60); break;
+    case 'note-save': {
+      const v = $('.note-in').value.trim();
+      if (v) S.notes[id] = v; else delete S.notes[id];
+      save(); closeSheet(); refreshEntry(id); toast(v ? '메모를 저장했습니다.' : '메모를 지웠습니다.');
+      break;
+    }
+    case 'view': openSheet(viewerSheet(t.dataset.photo), 'photo'); break;
+    case 'photo-del': {
+      const p = photos.get(t.dataset.photo); await removePhoto(t.dataset.photo); closeSheet();
+      if (p) refreshEntry(p.entry); if (S.view === 'records') render({ keepScroll: true });
+      toast('사진을 지웠습니다.');
+      break;
+    }
+    case 'goto': {
+      closeSheet();
+      const e = entryById[id]; const a = areaById[e.area];
+      query = ''; S.view = 'route'; S.era = a ? a.era : S.era; openArea = e.area; save(); render();
+      const el = document.getElementById('e-' + id);
+      if (el) { el.scrollIntoView({ block: 'center', behavior: reduceMotion.matches ? 'auto' : 'smooth' }); el.classList.add('flash'); }
+      break;
+    }
+    case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
+    case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
+    case 'pass': {
+      const g = nextGate(); if (!g) break;
+      const left = segmentEntries(g).filter(e => has(e, 'missable') && !isDone(e.id));
+      if (left.length) openSheet(passSheet(g, left), 'list');
+      else { S.pos = g.id; save(); render(); toast(`${g.title} 통과. 다음 관문을 보여 드립니다.`); }
+      break;
+    }
+    case 'pass-force': S.pos = t.dataset.gate; save(); closeSheet(); render(); break;
+    case 'sheet-close': closeSheet(); break;
+    case 'era': S.era = t.dataset.era; query = ''; go('route'); break;
+    case 'era-tab': {
+      S.era = t.dataset.era; save();
+      const seg = t.closest('.seg');
+      seg.querySelectorAll('.seg-b').forEach(b => { b.classList.toggle('cur', b === t); b.setAttribute('aria-selected', String(b === t)); });
+      placeThumbs(seg.parentElement);
+      document.documentElement.dataset.era = S.era;
+      setTimeout(() => render({ noScroll: true }), reduceMotion.matches ? 0 : 220);
+      break;
+    }
+    case 't-miss': S.onlyMiss = !S.onlyMiss; save(); render({ keepScroll: true }); break;
+    case 't-left': S.onlyLeft = !S.onlyLeft; save(); render({ keepScroll: true }); break;
+    case 'char': S.char = t.dataset.char; save(); render({ noScroll: true }); break;
+    case 'pw': pwMode = t.dataset.mode; render({ keepScroll: true }); break;
+    case 'theme': S.theme = t.dataset.theme; save(); applyTheme(); render({ keepScroll: true }); break;
+    case 'export': exportBackup(); break;
+    case 'reset': openSheet(`<h2 class="sheet-h">체크와 위치를 비울까요</h2><p class="sheet-p">${Object.keys(S.checked).length}개 체크와 지금 위치가 사라집니다. 메모와 사진은 남습니다.</p><div class="row2"><button class="pill big ghost" data-act="sheet-close">그만두기</button><button class="pill big" data-act="reset-do">비우기</button></div>`, 'list'); break;
+    case 'reset-do': S.checked = {}; S.pos = null; save(); closeSheet(); render(); toast('체크와 위치를 비웠습니다.'); break;
+  }
+});
+document.addEventListener('change', async ev => {
+  const t = ev.target;
+  if (t.dataset.act === 'photo') {
+    const id = t.closest('.entry').dataset.id;
+    await addPhotos(id, [...t.files]); t.value = ''; refreshEntry(id); softRerender();
+  } else if (t.dataset.act === 'photo-free') {
+    await addPhotos('free', [...t.files]); t.value = ''; render({ keepScroll: true });
+  } else if (t.dataset.act === 'import') {
+    await importBackup(t.files[0]); t.value = '';
+  }
+});
+document.addEventListener('input', ev => {
+  if (ev.target.dataset.act === 'q') {
+    query = ev.target.value;
+    clearTimeout(qT);
+    qT = setTimeout(() => {
+      const pos = ev.target.selectionStart;
+      render({ noScroll: true });
+      const inp = $('input[data-act="q"]'); if (inp) { inp.focus(); inp.setSelectionRange(pos, pos); }
+    }, 160);
+  }
+});
+let qT;
+document.addEventListener('toggle', ev => {
+  if (ev.target.matches?.('details.area') && ev.target.open) openArea = ev.target.dataset.area;
+}, true);
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { query = ''; go(b.dataset.view); }));
+$('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
+addEventListener('resize', () => placeThumbs(document));
+
+/* ---------- 테마 ---------- */
+function applyTheme() {
+  const r = document.documentElement;
+  if (S.theme === 'auto') delete r.dataset.theme; else r.dataset.theme = S.theme;
+}
+
+/* ---------- 백업 ---------- */
+const toDataURL = blob => new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(blob); });
+async function exportBackup() {
+  toast('백업 파일을 만드는 중입니다.');
+  const ph = [];
+  for (const p of photos.values()) ph.push({ id: p.id, entry: p.entry, ts: p.ts, data: await toDataURL(p.blob) });
+  const body = JSON.stringify({ app: 'topx', version: 1, at: new Date().toISOString(), state: { checked: S.checked, notes: S.notes, pos: S.pos }, photos: ph });
+  const name = `topx-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  const file = new File([body], name, { type: 'application/json' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: '테오판 X 진행 백업' }); return; } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(file); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+async function importBackup(file) {
+  if (!file) return;
+  let j;
+  try { j = JSON.parse(await file.text()); } catch { toast('백업 파일을 읽지 못했습니다. 이 페이지에서 받은 .json 파일인지 확인해 주세요.'); return; }
+  if (j.app !== 'topx') { toast('이 페이지의 백업 파일이 아닙니다.'); return; }
+  S.checked = { ...S.checked, ...(j.state?.checked || {}) };
+  S.notes = { ...S.notes, ...(j.state?.notes || {}) };
+  if (j.state?.pos !== undefined) S.pos = j.state.pos;
+  save();
+  let n = 0;
+  for (const p of j.photos || []) {
+    if (photos.has(p.id)) continue;
+    const blob = await (await fetch(p.data)).blob();
+    const rec = { id: p.id, entry: p.entry, blob, ts: p.ts };
+    try { await tx('readwrite', s => s.put(rec)); photos.set(p.id, { ...rec, url: URL.createObjectURL(blob) }); n++; } catch {}
+  }
+  render({ keepScroll: true });
+  toast(`백업을 불러왔습니다. 사진 ${n}장을 더했습니다.`);
+}
+
+/* ---------- 시작 ---------- */
+applyTheme();
+Promise.all([loadData(), loadPhotos()]).then(() => {
+  document.documentElement.classList.add('ready');
+  render({ noScroll: true });
+}).catch(() => {
+  $('#view').innerHTML = '<p class="empty">공략 데이터를 불러오지 못했습니다. 인터넷 연결을 확인하고 새로고침해 주세요. 한 번 연 뒤에는 오프라인에서도 열립니다.</p>';
+});
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+})();

@@ -4,3 +4,6 @@
 
 /assets/*
   Cache-Control: public, max-age=3600
+
+/frontend/top-cross/sw.js
+  Cache-Control: no-cache

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko" data-era="present">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>테오판 X 놓침 방지 안내</title>
+<meta name="description" content="테일즈 오브 판타지아 크로스 에디션을 하면서 숨은 아이템, 오의, 영구히 놓치는 요소를 시대별 관문 순서로 챙기는 안내입니다. 체크와 사진은 내 기기에만 저장됩니다.">
+<link rel="canonical" href="https://lab.bkan.dev/frontend/top-cross/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="테오판 X 놓침 방지 안내">
+<meta property="og:description" content="크로스 에디션의 숨은 아이템과 오의를 다음 관문 전에 챙기도록 시대별로 안내합니다.">
+<meta property="og:image" content="https://lab.bkan.dev/frontend/top-cross/og.jpg?v=1">
+<meta property="og:url" content="https://lab.bkan.dev/frontend/top-cross/">
+<meta name="theme-color" content="#e9e8ed" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2a2c34" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="테오판 X">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="app.css?v=1">
+</head>
+<body>
+<div class="stage">
+  <aside class="intro">
+    <a class="back" href="/frontend/">bkan lab 실험 목록으로</a>
+    <h1>놓치지 않는<br>판타지아</h1>
+    <p class="sub">Tales of Phantasia, Cross Edition</p>
+    <p class="lede">크레스 일행이 현대, 과거, 미래를 건널 때마다 사라지는 것들이 있습니다. 다음 관문 전에 무엇을 챙겨야 하는지 시대 순서로 짚어 줍니다.</p>
+    <ul>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></i>지금 위치를 고르면 다음 관문 전 할 일만</li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></i>숨은 상자, 링크 상자, 오의서 위치</li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></i>항목마다 게임 화면 사진과 메모</li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></i>홈 화면에 두면 오프라인에서도</li>
+    </ul>
+    <div class="pebble" aria-hidden="true"></div>
+  </aside>
+
+  <div class="app">
+    <header class="top">
+      <div class="brand"><b>Phantasia X</b><span>놓침 방지 안내</span></div>
+      <button class="round" data-act="pick" aria-label="지금 위치 바꾸기"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></button>
+    </header>
+    <main id="view" aria-live="polite"><p class="empty">공략을 불러오는 중입니다.</p></main>
+    <nav class="tabbar" aria-label="화면">
+      <button class="tab" data-view="home"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg><span>지금</span></button>
+      <button class="tab" data-view="route"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5.5" r="2"/><circle cx="18" cy="18.5" r="2"/><path d="M8 5.5h6.5a3.5 3.5 0 0 1 0 7h-5a3.5 3.5 0 0 0 0 7H16"/></svg><span>진행표</span></button>
+      <button class="tab" data-view="chars"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.4c2.6-.2 4.4 1.4 5 4.4"/></svg><span>캐릭터</span></button>
+      <button class="tab" data-view="refs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/><path d="M12 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0z"/></svg><span>참고</span></button>
+      <button class="tab" data-view="records"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.8-2.5h6.4L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg><span>기록</span></button>
+    </nav>
+  </div>
+</div>
+<dialog id="sheet" class="sheet"><div class="sheet-in"></div></dialog>
+<div id="toast" role="status"></div>
+<script src="app.js?v=1" defer></script>
+</body>
+</html>
