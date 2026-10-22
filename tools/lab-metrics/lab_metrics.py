@@ -503,18 +503,23 @@ def render_entry(r):
         (f"${usd:,.0f}" if usd >= 10 else f"${usd:,.2f}", "API 정가 환산"),
         (str(r["subagents"]), "서브에이전트"),
     ]
-    made = f'<span class="stats-note">만든 것: {r["made"]}</span>' if r.get("made") else ""
-    notes = []
+    # 큰 숫자 네 칸 아래는 이름표-값 칸으로 나눠 한 줄로 늘어지지 않게 한다
+    facts = []
     if r["corrections"] is not None:
-        notes.append(f"교정 {r['corrections']}")
-    notes.append(f"입력 {r['input_chars']:,}자")
-    notes.append(f"딸깍당 AI {fmt_ms(r['ai_ms_per_click'])}")
+        facts.append(("교정", f"{r['corrections']}번"))
+    facts.append(("입력", f"{r['input_chars']:,}자"))
+    facts.append(("딸깍당 AI", fmt_ms(r["ai_ms_per_click"])))
     if "first_release" in r:
-        notes.append(f"첫 배포까지 {r['first_release']['clicks']}딸깍")
-    notes.append(" · ".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in r["models"]))
+        facts.append(("첫 배포까지", f"{r['first_release']['clicks']}딸깍"))
+    models = r["models"]
+    facts.append(("모델", model_name(models[0]["model"]) if len(models) == 1 else
+                  " · ".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in models)))
     cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
-    return (f'<span class="stats">{cells}</span>{made}'
-            f'<span class="stats-note">{" · ".join(notes)}</span>')
+    made = (f'<span class="fact made"><span class="k">만든 것</span>{r["made"]}</span>'
+            if r.get("made") else "")
+    rest = "".join(f'<span class="fact"><span class="k">{k}</span>{v}</span>' for k, v in facts)
+    return (f'<span class="ledger"><span class="stats">{cells}</span>'
+            f'<span class="facts">{made}{rest}</span></span>')
 
 
 def render_page(page, results):

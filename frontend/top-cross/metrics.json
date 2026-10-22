@@ -1,6 +1,6 @@
 {
   "slug": "top-cross",
-  "measured_at": "2026-10-22T09:48:33Z",
+  "measured_at": "2026-10-22T09:57:31Z",
   "pricing_as_of": "2026-10-06",
   "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
   "elapsed_ms": 59330970,
