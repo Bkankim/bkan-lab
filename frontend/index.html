@@ -21,7 +21,7 @@
   <div class="wrap">
     <a class="crumb" href="/">bkan lab 처음으로</a>
     <h1>Frontend</h1>
-    <p class="lede">화면을 짜는 법과 움직임을 이것저것 시도해 봅니다.</p>
+    <p class="lede">화면을 짜는 법과 움직임을 이것저것 시도해 봅니다. 모두 AI에게 시켜 만들었고, 몇 번 시켰는지(딸깍)와 AI가 일한 시간, 든 비용을 항목마다 적어 둡니다.</p>
   </div>
 </header>
 
@@ -34,6 +34,7 @@
           <span class="name">놓치지 않는 판타지아</span>
           <span class="desc">테일즈 오브 판타지아 크로스 에디션을 하면서 숨은 아이템과 오의를 다음 관문 전에 챙기도록 시대별로 안내합니다. 체크는 내 기기에만 남고 홈 화면에 두면 오프라인에서도 열립니다.</span>
           <span class="when">2026년 10월</span>
+          <!-- metrics:top-cross --><span class="stats"><span class="stat"><b>18</b>딸깍</span><span class="stat"><b>4시간 36분</b>AI 작업</span><span class="stat"><b>$153</b>API 정가 환산</span><span class="stat"><b>25</b>서브에이전트</span></span><span class="stats-note">만든 것: 숨은 요소 556개 · 관문 20개 · 위치 사진 606장</span><span class="stats-note">교정 4 · 입력 2,774자 · 딸깍당 AI 15분 · 첫 배포까지 4딸깍 · Opus 5.5 100%</span><!-- /metrics:top-cross -->
         </span>
       </a>
     </li>
@@ -44,6 +45,7 @@
           <span class="name">화정 임시 거처 찾기</span>
           <span class="desc">12월 이사 뒤 6개월 이상 살 집을 두 AI가 따로 조사하고 합쳤습니다. 기준 단지에서 가까운 순으로 값, 거리, 계약 전에 확인할 점을 지도와 함께 보여줍니다.</span>
           <span class="when">2026년 10월</span>
+          <!-- metrics:hwajeong-2612 --><span class="stats"><span class="stat"><b>11</b>딸깍</span><span class="stat"><b>3시간 32분</b>AI 작업</span><span class="stat"><b>$43</b>API 정가 환산</span><span class="stat"><b>4</b>서브에이전트</span></span><span class="stats-note">만든 것: 매물 170건 수집·비교</span><span class="stats-note">교정 0 · 입력 2,315자 · 딸깍당 AI 19분 · 첫 배포까지 7딸깍 · Opus 5.5 100%</span><!-- /metrics:hwajeong-2612 -->
         </span>
       </a>
     </li>
@@ -54,10 +56,22 @@
           <span class="name">강화도 가족 숙소 비교</span>
           <span class="desc">6인 가족이 1박할 방 2개 이상 숙소를 예약 사이트 네 곳에서 모아 값과 평점, 방 구성을 나란히 비교했습니다. 날짜를 고르면 그날 예약 가능한 곳만 남습니다.</span>
           <span class="when">2026년 9월</span>
+          <!-- metrics:ganghwa-2610 --><span class="stats"><span class="stat"><b>15</b>딸깍</span><span class="stat"><b>58분</b>AI 작업</span><span class="stat"><b>$9.45</b>API 정가 환산</span><span class="stat"><b>0</b>서브에이전트</span></span><span class="stats-note">만든 것: 숙소 34곳 비교 + lab.bkan.dev 첫 골격(랜딩·분야 목록·배포)</span><span class="stats-note">교정 2 · 입력 1,752자 · 딸깍당 AI 3분 · Opus 5.5 100%</span><!-- /metrics:ganghwa-2610 -->
         </span>
       </a>
     </li>
   </ul>
+
+  <section class="method" aria-labelledby="method-title">
+    <h2 id="method-title">숫자는 어떻게 셌나</h2>
+    <dl>
+      <div><dt>딸깍</dt><dd>제가 AI에게 직접 보낸 메시지 수입니다. 작업 완료 알림 같은 자동 메시지는 빼고, 1분 안에 거의 같은 문장을 고쳐 다시 보낸 것은 한 번으로 셉니다. 교정은 그중 AI가 기대와 다르게 만든 것을 바로잡은 메시지입니다.</dd></div>
+      <div><dt>AI 작업</dt><dd>AI(본체와 서브에이전트)가 실제로 일한 시간입니다. 여럿이 동시에 일한 시간은 한 번만 셉니다. 10분 넘게 아무 기록이 없던 시간과 제 승인을 기다린 시간은 뺐습니다.</dd></div>
+      <div><dt>API 정가 환산</dt><dd>쓴 토큰을 Anthropic API 정가(캐시 쓰기·읽기 단가 포함)로 계산한 값입니다. 실제로는 정액 구독으로 썼습니다. 브라우저 에이전트(aside) 안에서 쓴 토큰은 기록이 없어 빠져 있습니다.</dd></div>
+      <div><dt>서브에이전트</dt><dd>본체 AI가 일을 나눠 맡긴 하위 AI의 수입니다.</dd></div>
+    </dl>
+    <p class="asof">에이전트 세션 기록에서 스크립트로 뽑았습니다. 마지막 집계 <!-- metrics:asof -->2026-10-22<!-- /metrics:asof -->.</p>
+  </section>
 </main>
 
 <footer class="wrap foot">

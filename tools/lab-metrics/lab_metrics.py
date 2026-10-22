@@ -487,13 +487,61 @@ def fmt_ms(ms):
     return f"{m // 60}시간 {m % 60}분" if m >= 60 else f"{m}분"
 
 
+# ---------- 목록 페이지 반영 ----------
+# 분야 목록 HTML의 <!-- metrics:슬러그 --> ... <!-- /metrics:슬러그 --> 사이를 다시 쓴다.
+
+def model_name(m):
+    parts = m.removeprefix("claude-").split("-")
+    return f"{parts[0].capitalize()} {'.'.join(parts[1:])}".strip()
+
+
+def render_entry(r):
+    usd = r["cost_usd_api_equiv"]
+    stats = [
+        (str(r["clicks"]), "딸깍"),
+        (fmt_ms(r["ai_work_ms"]), "AI 작업"),
+        (f"${usd:,.0f}" if usd >= 10 else f"${usd:,.2f}", "API 정가 환산"),
+        (str(r["subagents"]), "서브에이전트"),
+    ]
+    made = f'<span class="stats-note">만든 것: {r["made"]}</span>' if r.get("made") else ""
+    notes = []
+    if r["corrections"] is not None:
+        notes.append(f"교정 {r['corrections']}")
+    notes.append(f"입력 {r['input_chars']:,}자")
+    notes.append(f"딸깍당 AI {fmt_ms(r['ai_ms_per_click'])}")
+    if "first_release" in r:
+        notes.append(f"첫 배포까지 {r['first_release']['clicks']}딸깍")
+    notes.append(" · ".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in r["models"]))
+    cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
+    return (f'<span class="stats">{cells}</span>{made}'
+            f'<span class="stats-note">{" · ".join(notes)}</span>')
+
+
+def render_page(page, results):
+    path = os.path.join(REPO, page)
+    html = open(path, encoding="utf-8").read()
+    for slug, r in results.items():
+        pat = re.compile(rf"(<!-- metrics:{re.escape(slug)} -->).*?(<!-- /metrics:{re.escape(slug)} -->)", re.S)
+        if not pat.search(html):
+            print(f"  ({page}에 metrics:{slug} 표식이 없어 건너뜀)")
+            continue
+        html = pat.sub(lambda m: m.group(1) + render_entry(r) + m.group(2), html)
+    measured = max(r["measured_at"] for r in results.values())[:10]
+    html = re.sub(r"(<!-- metrics:asof -->).*?(<!-- /metrics:asof -->)",
+                  lambda m: m.group(1) + measured + m.group(2), html, flags=re.S)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
 def cmd_build(args):
     pricing = json.load(open(PRICING))
     manifest = json.load(open(MANIFEST))
+    by_page = defaultdict(dict)
     for slug in args.slugs or list(manifest["items"]):
         item = manifest["items"][slug]
         r = build_item(slug, item, pricing)
         dest = os.path.join(REPO, item.get("dir", f"frontend/{slug}"), "metrics.json")
+        by_page[item.get("page", "frontend/index.html")][slug] = r
         if not args.dry_run:
             with open(dest, "w", encoding="utf-8") as f:
                 json.dump(r, f, ensure_ascii=False, indent=2)
@@ -514,6 +562,10 @@ def cmd_build(args):
             fr = r["first_release"]
             print(f"  첫 배포까지: 딸깍 {fr['clicks']} · AI 작업 {fmt_ms(fr['ai_work_ms'])}"
                   f" · ${fr['cost_usd_api_equiv']:,}")
+    if not args.dry_run:
+        for page, results in by_page.items():
+            render_page(page, results)
+            print(f"-> {page} 갱신")
 
 
 def main():
