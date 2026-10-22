@@ -191,6 +191,9 @@ a { color: inherit; }
 .shots { display: grid; gap: .5rem; margin: .7rem 0 .1rem; }
 .shots.multi { align-items: start; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -.2rem; padding: .2rem; }
 .shots.multi::-webkit-scrollbar { display: none; }
+@media (hover: hover) and (pointer: fine) { .shots.multi { cursor: grab; } }
+.shots.multi.dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.shots.multi img { -webkit-user-drag: none; user-select: none; }
 .shot { position: relative; display: block; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: var(--raise-xs); scroll-snap-align: start; background: var(--bg-hi); }
 .shot img { display: block; width: 100%; height: auto; max-height: 24rem; object-fit: contain; }
 .shot-cap { position: absolute; left: .5rem; bottom: .5rem; max-width: calc(100% - 1rem); padding: .15rem .55rem; border-radius: 999px; font-size: .72rem; color: #fff; background: rgba(30, 28, 40, .62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }

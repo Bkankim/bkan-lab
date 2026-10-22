@@ -121,7 +121,7 @@ function entryHTML(e, opts = {}) {
 // 위치 사진: data.json의 e.shots = [{f: 'shots/<파일>', cap, src, url}]
 function shots(e) {
   if (!e.shots?.length) return '';
-  return `<div class="shots${e.shots.length > 1 ? ' multi' : ''}">${e.shots.map((p, i) => `<button class="shot" data-act="shot" data-i="${i}" aria-label="${esc(e.name)} 위치 사진 크게 보기"><img src="${esc(p.f)}" alt="${esc(p.cap || e.name + ' 위치')}" loading="lazy" decoding="async" width="${p.w || 640}" height="${p.h || 480}">${p.cap ? `<span class="shot-cap">${esc(p.cap)}</span>` : ''}</button>`).join('')}</div>`;
+  return `<div class="shots${e.shots.length > 1 ? ' multi' : ''}">${e.shots.map((p, i) => `<button class="shot" data-act="shot" data-i="${i}" aria-label="${esc(e.name)} 위치 사진 크게 보기"><img src="${esc(p.f)}" alt="${esc(p.cap || e.name + ' 위치')}" draggable="false" loading="lazy" decoding="async" width="${p.w || 640}" height="${p.h || 480}">${p.cap ? `<span class="shot-cap">${esc(p.cap)}</span>` : ''}</button>`).join('')}</div>`;
 }
 function shotSheet(e, i) {
   const p = e.shots[i];
@@ -145,27 +145,33 @@ function drawRings(root = document) {
 }
 
 /* ---------- 뷰: 홈 ---------- */
-// 이번 관문 전에 지나가는 지역(data.json gates[].areas). 기한은 더 뒤라도 지나가는 김에 챙기도록 지역별로 접어 보여 준다
+// 다음 관문 전에 챙길 것을 지역 순서(스토리 순서)로 보여 준다.
+// 이번 구간에 지나가는 지역(data.json gates[].areas)은 전부, 앞 구간 지역은 이 관문에서 사라지는 항목만(마지막 기회).
+// 다 챙긴 지역은 접고, 남은 지역은 펼쳐 둔다.
 function areaDetails(a, list, opts = {}) {
   const dn = list.filter(e => isDone(e.id)).length;
   const missLeft = list.filter(e => has(e, 'missable') && !isDone(e.id)).length;
   const until = a.until && gateById[a.until];
-  return `<details class="area"${a.id === openArea ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
+  const open = opts.home ? (dn < list.length || a.id === openArea) : a.id === openArea;
+  return `<details class="area${opts.last ? ' last' : ''}"${open ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
     <summary>
       <span class="a-name">${nameJp(a.name, a.jp)}</span>
-      <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}${missLeft ? `<span class="a-due">놓치면 끝 ${missLeft}</span>` : ''}<span class="a-count">${dn}/${list.length}</span></span>
+      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}${missLeft ? `<span class="a-due">놓치면 끝 ${missLeft}</span>` : ''}<span class="a-count">${dn}/${list.length}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="a-body">${sortEntries(list).map(e => entryHTML(e)).join('')}</div>
   </details>`;
 }
-function passAreas(g, shown) {
-  const skip = new Set(shown.map(e => e.id));
-  const blocks = (g.areas || []).map(id => areaById[id]).filter(Boolean).map(a => {
-    const list = D.entries.filter(e => e.area === a.id && !skip.has(e.id));
-    return list.length ? areaDetails(a, list, { home: true }) : '';
+function storyAreas(g, expiring) {
+  const segIds = new Set(g.areas || []);
+  const ids = new Set([...segIds, ...expiring.map(e => e.area)]);
+  const areas = [...ids].map(id => areaById[id]).filter(Boolean).sort((a, b) => a.order - b.order);
+  return areas.map(a => {
+    const inSeg = segIds.has(a.id);
+    // 앞 구간 지역은 아직 안 챙긴 것만(다 챙겼으면 지역째 숨김)
+    const list = inSeg ? D.entries.filter(e => e.area === a.id) : expiring.filter(e => e.area === a.id && !isDone(e.id));
+    return list.length ? areaDetails(a, list, { home: true, last: !inSeg }) : '';
   }).join('');
-  return blocks ? `<h3 class="sub-h">지나는 길에 챙길 곳</h3><p class="sub-p">이 관문 전에 지나가는 지역입니다. 기한은 더 뒤라도 지금 챙기면 되돌아오지 않아도 됩니다.</p>${blocks}` : '';
 }
 const orbLine = (all, left) => !all ? '이 관문에 걸린 영구손실 항목은 없습니다' : left ? `놓치면 끝 ${left}개 남음` : '이 관문 전에 챙길 것은 다 챙겼습니다';
 function viewHome() {
@@ -199,16 +205,14 @@ function viewHome() {
     <nav class="era-tiles" aria-label="시대로 바로 가기">
       ${D.eras.map(x => `<button class="tile${x.id === era ? ' cur' : ''}" data-act="era" data-era="${x.id}">${svg(x.id)}<span>${esc(x.name)}</span></button>`).join('')}
     </nav>
-    ${g ? `<section class="panel">
-      <header class="panel-h"><h2>${esc(g.title)} 전에</h2><p>${rich(g.desc || '')}</p></header>
-      <h3 class="sub-h">이 관문을 넘으면 사라지는 것</h3>
-      ${list.length ? list.map(e => entryHTML(e, { showArea: true })).join('') : '<p class="empty">이 관문에서 사라지는 항목은 없습니다.</p>'}
-      ${passAreas(g, list)}
-      <button class="wide" data-act="pass">${svg('flag')}이 관문을 지났어요</button>
-    </section>` : ''}
     ${late.length ? `<section class="panel late">
       <header class="panel-h"><h2>지난 관문에서 못 챙긴 것</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p></header>
       ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
+    </section>` : ''}
+    ${g ? `<section class="panel">
+      <header class="panel-h"><h2>${esc(g.title)} 전에</h2><p>${rich(g.desc || '')}</p><p class="sub-p">지나가는 순서대로 지역을 모았습니다. 「기한: ${esc(g.title)} 전」 표시가 이 관문을 넘으면 사라지는 항목이고, 「마지막 기회」는 앞 지역에서 아직 못 챙긴 것입니다.</p></header>
+      ${storyAreas(g, list) || '<p class="empty">이 구간에 챙길 항목이 없습니다. 그대로 진행해도 됩니다.</p>'}
+      <button class="wide" data-act="pass">${svg('flag')}이 관문을 지났어요</button>
     </section>` : ''}
     <section class="stat-card">
       <div><span class="k">전체 진행</span><strong>${done}<small>/${total}</small></strong></div>
@@ -443,7 +447,7 @@ document.addEventListener('click', async ev => {
       softRerender();
       break;
     }
-    case 'shot': openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
+    case 'shot': if (t.closest('.shots[data-dragged]')) break; openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
     case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
@@ -499,6 +503,32 @@ document.addEventListener('toggle', ev => {
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { query = ''; go(b.dataset.view); }));
 $('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
 addEventListener('resize', () => placeThumbs(document));
+
+/* PC: 사진이 여러 장이면 마우스로 끌어 넘긴다(터치는 기본 스크롤). 놓으면 가까운 사진에 맞춘다 */
+let drag = null;
+document.addEventListener('pointerdown', ev => {
+  if (ev.pointerType !== 'mouse' || ev.button !== 0) return;
+  const box = ev.target.closest('.shots.multi'); if (!box) return;
+  ev.preventDefault(); // 글자 선택·이미지 끌기 방지(클릭은 그대로)
+  drag = { box, x: ev.clientX, left: box.scrollLeft, dx: 0 };
+  box.classList.add('dragging');
+});
+addEventListener('pointermove', ev => {
+  if (!drag) return;
+  drag.dx = ev.clientX - drag.x;
+  drag.box.scrollLeft = drag.left - drag.dx;
+});
+addEventListener('pointerup', () => {
+  if (!drag) return;
+  const { box, dx, left } = drag; drag = null;
+  const items = [...box.children], pad = items[0].offsetLeft;
+  let i = items.reduce((best, el, k) => Math.abs(el.offsetLeft - pad - box.scrollLeft) < Math.abs(items[best].offsetLeft - pad - box.scrollLeft) ? k : best, 0);
+  const from = items.findIndex(el => el.offsetLeft - pad >= left - 2);
+  if (Math.abs(dx) > 40 && i === from) i = Math.max(0, Math.min(items.length - 1, from + (dx < 0 ? 1 : -1)));
+  box.scrollTo({ left: items[i].offsetLeft - pad, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  setTimeout(() => box.classList.remove('dragging'), 350);
+  if (Math.abs(dx) > 5) { box.dataset.dragged = '1'; setTimeout(() => delete box.dataset.dragged, 0); }
+});
 
 /* ---------- 테마 ---------- */
 function applyTheme() {
