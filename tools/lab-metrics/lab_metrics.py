@@ -499,7 +499,8 @@ def render_entry(r):
     usd = r["cost_usd_api_equiv"]
     stats = [
         (str(r["clicks"]), "딸깍"),
-        (fmt_ms(r["ai_work_ms"]), "AI 작업"),
+        # 큰 숫자 칸에서는 단위 글자를 작게 둬 숫자만 읽히게 한다(4시간 36분 -> 4h 36m 크기감)
+        (re.sub(r"(\d+)(시간|분)", r'\1<small>\2</small>', fmt_ms(r["ai_work_ms"])), "소요 시간"),
         (f"${usd:,.0f}" if usd >= 10 else f"${usd:,.2f}", "API 정가 환산"),
         (str(r["subagents"]), "서브에이전트"),
     ]
@@ -508,7 +509,7 @@ def render_entry(r):
     if r["corrections"] is not None:
         facts.append(("교정", f"{r['corrections']}번"))
     facts.append(("입력", f"{r['input_chars']:,}자"))
-    facts.append(("딸깍당 AI", fmt_ms(r["ai_ms_per_click"])))
+    facts.append(("딸깍당 소요", fmt_ms(r["ai_ms_per_click"])))
     if "first_release" in r:
         facts.append(("첫 배포까지", f"{r['first_release']['clicks']}딸깍"))
     models = r["models"]

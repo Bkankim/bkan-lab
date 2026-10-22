@@ -1,6 +1,6 @@
 {
   "slug": "ganghwa-2610",
-  "measured_at": "2026-10-22T09:57:30Z",
+  "measured_at": "2026-10-22T10:14:29Z",
   "pricing_as_of": "2026-10-06",
   "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
   "elapsed_ms": 10227617,
