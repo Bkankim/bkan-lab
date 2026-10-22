@@ -1,7 +1,7 @@
 // 테오판 X 놓침 방지 안내: 한 번 열면 오프라인에서도 열리도록 캐시한다.
 // 앱 파일을 바꾸면 VERSION을 올린다.
-const VERSION = 'topx-v6';
-const CORE = ['./', './index.html', './app.css?v=6', './app.js?v=6', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const VERSION = 'topx-v7';
+const CORE = ['./', './index.html', './app.css?v=7', './app.js?v=7', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

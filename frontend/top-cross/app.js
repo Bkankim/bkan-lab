@@ -159,17 +159,22 @@ function areaDetails(a, list, opts = {}) {
       <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}${missLeft ? `<span class="a-due">놓치면 끝 ${missLeft}</span>` : ''}<span class="a-count">${dn}/${list.length}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
-    <div class="a-body">${sortEntries(list).map(e => entryHTML(e)).join('')}</div>
+    <div class="a-body">${sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('')}</div>
   </details>`;
 }
+// 장소보다 늦게 풀리는 카드(아체 합류 후 등)는 e.when 시점 묶음(data.json areas[].virtual)에 둔다
+const placeOf = e => e.when || e.area;
+// 스토리 순서 = 관문 순서대로 이어 붙인 gates[].areas 순서(지역 order보다 우선)
+let storySeq = null;
+const storyIdx = a => { if (!storySeq) { storySeq = {}; gates.forEach(g => (g.areas || []).forEach(id => { if (!(id in storySeq)) storySeq[id] = Object.keys(storySeq).length; })); } return storySeq[a.id] ?? 1e4 + a.order; };
 function storyAreas(g, expiring) {
   const segIds = new Set(g.areas || []);
-  const ids = new Set([...segIds, ...expiring.map(e => e.area)]);
-  const areas = [...ids].map(id => areaById[id]).filter(Boolean).sort((a, b) => a.order - b.order);
+  const ids = new Set([...segIds, ...expiring.map(placeOf)]);
+  const areas = [...ids].map(id => areaById[id]).filter(Boolean).sort((a, b) => storyIdx(a) - storyIdx(b));
   return areas.map(a => {
     const inSeg = segIds.has(a.id);
     // 앞 구간 지역은 아직 안 챙긴 것만(다 챙겼으면 지역째 숨김)
-    const list = inSeg ? D.entries.filter(e => e.area === a.id) : expiring.filter(e => e.area === a.id && !isDone(e.id));
+    const list = inSeg ? D.entries.filter(e => placeOf(e) === a.id) : expiring.filter(e => placeOf(e) === a.id && !isDone(e.id));
     return list.length ? areaDetails(a, list, { home: true, last: !inSeg }) : '';
   }).join('');
 }
