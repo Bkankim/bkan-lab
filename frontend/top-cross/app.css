@@ -148,6 +148,9 @@ a { color: inherit; }
 .panel-h { padding: 0 .35rem .6rem; }
 .panel-h h2, .ref h2, .char-h h2 { font: 400 1.4rem/1.3 var(--display); letter-spacing: -.01em; margin: 0 0 .25rem; }
 .panel-h p, .char-h p { margin: 0; color: var(--soft); font-size: .92rem; }
+.sub-h { margin: 1.5rem .35rem 0; font-size: .95rem; font-weight: 600; color: var(--soft); }
+.panel-h + .sub-h { margin-top: .6rem; }
+.sub-p { margin: .25rem .35rem 0; font-size: .85rem; color: var(--faint); }
 .panel.late .panel-h h2 { color: var(--miss); }
 .empty { color: var(--soft); font-size: .92rem; padding: 1rem 1.2rem; border-radius: 20px; box-shadow: var(--press-s); }
 

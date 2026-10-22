@@ -145,6 +145,28 @@ function drawRings(root = document) {
 }
 
 /* ---------- 뷰: 홈 ---------- */
+// 이번 관문 전에 지나가는 지역(data.json gates[].areas). 기한은 더 뒤라도 지나가는 김에 챙기도록 지역별로 접어 보여 준다
+function areaDetails(a, list, opts = {}) {
+  const dn = list.filter(e => isDone(e.id)).length;
+  const missLeft = list.filter(e => has(e, 'missable') && !isDone(e.id)).length;
+  const until = a.until && gateById[a.until];
+  return `<details class="area"${a.id === openArea ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
+    <summary>
+      <span class="a-name">${nameJp(a.name, a.jp)}</span>
+      <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}${missLeft ? `<span class="a-due">놓치면 끝 ${missLeft}</span>` : ''}<span class="a-count">${dn}/${list.length}</span></span>
+      ${svg('chevron', 'ic chev')}
+    </summary>
+    <div class="a-body">${sortEntries(list).map(e => entryHTML(e)).join('')}</div>
+  </details>`;
+}
+function passAreas(g, shown) {
+  const skip = new Set(shown.map(e => e.id));
+  const blocks = (g.areas || []).map(id => areaById[id]).filter(Boolean).map(a => {
+    const list = D.entries.filter(e => e.area === a.id && !skip.has(e.id));
+    return list.length ? areaDetails(a, list, { home: true }) : '';
+  }).join('');
+  return blocks ? `<h3 class="sub-h">지나는 길에 챙길 곳</h3><p class="sub-p">이 관문 전에 지나가는 지역입니다. 기한은 더 뒤라도 지금 챙기면 되돌아오지 않아도 됩니다.</p>${blocks}` : '';
+}
 const orbLine = (all, left) => !all ? '이 관문에 걸린 영구손실 항목은 없습니다' : left ? `놓치면 끝 ${left}개 남음` : '이 관문 전에 챙길 것은 다 챙겼습니다';
 function viewHome() {
   const g = nextGate();
@@ -179,7 +201,9 @@ function viewHome() {
     </nav>
     ${g ? `<section class="panel">
       <header class="panel-h"><h2>${esc(g.title)} 전에</h2><p>${rich(g.desc || '')}</p></header>
-      ${list.length ? list.map(e => entryHTML(e, { showArea: true })).join('') : '<p class="empty">이 관문에 묶인 항목이 없습니다. 그대로 진행해도 됩니다.</p>'}
+      <h3 class="sub-h">이 관문을 넘으면 사라지는 것</h3>
+      ${list.length ? list.map(e => entryHTML(e, { showArea: true })).join('') : '<p class="empty">이 관문에서 사라지는 항목은 없습니다.</p>'}
+      ${passAreas(g, list)}
       <button class="wide" data-act="pass">${svg('flag')}이 관문을 지났어요</button>
     </section>` : ''}
     ${late.length ? `<section class="panel late">
@@ -385,6 +409,10 @@ function softRerender() {
     const bar = $('.ring-bar'); if (bar) { const c = 2 * Math.PI * 46; bar.style.strokeDashoffset = c * (1 - (miss.length ? (miss.length - left.length) / miss.length : 1)); }
     const s = $('.orb-s'); if (s && g) s.textContent = orbLine(miss.length, left.length);
     const st = $('.stat-card'); if (st) { const tmp = document.createElement('div'); tmp.innerHTML = viewHome(); st.replaceWith(tmp.querySelector('.stat-card')); }
+    document.querySelectorAll('details.area[data-home]').forEach(d => {
+      const es = d.querySelectorAll('.entry'), c = d.querySelector('.a-count');
+      if (c) c.textContent = `${d.querySelectorAll('.entry.done').length}/${es.length}`;
+    });
   } else if (S.view === 'route') {
     document.querySelectorAll('details.area').forEach(d => {
       const all = D.entries.filter(e => e.area === d.dataset.area);
