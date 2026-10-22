@@ -25,6 +25,7 @@ jobs:
           rsync -a --delete \
             --exclude '.git' --exclude '.github' --exclude '.gitignore' \
             --exclude 'README.md' --exclude '_workspace' --exclude '.wrangler' --exclude '.fablize' \
+            --exclude '/tools' \
             ./ /tmp/dist/
           test -f /tmp/dist/index.html
           test -f /tmp/dist/404.html

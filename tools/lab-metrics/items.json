@@ -1,0 +1,34 @@
+{
+  "_doc": "실험별 집계 구간. segments: runtime(claude-code|codex) + session + 선택 from/to(UTC). exclude: 주제 밖 프롬프트 id 앞부분. corrections: 교정 딸깍 id 앞부분(AI 산출물이 지시·기대와 어긋나 바로잡은 메시지, 새 요구·취향 변경은 제외). null이면 미분류. first_release_to: 첫 배포 커밋 시각.",
+  "items": {
+    "ganghwa-2610": {
+      "segments": [
+        {"runtime": "codex", "session": "01a0f160-c444-7533-aa5b-baa0ed1bde69", "to": "2026-09-30T08:43:00Z"},
+        {"runtime": "claude-code", "session": "aee56fb5-60b1-4b36-9b74-86d8b663b33a", "from": "2026-09-30T10:06:00Z"}
+      ],
+      "corrections": ["msg_01a0f166", "b7806de6"],
+      "made": "숙소 34곳 비교 + lab.bkan.dev 첫 골격(랜딩·분야 목록·배포)",
+      "revisions": 1
+    },
+    "hwajeong-2612": {
+      "segments": [
+        {"runtime": "claude-code", "session": "555441aa-10bb-43a6-b1a4-a27e351aac60"}
+      ],
+      "corrections": [],
+      "first_release_to": "2026-10-20T17:38:41Z",
+      "made": "매물 170건 수집·비교",
+      "revisions": 3
+    },
+    "top-cross": {
+      "segments": [
+        {"runtime": "claude-code", "session": "ea524019-6d13-41e8-a1a5-7b91078a15ef", "from": "2026-10-21T16:52:00Z", "to": "2026-10-21T19:11:00Z"},
+        {"runtime": "claude-code", "session": "992ca534-3e70-45d8-9411-9679f061bcfb"}
+      ],
+      "exclude": ["9f688708"],
+      "corrections": ["3e5cae72", "fa7af17e", "b2184d6e", "a4e12d49"],
+      "first_release_to": "2026-10-21T18:26:24Z",
+      "made": "숨은 요소 556개 · 관문 20개 · 위치 사진 606장",
+      "revisions": 7
+    }
+  }
+}

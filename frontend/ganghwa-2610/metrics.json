@@ -1,0 +1,50 @@
+{
+  "slug": "ganghwa-2610",
+  "measured_at": "2026-10-22T09:46:08Z",
+  "pricing_as_of": "2026-10-06",
+  "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
+  "elapsed_ms": 10227617,
+  "ai_work_ms": 3511406,
+  "agent_sum_ms": 3789922,
+  "parallelism": 1.08,
+  "clicks": 15,
+  "resends_merged": 0,
+  "corrections": 2,
+  "approvals": 0,
+  "approval_wait_ms": 0,
+  "input_chars": 1752,
+  "ai_ms_per_click": 234093,
+  "subagents": 0,
+  "subagent_types": {},
+  "tool_calls": 142,
+  "aside_exec_calls": 10,
+  "web_search_requests": 1,
+  "models": [
+    {
+      "model": "claude-opus-5-5",
+      "requests": 137,
+      "output_tokens": 126747,
+      "output_share": 1.0
+    }
+  ],
+  "tokens": {
+    "input": 286,
+    "cache_write_5m": 186626,
+    "cache_write_1h": 209887,
+    "cache_read": 21464096,
+    "output": 126747
+  },
+  "cost_usd_api_equiv": 9.45,
+  "unpriced_models": {},
+  "period": {
+    "from": "2026-09-30T08:14:06Z",
+    "to": "2026-09-30T11:04:34Z"
+  },
+  "runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "sessions": 2,
+  "made": "숙소 34곳 비교 + lab.bkan.dev 첫 골격(랜딩·분야 목록·배포)",
+  "revisions": 1
+}
