@@ -260,6 +260,14 @@ a { color: inherit; }
 .ref { padding: 1.3rem 1.25rem 1.25rem; border-radius: 28px; background: var(--bg); box-shadow: var(--raise-s); margin: 1rem 0 1.25rem; }
 .ref.muted { box-shadow: var(--press-s); }
 .ref-p { color: var(--soft); font-size: .92rem; margin: .5rem 0 0; }
+.ref-intro { margin: .45rem 0 .2rem; font-size: .93rem; line-height: 1.65; }
+.ref-h3 { margin: 1.1rem 0 .1rem; font-size: .9rem; font-weight: 600; color: var(--soft); }
+.ref-list.plain { list-style: none; padding-left: 0; }
+.gloss { margin: .5rem 0 0; display: grid; gap: .1rem; }
+.gloss dt { margin-top: .75rem; font-weight: 600; font-size: .95rem; }
+.gloss dt:first-child { margin-top: .2rem; }
+.gloss dd { margin: .15rem 0 0; font-size: .9rem; color: var(--soft); line-height: 1.6; }
+.cmd-k { display: inline-block; margin-right: .5rem; font-size: .75rem; color: var(--faint); letter-spacing: 0; }
 .ref-list { margin: .5rem 0 0; padding-left: 1.1rem; display: grid; gap: .35rem; font-size: .92rem; }
 .steps { margin: .6rem 0 0; padding-left: 1.3rem; display: grid; gap: .55rem; font-size: .93rem; }
 .pw-grid { display: grid; gap: .55rem; margin-top: .4rem; }

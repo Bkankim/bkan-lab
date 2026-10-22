@@ -300,10 +300,13 @@ function viewChars() {
 let pwMode = 'hidden';
 function viewRefs() {
   const R = D.refs || {};
+  const I = R.intro || {};
+  const intro = k => I[k] ? `<p class="ref-intro">${rich(I[k])}</p>` : '';
   const blocks = [];
+  if (R.glossary) blocks.push(`<section class="ref"><h2>용어 풀이</h2><dl class="gloss">${R.glossary.map(([t, d]) => `<dt>${esc(t)}</dt><dd>${rich(d)}</dd>`).join('')}</dl></section>`);
   if (R.password) {
     const seq = R.password[pwMode] || [];
-    blocks.push(`<section class="ref" id="r-password"><h2>${esc(R.password.title || '정령의 동굴 암호')}</h2>
+    blocks.push(`<section class="ref" id="r-password"><h2>${esc(R.password.title || '정령의 동굴 암호')}</h2>${intro('password')}
       <div class="seg small" role="tablist"><span class="seg-thumb" aria-hidden="true"></span>
         <button role="tab" class="seg-b${pwMode === 'hidden' ? ' cur' : ''}" data-act="pw" data-mode="hidden" aria-selected="${pwMode === 'hidden'}">1. 숨은 정답 먼저</button>
         <button role="tab" class="seg-b${pwMode === 'normal' ? ' cur' : ''}" data-act="pw" data-mode="normal" aria-selected="${pwMode === 'normal'}">2. 정규 정답</button>
@@ -314,19 +317,21 @@ function viewRefs() {
     </section>`);
   }
   if (R.mystic) {
-    blocks.push(`<section class="ref"><h2>비오의 5종</h2>
-      <ul class="ref-list">${(R.mystic.common || []).map(t => `<li>${rich(t)}</li>`).join('')}</ul>
-      ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong>${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd">${esc(m.cmd)}</p></div>`).join('')}
+    blocks.push(`<section class="ref"><h2>비오의 5종</h2>${intro('mystic')}
+      <h3 class="ref-h3">발동 조건(5종 공통)</h3>
+      <ul class="ref-list plain">${(R.mystic.common || []).map(t => `<li>${rich(t)}</li>`).join('')}</ul>
+      <h3 class="ref-h3">캐릭터별 얻는 법과 커맨드</h3>
+      ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong>${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd"><span class="cmd-k">커맨드</span>${esc(m.cmd)}</p></div>`).join('')}
     </section>`);
   }
-  if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2><ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
-  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}${r.loc ? `<small class="td-loc">${svg('pin', 'ic mini')}${rich(r.loc)}</small>` : ''}</span></div>`).join('')}</div></section>` : '';
-  blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes));
-  blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes));
-  blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes));
-  if (R.moria) blocks.push(`<section class="ref"><h2>모리아 갱도 하층</h2><ul class="ref-list">${R.moria.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
-  blocks.push(table('그레이드 숍', R.grade, 'cost', 'name', ' G', '', R.gradeNotes));
-  if (R.unresolved) blocks.push(`<section class="ref muted"><h2>끝까지 확정하지 못한 것</h2><ul class="ref-list">${R.unresolved.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
+  if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2>${intro('dragunov')}<ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
+  const table = (title, rows, a, b, ka = '', kb = '', notes = [], k = '') => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${intro(k)}${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}${r.loc ? `<small class="td-loc">${svg('pin', 'ic mini')}${rich(r.loc)}</small>` : ''}</span></div>`).join('')}</div></section>` : '';
+  blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes, 'coliseum'));
+  blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes, 'race'));
+  blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes, 'aifread'));
+  if (R.moria) blocks.push(`<section class="ref"><h2>모리아 갱도 하층</h2>${intro('moria')}<ul class="ref-list">${R.moria.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
+  blocks.push(table('그레이드 숍', R.grade, 'cost', 'name', ' 그레이드', '', R.gradeNotes, 'grade'));
+  if (R.unresolved) blocks.push(`<section class="ref muted"><h2>끝까지 확정하지 못한 것</h2>${intro('unresolved')}<ul class="ref-list">${R.unresolved.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
   return `<section class="refs">${blocks.join('')}</section>`;
 }
 
