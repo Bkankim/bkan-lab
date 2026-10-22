@@ -287,7 +287,7 @@ function viewRefs() {
     </section>`);
   }
   if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2><ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
-  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}</span></div>`).join('')}</div></section>` : '';
+  const table = (title, rows, a, b, ka = '', kb = '', notes = []) => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}${r.loc ? `<small class="td-loc">${svg('pin', 'ic mini')}${rich(r.loc)}</small>` : ''}</span></div>`).join('')}</div></section>` : '';
   blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes));
   blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes));
   blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes));
