@@ -1,6 +1,6 @@
 {
   "slug": "ganghwa-2610",
-  "measured_at": "2026-10-22T10:14:29Z",
+  "measured_at": "2026-10-22T10:24:20Z",
   "pricing_as_of": "2026-10-06",
   "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
   "elapsed_ms": 10227617,
@@ -46,5 +46,13 @@
   ],
   "sessions": 2,
   "made": "숙소 34곳 비교 + lab.bkan.dev 첫 골격(랜딩·분야 목록·배포)",
-  "revisions": 1
+  "revisions": 1,
+  "first_release": {
+    "elapsed_ms": 8591806,
+    "ai_work_ms": 2520123,
+    "clicks": 12,
+    "corrections": 1,
+    "input_chars": 1578,
+    "cost_usd_api_equiv": 6.46
+  }
 }

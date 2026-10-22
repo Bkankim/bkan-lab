@@ -1,34 +1,85 @@
 {
-  "_doc": "실험별 집계 구간. segments: runtime(claude-code|codex) + session + 선택 from/to(UTC). exclude: 주제 밖 프롬프트 id 앞부분. corrections: 교정 딸깍 id 앞부분(AI 산출물이 지시·기대와 어긋나 바로잡은 메시지, 새 요구·취향 변경은 제외). null이면 미분류. first_release_to: 첫 배포 커밋 시각.",
+  "_doc": "실험별 집계 구간. segments: runtime(claude-code|codex) + session + 선택 from/to(UTC). exclude: 주제 밖 프롬프트 id 앞부분. corrections: 교정 딸깍 id 앞부분, corrections_why에 판정 이유. null이면 미분류. first_release_to: 첫 배포 커밋 시각(UTC). 교정 기준: AI의 결과·해석이 지시나 지시에서 당연히 기대되는 수준에 못 미쳐 바로잡은 메시지. 새 요구, 사람이 빠뜨린 조건 추가, 취향 변경, 단순 질문, 진행 확인, 마무리 지시는 교정이 아니다.",
   "items": {
     "ganghwa-2610": {
       "segments": [
-        {"runtime": "codex", "session": "01a0f160-c444-7533-aa5b-baa0ed1bde69", "to": "2026-09-30T08:43:00Z"},
-        {"runtime": "claude-code", "session": "aee56fb5-60b1-4b36-9b74-86d8b663b33a", "from": "2026-09-30T10:06:00Z"}
+        {
+          "runtime": "codex",
+          "session": "01a0f160-c444-7533-aa5b-baa0ed1bde69",
+          "to": "2026-09-30T08:43:00Z"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "aee56fb5-60b1-4b36-9b74-86d8b663b33a",
+          "from": "2026-09-30T10:06:00Z"
+        }
       ],
-      "corrections": ["msg_01a0f166", "b7806de6"],
+      "corrections": [
+        "msg_01a0f166",
+        "b7806de6"
+      ],
       "made": "숙소 34곳 비교 + lab.bkan.dev 첫 골격(랜딩·분야 목록·배포)",
-      "revisions": 1
+      "revisions": 1,
+      "first_release_to": "2026-09-30T10:37:19Z",
+      "corrections_why": {
+        "msg_01a0f166": "표 전부 채워: 심층 리서치 지시에 빈칸을 남긴 결과물",
+        "b7806de6": "캐시 지우기 시도해봐: AI가 할 수 있는 일을 사람에게 넘김"
+      }
     },
     "hwajeong-2612": {
       "segments": [
-        {"runtime": "claude-code", "session": "555441aa-10bb-43a6-b1a4-a27e351aac60"}
+        {
+          "runtime": "claude-code",
+          "session": "555441aa-10bb-43a6-b1a4-a27e351aac60"
+        }
       ],
-      "corrections": [],
+      "corrections": [
+        "a228839a"
+      ],
       "first_release_to": "2026-10-20T17:38:41Z",
       "made": "매물 170건 수집·비교",
-      "revisions": 3
+      "revisions": 3,
+      "corrections_why": {
+        "a228839a": "전입 불가는 고려사항 아님: 사람이 모르겠다고 한 기준을 AI가 확정해 매물을 대거 탈락시킴"
+      }
     },
     "top-cross": {
       "segments": [
-        {"runtime": "claude-code", "session": "ea524019-6d13-41e8-a1a5-7b91078a15ef", "from": "2026-10-21T16:52:00Z", "to": "2026-10-21T19:11:00Z"},
-        {"runtime": "claude-code", "session": "992ca534-3e70-45d8-9411-9679f061bcfb"}
+        {
+          "runtime": "claude-code",
+          "session": "ea524019-6d13-41e8-a1a5-7b91078a15ef",
+          "from": "2026-10-21T16:52:00Z",
+          "to": "2026-10-21T19:11:00Z"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "992ca534-3e70-45d8-9411-9679f061bcfb"
+        }
       ],
-      "exclude": ["9f688708"],
-      "corrections": ["3e5cae72", "fa7af17e", "b2184d6e", "a4e12d49"],
+      "exclude": [
+        "9f688708"
+      ],
+      "corrections": [
+        "6333bd01",
+        "4919c98f",
+        "3e5cae72",
+        "fa7af17e",
+        "26163987",
+        "b2184d6e",
+        "a4e12d49"
+      ],
       "first_release_to": "2026-10-21T18:26:24Z",
       "made": "숨은 요소 556개 · 관문 20개 · 위치 사진 606장",
-      "revisions": 7
+      "revisions": 7,
+      "corrections_why": {
+        "6333bd01": "첫 피드백: 일본어 미번역, 사진 첨부를 사진·메모 기능으로 오해",
+        "4919c98f": "끝까지 알아내라 했는데 미결을 남김",
+        "3e5cae72": "관문 통과 시 앞 지역을 건너뛰는 버그",
+        "fa7af17e": "첫 화면이 시간순이 아님, PC에서 사진 넘김 불가",
+        "26163987": "직전 지시를 사진 구조 변경으로 오해한 것을 바로잡음",
+        "b2184d6e": "조건이 늦게 풀리는 카드를 이른 시점에 배치",
+        "a4e12d49": "참고 탭 설명이 불친절"
+      }
     }
   }
 }

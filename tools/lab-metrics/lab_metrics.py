@@ -495,12 +495,22 @@ def model_name(m):
     return f"{parts[0].capitalize()} {'.'.join(parts[1:])}".strip()
 
 
+def unit_small(text):
+    return re.sub(r"(\d+)(시간|분)", r"\1<small>\2</small>", text)
+
+
 def render_entry(r):
     usd = r["cost_usd_api_equiv"]
+    # 첫 배포 기록이 있으면 딸깍 칸을 "첫 배포 -> 지금"으로 보여 준다(가장 센 숫자를 큰 칸에)
+    if "first_release" in r:
+        clicks = (f'{r["first_release"]["clicks"]}<small class="to">→</small>{r["clicks"]}',
+                  "딸깍 (첫 배포 → 지금)")
+    else:
+        clicks = (str(r["clicks"]), "딸깍")
     stats = [
-        (str(r["clicks"]), "딸깍"),
-        # 큰 숫자 칸에서는 단위 글자를 작게 둬 숫자만 읽히게 한다(4시간 36분 -> 4h 36m 크기감)
-        (re.sub(r"(\d+)(시간|분)", r'\1<small>\2</small>', fmt_ms(r["ai_work_ms"])), "소요 시간"),
+        clicks,
+        # 큰 숫자 칸에서는 단위 글자를 작게 둬 숫자만 읽히게 한다
+        (unit_small(fmt_ms(r["ai_work_ms"])), "소요 시간"),
         (f"${usd:,.0f}" if usd >= 10 else f"${usd:,.2f}", "API 정가 환산"),
         (str(r["subagents"]), "서브에이전트"),
     ]
@@ -510,8 +520,8 @@ def render_entry(r):
         facts.append(("교정", f"{r['corrections']}번"))
     facts.append(("입력", f"{r['input_chars']:,}자"))
     facts.append(("딸깍당 소요", fmt_ms(r["ai_ms_per_click"])))
-    if "first_release" in r:
-        facts.append(("첫 배포까지", f"{r['first_release']['clicks']}딸깍"))
+    # 소요 시간(AI가 일한 시간)과 헷갈리지 않게 시작부터 끝까지 걸린 시간도 둔다
+    facts.append(("경과", fmt_ms(r["elapsed_ms"])))
     models = r["models"]
     facts.append(("모델", model_name(models[0]["model"]) if len(models) == 1 else
                   " · ".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in models)))

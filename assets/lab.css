@@ -158,6 +158,7 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
   letter-spacing: 0;
 }
 .stat b small:last-child { margin-right: 0; }
+.stat b small.to { margin: 0 .3em; font-size: .6em; color: var(--ink-soft); }
 .stat:first-child b { box-shadow: inset 0 -.3em 0 var(--mark); align-self: flex-start; }
 .facts {
   display: grid;
