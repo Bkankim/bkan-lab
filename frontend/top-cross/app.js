@@ -12,8 +12,9 @@ const KIND = {
 };
 const FLAG = {
   missable: '놓치면 끝', link: '링크 상자', hidden: '숨김', cond: '조건부',
-  buy: '구매', best: '최강', warn: '주의'
+  buy: '구매', best: '최강', warn: '주의', now: '그 자리 한정', common: '흔한 소모품'
 };
+const FLAG_TITLE = { now: '그 지역·방을 벗어나면 사라집니다', common: '진행률과 「놓치면 끝」 숫자에 넣지 않습니다' };
 const CHARS = [
   ['크레스', 'クレス'], ['체스터', 'チェスター'], ['민트', 'ミント'], ['클라스', 'クラース'],
   ['아체', 'アーチェ'], ['스즈', 'すず'], ['로디', 'ロンドリーネ']
@@ -56,11 +57,31 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function loadState() {
   try {
     const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
-    return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스' };
-  } catch { return { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스' }; }
+    return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스', showCommon: !!raw.showCommon };
+  } catch { return { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스', showCommon: false }; }
 }
 let S = loadState();
-function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch { toast('이 브라우저에서는 진행 상태를 저장할 수 없습니다. 개인 정보 보호 모드를 꺼 주세요.'); } }
+// 탭(창)이 여럿이면 다른 탭이 그사이 저장한 값을 덮지 않도록, 저장 직전 최신 값에 이 탭에서 바꾼 것만 얹는다.
+// base = 이 탭이 마지막으로 읽거나 저장한 값. replace는 백업 복원·초기화처럼 통째로 바꿀 때.
+const SHARED = ['pos', 'theme', 'showCommon'];
+const snap = s => ({ checked: { ...s.checked }, pos: s.pos, theme: s.theme, showCommon: s.showCommon });
+let base = snap(S);
+function save(opts = {}) {
+  try {
+    if (!opts.replace) {
+      const L = loadState();
+      const checked = { ...L.checked };
+      for (const k of new Set([...Object.keys(base.checked), ...Object.keys(S.checked)])) {
+        if (!!S.checked[k] === !!base.checked[k]) continue;
+        if (S.checked[k]) checked[k] = S.checked[k]; else delete checked[k];
+      }
+      S.checked = checked;
+      for (const k of SHARED) if (S[k] === base[k]) S[k] = L[k];
+    }
+    localStorage.setItem(STORE_KEY, JSON.stringify(S));
+    base = snap(S);
+  } catch { toast('이 브라우저에서는 진행 상태를 저장할 수 없습니다. 개인 정보 보호 모드를 꺼 주세요.'); }
+}
 
 /* ---------- 데이터 ---------- */
 let D, gates = [], gateById = {}, areaById = {}, entryById = {}, eraById = {};
@@ -77,6 +98,9 @@ async function loadData() {
 }
 const isDone = id => !!S.checked[id];
 const has = (e, f) => (e.flags || []).includes(f);
+// 흔한 소모품(flags common)은 스위치를 켜야 보이고, 켜도 진행률·놓치면 끝 숫자에는 넣지 않는다
+const counted = e => !has(e, 'common');
+const shown = e => S.showCommon || counted(e);
 const posIdx = () => (S.pos && gateById[S.pos]) ? gateById[S.pos].idx : -1;
 const nextGate = () => gates[posIdx() + 1] || null;
 const passed = g => g.idx <= posIdx();
@@ -89,13 +113,13 @@ function sortEntries(list) {
   return [...list].sort((a, b) => (isDone(a.id) - isDone(b.id)) || (has(b, 'missable') - has(a, 'missable')) || ((areaById[a.area]?.order ?? 0) - (areaById[b.area]?.order ?? 0)));
 }
 function overdue() {
-  return D.entries.filter(e => { const d = deadlineOf(e); return d && gateById[d] && passed(gateById[d]) && has(e, 'missable') && !isDone(e.id); });
+  return D.entries.filter(e => { const d = deadlineOf(e); return d && gateById[d] && passed(gateById[d]) && has(e, 'missable') && !isDone(e.id) && shown(e); });
 }
 
 /* ---------- 렌더: 공통 조각 ---------- */
 function chips(e) {
   const out = [];
-  for (const f of e.flags || []) if (FLAG[f]) out.push(`<span class="chip f-${f}">${FLAG[f]}</span>`);
+  for (const f of e.flags || []) if (FLAG[f]) out.push(`<span class="chip f-${f}"${FLAG_TITLE[f] ? ` title="${FLAG_TITLE[f]}"` : ''}>${FLAG[f]}</span>`);
   if (e.conf && e.conf !== '확정') out.push(`<span class="chip conf" title="출처 판정">${esc(e.conf)}</span>`);
   return out.join('');
 }
@@ -104,7 +128,7 @@ function entryHTML(e, opts = {}) {
   const g = d && gateById[d];
   const area = areaById[e.area];
   const done = isDone(e.id);
-  return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
+  return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}${counted(e) ? '' : ' common'}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
     <button class="tick" data-act="check" aria-pressed="${done}" aria-label="${esc(e.name)} ${done ? '체크 해제' : '챙김으로 표시'}">${svg('check', 'ic tick-ic')}</button>
     <div class="body">
       <div class="head">
@@ -149,14 +173,15 @@ function drawRings(root = document) {
 // 이번 구간에 지나가는 지역(data.json gates[].areas)은 전부, 앞 구간 지역은 이 관문에서 사라지는 항목만(마지막 기회).
 // 다 챙긴 지역은 접고, 남은 지역은 펼쳐 둔다.
 function areaDetails(a, list, opts = {}) {
-  const dn = list.filter(e => isDone(e.id)).length;
-  const missLeft = list.filter(e => has(e, 'missable') && !isDone(e.id)).length;
+  const cnt = list.filter(counted);
+  const dn = cnt.filter(e => isDone(e.id)).length;
+  const missLeft = cnt.filter(e => has(e, 'missable') && !isDone(e.id)).length;
   const until = a.until && gateById[a.until];
-  const open = opts.home ? (dn < list.length || a.id === openArea) : a.id === openArea;
+  const open = opts.home ? (list.some(e => !isDone(e.id)) || a.id === openArea) : a.id === openArea;
   return `<details class="area${opts.last ? ' last' : ''}"${open ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
     <summary>
       <span class="a-name">${nameJp(a.name, a.jp)}</span>
-      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}${missLeft ? `<span class="a-due">놓치면 끝 ${missLeft}</span>` : ''}<span class="a-count">${dn}/${list.length}</span></span>
+      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count">${dn}/${cnt.length}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="a-body">${sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('')}</div>
@@ -167,29 +192,34 @@ const placeOf = e => e.when || e.area;
 // 스토리 순서 = 관문 순서대로 이어 붙인 gates[].areas 순서(지역 order보다 우선)
 let storySeq = null;
 const storyIdx = a => { if (!storySeq) { storySeq = {}; gates.forEach(g => (g.areas || []).forEach(id => { if (!(id in storySeq)) storySeq[id] = Object.keys(storySeq).length; })); } return storySeq[a.id] ?? 1e4 + a.order; };
-function storyAreas(g, expiring) {
+// skip = 위 「지난 관문에서 못 챙긴 것」에 이미 나온 카드(같은 카드를 한 화면에 두 번 그리지 않는다)
+function storyAreas(g, expiring, skip) {
   const segIds = new Set(g.areas || []);
   const ids = new Set([...segIds, ...expiring.map(placeOf)]);
   const areas = [...ids].map(id => areaById[id]).filter(Boolean).sort((a, b) => storyIdx(a) - storyIdx(b));
   return areas.map(a => {
     const inSeg = segIds.has(a.id);
     // 앞 구간 지역은 아직 안 챙긴 것만(다 챙겼으면 지역째 숨김)
-    const list = inSeg ? D.entries.filter(e => placeOf(e) === a.id) : expiring.filter(e => placeOf(e) === a.id && !isDone(e.id));
+    const list = (inSeg ? D.entries.filter(e => placeOf(e) === a.id && shown(e)) : expiring.filter(e => placeOf(e) === a.id && !isDone(e.id))).filter(e => !skip.has(e.id));
     return list.length ? areaDetails(a, list, { home: true, last: !inSeg }) : '';
   }).join('');
 }
+let lateOpen = false;
 const orbLine = (all, left) => !all ? '이 관문에 걸린 영구손실 항목은 없습니다' : left ? `놓치면 끝 ${left}개 남음` : '이 관문 전에 챙길 것은 다 챙겼습니다';
 function viewHome() {
   const g = nextGate();
   const seg = segmentEntries(g);
-  const miss = seg.filter(e => has(e, 'missable'));
+  const miss = seg.filter(e => has(e, 'missable') && counted(e));
   const left = miss.filter(e => !isDone(e.id));
   const pct = miss.length ? (miss.length - left.length) / miss.length : 1;
   const era = g ? g.era : 'post';
   const late = overdue();
-  const total = D.entries.length, done = D.entries.filter(e => isDone(e.id)).length;
+  const lateN = late.filter(counted).length;
+  const all = D.entries.filter(counted);
+  const total = all.length, done = all.filter(e => isDone(e.id)).length;
   const here = S.pos && gateById[S.pos] ? gateById[S.pos].title : null;
-  const list = sortEntries(seg);
+  const list = sortEntries(seg.filter(shown));
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   return `<section class="home">
     <div class="orb-well">
       ${ring(pct, g ? `이번 구간 놓침 항목 ${miss.length}개 중 ${miss.length - left.length}개 챙김` : '모든 관문 통과')}
@@ -207,21 +237,24 @@ function viewHome() {
       <div><span class="k">지금 위치</span><span class="v">${here ? `${esc(here)} 지남` : '처음부터'}</span></div>
       <button class="pill" data-act="pick">위치 바꾸기</button>
     </div>
+    ${standalone && !S.pos && !Object.keys(S.checked).length ? '<p class="hint">Safari에서 하던 체크는 홈 화면 앱으로 따라오지 않습니다. Safari로 연 이 페이지의 설정 탭에서 백업 파일을 받아, 이 앱의 설정 탭 「백업 불러오기」로 옮겨 오세요.</p>' : ''}
     <nav class="era-tiles" aria-label="시대로 바로 가기">
       ${D.eras.map(x => `<button class="tile${x.id === era ? ' cur' : ''}" data-act="era" data-era="${x.id}">${svg(x.id)}<span>${esc(x.name)}</span></button>`).join('')}
     </nav>
     ${late.length ? `<section class="panel late">
-      <header class="panel-h"><h2>지난 관문에서 못 챙긴 것</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p></header>
-      ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
+      <details class="late-box"${lateOpen ? ' open' : ''}>
+        <summary class="panel-h"><h2>지난 관문에서 못 챙긴 것${lateN ? ` <span class="late-n">${lateN}</span>개` : ''}</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p><span class="late-more">${svg('chevron', 'ic chev')}<span>목록 펼치기</span></span></summary>
+        ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
+      </details>
     </section>` : ''}
     ${g ? `<section class="panel">
       <header class="panel-h"><h2>${esc(g.title)} 전에</h2><p>${rich(g.desc || '')}</p><p class="sub-p">지나가는 순서대로 지역을 모았습니다. 「기한: ${esc(g.title)} 전」 표시가 이 관문을 넘으면 사라지는 항목이고, 「마지막 기회」는 앞 지역에서 아직 못 챙긴 것입니다.</p></header>
-      ${storyAreas(g, list) || '<p class="empty">이 구간에 챙길 항목이 없습니다. 그대로 진행해도 됩니다.</p>'}
+      ${storyAreas(g, list, new Set(late.map(e => e.id))) || '<p class="empty">이 구간에 챙길 항목이 없습니다. 그대로 진행해도 됩니다.</p>'}
       <button class="wide" data-act="pass">${svg('flag')}이 관문을 지났어요</button>
     </section>` : ''}
     <section class="stat-card">
       <div><span class="k">전체 진행</span><strong>${done}<small>/${total}</small></strong></div>
-      <div><span class="k">놓치면 끝</span><strong>${D.entries.filter(e => has(e, 'missable') && isDone(e.id)).length}<small>/${D.entries.filter(e => has(e, 'missable')).length}</small></strong></div>
+      <div><span class="k">놓치면 끝</span><strong>${all.filter(e => has(e, 'missable') && isDone(e.id)).length}<small>/${all.filter(e => has(e, 'missable')).length}</small></strong></div>
     </section>
   </section>`;
 }
@@ -233,10 +266,12 @@ function matches(e, q) {
   return [e.name, e.jp, e.how, e.tip, a?.name, a?.jp, e.char, KIND[e.kind]].join(' ').toLowerCase().includes(q);
 }
 function filterList(list) {
-  return list.filter(e => (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
+  return list.filter(e => shown(e) && (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
 }
 function viewRoute() {
   const q = query.trim().toLowerCase();
+  const era = S.era;
+  const eraGates = gates.filter(g => g.era === era);
   const filters = `<div class="filters">
       <label class="search">${svg('search')}<input type="search" placeholder="아이템, 기술, 지역 이름으로 찾기" value="${esc(query)}" data-act="q" enterkeyhint="search"></label>
       <div class="toggles">
@@ -244,55 +279,61 @@ function viewRoute() {
         <button class="pill${S.onlyLeft ? ' on' : ''}" data-act="t-left" aria-pressed="${S.onlyLeft}">남은 것만</button>
       </div>
     </div>`;
-  if (q) {
-    const hits = filterList(D.entries.filter(e => matches(e, q)));
-    return `<section class="route">${filters}<p class="count">${hits.length}개 찾음</p>${sortEntries(hits).map(e => entryHTML(e, { showArea: true })).join('') || '<p class="empty">찾는 이름이 없습니다. 일본어 이름이나 지역 이름으로도 찾아 보세요.</p>'}</section>`;
-  }
-  const era = S.era;
-  const eraGates = gates.filter(g => g.era === era);
-  const areas = D.areas.filter(a => a.era === era).sort((a, b) => a.order - b.order);
   return `<section class="route">
+    <div class="route-top"${q ? ' hidden' : ''}>
     <div class="seg" role="tablist" aria-label="시대">
       <span class="seg-thumb" aria-hidden="true"></span>
       ${D.eras.map(x => `<button role="tab" class="seg-b${x.id === era ? ' cur' : ''}" aria-selected="${x.id === era}" data-act="era-tab" data-era="${x.id}">${esc(x.name)}</button>`).join('')}
     </div>
     <p class="era-range">${esc(eraById[era]?.range || '')}</p>
     ${eraGates.length ? `<ol class="gate-line">${eraGates.map(g => `<li class="${passed(g) ? 'passed' : ''}${nextGate() === g ? ' next' : ''}"><span class="dot"></span><span>${esc(g.title)}</span></li>`).join('')}</ol>` : ''}
+    </div>
     ${filters}
-    ${areas.map(a => {
+    <div class="route-body">${routeBody()}</div>
+  </section>`;
+}
+function routeBody() {
+  const q = query.trim().toLowerCase();
+  if (q) {
+    const hits = filterList(D.entries.filter(e => matches(e, q)));
+    return `<p class="count">${hits.length}개 찾음</p>${sortEntries(hits).map(e => entryHTML(e, { showArea: true })).join('') || '<p class="empty">찾는 이름이 없습니다. 일본어 이름이나 지역 이름으로도 찾아 보세요.</p>'}`;
+  }
+  const areas = D.areas.filter(a => a.era === S.era).sort((a, b) => a.order - b.order);
+  return `${areas.map(a => {
       const list = filterList(D.entries.filter(e => e.area === a.id));
-      const all = D.entries.filter(e => e.area === a.id);
+      const all = D.entries.filter(e => e.area === a.id && shown(e));
       if (!all.length) return '';
-      const dn = all.filter(e => isDone(e.id)).length;
+      const cnt = all.filter(counted);
+      const dn = cnt.filter(e => isDone(e.id)).length;
       const until = a.until && gateById[a.until];
       return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
         <summary>
           <span class="a-name">${nameJp(a.name, a.jp)}</span>
-          <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-count">${dn}/${all.length}</span></span>
+          <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-count">${dn}/${cnt.length}</span></span>
           ${svg('chevron', 'ic chev')}
         </summary>
         <div class="a-body">${list.length ? sortEntries(list).map(e => entryHTML(e)).join('') : '<p class="empty">조건에 맞는 항목이 없습니다.</p>'}</div>
       </details>`;
-    }).join('')}
-  </section>`;
+    }).join('')}`;
 }
 let openArea = null;
 
 /* ---------- 뷰: 캐릭터 ---------- */
 function viewChars() {
   const c = S.char;
-  const list = D.entries.filter(e => e.char === c);
+  const list = D.entries.filter(e => e.char === c && shown(e));
   const byKind = CHAR_KIND_ORDER.map(k => [k, list.filter(e => e.kind === k)]).filter(([, l]) => l.length);
-  const dn = list.filter(e => isDone(e.id)).length;
+  const cnt = list.filter(counted);
+  const dn = cnt.filter(e => isDone(e.id)).length;
   return `<section class="chars">
     <nav class="avatars" aria-label="캐릭터">
       ${CHARS.map(([ko, jp]) => {
-        const n = D.entries.filter(e => e.char === ko).length;
+        const n = D.entries.filter(e => e.char === ko && counted(e)).length;
         return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">(${esc(jp)}) 항목 ${n}개</span></button>`;
       }).join('')}
     </nav>
-    <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${list.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
-    ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span>${l.filter(e => isDone(e.id)).length}/${l.length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
+    <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${cnt.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
+    ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span>${l.filter(e => counted(e) && isDone(e.id)).length}/${l.filter(counted).length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
   </section>`;
 }
 
@@ -341,10 +382,20 @@ function viewRecords() {
   return `<section class="records">
     <section class="ref"><h2>이 기기에 저장됩니다</h2>
       <p class="ref-p">체크와 위치는 이 브라우저 안에만 남고 어디에도 올라가지 않습니다. 아이폰 Safari는 오래 열지 않은 사이트의 저장 데이터를 지울 수 있으니 ${standalone ? '지금처럼 홈 화면 앱으로 쓰면서' : '공유 버튼의 「홈 화면에 추가」로 앱처럼 쓰고,'} 가끔 백업 파일을 받아 두세요.</p>
+      <p class="ref-p">아이폰은 Safari와 홈 화면 앱의 저장 공간이 따로입니다. Safari에서 쓰다가 홈 화면 앱으로 옮길 때는 먼저 Safari에서 백업 파일을 받고, 홈 화면 앱의 이 화면에서 불러오세요.</p>
       <div class="row2">
         <button class="pill big" data-act="export">백업 파일 받기</button>
         <label class="pill big">백업 불러오기<input type="file" accept="application/json,.json" data-act="import" hidden></label>
       </div>
+    </section>
+    <section class="ref"><h2>보기</h2>
+      <button class="switch" role="switch" aria-checked="${S.showCommon}" data-act="t-common"><span>흔한 소모품도 보기</span><span class="sw-k" aria-hidden="true"></span></button>
+      <p class="ref-p">애플구미처럼 상점에서 쉽게 사는 소모품·장비 카드는 기본으로 숨깁니다. 켜도 진행률과 「놓치면 끝」 숫자에는 넣지 않습니다.</p>
+    </section>
+    <section class="ref"><h2>사진 오프라인 저장</h2>
+      <p class="ref-p">위치 사진은 화면에 나온 것만 이 기기에 남습니다. 와이파이에서 한 번 받아 두면 오프라인에서도 모든 사진이 보입니다.</p>
+      <p class="ref-p shot-stat">사진 ${allShots().length}장</p>
+      <div class="row2"><button class="pill big" data-act="shots-save">사진 전부 받기</button></div>
     </section>
     <section class="ref"><h2>화면</h2>
       <div class="seg small" role="tablist"><span class="seg-thumb" aria-hidden="true"></span>
@@ -382,6 +433,16 @@ function passSheet(g, left) {
     <div class="row2"><button class="pill big" data-act="sheet-close">돌아가서 챙기기</button><button class="pill big ghost" data-act="pass-force" data-gate="${esc(g.id)}">그래도 지났어요</button></div>`;
 }
 
+const posName = id => id && gateById[id] ? `${gateById[id].title} 지남` : '처음부터';
+function importSheet(b) {
+  const n = Object.keys(b.checked).length;
+  const notes = [b.unknown ? `그중 ${b.unknown}개는 지금 안내에 없는 카드라 기록으로만 남깁니다(안내가 갱신되면 다시 보입니다).` : '', b.badPos ? '백업의 위치는 이 안내에 없는 관문이라 뺐습니다.' : ''].filter(Boolean).join(' ');
+  return `<h2 class="sheet-h">백업 불러오기</h2><p class="sheet-p">백업: 체크 ${n}개, 위치 ${esc(posName(b.pos))}<br>지금: 체크 ${Object.keys(S.checked).length}개, 위치 ${esc(posName(S.pos))}${notes ? `<br>${esc(notes)}` : ''}</p>
+    <p class="sheet-p">「바꾸기」는 백업한 때로 되돌리고, 「합치기」는 지금 체크를 남긴 채 백업의 체크를 더합니다(위치는 더 멀리 간 쪽).</p>
+    <div class="row2"><button class="pill big" data-act="import-replace">이 백업으로 바꾸기</button><button class="pill big ghost" data-act="import-merge">지금 기록과 합치기</button></div>
+    <div class="row2"><button class="pill big ghost" data-act="sheet-close">그만두기</button></div>`;
+}
+
 /* ---------- 토스트 ---------- */
 let toastT;
 function toast(msg) {
@@ -397,6 +458,7 @@ function render(opts = {}) {
   const y = opts.keepScroll ? scrollY : 0;
   main.innerHTML = VIEWS[v]();
   main.dataset.view = v;
+  if (v === 'records') shotStat();
   document.querySelectorAll('.tab').forEach(b => { const on = b.dataset.view === v; b.classList.toggle('cur', on); b.setAttribute('aria-current', on ? 'page' : 'false'); });
   if (v === 'home') { const g = nextGate(); document.documentElement.dataset.era = g ? g.era : 'post'; }
   else if (v === 'route') document.documentElement.dataset.era = S.era;
@@ -418,23 +480,26 @@ function softRerender() {
   if (S.view === 'home') {
     // 링과 숫자를 갱신하되 목록은 그대로 둔다
     const g = nextGate();
-    const miss = segmentEntries(g).filter(e => has(e, 'missable'));
+    const miss = segmentEntries(g).filter(e => has(e, 'missable') && counted(e));
     const left = miss.filter(e => !isDone(e.id));
     const bar = $('.ring-bar'); if (bar) { const c = 2 * Math.PI * 46; bar.style.strokeDashoffset = c * (1 - (miss.length ? (miss.length - left.length) / miss.length : 1)); }
     const s = $('.orb-s'); if (s && g) s.textContent = orbLine(miss.length, left.length);
     const st = $('.stat-card'); if (st) { const tmp = document.createElement('div'); tmp.innerHTML = viewHome(); st.replaceWith(tmp.querySelector('.stat-card')); }
+    const ln = $('.late-n'); if (ln) ln.textContent = document.querySelectorAll('.panel.late .entry:not(.done):not(.common)').length;
     document.querySelectorAll('details.area[data-home]').forEach(d => {
-      const es = d.querySelectorAll('.entry'), c = d.querySelector('.a-count');
-      if (c) c.textContent = `${d.querySelectorAll('.entry.done').length}/${es.length}`;
+      const es = d.querySelectorAll('.entry:not(.common)'), c = d.querySelector('.a-count');
+      if (c) c.textContent = `${d.querySelectorAll('.entry.done:not(.common)').length}/${es.length}`;
+      const m = d.querySelector('.a-miss'), ml = d.querySelectorAll('.entry.miss:not(.done):not(.common)').length;
+      if (m) { m.textContent = `놓치면 끝 ${ml}`; m.hidden = !ml; }
     });
   } else if (S.view === 'route') {
     document.querySelectorAll('details.area').forEach(d => {
-      const all = D.entries.filter(e => e.area === d.dataset.area);
+      const all = D.entries.filter(e => e.area === d.dataset.area && counted(e));
       const c = d.querySelector('.a-count'); if (c) c.textContent = `${all.filter(e => isDone(e.id)).length}/${all.length}`;
     });
   } else if (S.view === 'chars') {
     document.querySelectorAll('.group').forEach(gr => {
-      const ids = [...gr.querySelectorAll('.entry')].map(x => x.dataset.id);
+      const ids = [...gr.querySelectorAll('.entry:not(.common)')].map(x => x.dataset.id);
       const sp = gr.querySelector('.group-h span'); if (sp) sp.textContent = `${ids.filter(isDone).length}/${ids.length}`;
     });
   }
@@ -451,8 +516,11 @@ document.addEventListener('click', async ev => {
     case 'check': {
       if (S.checked[id]) delete S.checked[id]; else S.checked[id] = Date.now();
       save();
-      t.setAttribute('aria-pressed', String(!!S.checked[id]));
-      entryEl.classList.toggle('done', !!S.checked[id]);
+      // 같은 카드가 화면 여러 곳에 있으면 모두 함께 바꾼다
+      document.querySelectorAll(`.entry[data-id="${CSS.escape(id)}"]`).forEach(el => {
+        el.classList.toggle('done', !!S.checked[id]);
+        el.querySelector('.tick')?.setAttribute('aria-pressed', String(!!S.checked[id]));
+      });
       if (S.checked[id] && !reduceMotion.matches) { entryEl.classList.remove('pop'); void entryEl.offsetWidth; entryEl.classList.add('pop'); }
       softRerender();
       break;
@@ -462,7 +530,7 @@ document.addEventListener('click', async ev => {
     case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
       const g = nextGate(); if (!g) break;
-      const left = segmentEntries(g).filter(e => has(e, 'missable') && !isDone(e.id));
+      const left = segmentEntries(g).filter(e => has(e, 'missable') && counted(e) && !isDone(e.id));
       if (left.length) openSheet(passSheet(g, left), 'list');
       else { S.pos = g.id; save(); render(); toast(`${g.title} 통과. 다음 관문을 보여 드립니다.`); }
       break;
@@ -486,7 +554,22 @@ document.addEventListener('click', async ev => {
     case 'theme': S.theme = t.dataset.theme; save(); applyTheme(); render({ keepScroll: true }); break;
     case 'export': exportBackup(); break;
     case 'reset': openSheet(`<h2 class="sheet-h">체크와 위치를 비울까요</h2><p class="sheet-p">${Object.keys(S.checked).length}개 체크와 지금 위치가 사라집니다.</p><div class="row2"><button class="pill big ghost" data-act="sheet-close">그만두기</button><button class="pill big" data-act="reset-do">비우기</button></div>`, 'list'); break;
-    case 'reset-do': S.checked = {}; S.pos = null; save(); closeSheet(); render(); toast('체크와 위치를 비웠습니다.'); break;
+    case 'reset-do': S.checked = {}; S.pos = null; save({ replace: true }); closeSheet(); render(); toast('체크와 위치를 비웠습니다.'); break;
+    case 't-common': S.showCommon = !S.showCommon; save(); render({ keepScroll: true }); break;
+    case 'shots-save': saveShots(t); break;
+    case 'import-replace': case 'import-merge': {
+      const b = pendingImport; if (!b) break;
+      pendingImport = null;
+      if (act === 'import-replace') { S.checked = { ...b.checked }; S.pos = b.pos; save({ replace: true }); }
+      else {
+        S.checked = { ...S.checked, ...b.checked };
+        if (b.pos && gateById[b.pos].idx > posIdx()) S.pos = b.pos;
+        save();
+      }
+      closeSheet(); render({ keepScroll: true });
+      toast(`백업을 ${act === 'import-replace' ? '불러왔습니다' : '합쳤습니다'}. 체크 ${Object.keys(S.checked).length}개, 위치 ${posName(S.pos)}.`);
+      break;
+    }
   }
 });
 document.addEventListener('change', async ev => {
@@ -495,21 +578,39 @@ document.addEventListener('change', async ev => {
     await importBackup(t.files[0]); t.value = '';
   }
 });
+// 검색창은 그대로 두고 아래 결과만 다시 그린다. 한글 조합 중에는 그리지 않고 조합이 끝나면 그린다
+function searchLater(inp) {
+  query = inp.value;
+  clearTimeout(qT);
+  qT = setTimeout(() => {
+    const sec = $('#view .route'); if (!sec) return;
+    $('.route-top', sec).hidden = !!query.trim();
+    $('.route-body', sec).innerHTML = routeBody();
+    placeThumbs(sec);
+  }, 160);
+}
 document.addEventListener('input', ev => {
-  if (ev.target.dataset.act === 'q') {
-    query = ev.target.value;
-    clearTimeout(qT);
-    qT = setTimeout(() => {
-      const pos = ev.target.selectionStart;
-      render({ noScroll: true });
-      const inp = $('input[data-act="q"]'); if (inp) { inp.focus(); inp.setSelectionRange(pos, pos); }
-    }, 160);
-  }
+  if (ev.target.dataset.act === 'q' && !ev.isComposing) searchLater(ev.target);
+});
+document.addEventListener('compositionend', ev => {
+  if (ev.target.dataset?.act === 'q') searchLater(ev.target);
 });
 let qT;
 document.addEventListener('toggle', ev => {
   if (ev.target.matches?.('details.area') && ev.target.open) openArea = ev.target.dataset.area;
+  if (ev.target.matches?.('details.late-box')) lateOpen = ev.target.open;
 }, true);
+// 다른 탭(창)에서 저장하면 이 탭도 같은 체크·위치로 맞춘다
+addEventListener('storage', ev => {
+  if (ev.key !== null && ev.key !== STORE_KEY) return;
+  const L = loadState();
+  S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
+  base = snap(S);
+  applyTheme();
+  if (!D) return;
+  if (S.view === 'route' && document.activeElement?.dataset.act === 'q') $('#view .route-body').innerHTML = routeBody();
+  else render({ keepScroll: true });
+});
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { query = ''; go(b.dataset.view); }));
 $('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
 addEventListener('resize', () => placeThumbs(document));
@@ -541,9 +642,15 @@ addEventListener('pointerup', () => {
 });
 
 /* ---------- 테마 ---------- */
+// 직접 고른 테마는 상태 표시줄 색(theme-color)도 그 색으로
+const THEME_BG = { light: '#e9e8ed', dark: '#2a2c34' };
 function applyTheme() {
   const r = document.documentElement;
   if (S.theme === 'auto') delete r.dataset.theme; else r.dataset.theme = S.theme;
+  document.querySelectorAll('meta[name="theme-color"]').forEach(m => {
+    m.dataset.auto ??= m.content;
+    m.content = THEME_BG[S.theme] || m.dataset.auto;
+  });
 }
 
 /* ---------- 백업 ---------- */
@@ -563,12 +670,55 @@ async function importBackup(file) {
   if (!file) return;
   let j;
   try { j = JSON.parse(await file.text()); } catch { toast('백업 파일을 읽지 못했습니다. 이 페이지에서 받은 .json 파일인지 확인해 주세요.'); return; }
-  if (j.app !== 'topx') { toast('이 페이지의 백업 파일이 아닙니다.'); return; }
-  S.checked = { ...S.checked, ...(j.state?.checked || {}) };
-  if (j.state?.pos !== undefined) S.pos = j.state.pos;
-  save();
-  render({ keepScroll: true });
-  toast('백업을 불러왔습니다.');
+  if (j?.app !== 'topx') { toast('이 페이지의 백업 파일이 아닙니다.'); return; }
+  const plain = o => !!o && typeof o === 'object' && !Array.isArray(o);
+  const st = j.state;
+  if (!plain(st) || !plain(st.checked) || (st.pos != null && typeof st.pos !== 'string')) { toast('백업 파일 형식이 맞지 않아 불러오지 않았습니다.'); return; }
+  // 지금 data.json에 없는 카드 id도 버리지 않는다(옛 data.json이 캐시에서 왔을 수 있고, 데이터가 갱신되면 다시 쓰인다)
+  const checked = {}; let unknown = 0;
+  for (const [k, v] of Object.entries(st.checked)) {
+    if (!v) continue;
+    checked[k] = typeof v === 'number' ? v : Date.now();
+    if (!entryById[k]) unknown++;
+  }
+  const pos = st.pos && gateById[st.pos] ? st.pos : null;
+  const badPos = !!st.pos && !pos;
+  if (!Object.keys(checked).length && !pos && badPos) { toast('이 안내의 관문과 맞는 기록이 없어 불러오지 않았습니다.'); return; }
+  pendingImport = { checked, pos, unknown, badPos };
+  openSheet(importSheet(pendingImport), 'list');
+}
+let pendingImport = null;
+
+/* ---------- 사진 오프라인 저장 ---------- */
+const allShots = () => [...new Set(D.entries.flatMap(e => (e.shots || []).map(p => p.f)))];
+// 사진은 VERSION 캐시가 아닌 따로 둔 캐시에 저장한다(앱을 갱신해도 지워지지 않게, sw.js SHOTS와 같은 이름)
+const SHOT_CACHE = 'topx-shots';
+async function shotStat() {
+  const el = $('.shot-stat'); if (!el) return;
+  const list = allShots();
+  if (!('caches' in window) || !navigator.serviceWorker?.controller) { el.textContent = `사진 ${list.length}장. 이 브라우저에서는 오프라인 저장을 쓸 수 없습니다.`; return; }
+  let n = 0; for (const f of list) if (await caches.match(f)) n++;
+  const est = await navigator.storage?.estimate?.().catch(() => null);
+  if (el.isConnected) el.textContent = `사진 ${list.length}장 중 ${n}장 저장됨${est ? ` · 이 사이트가 쓰는 저장 공간 약 ${(est.usage / 1048576).toFixed(1)}MB` : ''}`;
+}
+async function saveShots(btn) {
+  if (!('caches' in window) || !navigator.serviceWorker?.controller) { toast('이 브라우저에서는 사진을 오프라인으로 저장할 수 없습니다.'); return; }
+  const c = await caches.open(SHOT_CACHE), list = allShots();
+  let i = 0, ok = 0, fail = 0;
+  btn.disabled = true;
+  const el = $('.shot-stat');
+  const work = async () => {
+    while (i < list.length) {
+      const f = list[i++];
+      // 이미 본 사진은 VERSION 캐시에 있어 다음 갱신 때 지워지므로 사진 캐시로 옮겨 둔다
+      try { if (!(await c.match(f))) { const r = (await caches.match(f)) || await fetch(f); if (!r.ok) throw new Error(r.status); await c.put(f, r); } ok++; } catch { fail++; }
+      if (el?.isConnected) el.textContent = `받는 중 ${ok + fail}/${list.length}`;
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, work));
+  btn.disabled = false;
+  await shotStat();
+  toast(fail ? `사진 ${fail}장을 받지 못했습니다. 연결을 확인하고 다시 눌러 주세요.` : `사진 ${ok}장을 이 기기에 저장했습니다. 오프라인에서도 보입니다.`);
 }
 
 /* ---------- 시작 ---------- */
@@ -576,10 +726,11 @@ applyTheme();
 loadData().then(() => {
   document.documentElement.classList.add('ready');
   render({ noScroll: true });
+  navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
   $('#view').innerHTML = '<p class="empty">공략 데이터를 불러오지 못했습니다. 인터넷 연결을 확인하고 새로고침해 주세요. 한 번 연 뒤에는 오프라인에서도 열립니다.</p>';
 });
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
 }
 })();
