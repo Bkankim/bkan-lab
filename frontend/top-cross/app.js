@@ -54,22 +54,27 @@ const nameJp = (name, jp) => { const m = /^(.+?)( \(.+\))$/.exec(name || ''); re
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---------- 상태 ---------- */
-function loadState() {
+// 저장값이 없거나(키 없음·사이트 데이터 삭제) 읽지 못하면(파싱 실패·getItem 예외) null. 빈 기록과 구분한다
+function readStore() {
   try {
-    const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    const t = localStorage.getItem(STORE_KEY);
+    if (t == null) return null;
+    const raw = JSON.parse(t);
     return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스', showCommon: !!raw.showCommon };
-  } catch { return { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스', showCommon: false }; }
+  } catch { return null; }
 }
+const loadState = () => readStore() || { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스', showCommon: false };
 let S = loadState();
 // 탭(창)이 여럿이면 다른 탭이 그사이 저장한 값을 덮지 않도록, 저장 직전 최신 값에 이 탭에서 바꾼 것만 얹는다.
 // base = 이 탭이 마지막으로 읽거나 저장한 값. replace는 백업 복원·초기화처럼 통째로 바꿀 때.
+// 저장값이 없거나 읽지 못하면 다른 탭의 저장이 아니므로 이 탭의 S를 통째로 쓴다(비움은 storage 이벤트로 받은 초기화만 인정).
 const SHARED = ['pos', 'theme', 'showCommon'];
 const snap = s => ({ checked: { ...s.checked }, pos: s.pos, theme: s.theme, showCommon: s.showCommon });
 let base = snap(S);
 function save(opts = {}) {
   try {
-    if (!opts.replace) {
-      const L = loadState();
+    const L = opts.replace ? null : readStore();
+    if (L) {
       const checked = { ...L.checked };
       for (const k of new Set([...Object.keys(base.checked), ...Object.keys(S.checked)])) {
         if (!!S.checked[k] === !!base.checked[k]) continue;
@@ -84,7 +89,8 @@ function save(opts = {}) {
 }
 
 /* ---------- 데이터 ---------- */
-let D, gates = [], gateById = {}, areaById = {}, entryById = {}, eraById = {};
+// id 찾기 표는 프로토타입 없는 객체로(백업·저장값의 'constructor' 같은 이름이 있는 id로 보이지 않게)
+let D, gates = [], gateById = Object.create(null), areaById = Object.create(null), entryById = Object.create(null), eraById = Object.create(null);
 async function loadData() {
   const r = await fetch('data.json', { cache: 'no-cache' });
   if (!r.ok) throw new Error('data ' + r.status);
@@ -101,6 +107,8 @@ const has = (e, f) => (e.flags || []).includes(f);
 // 흔한 소모품(flags common)은 스위치를 켜야 보이고, 켜도 진행률·놓치면 끝 숫자에는 넣지 않는다
 const counted = e => !has(e, 'common');
 const shown = e => S.showCommon || counted(e);
+// 진행률(전체 진행·지역·캐릭터 x/y)은 챙길 대상만: 놓치면 끝이 아닌 요령(tip) 카드는 분자·분모에서 뺀다(카드는 그대로 보이고 체크도 된다)
+const progress = e => counted(e) && (e.kind !== 'tip' || has(e, 'missable'));
 const posIdx = () => (S.pos && gateById[S.pos]) ? gateById[S.pos].idx : -1;
 const nextGate = () => gates[posIdx() + 1] || null;
 const passed = g => g.idx <= posIdx();
@@ -128,7 +136,7 @@ function entryHTML(e, opts = {}) {
   const g = d && gateById[d];
   const area = areaById[e.area];
   const done = isDone(e.id);
-  return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}${counted(e) ? '' : ' common'}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
+  return `<article class="entry${done ? ' done' : ''}${has(e, 'missable') ? ' miss' : ''}${counted(e) ? '' : ' common'}${progress(e) ? '' : ' noprog'}" id="e-${esc(e.id)}" data-id="${esc(e.id)}">
     <button class="tick" data-act="check" aria-pressed="${done}" aria-label="${esc(e.name)} ${done ? '체크 해제' : '챙김으로 표시'}">${svg('check', 'ic tick-ic')}</button>
     <div class="body">
       <div class="head">
@@ -173,15 +181,15 @@ function drawRings(root = document) {
 // 이번 구간에 지나가는 지역(data.json gates[].areas)은 전부, 앞 구간 지역은 이 관문에서 사라지는 항목만(마지막 기회).
 // 다 챙긴 지역은 접고, 남은 지역은 펼쳐 둔다.
 function areaDetails(a, list, opts = {}) {
-  const cnt = list.filter(counted);
-  const dn = cnt.filter(e => isDone(e.id)).length;
+  const cnt = list.filter(counted), pr = list.filter(progress);
+  const dn = pr.filter(e => isDone(e.id)).length;
   const missLeft = cnt.filter(e => has(e, 'missable') && !isDone(e.id)).length;
   const until = a.until && gateById[a.until];
   const open = opts.home ? (list.some(e => !isDone(e.id)) || a.id === openArea) : a.id === openArea;
   return `<details class="area${opts.last ? ' last' : ''}"${open ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
     <summary>
       <span class="a-name">${nameJp(a.name, a.jp)}</span>
-      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count">${dn}/${cnt.length}</span></span>
+      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count"${pr.length ? '' : ' hidden'}>${dn}/${pr.length}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="a-body">${sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('')}</div>
@@ -205,6 +213,8 @@ function storyAreas(g, expiring, skip) {
   }).join('');
 }
 let lateOpen = false;
+// 0개면 숫자와 「개」를 뺀다(첫 렌더·체크 뒤 갱신 같은 규칙)
+const lateTitle = n => `지난 관문에서 못 챙긴 것${n ? ` <span class="late-n">${n}</span>개` : ''}`;
 const orbLine = (all, left) => !all ? '이 관문에 걸린 영구손실 항목은 없습니다' : left ? `놓치면 끝 ${left}개 남음` : '이 관문 전에 챙길 것은 다 챙겼습니다';
 function viewHome() {
   const g = nextGate();
@@ -215,8 +225,8 @@ function viewHome() {
   const era = g ? g.era : 'post';
   const late = overdue();
   const lateN = late.filter(counted).length;
-  const all = D.entries.filter(counted);
-  const total = all.length, done = all.filter(e => isDone(e.id)).length;
+  const all = D.entries.filter(counted), prog = D.entries.filter(progress);
+  const total = prog.length, done = prog.filter(e => isDone(e.id)).length;
   const here = S.pos && gateById[S.pos] ? gateById[S.pos].title : null;
   const list = sortEntries(seg.filter(shown));
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
@@ -243,7 +253,7 @@ function viewHome() {
     </nav>
     ${late.length ? `<section class="panel late">
       <details class="late-box"${lateOpen ? ' open' : ''}>
-        <summary class="panel-h"><h2>지난 관문에서 못 챙긴 것${lateN ? ` <span class="late-n">${lateN}</span>개` : ''}</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p><span class="late-more">${svg('chevron', 'ic chev')}<span>목록 펼치기</span></span></summary>
+        <summary class="panel-h"><h2>${lateTitle(lateN)}</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p><span class="late-more">${svg('chevron', 'ic chev')}<span>목록 펼치기</span></span></summary>
         ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
       </details>
     </section>` : ''}
@@ -304,14 +314,14 @@ function areaCards(a) {
   const all = D.entries.filter(e => placeOf(e) === a.id && shown(e));
   if (!all.length) return '';
   const list = filterList(all);
-  const cnt = all.filter(counted);
-  const dn = cnt.filter(e => isDone(e.id)).length;
+  const cnt = all.filter(counted), pr = all.filter(progress);
+  const dn = pr.filter(e => isDone(e.id)).length;
   const missLeft = cnt.filter(e => has(e, 'missable') && !isDone(e.id)).length;
   const until = a.until && gateById[a.until];
   return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
     <summary>
       <span class="a-name">${nameJp(a.name, a.jp)}</span>
-      <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count">${dn}/${cnt.length}</span></span>
+      <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count"${pr.length ? '' : ' hidden'}>${dn}/${pr.length}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="a-body">${list.length ? sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('') : '<p class="empty">조건에 맞는 항목이 없습니다.</p>'}</div>
@@ -319,12 +329,22 @@ function areaCards(a) {
 }
 // 장 열림 상태: 지금 장만 펼치고, 직접 여닫은 장은 위치가 바뀔 때까지 기억한다
 let chapOpen = {}, chapPos;
+// 지난 장 안에 남은, 기한 관문이 아직 안 지난 놓치면 끝 카드 수(접힌 장 머리에 배지로)
+const chapAreas = c => new Set(c.steps.filter(s => s.cards).map(s => s.area));
+function chapLeft(c) {
+  const ids = chapAreas(c);
+  return D.entries.filter(e => {
+    const g = gateById[deadlineOf(e)];
+    return g && !passed(g) && ids.has(placeOf(e)) && counted(e) && has(e, 'missable') && !isDone(e.id);
+  }).length;
+}
+const chapLeftHTML = n => `<span class="c-left"${n ? '' : ' hidden'}>아직 챙길 놓치면 끝 ${n}</span>`;
 function chapterHTML(c, i, cur, ci) {
   const g = c.gate && gateById[c.gate];
   const isCur = c === cur;
   return `<details class="chap${isCur ? ' cur' : ''}${i < ci ? ' passed' : ''}" data-chap="${esc(c.id)}"${(chapOpen[c.id] ?? isCur) ? ' open' : ''}>
     <summary>
-      <span class="c-k">${i + 1}장${isCur ? '<span class="c-here">지금 여기</span>' : ''}</span>
+      <span class="c-k">${i + 1}장${isCur ? '<span class="c-here">지금 여기</span>' : ''}${i < ci ? chapLeftHTML(chapLeft(c)) : ''}</span>
       <span class="c-title">${esc(c.title)}</span>
       ${g ? `<span class="c-gate${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}<span>${passed(g) ? '지난 관문' : '장 끝 관문'}: ${esc(g.title)}</span></span>` : ''}
       ${svg('chevron', 'ic chev')}
@@ -395,17 +415,17 @@ function viewChars() {
   const c = S.char;
   const list = D.entries.filter(e => e.char === c && shown(e));
   const byKind = CHAR_KIND_ORDER.map(k => [k, list.filter(e => e.kind === k)]).filter(([, l]) => l.length);
-  const cnt = list.filter(counted);
+  const cnt = list.filter(progress);
   const dn = cnt.filter(e => isDone(e.id)).length;
   return `<section class="chars">
     <nav class="avatars" aria-label="캐릭터">
       ${CHARS.map(([ko, jp]) => {
-        const n = D.entries.filter(e => e.char === ko && counted(e)).length;
+        const n = D.entries.filter(e => e.char === ko && progress(e)).length;
         return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">(${esc(jp)}) 항목 ${n}개</span></button>`;
       }).join('')}
     </nav>
     <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${cnt.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
-    ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span>${l.filter(e => counted(e) && isDone(e.id)).length}/${l.filter(counted).length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
+    ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span${l.some(progress) ? '' : ' hidden'}>${l.filter(e => progress(e) && isDone(e.id)).length}/${l.filter(progress).length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
   </section>`;
 }
 
@@ -558,23 +578,27 @@ function softRerender() {
     const bar = $('.ring-bar'); if (bar) { const c = 2 * Math.PI * 46; bar.style.strokeDashoffset = c * (1 - (miss.length ? (miss.length - left.length) / miss.length : 1)); }
     const s = $('.orb-s'); if (s && g) s.textContent = orbLine(miss.length, left.length);
     const st = $('.stat-card'); if (st) { const tmp = document.createElement('div'); tmp.innerHTML = viewHome(); st.replaceWith(tmp.querySelector('.stat-card')); }
-    const ln = $('.late-n'); if (ln) ln.textContent = document.querySelectorAll('.panel.late .entry:not(.done):not(.common)').length;
+    const lh = $('.panel.late summary h2'); if (lh) lh.innerHTML = lateTitle(document.querySelectorAll('.panel.late .entry:not(.done):not(.common)').length);
     document.querySelectorAll('details.area[data-home]').forEach(d => {
-      const es = d.querySelectorAll('.entry:not(.common)'), c = d.querySelector('.a-count');
-      if (c) c.textContent = `${d.querySelectorAll('.entry.done:not(.common)').length}/${es.length}`;
+      const es = d.querySelectorAll('.entry:not(.noprog)'), c = d.querySelector('.a-count');
+      if (c) c.textContent = `${d.querySelectorAll('.entry.done:not(.noprog)').length}/${es.length}`;
       const m = d.querySelector('.a-miss'), ml = d.querySelectorAll('.entry.miss:not(.done):not(.common)').length;
       if (m) { m.textContent = `놓치면 끝 ${ml}`; m.hidden = !ml; }
     });
   } else if (S.view === 'route') {
     document.querySelectorAll('details.area').forEach(d => {
-      const all = D.entries.filter(e => placeOf(e) === d.dataset.area && counted(e));
-      const c = d.querySelector('.a-count'); if (c) c.textContent = `${all.filter(e => isDone(e.id)).length}/${all.length}`;
+      const all = D.entries.filter(e => placeOf(e) === d.dataset.area && counted(e)), pr = all.filter(progress);
+      const c = d.querySelector('.a-count'); if (c) c.textContent = `${pr.filter(e => isDone(e.id)).length}/${pr.length}`;
       const m = d.querySelector('.a-miss'), ml = all.filter(e => has(e, 'missable') && !isDone(e.id)).length;
       if (m) { m.textContent = `놓치면 끝 ${ml}`; m.hidden = !ml; }
     });
+    document.querySelectorAll('details.chap .c-left').forEach(el => {
+      const c = D.guide.chapters.find(x => x.id === el.closest('details.chap').dataset.chap);
+      if (c) el.outerHTML = chapLeftHTML(chapLeft(c));
+    });
   } else if (S.view === 'chars') {
     document.querySelectorAll('.group').forEach(gr => {
-      const ids = [...gr.querySelectorAll('.entry:not(.common)')].map(x => x.dataset.id);
+      const ids = [...gr.querySelectorAll('.entry:not(.noprog)')].map(x => x.dataset.id);
       const sp = gr.querySelector('.group-h span'); if (sp) sp.textContent = `${ids.filter(isDone).length}/${ids.length}`;
     });
   }
@@ -602,7 +626,7 @@ document.addEventListener('click', async ev => {
     }
     case 'shot': if (t.closest('.shots[data-dragged]')) break; openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
-    case 'set-pos': S.pos = t.dataset.gate || null; eraToCur(); save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
+    case 'set-pos': S.pos = t.dataset.gate || null; eraToCur(); save(); closeSheet(); render(); if (S.view === 'route') scrollToCur(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
       const g = nextGate(); if (!g) break;
       const left = segmentEntries(g).filter(e => has(e, 'missable') && counted(e) && !isDone(e.id));
@@ -680,7 +704,9 @@ document.addEventListener('toggle', ev => {
 // 다른 탭(창)에서 저장하면 이 탭도 같은 체크·위치로 맞춘다
 addEventListener('storage', ev => {
   if (ev.key !== null && ev.key !== STORE_KEY) return;
-  const L = loadState(), oldPos = S.pos, oldEra = S.era;
+  // 키가 지워졌거나 읽지 못하는 값이면 따르지 않는다(다음 저장 때 이 탭 기록을 통째로 쓴다)
+  const L = readStore(), oldPos = S.pos, oldEra = S.era;
+  if (!L) return;
   S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
   base = snap(S);
   applyTheme();
@@ -696,7 +722,10 @@ addEventListener('storage', ev => {
       placeThumbs(sec);
     }
     $('.route-body', sec).innerHTML = routeBody();
-  } else render({ keepScroll: true });
+  } else {
+    render({ keepScroll: true });
+    if (S.pos !== oldPos && S.view === 'route') scrollToCur();
+  }
 });
 // 공략 탭은 지금 장의 시대로 열고, 그 장이 시대의 첫 장이 아니면 그 장까지 내려간다
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
@@ -791,7 +820,9 @@ async function shotStat() {
   const el = $('.shot-stat'); if (!el) return;
   const list = allShots();
   if (!('caches' in window) || !navigator.serviceWorker?.controller) { el.textContent = `사진 ${list.length}장. 이 브라우저에서는 오프라인 저장을 쓸 수 없습니다.`; return; }
-  let n = 0; for (const f of list) if (await caches.match(f)) n++;
+  // 사진 캐시만 센다(화면에 지나간 사진도 sw.js가 사진 캐시에 넣는다. VERSION 캐시는 다음 갱신 때 지워진다)
+  const c = await caches.open(SHOT_CACHE);
+  let n = 0; for (const f of list) if (await c.match(f)) n++;
   const est = await navigator.storage?.estimate?.().catch(() => null);
   if (el.isConnected) el.textContent = `사진 ${list.length}장 중 ${n}장 저장됨${est ? ` · 이 사이트가 쓰는 저장 공간 약 ${(est.usage / 1048576).toFixed(1)}MB` : ''}`;
 }
@@ -804,7 +835,7 @@ async function saveShots(btn) {
   const work = async () => {
     while (i < list.length) {
       const f = list[i++];
-      // 이미 본 사진은 VERSION 캐시에 있어 다음 갱신 때 지워지므로 사진 캐시로 옮겨 둔다
+      // 옛 워커가 VERSION 캐시에 넣어 둔 사진은 다음 갱신 때 지워지므로 사진 캐시로 옮겨 둔다
       try { if (!(await c.match(f))) { const r = (await caches.match(f)) || await fetch(f); if (!r.ok) throw new Error(r.status); await c.put(f, r); } ok++; } catch { fail++; }
       if (el?.isConnected) el.textContent = `받는 중 ${ok + fail}/${list.length}`;
     }
@@ -821,6 +852,7 @@ loadData().then(() => {
   document.documentElement.classList.add('ready');
   eraToCur();
   render({ noScroll: true });
+  if (S.view === 'route') scrollToCur();
   navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
   $('#view').innerHTML = '<p class="empty">공략 데이터를 불러오지 못했습니다. 인터넷 연결을 확인하고 새로고침해 주세요. 한 번 연 뒤에는 오프라인에서도 열립니다.</p>';
