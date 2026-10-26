@@ -259,7 +259,9 @@ function viewHome() {
   </section>`;
 }
 
-/* ---------- 뷰: 진행표 ---------- */
+/* ---------- 뷰: 공략 ---------- */
+// data.json guide: 장(chapters) 순서로 단계 한 줄씩. 단계의 cards가 true면 그 지역(area) 카드를 단계 아래에 끼운다
+// (지역마다 cards:true 단계가 정확히 하나라 모든 카드가 한 번씩 나온다). 꿀팁은 tips[].step으로 단계에 붙는다.
 let query = '';
 function matches(e, q) {
   const a = areaById[e.area];
@@ -268,18 +270,85 @@ function matches(e, q) {
 function filterList(list) {
   return list.filter(e => shown(e) && (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
 }
+const REF_NAME = { password: '정령의 동굴 암호', dragunov: '드라구노프 이벤트 순서', coliseum: '투기장 회차별 보상', race: '미래 레이스 코스 기록 상품', aifread: '아이프리드 보물 지도', moria: '모리아 갱도 하층', grade: '그레이드 숍' };
+// 지금 위치(S.pos = 마지막으로 지난 관문)가 속한 장 = 그 관문으로 끝나는 장의 다음 장
+function curChapter() {
+  const ch = D.guide?.chapters || [];
+  const i = S.pos ? ch.findIndex(c => c.gate === S.pos) : -1;
+  return ch[i + 1] || ch[i] || null;
+}
+// 공략 탭이면 시대 탭을 지금 장의 시대로 맞춘다(앱을 다시 열 때·위치가 바뀔 때)
+const eraToCur = () => { const c = S.view === 'route' && D?.guide && curChapter(); if (c) S.era = c.era; };
+// 지금 장이 그 시대의 첫 장이 아니면 그 장까지 내려간다
+const scrollToCur = () => { const el = $('#view details.chap.cur'); if (el && el.previousElementSibling) el.scrollIntoView({ block: 'start' }); };
+let tipsByStep = null;
+const stepTips = id => {
+  if (!tipsByStep) { tipsByStep = {}; (D.guide?.tips || []).forEach(t => (tipsByStep[t.step] ||= []).push(t)); }
+  return tipsByStep[id] || [];
+};
+const unconfirmed = x => x.conf === '미확인' ? '<span class="chip conf g-unc" title="두 검증 중 한쪽만 원본과 맞춰 본 내용입니다">미확인</span>' : '';
+const tipHTML = t => `<div class="g-tip" data-tip="${esc(t.id)}"><div class="g-marks"><span class="chip g-tipk">꿀팁</span>${t.glitch ? '<span class="chip g-glitch">버그 이용</span>' : ''}${unconfirmed(t)}</div><p>${esc(t.text)}</p></div>`;
+function stepHTML(s, opts = {}) {
+  const a = s.cards && areaById[s.area];
+  return `<li class="g-step" data-step="${esc(s.id)}">
+    ${opts.from ? `<p class="g-from">${esc(opts.from)}</p>` : ''}
+    <p class="g-text">${esc(s.text)}${unconfirmed(s)}</p>
+    ${s.boss ? `<p class="g-boss"><span class="g-k">보스</span><b>${esc(s.boss.name)}</b>${esc(s.boss.advice)}</p>` : ''}
+    ${s.ref ? `<button class="g-ref" data-act="ref" data-ref="${esc(s.ref)}">${svg('book', 'ic mini')}참고: ${esc(REF_NAME[s.ref] || s.ref)}</button>` : ''}
+    ${(opts.tips || stepTips(s.id)).map(tipHTML).join('')}
+    ${a && !opts.noCards ? areaCards(a) : ''}
+  </li>`;
+}
+// 지역 카드 묶음. 시점이 늦게 풀리는 카드(e.when)는 그 가상 지역 단계에 나온다
+function areaCards(a) {
+  const all = D.entries.filter(e => placeOf(e) === a.id && shown(e));
+  if (!all.length) return '';
+  const list = filterList(all);
+  const cnt = all.filter(counted);
+  const dn = cnt.filter(e => isDone(e.id)).length;
+  const missLeft = cnt.filter(e => has(e, 'missable') && !isDone(e.id)).length;
+  const until = a.until && gateById[a.until];
+  return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
+    <summary>
+      <span class="a-name">${nameJp(a.name, a.jp)}</span>
+      <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count">${dn}/${cnt.length}</span></span>
+      ${svg('chevron', 'ic chev')}
+    </summary>
+    <div class="a-body">${list.length ? sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('') : '<p class="empty">조건에 맞는 항목이 없습니다.</p>'}</div>
+  </details>`;
+}
+// 장 열림 상태: 지금 장만 펼치고, 직접 여닫은 장은 위치가 바뀔 때까지 기억한다
+let chapOpen = {}, chapPos;
+function chapterHTML(c, i, cur, ci) {
+  const g = c.gate && gateById[c.gate];
+  const isCur = c === cur;
+  return `<details class="chap${isCur ? ' cur' : ''}${i < ci ? ' passed' : ''}" data-chap="${esc(c.id)}"${(chapOpen[c.id] ?? isCur) ? ' open' : ''}>
+    <summary>
+      <span class="c-k">${i + 1}장${isCur ? '<span class="c-here">지금 여기</span>' : ''}</span>
+      <span class="c-title">${esc(c.title)}</span>
+      ${g ? `<span class="c-gate${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}<span>${passed(g) ? '지난 관문' : '장 끝 관문'}: ${esc(g.title)}</span></span>` : ''}
+      ${svg('chevron', 'ic chev')}
+    </summary>
+    <div class="c-body">
+      ${g ? `<p class="c-warn${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}<span><b>${esc(g.title)}</b> ${passed(g) ? '관문은 지났어요.' : '전에 챙기세요.'} ${rich(g.desc || '')}</span></p>` : ''}
+      <ol class="g-steps">${c.steps.map(s => stepHTML(s)).join('')}</ol>
+    </div>
+  </details>`;
+}
 function viewRoute() {
   const q = query.trim().toLowerCase();
   const era = S.era;
-  const eraGates = gates.filter(g => g.era === era);
+  // 관문 줄은 그 관문으로 끝나는 장의 시대에 둔다(엔딩 관문은 미래 장 endgame-c3이 끝냄)
+  const gateEra = g => D.guide?.chapters.find(c => c.gate === g.id)?.era || g.era;
+  const eraGates = gates.filter(g => gateEra(g) === era);
   const filters = `<div class="filters">
-      <label class="search">${svg('search')}<input type="search" placeholder="아이템, 기술, 지역 이름으로 찾기" value="${esc(query)}" data-act="q" enterkeyhint="search"></label>
+      <label class="search">${svg('search')}<input type="search" placeholder="단계, 아이템, 지역 이름으로 찾기" value="${esc(query)}" data-act="q" enterkeyhint="search"></label>
       <div class="toggles">
         <button class="pill${S.onlyMiss ? ' on' : ''}" data-act="t-miss" aria-pressed="${S.onlyMiss}">놓치면 끝만</button>
         <button class="pill${S.onlyLeft ? ' on' : ''}" data-act="t-left" aria-pressed="${S.onlyLeft}">남은 것만</button>
       </div>
     </div>`;
-  return `<section class="route">
+  return `<section class="route guide">
     <div class="route-top"${q ? ' hidden' : ''}>
     <div class="seg" role="tablist" aria-label="시대">
       <span class="seg-thumb" aria-hidden="true"></span>
@@ -294,27 +363,30 @@ function viewRoute() {
 }
 function routeBody() {
   const q = query.trim().toLowerCase();
-  if (q) {
-    const hits = filterList(D.entries.filter(e => matches(e, q)));
-    return `<p class="count">${hits.length}개 찾음</p>${sortEntries(hits).map(e => entryHTML(e, { showArea: true })).join('') || '<p class="empty">찾는 이름이 없습니다. 일본어 이름이나 지역 이름으로도 찾아 보세요.</p>'}`;
-  }
-  const areas = D.areas.filter(a => a.era === S.era).sort((a, b) => a.order - b.order);
-  return `${areas.map(a => {
-      const list = filterList(D.entries.filter(e => e.area === a.id));
-      const all = D.entries.filter(e => e.area === a.id && shown(e));
-      if (!all.length) return '';
-      const cnt = all.filter(counted);
-      const dn = cnt.filter(e => isDone(e.id)).length;
-      const until = a.until && gateById[a.until];
-      return `<details class="area"${(a.id === openArea) ? ' open' : ''} data-area="${esc(a.id)}">
-        <summary>
-          <span class="a-name">${nameJp(a.name, a.jp)}</span>
-          <span class="a-meta">${until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-count">${dn}/${cnt.length}</span></span>
-          ${svg('chevron', 'ic chev')}
-        </summary>
-        <div class="a-body">${list.length ? sortEntries(list).map(e => entryHTML(e)).join('') : '<p class="empty">조건에 맞는 항목이 없습니다.</p>'}</div>
-      </details>`;
-    }).join('')}`;
+  if (q) return guideSearch(q);
+  // 캐시에 남은 옛 data.json(guide 없음)이면 지역 목록으로 카드만 보여 준다
+  if (!D.guide) return D.areas.filter(a => a.era === S.era).sort((a, b) => a.order - b.order).map(areaCards).join('');
+  if (chapPos !== S.pos) { chapOpen = {}; chapPos = S.pos; }
+  const ch = D.guide.chapters, cur = curChapter(), ci = ch.indexOf(cur);
+  return ch.map((c, i) => c.era === S.era ? chapterHTML(c, i, cur, ci) : '').join('') || '<p class="empty">이 시대에는 공략 단계가 없습니다.</p>';
+}
+// 검색: 단계(보스·지역 이름 포함)·꿀팁·카드를 모두 찾는다. 꿀팁만 맞으면 그 단계에 맞은 꿀팁만 붙여 보여 준다
+function guideSearch(q) {
+  const hit = (...xs) => xs.join(' ').toLowerCase().includes(q);
+  const steps = []; let nTips = 0;
+  (D.guide?.chapters || []).forEach((c, i) => c.steps.forEach(s => {
+    const a = areaById[s.area];
+    const own = hit(s.text, s.boss?.name, s.boss?.advice, a?.name, a?.jp);
+    const tips = stepTips(s.id).filter(t => hit(t.text));
+    if (!own && !tips.length) return;
+    nTips += tips.length;
+    steps.push(stepHTML(s, { from: `${i + 1}장 · ${c.title}`, tips: own ? stepTips(s.id) : tips, noCards: true }));
+  }));
+  const cards = filterList(D.entries.filter(e => matches(e, q)));
+  if (!steps.length && !cards.length) return '<p class="empty">찾는 이름이 없습니다. 일본어 이름이나 지역 이름으로도 찾아 보세요.</p>';
+  return `<p class="count">단계 ${steps.length}개 · 꿀팁 ${nTips}개 · 카드 ${cards.length}개 찾음</p>
+    ${steps.length ? `<ol class="g-steps g-hits">${steps.join('')}</ol>` : ''}
+    ${cards.length ? `<h3 class="g-h">카드</h3>${sortEntries(cards).map(e => entryHTML(e, { showArea: true })).join('')}` : ''}`;
 }
 let openArea = null;
 
@@ -344,6 +416,7 @@ function viewRefs() {
   const I = R.intro || {};
   const intro = k => I[k] ? `<p class="ref-intro">${rich(I[k])}</p>` : '';
   const blocks = [];
+  if (I.guide) blocks.push(`<section class="ref" id="r-guide"><h2>공략 탭 보는 법</h2>${intro('guide')}</section>`);
   if (R.glossary) blocks.push(`<section class="ref"><h2>용어 풀이</h2><dl class="gloss">${R.glossary.map(([t, d]) => `<dt>${esc(t)}</dt><dd>${rich(d)}</dd>`).join('')}</dl></section>`);
   if (R.password) {
     const seq = R.password[pwMode] || [];
@@ -358,19 +431,19 @@ function viewRefs() {
     </section>`);
   }
   if (R.mystic) {
-    blocks.push(`<section class="ref"><h2>비오의 5종</h2>${intro('mystic')}
+    blocks.push(`<section class="ref" id="r-mystic"><h2>비오의 5종</h2>${intro('mystic')}
       <h3 class="ref-h3">발동 조건(5종 공통)</h3>
       <ul class="ref-list plain">${(R.mystic.common || []).map(t => `<li>${rich(t)}</li>`).join('')}</ul>
       <h3 class="ref-h3">캐릭터별 얻는 법과 커맨드</h3>
       ${(R.mystic.rows || []).map(m => `<div class="myst"><div class="myst-h"><strong>${esc(m.name)}</strong><span>${esc(m.char)}</span>${m.conf && m.conf !== '확정' ? `<span class="chip conf">${esc(m.conf)}</span>` : ''}</div><p>${rich(m.cond)}</p><p class="cmd"><span class="cmd-k">커맨드</span>${esc(m.cmd)}</p></div>`).join('')}
     </section>`);
   }
-  if (R.dragunov) blocks.push(`<section class="ref"><h2>드라구노프 이벤트 순서</h2>${intro('dragunov')}<ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
-  const table = (title, rows, a, b, ka = '', kb = '', notes = [], k = '') => rows && rows.length ? `<section class="ref"><h2>${title}</h2>${intro(k)}${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}${r.loc ? `<small class="td-loc">${svg('pin', 'ic mini')}${rich(r.loc)}</small>` : ''}</span></div>`).join('')}</div></section>` : '';
+  if (R.dragunov) blocks.push(`<section class="ref" id="r-dragunov"><h2>드라구노프 이벤트 순서</h2>${intro('dragunov')}<ol class="steps">${R.dragunov.map(t => `<li>${rich(t)}</li>`).join('')}</ol></section>`);
+  const table = (title, rows, a, b, ka = '', kb = '', notes = [], k = '') => rows && rows.length ? `<section class="ref"${k ? ` id="r-${k}"` : ''}><h2>${title}</h2>${intro(k)}${(notes || []).map(n => `<p class="ref-p">${rich(n)}</p>`).join('')}<div class="tbl">${rows.map(r => `<div class="tr"><span class="td-a">${rich(r[a])}${ka}</span><span class="td-b">${rich(r[b])}${kb}${jpTag(r.jp)}${r.loc ? `<small class="td-loc">${svg('pin', 'ic mini')}${rich(r.loc)}</small>` : ''}</span></div>`).join('')}</div></section>` : '';
   blocks.push(table('투기장 회차별 보상', R.coliseum, 'n', 'reward', '회', '', R.coliseumNotes, 'coliseum'));
   blocks.push(table('미래 레이스 코스 기록 상품', R.race, 'time', 'reward', '', '', R.raceNotes, 'race'));
   blocks.push(table('아이프리드 보물 지도', R.aifread, 'n', 'reward', '번', '', R.aifreadNotes, 'aifread'));
-  if (R.moria) blocks.push(`<section class="ref"><h2>모리아 갱도 하층</h2>${intro('moria')}<ul class="ref-list">${R.moria.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
+  if (R.moria) blocks.push(`<section class="ref" id="r-moria"><h2>모리아 갱도 하층</h2>${intro('moria')}<ul class="ref-list">${R.moria.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
   blocks.push(table('그레이드 숍', R.grade, 'cost', 'name', ' 그레이드', '', R.gradeNotes, 'grade'));
   if (R.unresolved) blocks.push(`<section class="ref muted"><h2>끝까지 확정하지 못한 것</h2>${intro('unresolved')}<ul class="ref-list">${R.unresolved.map(t => `<li>${rich(t)}</li>`).join('')}</ul></section>`);
   return `<section class="refs">${blocks.join('')}</section>`;
@@ -494,8 +567,10 @@ function softRerender() {
     });
   } else if (S.view === 'route') {
     document.querySelectorAll('details.area').forEach(d => {
-      const all = D.entries.filter(e => e.area === d.dataset.area && counted(e));
+      const all = D.entries.filter(e => placeOf(e) === d.dataset.area && counted(e));
       const c = d.querySelector('.a-count'); if (c) c.textContent = `${all.filter(e => isDone(e.id)).length}/${all.length}`;
+      const m = d.querySelector('.a-miss'), ml = all.filter(e => has(e, 'missable') && !isDone(e.id)).length;
+      if (m) { m.textContent = `놓치면 끝 ${ml}`; m.hidden = !ml; }
     });
   } else if (S.view === 'chars') {
     document.querySelectorAll('.group').forEach(gr => {
@@ -527,7 +602,7 @@ document.addEventListener('click', async ev => {
     }
     case 'shot': if (t.closest('.shots[data-dragged]')) break; openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
-    case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
+    case 'set-pos': S.pos = t.dataset.gate || null; eraToCur(); save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
       const g = nextGate(); if (!g) break;
       const left = segmentEntries(g).filter(e => has(e, 'missable') && counted(e) && !isDone(e.id));
@@ -537,7 +612,8 @@ document.addEventListener('click', async ev => {
     }
     case 'pass-force': S.pos = t.dataset.gate; save(); closeSheet(); render(); break;
     case 'sheet-close': closeSheet(); break;
-    case 'era': S.era = t.dataset.era; query = ''; go('route'); break;
+    case 'era': S.era = t.dataset.era; query = ''; go('route'); if (S.era === curChapter()?.era) scrollToCur(); break;
+    case 'ref': query = ''; go('refs'); $(`#r-${CSS.escape(t.dataset.ref)}`)?.scrollIntoView({ block: 'start' }); break;
     case 'era-tab': {
       S.era = t.dataset.era; save();
       const seg = t.closest('.seg');
@@ -599,19 +675,37 @@ let qT;
 document.addEventListener('toggle', ev => {
   if (ev.target.matches?.('details.area') && ev.target.open) openArea = ev.target.dataset.area;
   if (ev.target.matches?.('details.late-box')) lateOpen = ev.target.open;
+  if (ev.target.matches?.('details.chap')) chapOpen[ev.target.dataset.chap] = ev.target.open;
 }, true);
 // 다른 탭(창)에서 저장하면 이 탭도 같은 체크·위치로 맞춘다
 addEventListener('storage', ev => {
   if (ev.key !== null && ev.key !== STORE_KEY) return;
-  const L = loadState();
+  const L = loadState(), oldPos = S.pos, oldEra = S.era;
   S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
   base = snap(S);
   applyTheme();
   if (!D) return;
-  if (S.view === 'route' && document.activeElement?.dataset.act === 'q') $('#view .route-body').innerHTML = routeBody();
-  else render({ keepScroll: true });
+  if (S.pos !== oldPos) eraToCur();
+  if (S.view === 'route' && document.activeElement?.dataset.act === 'q') {
+    // 검색 입력 중이면 입력창은 그대로 두고(한글 조합 보호), 시대가 바뀌었으면 시대 탭·관문 줄도 다시 그린다
+    const sec = $('#view .route');
+    if (S.era !== oldEra) {
+      const tmp = document.createElement('div'); tmp.innerHTML = viewRoute();
+      $('.route-top', sec).replaceWith($('.route-top', tmp));
+      document.documentElement.dataset.era = S.era;
+      placeThumbs(sec);
+    }
+    $('.route-body', sec).innerHTML = routeBody();
+  } else render({ keepScroll: true });
 });
-document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { query = ''; go(b.dataset.view); }));
+// 공략 탭은 지금 장의 시대로 열고, 그 장이 시대의 첫 장이 아니면 그 장까지 내려간다
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+  query = '';
+  const cur = b.dataset.view === 'route' && D?.guide && curChapter();
+  if (cur) S.era = cur.era;
+  go(b.dataset.view);
+  if (cur) scrollToCur();
+}));
 $('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
 addEventListener('resize', () => placeThumbs(document));
 
@@ -725,6 +819,7 @@ async function saveShots(btn) {
 applyTheme();
 loadData().then(() => {
   document.documentElement.classList.add('ready');
+  eraToCur();
   render({ noScroll: true });
   navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
