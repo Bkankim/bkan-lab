@@ -22,6 +22,20 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+// app.js를 못 받으면(약한 신호, 캐시에 없음) 아래 안내가 그대로 멈추므로 app.js 없이도 몇 초 뒤 안내를 띄운다.
+// 시각은 탐색 시작 기준(performance.now)이라 HTML이 늦게 와도(서비스 워커가 3초 기다린 뒤 캐시본) 6초에 뜬다.
+// 앱이 그리면 #view 내용이 바뀌어 이 안내도 사라진다(정상 로딩이면 뜨지 않음).
+// 스타일시트보다 앞에 두어 그것이 멈춰도 실행되고, 그때 아직 안 온 스타일시트는 화면 그리기를 막지 않게 뒤에서 받는다(도착하면 적용).
+setTimeout(function boot() {
+  if (document.documentElement.classList.contains('ready')) return;
+  const n = document.getElementById('boot-note');
+  // #view는 있는데 안내가 없으면 앱이 이미 #view를 바꾼 것(데이터 오류 문구 등)이라 그만둔다. 아직 못 읽은 경우만 다시 본다
+  if (!n) { if (!document.getElementById('view')) setTimeout(boot, 1000); return; }
+  document.querySelectorAll('link[rel="stylesheet"]').forEach(l => { if (l.sheet) return; const c = l.cloneNode(); c.media = 'print'; c.onload = () => { c.media = 'all'; }; l.replaceWith(c); });
+  n.hidden = false;
+}, Math.max(0, 6000 - performance.now()));
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="app.css?v=11">
 </head>
@@ -44,11 +58,6 @@
 </div>
 <dialog id="sheet" class="sheet"><div class="sheet-in"></div></dialog>
 <div id="toast" role="status"></div>
-<script>
-// app.js를 못 받으면(약한 신호, 캐시에 없음) 위 안내가 그대로 멈추므로 app.js 없이도 몇 초 뒤 안내를 띄운다.
-// 앱이 그리면 #view 내용이 바뀌어 이 안내도 사라진다(정상 로딩이면 뜨지 않음).
-setTimeout(() => { const n = document.getElementById('boot-note'); if (n && !document.documentElement.classList.contains('ready')) n.hidden = false; }, 6000);
-</script>
 <script src="app.js?v=11" defer></script>
 </body>
 </html>

@@ -424,7 +424,7 @@ function viewChars() {
         return `<button class="ava${ko === c ? ' cur' : ''}" data-act="char" data-char="${ko}" aria-pressed="${ko === c}"><span class="ava-c">${esc(ko[0])}</span><span class="ava-n">${esc(ko)}</span><span class="sr">(${esc(jp)}) 항목 ${n}개</span></button>`;
       }).join('')}
     </nav>
-    <header class="char-h"><h2>${esc(c)}</h2><p>${list.length ? `기술과 전용 요소 ${cnt.length}개 중 ${dn}개 챙김` : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
+    <header class="char-h"><h2>${esc(c)}</h2><p>${cnt.length ? `기술과 전용 요소 ${cnt.length}개 중 ${dn}개 챙김` : list.length ? '이 캐릭터에는 요령 카드만 있습니다.' : '이 캐릭터에 묶인 항목이 없습니다.'}</p></header>
     ${byKind.map(([k, l]) => `<section class="group"><h3 class="group-h">${KIND[k]}<span${l.some(progress) ? '' : ' hidden'}>${l.filter(e => progress(e) && isDone(e.id)).length}/${l.filter(progress).length}</span></h3>${l.map(e => entryHTML(e, { showArea: true })).join('')}</section>`).join('')}
   </section>`;
 }
@@ -546,7 +546,7 @@ function toast(msg) {
 /* ---------- 라우팅·그리기 ---------- */
 const VIEWS = { home: viewHome, route: viewRoute, chars: viewChars, refs: viewRefs, records: viewRecords };
 function render(opts = {}) {
-  const v = VIEWS[S.view] ? S.view : 'home';
+  const v = Object.hasOwn(VIEWS, S.view) ? S.view : 'home';
   const main = $('#view');
   const y = opts.keepScroll ? scrollY : 0;
   main.innerHTML = VIEWS[v]();
@@ -576,7 +576,7 @@ function softRerender() {
     const miss = segmentEntries(g).filter(e => has(e, 'missable') && counted(e));
     const left = miss.filter(e => !isDone(e.id));
     const bar = $('.ring-bar'); if (bar) { const c = 2 * Math.PI * 46; bar.style.strokeDashoffset = c * (1 - (miss.length ? (miss.length - left.length) / miss.length : 1)); }
-    const s = $('.orb-s'); if (s && g) s.textContent = orbLine(miss.length, left.length);
+    const s = $('.orb-s'); if (s) { const pr = D.entries.filter(progress); s.textContent = g ? orbLine(miss.length, left.length) : `전체 ${pr.filter(e => isDone(e.id)).length}/${pr.length}`; }
     const st = $('.stat-card'); if (st) { const tmp = document.createElement('div'); tmp.innerHTML = viewHome(); st.replaceWith(tmp.querySelector('.stat-card')); }
     const lh = $('.panel.late summary h2'); if (lh) lh.innerHTML = lateTitle(document.querySelectorAll('.panel.late .entry:not(.done):not(.common)').length);
     document.querySelectorAll('details.area[data-home]').forEach(d => {
@@ -601,6 +601,7 @@ function softRerender() {
       const ids = [...gr.querySelectorAll('.entry:not(.noprog)')].map(x => x.dataset.id);
       const sp = gr.querySelector('.group-h span'); if (sp) sp.textContent = `${ids.filter(isDone).length}/${ids.length}`;
     });
+    const h = $('.char-h'); if (h) { const tmp = document.createElement('div'); tmp.innerHTML = viewChars(); h.replaceWith(tmp.querySelector('.char-h')); }
   }
 }
 
@@ -847,12 +848,16 @@ async function saveShots(btn) {
 }
 
 /* ---------- 시작 ---------- */
+// 새로고침 때 브라우저가 옛 스크롤 위치를 되살리지 않게 한다(화면은 앱이 다시 그리고 공략 탭은 지금 장으로 내려간다)
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 applyTheme();
 loadData().then(() => {
   document.documentElement.classList.add('ready');
   eraToCur();
   render({ noScroll: true });
   if (S.view === 'route') scrollToCur();
+  // 글꼴이 늦게 와 장 높이가 바뀌면 한 번 더 지금 장으로(그사이 다른 탭으로 갔으면 그대로)
+  document.fonts?.ready.then(() => { if (S.view === 'route' && !query) scrollToCur(); });
   navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
   $('#view').innerHTML = '<p class="empty">공략 데이터를 불러오지 못했습니다. 인터넷 연결을 확인하고 새로고침해 주세요. 한 번 연 뒤에는 오프라인에서도 열립니다.</p>';
