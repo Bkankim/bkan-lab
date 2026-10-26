@@ -271,6 +271,7 @@ a { color: inherit; }
 .c-warn { display: flex; gap: .45rem; margin: 0 0 .3rem; padding: .7rem .85rem; border-radius: 18px; box-shadow: var(--press-s); font-size: .86rem; line-height: 1.55; color: var(--soft); }
 .c-warn .ic { flex: none; margin-top: .2rem; color: var(--miss); }
 .c-warn b { color: var(--miss); font-weight: 600; }
+.c-warn.past .ic, .c-warn.past b { color: var(--faint); }
 .g-steps { list-style: none; counter-reset: st; margin: 0; padding: 0; display: grid; }
 .g-step { position: relative; counter-increment: st; padding: .85rem .2rem .85rem 2.05rem; border-top: 1px solid var(--lo-2); min-width: 0; }
 .g-step:first-child { border-top: 0; }
