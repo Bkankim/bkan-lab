@@ -243,7 +243,7 @@ function viewHome() {
     </nav>
     ${late.length ? `<section class="panel late">
       <details class="late-box"${lateOpen ? ' open' : ''}>
-        <summary class="panel-h"><h2>지난 관문에서 못 챙긴 것 <span class="late-n">${lateN}</span>개</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p><span class="late-more">${svg('chevron', 'ic chev')}<span>목록 펼치기</span></span></summary>
+        <summary class="panel-h"><h2>지난 관문에서 못 챙긴 것${lateN ? ` <span class="late-n">${lateN}</span>개` : ''}</h2><p>체크하지 않은 영구손실 항목입니다. 이미 챙겼다면 체크해 두세요. 다음 회차에 다시 노릴 수 있습니다.</p><span class="late-more">${svg('chevron', 'ic chev')}<span>목록 펼치기</span></span></summary>
         ${sortEntries(late).map(e => entryHTML(e, { showArea: true })).join('')}
       </details>
     </section>` : ''}
@@ -436,7 +436,7 @@ function passSheet(g, left) {
 const posName = id => id && gateById[id] ? `${gateById[id].title} 지남` : '처음부터';
 function importSheet(b) {
   const n = Object.keys(b.checked).length;
-  const notes = [b.skipped ? `이 안내에 없는 카드 ${b.skipped}개는 뺐습니다.` : '', b.badPos ? '백업의 위치는 이 안내에 없는 관문이라 뺐습니다.' : ''].filter(Boolean).join(' ');
+  const notes = [b.unknown ? `그중 ${b.unknown}개는 지금 안내에 없는 카드라 기록으로만 남깁니다(안내가 갱신되면 다시 보입니다).` : '', b.badPos ? '백업의 위치는 이 안내에 없는 관문이라 뺐습니다.' : ''].filter(Boolean).join(' ');
   return `<h2 class="sheet-h">백업 불러오기</h2><p class="sheet-p">백업: 체크 ${n}개, 위치 ${esc(posName(b.pos))}<br>지금: 체크 ${Object.keys(S.checked).length}개, 위치 ${esc(posName(S.pos))}${notes ? `<br>${esc(notes)}` : ''}</p>
     <p class="sheet-p">「바꾸기」는 백업한 때로 되돌리고, 「합치기」는 지금 체크를 남긴 채 백업의 체크를 더합니다(위치는 더 멀리 간 쪽).</p>
     <div class="row2"><button class="pill big" data-act="import-replace">이 백업으로 바꾸기</button><button class="pill big ghost" data-act="import-merge">지금 기록과 합치기</button></div>
@@ -586,6 +586,7 @@ function searchLater(inp) {
     const sec = $('#view .route'); if (!sec) return;
     $('.route-top', sec).hidden = !!query.trim();
     $('.route-body', sec).innerHTML = routeBody();
+    placeThumbs(sec);
   }, 160);
 }
 document.addEventListener('input', ev => {
@@ -673,21 +674,25 @@ async function importBackup(file) {
   const plain = o => !!o && typeof o === 'object' && !Array.isArray(o);
   const st = j.state;
   if (!plain(st) || !plain(st.checked) || (st.pos != null && typeof st.pos !== 'string')) { toast('백업 파일 형식이 맞지 않아 불러오지 않았습니다.'); return; }
-  const checked = {}; let skipped = 0;
+  // 지금 data.json에 없는 카드 id도 버리지 않는다(옛 data.json이 캐시에서 왔을 수 있고, 데이터가 갱신되면 다시 쓰인다)
+  const checked = {}; let unknown = 0;
   for (const [k, v] of Object.entries(st.checked)) {
-    if (entryById[k] && v) checked[k] = typeof v === 'number' ? v : Date.now(); else skipped++;
+    if (!v) continue;
+    checked[k] = typeof v === 'number' ? v : Date.now();
+    if (!entryById[k]) unknown++;
   }
   const pos = st.pos && gateById[st.pos] ? st.pos : null;
   const badPos = !!st.pos && !pos;
-  if (!Object.keys(checked).length && !pos && (skipped || badPos)) { toast('이 안내의 카드·관문과 맞는 기록이 없어 불러오지 않았습니다.'); return; }
-  pendingImport = { checked, pos, skipped, badPos };
+  if (!Object.keys(checked).length && !pos && badPos) { toast('이 안내의 관문과 맞는 기록이 없어 불러오지 않았습니다.'); return; }
+  pendingImport = { checked, pos, unknown, badPos };
   openSheet(importSheet(pendingImport), 'list');
 }
 let pendingImport = null;
 
 /* ---------- 사진 오프라인 저장 ---------- */
 const allShots = () => [...new Set(D.entries.flatMap(e => (e.shots || []).map(p => p.f)))];
-const shotCache = async () => (await caches.keys()).filter(k => k.startsWith('topx-')).pop();
+// 사진은 VERSION 캐시가 아닌 따로 둔 캐시에 저장한다(앱을 갱신해도 지워지지 않게, sw.js SHOTS와 같은 이름)
+const SHOT_CACHE = 'topx-shots';
 async function shotStat() {
   const el = $('.shot-stat'); if (!el) return;
   const list = allShots();
@@ -697,16 +702,16 @@ async function shotStat() {
   if (el.isConnected) el.textContent = `사진 ${list.length}장 중 ${n}장 저장됨${est ? ` · 이 사이트가 쓰는 저장 공간 약 ${(est.usage / 1048576).toFixed(1)}MB` : ''}`;
 }
 async function saveShots(btn) {
-  const name = 'caches' in window && navigator.serviceWorker?.controller && await shotCache();
-  if (!name) { toast('이 브라우저에서는 사진을 오프라인으로 저장할 수 없습니다.'); return; }
-  const c = await caches.open(name), list = allShots();
+  if (!('caches' in window) || !navigator.serviceWorker?.controller) { toast('이 브라우저에서는 사진을 오프라인으로 저장할 수 없습니다.'); return; }
+  const c = await caches.open(SHOT_CACHE), list = allShots();
   let i = 0, ok = 0, fail = 0;
   btn.disabled = true;
   const el = $('.shot-stat');
   const work = async () => {
     while (i < list.length) {
       const f = list[i++];
-      try { if (!(await caches.match(f))) { const r = await fetch(f); if (!r.ok) throw new Error(r.status); await c.put(f, r); } ok++; } catch { fail++; }
+      // 이미 본 사진은 VERSION 캐시에 있어 다음 갱신 때 지워지므로 사진 캐시로 옮겨 둔다
+      try { if (!(await c.match(f))) { const r = (await caches.match(f)) || await fetch(f); if (!r.ok) throw new Error(r.status); await c.put(f, r); } ok++; } catch { fail++; }
       if (el?.isConnected) el.textContent = `받는 중 ${ok + fail}/${list.length}`;
     }
   };
