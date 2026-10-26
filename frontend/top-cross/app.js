@@ -270,13 +270,17 @@ function matches(e, q) {
 function filterList(list) {
   return list.filter(e => shown(e) && (!S.onlyLeft || !isDone(e.id)) && (!S.onlyMiss || has(e, 'missable')));
 }
-const REF_NAME = { password: '정령의 동굴 암호', mystic: '비오의 5종', dragunov: '드라구노프 이벤트 순서', coliseum: '투기장 회차별 보상', race: '미래 레이스 코스 기록 상품', aifread: '아이프리드 보물 지도', moria: '모리아 갱도 하층', grade: '그레이드 숍' };
+const REF_NAME = { password: '정령의 동굴 암호', dragunov: '드라구노프 이벤트 순서', coliseum: '투기장 회차별 보상', race: '미래 레이스 코스 기록 상품', aifread: '아이프리드 보물 지도', moria: '모리아 갱도 하층', grade: '그레이드 숍' };
 // 지금 위치(S.pos = 마지막으로 지난 관문)가 속한 장 = 그 관문으로 끝나는 장의 다음 장
 function curChapter() {
   const ch = D.guide?.chapters || [];
   const i = S.pos ? ch.findIndex(c => c.gate === S.pos) : -1;
   return ch[i + 1] || ch[i] || null;
 }
+// 공략 탭이면 시대 탭을 지금 장의 시대로 맞춘다(앱을 다시 열 때·위치가 바뀔 때)
+const eraToCur = () => { const c = S.view === 'route' && D?.guide && curChapter(); if (c) S.era = c.era; };
+// 지금 장이 그 시대의 첫 장이 아니면 그 장까지 내려간다
+const scrollToCur = () => { const el = $('#view details.chap.cur'); if (el && el.previousElementSibling) el.scrollIntoView({ block: 'start' }); };
 let tipsByStep = null;
 const stepTips = id => {
   if (!tipsByStep) { tipsByStep = {}; (D.guide?.tips || []).forEach(t => (tipsByStep[t.step] ||= []).push(t)); }
@@ -326,7 +330,7 @@ function chapterHTML(c, i, cur, ci) {
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="c-body">
-      ${g ? `<p class="c-warn">${svg('flag', 'ic mini')}<span><b>${esc(g.title)}</b> 전에 챙기세요. ${rich(g.desc || '')}</span></p>` : ''}
+      ${g ? `<p class="c-warn${passed(g) ? ' past' : ''}">${svg('flag', 'ic mini')}<span><b>${esc(g.title)}</b> ${passed(g) ? '관문은 지났어요.' : '전에 챙기세요.'} ${rich(g.desc || '')}</span></p>` : ''}
       <ol class="g-steps">${c.steps.map(s => stepHTML(s)).join('')}</ol>
     </div>
   </details>`;
@@ -334,7 +338,9 @@ function chapterHTML(c, i, cur, ci) {
 function viewRoute() {
   const q = query.trim().toLowerCase();
   const era = S.era;
-  const eraGates = gates.filter(g => g.era === era);
+  // 관문 줄은 그 관문으로 끝나는 장의 시대에 둔다(엔딩 관문은 미래 장 endgame-c3이 끝냄)
+  const gateEra = g => D.guide?.chapters.find(c => c.gate === g.id)?.era || g.era;
+  const eraGates = gates.filter(g => gateEra(g) === era);
   const filters = `<div class="filters">
       <label class="search">${svg('search')}<input type="search" placeholder="단계, 아이템, 지역 이름으로 찾기" value="${esc(query)}" data-act="q" enterkeyhint="search"></label>
       <div class="toggles">
@@ -596,7 +602,7 @@ document.addEventListener('click', async ev => {
     }
     case 'shot': if (t.closest('.shots[data-dragged]')) break; openSheet(shotSheet(entryById[id], +t.dataset.i), 'photo'); break;
     case 'pick': openSheet(pickSheet(), 'list'); $('.pick-b.cur')?.scrollIntoView({ block: 'center' }); break;
-    case 'set-pos': S.pos = t.dataset.gate || null; save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
+    case 'set-pos': S.pos = t.dataset.gate || null; eraToCur(); save(); closeSheet(); render(); toast(S.pos ? `${gateById[S.pos].title}까지 지난 것으로 표시했습니다.` : '처음부터로 돌렸습니다.'); break;
     case 'pass': {
       const g = nextGate(); if (!g) break;
       const left = segmentEntries(g).filter(e => has(e, 'missable') && counted(e) && !isDone(e.id));
@@ -606,7 +612,7 @@ document.addEventListener('click', async ev => {
     }
     case 'pass-force': S.pos = t.dataset.gate; save(); closeSheet(); render(); break;
     case 'sheet-close': closeSheet(); break;
-    case 'era': S.era = t.dataset.era; query = ''; go('route'); break;
+    case 'era': S.era = t.dataset.era; query = ''; go('route'); if (S.era === curChapter()?.era) scrollToCur(); break;
     case 'ref': query = ''; go('refs'); $(`#r-${CSS.escape(t.dataset.ref)}`)?.scrollIntoView({ block: 'start' }); break;
     case 'era-tab': {
       S.era = t.dataset.era; save();
@@ -674,13 +680,23 @@ document.addEventListener('toggle', ev => {
 // 다른 탭(창)에서 저장하면 이 탭도 같은 체크·위치로 맞춘다
 addEventListener('storage', ev => {
   if (ev.key !== null && ev.key !== STORE_KEY) return;
-  const L = loadState();
+  const L = loadState(), oldPos = S.pos, oldEra = S.era;
   S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
   base = snap(S);
   applyTheme();
   if (!D) return;
-  if (S.view === 'route' && document.activeElement?.dataset.act === 'q') $('#view .route-body').innerHTML = routeBody();
-  else render({ keepScroll: true });
+  if (S.pos !== oldPos) eraToCur();
+  if (S.view === 'route' && document.activeElement?.dataset.act === 'q') {
+    // 검색 입력 중이면 입력창은 그대로 두고(한글 조합 보호), 시대가 바뀌었으면 시대 탭·관문 줄도 다시 그린다
+    const sec = $('#view .route');
+    if (S.era !== oldEra) {
+      const tmp = document.createElement('div'); tmp.innerHTML = viewRoute();
+      $('.route-top', sec).replaceWith($('.route-top', tmp));
+      document.documentElement.dataset.era = S.era;
+      placeThumbs(sec);
+    }
+    $('.route-body', sec).innerHTML = routeBody();
+  } else render({ keepScroll: true });
 });
 // 공략 탭은 지금 장의 시대로 열고, 그 장이 시대의 첫 장이 아니면 그 장까지 내려간다
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
@@ -688,8 +704,7 @@ document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () =>
   const cur = b.dataset.view === 'route' && D?.guide && curChapter();
   if (cur) S.era = cur.era;
   go(b.dataset.view);
-  const el = cur && $('#view details.chap.cur');
-  if (el && el.previousElementSibling) el.scrollIntoView({ block: 'start' });
+  if (cur) scrollToCur();
 }));
 $('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
 addEventListener('resize', () => placeThumbs(document));
@@ -804,6 +819,7 @@ async function saveShots(btn) {
 applyTheme();
 loadData().then(() => {
   document.documentElement.classList.add('ready');
+  eraToCur();
   render({ noScroll: true });
   navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
