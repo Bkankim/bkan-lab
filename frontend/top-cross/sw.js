@@ -1,8 +1,8 @@
 // 테오판 X 놓침 방지 안내: 한 번 열면 오프라인에서도 열리도록 캐시한다.
 // 앱 파일을 바꾸면 VERSION을 올린다.
-const VERSION = 'topx-v10';
+const VERSION = 'topx-v11';
 // index.html은 라이브에서 './'로 308 리다이렉트되므로 넣지 않는다(리다이렉트된 응답은 페이지 탐색에 쓰면 네트워크 오류)
-const CORE = ['./', './app.css?v=10', './app.js?v=10', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CORE = ['./', './app.css?v=11', './app.js?v=11', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 // 응답이 이만큼 늦으면 캐시본을 먼저 보여 주고, 새 응답은 뒤에서 받아 다음에 쓴다
 const WAIT_MS = 3000;
 
@@ -22,7 +22,7 @@ const good = (r, type) => r.ok && (r.headers.get('content-type') || '').includes
 function fresh(e, key, type) {
   const cached = caches.match(key);
   const net = fetch(e.request).then(r => {
-    if (good(r, type) && !r.redirected) { const copy = r.clone(); caches.open(VERSION).then(c => c.put(key, copy)); }
+    if (good(r, type) && !r.redirected) { const copy = r.clone(); (type === 'text/html' ? putPage(key, copy, e.request.url) : caches.open(VERSION).then(c => c.put(key, copy))).catch(() => {}); }
     return r;
   });
   return new Promise(resolve => {
@@ -33,6 +33,14 @@ function fresh(e, key, type) {
       .then(r => { clearTimeout(timer); give(r); });
   });
 }
+// 페이지 HTML은 그 HTML이 가리키는 app.js·app.css?v=가 캐시에 다 있을 때만 저장한다(시간 안 응답·늦은 응답 모두 이 길).
+// 없으면 이전 HTML을 그대로 둔다: 새 HTML만 남고 그 앱 코드가 없으면 오프라인에서 로딩 안내에 멈춘다. 새 HTML과 자산은 새 워커 install(CORE)이 함께 넣는다.
+async function putPage(key, r, url) {
+  const refs = (await r.clone().text()).match(/app\.(?:js|css)\?v=\d+/g) || [];
+  if (!refs.length) return;
+  for (const x of refs) if (!(await caches.match(new URL(x, url).href))) return;
+  await (await caches.open(VERSION)).put(key, r);
+}
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -42,9 +50,10 @@ self.addEventListener('fetch', e => {
   // 페이지와 공략 데이터
   if (req.mode === 'navigate' && /\/(index\.html)?$/.test(url.pathname)) { e.respondWith(fresh(e, './', 'text/html')); return; }
   if (url.pathname.endsWith('/data.json')) { e.respondWith(fresh(e, './data.json', 'json')); return; }
-  // 나머지(앱 파일, 글꼴, 사진)는 캐시 먼저, 뒤에서 갱신
+  // 나머지(앱 파일, 글꼴, 사진)는 캐시 먼저, 뒤에서 갱신. 사진은 사진 캐시에만 둔다(VERSION 캐시에 사본을 만들지 않게)
+  const store = url.pathname.includes('/shots/') ? SHOTS : VERSION;
   e.respondWith(caches.match(req).then(hit => {
-    const net = fetch(req).then(r => { if (r.ok || r.type === 'opaque') { const copy = r.clone(); caches.open(VERSION).then(c => c.put(req, copy)); } return r; }).catch(() => hit);
+    const net = fetch(req).then(r => { if (r.ok || r.type === 'opaque') { const copy = r.clone(); caches.open(store).then(c => c.put(req, copy)); } return r; }).catch(() => hit);
     return hit || net;
   }));
 });

@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="app.css?v=10">
+<link rel="stylesheet" href="app.css?v=11">
 </head>
 <body>
 <div class="stage">
@@ -32,7 +32,7 @@
       <div class="brand"><b>Phantasia X</b><span>놓침 방지 안내</span></div>
       <button class="round" data-act="pick" aria-label="지금 위치 바꾸기"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></button>
     </header>
-    <main id="view" aria-live="polite"><p class="empty">공략을 불러오는 중입니다.</p></main>
+    <main id="view" aria-live="polite"><p class="empty">공략을 불러오는 중입니다.</p><p class="empty" id="boot-note" hidden>불러오는 데 오래 걸립니다. 앱 파일을 받지 못했을 수 있으니 인터넷 연결을 확인하고 새로고침해 주세요. <button class="pill" type="button" onclick="location.reload()">새로고침</button></p></main>
     <nav class="tabbar" aria-label="화면">
       <button class="tab" data-view="home"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg><span>지금</span></button>
       <button class="tab" data-view="route"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5.5" r="2"/><circle cx="18" cy="18.5" r="2"/><path d="M8 5.5h6.5a3.5 3.5 0 0 1 0 7h-5a3.5 3.5 0 0 0 0 7H16"/></svg><span>공략</span></button>
@@ -44,6 +44,11 @@
 </div>
 <dialog id="sheet" class="sheet"><div class="sheet-in"></div></dialog>
 <div id="toast" role="status"></div>
-<script src="app.js?v=10" defer></script>
+<script>
+// app.js를 못 받으면(약한 신호, 캐시에 없음) 위 안내가 그대로 멈추므로 app.js 없이도 몇 초 뒤 안내를 띄운다.
+// 앱이 그리면 #view 내용이 바뀌어 이 안내도 사라진다(정상 로딩이면 뜨지 않음).
+setTimeout(() => { const n = document.getElementById('boot-note'); if (n && !document.documentElement.classList.contains('ready')) n.hidden = false; }, 6000);
+</script>
+<script src="app.js?v=11" defer></script>
 </body>
 </html>
