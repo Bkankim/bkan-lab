@@ -44,7 +44,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #2a2c34; --bg-hi: #31333c; --ink: #ecebf2; --soft: #aeacbe; --faint: #858397;
+    --bg: #2a2c34; --bg-hi: #31333c; --ink: #ecebf2; --soft: #aeacbe; --faint: #aaa8b6;
     --hi: rgba(66, 69, 82, .7); --lo: rgba(10, 11, 16, .62); --lo-2: rgba(10, 11, 16, .35);
     --accent: #cdb5a6; --accent-ink: #2a2c34; --accent-t: #cdb5a6; --miss: #e3998f; --miss-bg: rgba(227, 153, 143, .12); --blue: #9fb7d8;
     --ring-a: #cdb5a6; --ring-b: #9fb7d8;
@@ -52,7 +52,7 @@
   }
 }
 :root[data-theme="dark"] {
-  --bg: #2a2c34; --bg-hi: #31333c; --ink: #ecebf2; --soft: #aeacbe; --faint: #858397;
+  --bg: #2a2c34; --bg-hi: #31333c; --ink: #ecebf2; --soft: #aeacbe; --faint: #aaa8b6;
   --hi: rgba(66, 69, 82, .7); --lo: rgba(10, 11, 16, .62); --lo-2: rgba(10, 11, 16, .35);
   --accent: #cdb5a6; --accent-ink: #2a2c34; --accent-t: #cdb5a6; --miss: #e3998f; --miss-bg: rgba(227, 153, 143, .12); --blue: #9fb7d8;
   --ring-a: #cdb5a6; --ring-b: #9fb7d8;
