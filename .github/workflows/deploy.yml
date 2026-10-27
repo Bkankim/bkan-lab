@@ -19,6 +19,19 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 2
+
+      # 앱 파일을 바꾸고 ?v=·VERSION을 안 올리거나 같은 이름 사진을 고치면 라이브 캐시 때문에 옛 파일이 계속 보인다
+      - name: Check top-cross cache busting
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          base=HEAD~1
+          if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            git fetch --no-tags --depth=1 origin "$BEFORE" && base="$BEFORE"
+          fi
+          python3 tools/topx_cache_check.py "$base" HEAD
 
       - name: Build dist (배포 제외 파일 필터)
         run: |
