@@ -1,7 +1,7 @@
 """놓치지 않는 판타지아(frontend/top-cross) 배포 전 캐시 검사.
 
 라이브는 앱 파일·사진을 오래 캐시하고 서비스 워커는 캐시를 먼저 쓰므로, 아래를 어기면 고친 파일이 사용자에게 안 간다.
-- app.js·app.css를 바꾸면 index.html과 sw.js의 ?v= 숫자를 올린다.
+- app.js·app.css를 바꾸면 index.html과 sw.js의 ?v= 숫자를 올리고, 두 파일의 숫자를 같게 둔다.
 - 서비스 워커가 미리 담는 파일(app.js·app.css·manifest·아이콘)을 바꾸면 sw.js VERSION을 올린다.
 - 이미 있는 사진(shots/*.webp)은 내용을 바꾸지 않는다. 고친 사진은 새 파일 이름으로 넣는다.
 
@@ -43,6 +43,11 @@ def main():
                 pat = re.escape(ref) + r'\?v=(\d+)'
                 if ver(base, path, pat) == ver(head, path, pat):
                     errors.append(f'{path}의 {ref}?v= 숫자를 올리세요(app.js·app.css가 바뀜)')
+    # 페이지가 부르는 ?v=와 서비스 워커가 미리 담는 ?v=가 다르면 새 HTML이 오프라인 캐시에 저장되지 않는다
+    for ref in ('app.js', 'app.css'):
+        pat = re.escape(ref) + r'\?v=(\d+)'
+        if ver(head, 'index.html', pat) != ver(head, 'sw.js', pat):
+            errors.append(f'index.html과 sw.js의 {ref}?v= 숫자를 같게 맞추세요')
     if set(PRECACHED) & changed.keys():
         pat = r"VERSION = '([^']+)'"
         if ver(base, 'sw.js', pat) == ver(head, 'sw.js', pat):

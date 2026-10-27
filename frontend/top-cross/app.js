@@ -586,7 +586,7 @@ function toast(msg) {
 /* ---------- 라우팅·그리기 ---------- */
 const VIEWS = { home: viewHome, route: viewRoute, chars: viewChars, refs: viewRefs, records: viewRecords };
 function render(opts = {}) {
-  const v = Object.hasOwn(VIEWS, S.view) ? S.view : 'home';
+  const v = Object.prototype.hasOwnProperty.call(VIEWS, S.view) ? S.view : 'home';
   const main = $('#view');
   const y = opts.keepScroll ? scrollY : 0;
   main.innerHTML = VIEWS[v]();
