@@ -1,0 +1,1729 @@
+{
+ "checked_at": "2026-10-27",
+ "counts": {
+  "surveyed": 45,
+  "female": 4,
+  "sat": 4,
+  "night": 1,
+  "unknown": 22,
+  "excluded": {
+   "남성 전문의만": 7,
+   "정신병원": 3,
+   "기타": 7,
+   "중독전문": 1,
+   "한의원": 1
+  },
+  "checked_label": "2026년 10월 27일",
+  "hospitals": 5,
+  "male_only": 7,
+  "other_types": 5,
+  "general": 7
+ },
+ "regions": [
+  "파주 북부",
+  "금촌·문산",
+  "운정",
+  "일산"
+ ],
+ "clinics": [
+  {
+   "id": "1417681280",
+   "name": "파주정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 목동동",
+   "tier": "candidate",
+   "reason": "원장과 부원장 두 명 모두 여성이고 블로그에 올라온 요일표를 보고 원하는 의사를 골라 진료받을 수 있습니다. 상담 시간이 긴 진료를 따로 운영하지만 인지행동치료 프로그램은 밝히지 않았습니다. 진료 당일 대기가 길다는 후기가 많습니다.",
+   "female": {
+    "kind": "원장",
+    "doctors": [
+     "안지윤 원장",
+     "정희연 부원장"
+    ],
+    "selectable": "가능(블로그 월별 요일표)",
+    "evidence": "원장은 공식 블로그의 1인칭 글, 부원장은 병원 제휴 앱 프로필과 후기로 확인"
+   },
+   "sat": true,
+   "sat_note": "원장·부원장 격주",
+   "night": false,
+   "night_note": null,
+   "hours": "월~금 10:00-17:30, 토 09:30-13:00(원장·부원장 격주). 안지윤 원장 월·화·목, 정희연 부원장 월·수·금",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": "상담을 길게 받는 진료를 따로 접수. 원장 약력에 외상 중심 인지행동치료 연수",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "친절하고 상담을 길게 해 준다(다수)",
+     "tone": "good"
+    },
+    {
+     "t": "진료 당일 30분~2시간 기다렸다(다수)",
+     "tone": "bad"
+    },
+    {
+     "t": "상담이 짧았다, 덜 들어줬다(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 153, 카카오 3.8점(13)",
+   "wait": "초진은 전화 예약만, 당일 초진 불가. 매주 화요일 오전에 초진 예약을 받는다는 안내(앱에는 월요일로 표기)",
+   "address": "경기 파주시 청암로17번길 33 현대매디칼프라자 506호 (목동동)",
+   "phone": "031-944-4442",
+   "map": "http://place.map.kakao.com/1417681280",
+   "naver": "https://m.place.naver.com/hospital/39709512/home",
+   "homepage": "https://blog.naver.com/pajunp",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/pajunp"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/39709512/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1417681280"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/pajunp/223479442079"
+    },
+    {
+     "label": "홈페이지",
+     "url": "https://www.goodoc.co.kr/hospitals/58301"
+    },
+    {
+     "label": "네이버 블로그 3",
+     "url": "https://blog.naver.com/pajunp/223283127252"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1308801800",
+   "name": "대숲정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 야당동",
+   "tier": "candidate",
+   "reason": "여성 원장 한 명이 처음부터 끝까지 직접 진료합니다. 수요일은 19시, 토요일은 14시까지 진료하며 잘 들어준다는 후기가 많고 공황·불안을 언급한 후기도 있습니다. 인지행동치료를 하는지는 확인하지 못했습니다.",
+   "female": {
+    "kind": "원장",
+    "doctors": [
+     "박지나 원장"
+    ],
+    "selectable": "원장 1명이라 초진도 원장 진료",
+    "evidence": "같은 원장을 여성으로 가리킨 후기 2건으로 확인"
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": "수 19:00까지",
+   "hours": "월·화·목·금 10:00-18:30, 수 14:00-19:00, 토 10:00-14:00",
+   "cbt": {
+    "form": null,
+    "note": "원장 블로그의 공황 글에서 생각 교정과 단계적 노출을 치료로 설명하지만, 진료로 제공한다는 안내는 없음",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "충분히 들어주고 친절하다(다수)",
+     "tone": "good"
+    },
+    {
+     "t": "공황·불안 진료 언급(일부)",
+     "tone": "good"
+    },
+    {
+     "t": "예약해도 진료 당일 대기가 있다(여러 건)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 132",
+   "wait": "몇 주씩 기다린다는 언급은 없음. 예약하고도 30분~1시간 기다렸다는 후기(2024-12~2026-10). 네이버 예약 가능",
+   "address": "경기 파주시 경의로 1066 301호 (야당동)",
+   "phone": "031-935-5695",
+   "map": "http://place.map.kakao.com/1308801800",
+   "naver": "https://m.place.naver.com/hospital/1310399920/home",
+   "homepage": "https://blog.naver.com/bamboo_psychiatry",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/bamboo_psychiatry"
+    },
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1310399920/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1308801800"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1310399920/review/visitor"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/bamboo_psychiatry/223358842539"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "804357774",
+   "name": "마음미소정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산동구 장항동",
+   "tier": "candidate",
+   "reason": "일산의 의원 가운데 여성 원장이 확인된 유일한 곳입니다. 잘 들어준다는 후기가 많지만 예약해도 오래 기다린다는 후기도 많고 10~11월에는 임시휴무가 잦습니다.",
+   "female": {
+    "kind": "원장",
+    "doctors": [
+     "신수진 원장"
+    ],
+    "selectable": "원장 1명이라 초진도 원장 진료",
+    "evidence": "네이버 플레이스 소개 문구(여자 원장님)와 후기로 확인"
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:30-18:30, 토 09:30-13:30, 목·일 휴진(10~11월 임시휴무 많음)",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": "원장이 대한정서인지행동의학회 평생회원. 별도 심리상담사 언급은 없음",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "잘 들어주고 공감한다(다수)",
+     "tone": "good"
+    },
+    {
+     "t": "예약해도 30분 이상 기다렸다(다수)",
+     "tone": "bad"
+    },
+    {
+     "t": "진료가 짧다(일부)",
+     "tone": "bad"
+    },
+    {
+     "t": "데스크·전화 응대가 불친절하다(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 197, 카카오 3.6점(11)",
+   "wait": "초진 예약이 오래 걸렸다는 후기(2023-12). 10~11월은 임시휴무가 많아 예약 가능한 날이 적음",
+   "address": "경기 고양시 일산동구 정발산로 38 2층 207호(장항동, 이스턴시티)",
+   "phone": "031-932-7711",
+   "map": "http://place.map.kakao.com/804357774",
+   "naver": "https://map.naver.com/p/entry/place/1195975540",
+   "homepage": "https://blog.naver.com/mindsmile7711",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/mindsmile7711"
+    },
+    {
+     "label": "네이버",
+     "url": "https://map.naver.com/p/entry/place/1195975540"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/804357774"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/mindsmile7711/221499668337"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "285865159",
+   "name": "내맘애 정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 야당동",
+   "tier": "candidate",
+   "reason": "여성 원장 한 명이 진료하며 초진 전에 온라인 심리검사를 한 뒤 결과를 설명해 준다는 후기가 있습니다. 인지행동치료는 밝히지 않았고 예약은 전화로만 받습니다. 원장이 여성이라는 근거가 다른 곳보다 약하므로 통화로 확인하는 편이 좋습니다.",
+   "female": {
+    "kind": "원장",
+    "doctors": [
+     "성경애 원장"
+    ],
+    "selectable": "원장 1명이라 초진도 원장 진료",
+    "evidence": "원장 블로그의 1인칭 서술과 후기 1건(공식 문구는 없음)"
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:30-18:00, 목·토 09:30-13:00",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": "원장 약력에 정신분석·지지정신치료·EMDR 수료",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "친절하고 상담을 잘한다(다수, 짧은 후기 위주)",
+     "tone": "good"
+    },
+    {
+     "t": "초진 전 검사 결과를 설명해 준다(2건)",
+     "tone": "good"
+    },
+    {
+     "t": "상담이 가볍다, 불친절했다(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 110, 카카오 3.3점(7)",
+   "wait": "예약부터 진료까지 약 1주(2024-10 후기), 예약이 힘들다는 후기(2023-02)",
+   "address": "경기 파주시 경의로 1090 5층 501호 (야당동)",
+   "phone": "031-947-3063",
+   "map": "http://place.map.kakao.com/285865159",
+   "naver": "https://m.place.naver.com/hospital/1764686106/home",
+   "homepage": "https://blog.naver.com/namamae",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/namamae"
+    },
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1764686106/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/285865159"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/namamae/222428036213"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1764686106/information"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "2043670322",
+   "name": "마음자리정신건강의학과의원",
+   "short": null,
+   "region": "금촌·문산",
+   "area": "파주 문산읍",
+   "tier": "check",
+   "reason": "문산에 있어서 파주 북쪽 지역에서 가장 가까운 정신건강의학과입니다. 원장의 성별은 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·수·금 09:30-18:30(점심 13:30-14:30) / 화 09:30-20:00(점심 13:30-14:30) / 목 09:30-14:00 / 토 09:30-14:00 / 일·공휴일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 102, 카카오 3.3점(4)",
+   "wait": "예약하고 가면 대부분 10~30분 안에 진료. 예약 없이 첫 방문했다가 1시간 넘게 기다렸다는 후기(2024-01)",
+   "address": "경기 파주시 문산읍 문향로 71 신성타워 4층 405호",
+   "phone": "031-952-8838",
+   "map": "http://place.map.kakao.com/2043670322",
+   "naver": "https://m.place.naver.com/hospital/1652954646/home",
+   "homepage": "https://maumjaripsy.qshop.ai",
+   "sources": [
+    {
+     "label": "홈페이지",
+     "url": "https://maumjaripsy.qshop.ai"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1652954646/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/2043670322"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1797544582",
+   "name": "컴포트정신건강의학과의원",
+   "short": null,
+   "region": "금촌·문산",
+   "area": "파주 금촌동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·금 09:00-18:30(휴게 13:00-14:00, 접수마감 18:00) / 화·수·목 09:00-20:00(휴게 13:00-14:00, 접수마감 19:30) / 토 09:00-14:00(접수마감 13:30) / 일 정기휴무. 임시공지: 10/27(화) 야간진료 없음",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 403, 카카오 3.7점(13)",
+   "wait": "공황으로 초진을 잡았더니 한 달 가까이 뒤였다는 후기(2025-07). 예약이 빨랐다는 후기(2025-02)도 있음",
+   "address": "경기 파주시 후곡로 1 경기빌딩 2층 (금촌동)",
+   "phone": "031-949-5905",
+   "map": "http://place.map.kakao.com/1797544582",
+   "naver": "https://m.place.naver.com/hospital/1076076344/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1076076344/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1797544582"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1076076344/information"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "11211266",
+   "name": "한마음정신건강의학과의원",
+   "short": null,
+   "region": "금촌·문산",
+   "area": "파주 금촌동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": false,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월~금 09:00-17:40(휴게 12:30-14:00, 카카오) / 토·일·공휴일 휴무. 모두닥은 월~금 09:00-17:30. 네이버는 진료시간 미등록",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 158, 카카오 5.0점(1)",
+   "wait": "예약 없이 이용, 대기 1시간 이상 태그 3건(2025-10~11), 30분 이상 3건, 30분 이내 4건 (2025-11)",
+   "address": "경기 파주시 문화로 103 춘전빌딩 3층 (금촌동)",
+   "phone": "031-945-7400",
+   "map": "http://place.map.kakao.com/11211266",
+   "naver": "https://m.place.naver.com/hospital/12069116/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/12069116/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/11211266"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "2012071617",
+   "name": "연세위드윤정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 동패동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·수·목 10:00-18:00(휴게 13:00-14:00, 접수마감 17:40) / 화·금 10:00-19:00(휴게 13:00-14:00, 접수마감 18:40) / 토 09:00-14:00(접수마감 13:40) / 일 정기휴무. 안내: 예약시간 이후 방문 시 예약 취소, 접수마감 이후 진료 종료",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 148, 카카오 2.8점(5)",
+   "wait": "초진 예약 2주 이상 대기(2026-06 후기), 2주 대기(2026-03 후기). 과거 초진 거의 한 달 대기(2023-09) (2026-06)",
+   "address": "경기 파주시 미래로 369-13 한울프라자 3층 (동패동)",
+   "phone": "031-942-5775",
+   "map": "http://place.map.kakao.com/2012071617",
+   "naver": "https://m.place.naver.com/hospital/1549750072/home",
+   "homepage": "http://www.withyoon.co.kr",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "http://www.withyoon.co.kr"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1549750072/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/2012071617"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "http://withyun.dgweb.kr/bbs/board.php?bo_table=yp_introduction02&wr_id=1"
+    },
+    {
+     "label": "홈페이지 3",
+     "url": "http://withyun.dgweb.kr/bbs/board.php?bo_table=yp_program06&wr_id=1"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1356216717",
+   "name": "온솔정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 동패동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·화·목·금 09:30-18:30(점심 13:00-14:00) / 수 14:00-19:00(2025-07부터) / 토 09:30-14:00(점심 없음) / 일·공휴일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 10, 카카오 5.0점(5)",
+   "wait": "당일 진료가 돼서 방문(2024-11 후기), 예약 환자가 많아 약간 대기(2026-02 후기). 예약 없이 오면 대기가 길 수 있음(병원 공지) (2026-02)",
+   "address": "경기 파주시 청석로 115 반석프라자 4층 407호 (동패동)",
+   "phone": "031-942-8480",
+   "map": "http://place.map.kakao.com/1356216717",
+   "naver": "https://m.place.naver.com/hospital/1207346499/home",
+   "homepage": "https://blog.naver.com/onsolclinic",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/onsolclinic"
+    },
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1207346499/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1356216717"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1207346499/review/visitor"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/onsolclinic/223493575380"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "210664973",
+   "name": "운정숲정신건강의학과의원",
+   "short": null,
+   "region": "운정",
+   "area": "파주 목동동",
+   "tier": "check",
+   "reason": "원장이 두 명이고 그중 김혜진 원장의 성별은 공개 정보로 확인되지 않았습니다(김윤중 원장은 남성). 진료실별로 의사를 골라 접수할 수 있습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월~금 09:30-18:30(휴게 13:00-14:00, 접수마감 18:00) / 토 09:00-13:00 격주(카카오·모두닥 시간, 블로그 10월 일정표상 10·24일 진료, 17·31일 휴진. 네이버는 10/31 휴무만 표시) / 일·법정공휴일·대체휴일 휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 97, 카카오 3.0점(3)",
+   "wait": "2025~2026년에는 예약 후 10분 안에 진료받았다는 후기가 대부분. 초진은 전화 예약",
+   "address": "경기 파주시 교하로 87 삼성프라자 402호 (목동동)",
+   "phone": "031-778-7905",
+   "map": "http://place.map.kakao.com/210664973",
+   "naver": "https://m.place.naver.com/hospital/1943731733/home",
+   "homepage": "https://blog.naver.com/seereal010",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/seereal010"
+    },
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1943731733/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/210664973"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/seereal010/222986505252"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1943731733/review/visitor"
+    },
+    {
+     "label": "네이버 블로그 3",
+     "url": "https://blog.naver.com/greendotori23"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "967588975",
+   "name": "컴포트정신건강의학과의원 운정점",
+   "short": null,
+   "region": "운정",
+   "area": "파주 와동동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": "불가",
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·금 09:00-18:30(휴게 13:00-14:00, 접수마감 12:30·18:00) / 화·수·목 09:00-20:00(휴게 13:00-14:00, 접수마감 12:30·19:30) / 토 09:00-14:00(접수마감 13:30) / 일 정기휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 60, 카카오 4.0점(1)",
+   "wait": "네이버 예약 초진 가능일: 10/28~11/21 전부 마감, 첫 빈 날 11/23(2026-10-27 확인, 약 4주 대기). 후기: 예약하고도 30~50분 대기(2026-03·04·08) (2026-10)",
+   "address": "경기 파주시 경의로1240번길 37-1 405·406호 (와동동)",
+   "phone": "031-943-5905",
+   "map": "http://place.map.kakao.com/967588975",
+   "naver": "https://m.place.naver.com/hospital/1888947625/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1888947625/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/967588975"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1888947625/information"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "393081648",
+   "name": "뇌맘속에정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:00-18:30(휴게 13:00-14:00, 18:00 접수마감) / 수 09:00-18:00(휴게 13:00-14:00, 17:30 접수마감) / 토 09:00-14:00(13:30 접수마감) / 일·공휴일 휴진",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 30, 카카오 4.3점(4)",
+   "wait": "예약 필수·대기 환자 많음(초진 대기 기간 언급은 없음) (2026-06)",
+   "address": "경기 고양시 일산서구 중앙로 1564 그린월드 4층 402호",
+   "phone": "031-919-7942",
+   "map": "http://place.map.kakao.com/393081648",
+   "naver": "https://m.place.naver.com/hospital/1299556747/home",
+   "homepage": "https://sites.google.com/view/inyourbrainandmind/",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "https://sites.google.com/view/inyourbrainandmind/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1299556747/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/393081648"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "https://sites.google.com/view/inyourbrainandmind/%EC%9D%98%EB%A3%8C%EC%A7%84%EC%95%88%EB%82%B4"
+    },
+    {
+     "label": "네이버 블로그",
+     "url": "https://blog.naver.com/inyourbrainandmind/224207756759"
+    },
+    {
+     "label": "홈페이지 3",
+     "url": "https://sites.google.com/view/inyourbrainandmind/%EC%A7%84%EB%A3%8C%EB%82%B4%EC%9A%A9"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "14597958",
+   "name": "닥터최의연세마음상담의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월-금 09:00-19:00(휴게 12:50-13:50, 18:30 접수마감, 17시 이후 내원 전 확인) / 토 09:00-13:30(13:00 접수마감) / 일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 58, 카카오 4.3점(12)",
+   "wait": "2주 전 예약했는데 당일 30분 지연(초진 대기 기간 언급은 없음) (2023-03)",
+   "address": "경기 고양시 일산서구 고봉로 291 에이스스타디움 2층(201·204호)",
+   "phone": "031-975-7201",
+   "map": "http://place.map.kakao.com/14597958",
+   "naver": "https://m.place.naver.com/hospital/31514710/home",
+   "homepage": "http://www.yonseimind.com/",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "http://www.yonseimind.com/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/31514710/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/14597958"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "http://www.yonseimind.com/gnu/"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "11330766",
+   "name": "대화공감정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:30-17:30(휴게 12:30-14:00, 17:00 접수마감) / 토 09:30-12:30(12:00 접수마감, 1·3·5주 휴진) / 목·일 휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 42",
+   "wait": "초진 예약 후 당일 대기 30분 이내 (2026-02)",
+   "address": "경기 고양시 일산서구 중앙로 1573 킨텍스프라자 301호",
+   "phone": "031-814-8567",
+   "map": "http://place.map.kakao.com/11330766",
+   "naver": "https://m.place.naver.com/hospital/11868615/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/11868615/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/11330766"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/11868615/review/visitor"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "217562163",
+   "name": "더휴정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산동구 중산동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·목·금 09:00-18:30(휴게 13:00-14:00) / 화 09:00-20:30(휴게 12:00-14:30, '화요일 오전은 외부시설 입원환자 진료') / 토 09:00-14:00 / 수·일 정기휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 25",
+   "wait": null,
+   "address": "경기 고양시 일산동구 고양대로 757 3층(중산동)",
+   "phone": "031-975-5285",
+   "map": "http://place.map.kakao.com/217562163",
+   "naver": "https://map.naver.com/p/entry/place/35437012",
+   "homepage": "https://blog.naver.com/thehuemind",
+   "sources": [
+    {
+     "label": "네이버 블로그",
+     "url": "https://blog.naver.com/thehuemind"
+    },
+    {
+     "label": "네이버",
+     "url": "https://map.naver.com/p/entry/place/35437012"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/217562163"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "8961349",
+   "name": "마음편한정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:00-18:00(휴게 13:00-14:00, 17:30 접수마감) / 토 09:00-13:00(12:30 접수마감) / 목·일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 315, 카카오 3.4점(11)",
+   "wait": "예약 없이 당일 접수라 초진 대기는 없지만 당일 대기가 매우 길다는 후기(2026-05)",
+   "address": "경기 고양시 일산서구 중앙로 1575 그린코아 501호",
+   "phone": "031-913-7511",
+   "map": "http://place.map.kakao.com/8961349",
+   "naver": "https://m.place.naver.com/hospital/12829132/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/12829132/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/8961349"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "7883126",
+   "name": "미소정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·화·수 09:30-18:30(휴게 13:00-14:00) / 목 09:30-20:30(휴게 13:00-14:00) / 금 14:00-18:30(오전 휴진) / 토 09:30-14:00 / 일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 42, 카카오 3.9점(11)",
+   "wait": "예약이 꽉 차 초진을 받지 않은 적이 있다는 후기(2022-04). 예약 필수",
+   "address": "경기 고양시 일산서구 중앙로 1565 메드위즈빌딩 503호",
+   "phone": "031-922-0075",
+   "map": "http://place.map.kakao.com/7883126",
+   "naver": "https://m.place.naver.com/hospital/12848203/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/12848203/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/7883126"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1975143437",
+   "name": "밝은미소정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산동구 마두동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "화~금 09:00-19:00(휴게 13:00-14:00) / 토 09:00-15:00 / 월·일 정기휴무 / '저녁 6시 이후는 예약된 초진과 집중상담 환자 진료'",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 134, 카카오 3.7점(10)",
+   "wait": "네이버 후기에 초진 대기가 길다는 언급(기간 미기재, 2025-03), 예약 없이 간 초진 당일 1시간 넘게 대기(2025-04) (2025-03)",
+   "address": "경기 고양시 일산동구 중앙로 1202(마두동)",
+   "phone": "031-902-0688",
+   "map": "http://place.map.kakao.com/1975143437",
+   "naver": "https://map.naver.com/p/entry/place/1794775116",
+   "homepage": "https://blog.naver.com/junyh0815",
+   "sources": [
+    {
+     "label": "네이버 블로그",
+     "url": "https://blog.naver.com/junyh0815"
+    },
+    {
+     "label": "네이버",
+     "url": "https://map.naver.com/p/entry/place/1794775116"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1975143437"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "7955539",
+   "name": "송정중정신과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월-금 10:00-16:00(휴게 13:00-14:30, 15:50 접수마감) / 토 10:00-13:00(12:50 접수마감) / 일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 91, 카카오 3.8점(10)",
+   "wait": "초진은 약 2개월 대기가 필요하다는 후기 (2023-11)",
+   "address": "경기 고양시 일산서구 중앙로 1437 화성프라자 4층(401·512호)",
+   "phone": "031-918-7575",
+   "map": "http://place.map.kakao.com/7955539",
+   "naver": "https://m.place.naver.com/hospital/11843997/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/11843997/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/7955539"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "11885034",
+   "name": "연세최의겸정신과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산동구 장항동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·화·목·금 11:00-19:00(휴게 13:00-14:00) / 수 14:00-19:00('당분간 매주 수요일 오후 2시부터') / 토 11:00-14:00 / 일 정기휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 327, 카카오 2.3점(6)",
+   "wait": null,
+   "address": "경기 고양시 일산동구 중앙로1275번길 38-10 우림로데오스위트 2층 220호(장항동)",
+   "phone": "031-904-5575",
+   "map": "http://place.map.kakao.com/11885034",
+   "naver": "https://map.naver.com/p/entry/place/13169504",
+   "homepage": "https://blog.naver.com/gyummy77",
+   "sources": [
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/gyummy77"
+    },
+    {
+     "label": "네이버",
+     "url": "https://map.naver.com/p/entry/place/13169504"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/11885034"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/PostView.naver?blogId=gyummy77&logNo=224263761510"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1972894073",
+   "name": "융정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:30-18:30(휴게 13:00-14:00, 18:10 접수마감) / 수 09:30-13:30(13:10 접수마감) / 토 09:30-13:00(12:40 접수마감) / 일 휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 21, 카카오 5.0점(3)",
+   "wait": "개원 초에는 예약이 쉬웠지만 최근 환자가 늘었다는 후기(2024-12). 예약 후 20분 넘게 기다렸다는 후기(2024-10)",
+   "address": "경기 고양시 일산서구 킨텍스로 255 일산디엠시티스카이뷰 상가 221호",
+   "phone": "031-811-1203",
+   "map": "http://place.map.kakao.com/1972894073",
+   "naver": "https://m.place.naver.com/hospital/1176440441/home",
+   "homepage": "https://yoongmh.imweb.me/",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "https://yoongmh.imweb.me/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1176440441/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/1972894073"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "https://yoongmh.imweb.me/ql7ah882"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "8555414",
+   "name": "이경섭정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:00-18:00(휴게 13:00-14:00) / 수 휴무 / 토 09:00-13:00(토요일 예약 필수) / 일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 120, 카카오 4.2점(5)",
+   "wait": "근처는 예약이 밀리는데 여기는 당일 진료 가능·대기 많지 않음 (2026-01)",
+   "address": "경기 고양시 일산서구 강선로 59 동신파크빌딩",
+   "phone": "031-915-8834",
+   "map": "http://place.map.kakao.com/8555414",
+   "naver": "https://m.place.naver.com/hospital/13237171/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/13237171/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/8555414"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "10741423",
+   "name": "일산고려정신과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수 09:00-18:00(휴게 12:30-13:30) / 목·일 휴무 / 금·토는 조사일 주 임시휴무로 평소 시간 미확인(카카오 영업정보 토 09:00-14:00)",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 75, 카카오 2.6점(5)",
+   "wait": "초진도 예약 후 빠르게 진료(10분 이내) (2026-09)",
+   "address": "경기 고양시 일산서구 일현로 47 예일큰프라자 404호(카카오는 5층)",
+   "phone": "031-924-0211",
+   "map": "http://place.map.kakao.com/10741423",
+   "naver": "https://m.place.naver.com/hospital/12853427/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/12853427/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/10741423"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "9388631",
+   "name": "제일정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산동구 장항동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:30-18:00(휴게 13:00-14:00, 접수마감 17:30) / 목 15:00-18:00('목요일 사전 예약 진료') / 토 09:30-13:00(접수마감 12:30) / 일 정기휴무 / 임시휴무 11/05",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 84, 카카오 3.5점(10)",
+   "wait": null,
+   "address": "경기 고양시 일산동구 중앙로 1189 201호(장항동)",
+   "phone": "031-904-8111",
+   "map": "http://place.map.kakao.com/9388631",
+   "naver": "https://map.naver.com/p/entry/place/11868368",
+   "homepage": "",
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://map.naver.com/p/entry/place/11868368"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/9388631"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://map.naver.com/p/entry/place/11868368/review/visitor"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "9954778",
+   "name": "참사랑정신과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:00-18:00(휴게 12:30-13:30, 접수마감 12:00·17:30) / 토 09:00-14:00(13:30 접수마감, 1·3주 휴진) / 수·일 휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 51",
+   "wait": "초진 네이버 예약으로 빨리 잡힘(2025-09). 똑닥 공지(2026-09-28): 초진은 미리 시간 예약 필요 (2025-09)",
+   "address": "경기 고양시 일산서구 일현로 47 예일큰프라자 3층 303·304호",
+   "phone": "031-994-7121",
+   "map": "http://place.map.kakao.com/9954778",
+   "naver": "https://m.place.naver.com/hospital/30805828/home",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/30805828/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/9954778"
+    },
+    {
+     "label": "똑닥",
+     "url": "https://ddocdoc.com/hospital/57171f11e207df2709f12f69"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  },
+  {
+   "id": "9564181",
+   "name": "한사랑정신건강의학과의원",
+   "short": null,
+   "region": "일산",
+   "area": "일산서구",
+   "tier": "check",
+   "reason": "홈페이지에서 원장이 직접 인지행동치료를 하고 공황장애 클리닉을 운영한다고 밝혔으며 토요일·야간 진료도 합니다. 원장의 성별은 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": true,
+   "night_note": null,
+   "hours": "월·화·수·금 10:00-19:00(휴게 13:00-14:00, 18:45 접수마감) / 목 휴무로 표기(10/29·11/05·11/12 날짜 지정) / 토 10:00-14:00(13:45 접수마감) / 일 휴무",
+   "cbt": {
+    "form": "원장이 직접",
+    "note": "홈페이지 치료 프로그램에 인지행동치료와 공황장애 클리닉",
+    "gender": null,
+    "badge": true
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 300, 카카오 4.1점(18)",
+   "wait": "초진 대기 기간 언급은 없음. 예약하고 가라는 후기(2025-03), 대부분 10분 안에 진료",
+   "address": "경기 고양시 일산서구 중앙로 1416 한사랑빌딩 4층(403호)",
+   "phone": "031-917-7557",
+   "map": "http://place.map.kakao.com/9564181",
+   "naver": "https://m.place.naver.com/hospital/13237204/home",
+   "homepage": "https://hansrmindclinic.imweb.me/",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "https://hansrmindclinic.imweb.me/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/13237204/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/9564181"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "https://hansrmindclinic.imweb.me/doctor"
+    },
+    {
+     "label": "홈페이지 3",
+     "url": "https://hansrmindclinic.imweb.me/treatment3"
+    }
+   ],
+   "checked_at": "2026-10-27"
+  }
+ ],
+ "summary": "여성 전문의와 원내 인지행동치료가 모두 확인된 의원은 없었습니다. 그래서 추천 대신 여성 원장이 확인된 의원 4곳을 후보로 묶었습니다. 인지행동치료를 꼭 받고 싶다면 아래에 정리한 대학병원 비교도 함께 보시고 후보 의원에는 인지행동치료를 하는지 전화로 먼저 물어보세요.",
+ "hospitals": [
+  {
+   "id": "h-cha",
+   "kind": "hospital",
+   "tier": "hospital",
+   "name": "일산차병원 정신건강의학과",
+   "region": "일산",
+   "area": "일산동구 장항동",
+   "reason": "정신건강의학과 교수 3명이 모두 여성이고 그중 김민경 교수는 진료 분야에 공황장애를 명시했습니다. 토요일 오전에는 교수들이 한 명씩 돌아가며 진료합니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "김민경(공황·불안 명시)",
+     "정슬아",
+     "김경란"
+    ],
+    "selectable": "가능(의사별 예약 버튼)",
+    "evidence": "공식 프로필 사진으로 확인"
+   },
+   "sat": true,
+   "sat_note": "토 오전, 주차별로 교수 1명",
+   "night": false,
+   "hours": "평일 08:30-17:30, 토 08:30-12:30. 김민경 교수: 오전 화·수·금, 오후 월·화·수, 토 2·4주 오전",
+   "cbt": {
+    "form": "마음챙김 인지요법 프로그램 안내",
+    "note": "우울·공황에 적용한다고 소개하나 진행자는 밝히지 않음",
+    "badge": false,
+    "gender": null
+   },
+   "signals": [],
+   "reviews": null,
+   "wait": null,
+   "address": "경기 고양시 일산동구 중앙로 1205",
+   "phone": "031-782-8300",
+   "map": "http://place.map.kakao.com/716411469",
+   "naver": "https://map.naver.com/p/entry/place/1881848642",
+   "homepage": "https://ilsan.chamc.co.kr/medical/list/department/psychiatry/medicalStaff.cha",
+   "sources": [
+    {
+     "label": "의료진 소개",
+     "url": "https://ilsan.chamc.co.kr/medical/list/department/psychiatry/medicalStaff.cha"
+    },
+    {
+     "label": "진료과 소개",
+     "url": "https://ilsan.chamc.co.kr/medical/list/department/psychiatry/introduction.cha"
+    }
+   ]
+  },
+  {
+   "id": "h-nhimc",
+   "kind": "hospital",
+   "tier": "hospital",
+   "name": "국민건강보험 일산병원",
+   "region": "일산",
+   "area": "일산동구 백석동",
+   "reason": "불안장애를 진료하는 여성 전문의가 있고 2020년에는 공황장애 집단 인지행동치료(10회)를 운영했습니다. 성인도 초진까지 몇 달이 걸린다는 후기가 있습니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "박선영(우울·불안·스트레스)",
+     "심송주(소아청소년)"
+    ],
+    "selectable": "가능(인터넷 예약에서 의료진 지정)",
+    "evidence": "공식 프로필 사진으로 확인"
+   },
+   "sat": false,
+   "night": false,
+   "hours": "박선영 전문의: 월 오전·오후, 수 오전, 금 오후",
+   "cbt": {
+    "form": "2020년 집단 인지행동치료 운영 기록",
+    "note": "지금도 운영하는지는 공개 근거가 없어 전화로 확인이 필요합니다",
+    "badge": false,
+    "gender": null
+   },
+   "signals": [],
+   "reviews": null,
+   "wait": "성인도 몇 달 뒤라는 후기(2023-01, 2025-02, 카페 글)",
+   "address": "경기 고양시 일산동구 일산로 100",
+   "phone": "1577-0013",
+   "map": "http://place.map.kakao.com/8201083",
+   "naver": null,
+   "homepage": "https://www.nhimc.or.kr/dept/profList.do?deptNo=11",
+   "sources": [
+    {
+     "label": "의료진 소개",
+     "url": "https://www.nhimc.or.kr/doctor/profViewPop.do?deptNo=11&profNo=303&deptYn=Y"
+    }
+   ]
+  },
+  {
+   "id": "h-mj",
+   "kind": "hospital",
+   "tier": "hospital",
+   "name": "명지병원",
+   "region": "고양 덕양구",
+   "area": "고양 덕양구 화정동",
+   "reason": "불안·공황을 진료하는 여성 전문의(류진선)가 우울·불안 클리닉에서 진료하며 클리닉 소개에 인지행동치료가 포함되어 있습니다. 토요일에는 매월 4주차 오전에만 진료합니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "류진선(불안·공황)"
+    ],
+    "selectable": "가능(전화 상담으로 주치의 선택)",
+    "evidence": "공식 프로필 사진으로 확인"
+   },
+   "sat": true,
+   "sat_note": "류진선 전문의는 매월 4주차 오전",
+   "night": false,
+   "hours": "류진선 전문의: 월 오전·오후, 수 오후, 목 오전·오후, 토 오전(매월 4주차)",
+   "cbt": {
+    "form": "우울·불안 클리닉에서 인지행동치료 안내",
+    "note": "개인·집단 여부와 담당자는 밝히지 않음",
+    "badge": true,
+    "gender": null
+   },
+   "signals": [],
+   "reviews": null,
+   "wait": "성인 대기 언급은 찾지 못함(소아는 4개월 안팎)",
+   "address": "경기 고양시 덕양구 화수로14번길 55",
+   "phone": "031-810-6114",
+   "map": "http://place.map.kakao.com/10154412",
+   "naver": null,
+   "homepage": "https://mjh.or.kr/main/clinic/view.do?mc_idx=63",
+   "sources": [
+    {
+     "label": "울불클리닉",
+     "url": "https://mjh.or.kr/main/clinic/view.do?mc_idx=63"
+    }
+   ]
+  },
+  {
+   "id": "h-dg",
+   "kind": "hospital",
+   "tier": "hospital",
+   "name": "동국대학교 일산병원",
+   "region": "일산",
+   "area": "일산동구 식사동",
+   "reason": "불안장애를 진료하는 여성 전문의가 있지만 노인 환자를 중심으로 진료하고 불안·공황 전용 클리닉은 없습니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "이해우(불안, 노인 중심)",
+     "이남영(여성정신건강)",
+     "김예니(소아 발달)"
+    ],
+    "selectable": "가능(온라인 예약)",
+    "evidence": "공식 프로필 사진으로 확인"
+   },
+   "sat": false,
+   "night": false,
+   "hours": "이해우 전문의: 월 오전, 수 오전, 목 오전·오후(2026-10 일정)",
+   "cbt": {
+    "form": "불안·공황 프로그램 안내 없음",
+    "note": null,
+    "badge": false,
+    "gender": null
+   },
+   "signals": [],
+   "reviews": null,
+   "wait": "초진 예약이 힘들다는 후기(2026-08, 카페 글)",
+   "address": "경기 고양시 일산동구 동국로 27",
+   "phone": "1577-7000",
+   "map": "http://place.map.kakao.com/25497385",
+   "naver": null,
+   "homepage": "https://www.dumc.or.kr/is/",
+   "sources": [
+    {
+     "label": "진료과 소개",
+     "url": "https://www.dumc.or.kr/is/deptMenu/conts.do?deptNo=36"
+    }
+   ]
+  },
+  {
+   "id": "h-paik",
+   "kind": "hospital",
+   "tier": "hospital",
+   "name": "인제대학교 일산백병원",
+   "region": "일산",
+   "area": "일산서구 대화동",
+   "reason": "불안·스트레스 클리닉이 있고 여성 전문의도 1명 있지만 그 전문의의 진료 분야에 불안·공황이 적혀 있지는 않습니다. 정신건강의학과는 인터넷 예약이 되지 않아 전화로만 예약할 수 있습니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "김율리"
+    ],
+    "selectable": "전화로 문의",
+    "evidence": "공식 프로필 사진으로 확인"
+   },
+   "sat": false,
+   "night": false,
+   "hours": "김율리 전문의: 월 오전·오후, 수 오후, 금 오전",
+   "cbt": {
+    "form": "불안·스트레스 클리닉(약물+정신치료)",
+    "note": "인지행동치료라는 명칭은 없음",
+    "badge": false,
+    "gender": null
+   },
+   "signals": [],
+   "reviews": null,
+   "wait": null,
+   "address": "경기 고양시 일산서구 주화로 170",
+   "phone": "031-910-7000",
+   "map": "http://place.map.kakao.com/8529145",
+   "naver": null,
+   "homepage": "https://www.paik.ac.kr/ilsan/user/department/view.do?menuNo=900020&deptId=255",
+   "sources": [
+    {
+     "label": "진료과 소개",
+     "url": "https://www.paik.ac.kr/ilsan/user/department/view.do?menuNo=900020&deptId=255"
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "text": "여성 선생님을 지정해서 초진을 받을 수 있나요?",
+   "hint": "그 선생님이 진료하는 요일과 시간도 함께 물어보세요."
+  },
+  {
+   "id": "q2",
+   "text": "초진은 언제쯤 가능한가요?",
+   "hint": "오래 기다려야 한다면, 취소된 자리가 생겼을 때 연락받을 수 있는지도 물어보세요."
+  },
+  {
+   "id": "q3",
+   "text": "공황 쪽으로 인지행동치료를 하시나요?",
+   "hint": "원장님이 직접 하는지, 심리 선생님이 하는지 확인하세요."
+  },
+  {
+   "id": "q4",
+   "text": "인지행동치료를 맡는 선생님도 여성으로 정할 수 있나요?"
+  },
+  {
+   "id": "q5",
+   "text": "인지행동치료는 몇 번, 한 번에 몇 분 하고, 비용은 얼마인가요?",
+   "hint": "전문의가 직접 하는 인지행동치료는 1년에 12번까지 건강보험이 적용됩니다. 심리 선생님이 하는 상담은 비급여일 수 있습니다."
+  },
+  {
+   "id": "q6",
+   "text": "토요일이나 평일 저녁에도 예약할 수 있나요?"
+  },
+  {
+   "id": "q7",
+   "text": "첫 방문 때 심리검사를 하나요? 비용은 얼마인가요?"
+  },
+  {
+   "id": "q8",
+   "text": "첫 진료비는 대략 얼마인가요?"
+  },
+  {
+   "id": "q9",
+   "text": "다른 병원 진료 기록이나 먹고 있는 약이 있으면 무엇을 챙겨 가면 되나요?",
+   "hint": "약 봉투나 처방전, 다른 병원에서 받은 검사 결과지가 있으면 도움이 됩니다."
+  },
+  {
+   "id": "q10",
+   "text": "진료 기록이나 질병 코드가 걱정되는데, 첫 진료 때 상담할 수 있나요?",
+   "hint": "정신건강의학과 진료가 처음이고 약 없이 상담만 받는다면, 의사의 판단에 따라 일반 상담 코드(Z71.9)로 기록할 수 있습니다."
+  }
+ ],
+ "help": [
+  {
+   "title": "자살예방상담전화 109",
+   "body": "죽고 싶은 마음이 들거나 위험하다고 느끼면 바로 전화해 주세요. 24시간, 365일 전화를 받습니다.",
+   "phone": "109",
+   "urgent": true
+  },
+  {
+   "title": "정신건강위기상담전화",
+   "body": "불안이 심해서 혼자 감당하기 어려울 때 24시간 상담받을 수 있습니다. 평일 낮에는 가까운 정신건강복지센터로 연결됩니다.",
+   "phone": "1577-0199",
+   "urgent": true
+  },
+  {
+   "title": "고양시 정신건강복지센터",
+   "body": "고양시에 사는 사람이라면 누구나 무료로 상담과 정신건강 평가를 받을 수 있습니다. 평일 9시부터 18시까지 운영하며 위치는 일산동구보건소 별관 4층입니다. 공황 등을 진단받은 첫해의 초기진단비와 15~34세 청년의 치료비를 지원하는 사업이 있습니다(센터 등록 필요, 예산 소진 시 종료).",
+   "phone": "031-968-2333"
+  },
+  {
+   "title": "파주시 정신건강복지센터",
+   "body": "파주시민이라면 누구나 무료로 상담받을 수 있습니다. 평일 9시부터 18시까지 운영합니다. 조리읍의 본소 외에 운정분소(031-945-2117)와 문산분소(031-953-2117)가 있습니다. 경기도 외래치료비 지원 사업과 15~34세 청년 마인드케어 지원 사업이 있습니다(조건 확인 필요).",
+   "phone": "031-942-2117"
+  }
+ ],
+ "fine": [
+  "조사 방법: 2026년 10월 27일에 카카오 장소 검색으로 고양시 일산동구·일산서구와 파주시의 정신건강의학과를 모은 뒤, 네이버 지도·모두닥·심평원 기반 목록으로 빠진 곳을 보강해 45곳을 확인했습니다. 병원 홈페이지, 네이버 플레이스, 카카오맵, 병원 블로그와 후기는 직접 열어 봤습니다.",
+  "의사의 성별은 이름으로 추정하지 않았습니다. 공식 소개 문구나 사진이 있거나, 같은 의사를 여성으로 지칭한 후기가 두 건 이상 있을 때만 여성 전문의로 표시했습니다. 남성 원장만 확인된 의원, 입원 위주의 정신병원, 중독 전문병원, 한의원은 목록에서 제외했고 여성 전문의가 있는 종합병원 5곳은 비교 섹션에 따로 정리했습니다. 근거가 이보다 약한 한 곳은 카드에 그 사실을 따로 적었습니다.",
+  "야간 진료는 평일 중 하루라도 19시 이후까지(19시 마감 포함) 진료하는 경우를 가리킵니다. 후기는 원문을 옮기지 않고 경향만 요약했습니다.",
+  "이 페이지는 공개 정보를 정리한 것으로, 의학적 조언이 아닙니다. 진단과 치료는 진료하는 의사와 상의하세요. 의료진과 진료 시간은 바뀔 수 있으니 방문하기 전에 전화로 확인하세요."
+ ]
+}

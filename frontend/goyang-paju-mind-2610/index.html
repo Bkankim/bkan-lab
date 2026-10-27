@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>일산·파주 여성 전문의 정신건강의학과</title>
+<meta name="description" content="일산과 파주의 정신건강의학과를 공개 정보로 빠짐없이 훑어, 여성 전문의가 진료하는 곳과 토요일·야간 진료, 인지행동치료 여부, 전화로 물어볼 질문을 한 페이지에 정리했습니다.">
+<link rel="canonical" href="https://lab.bkan.dev/frontend/goyang-paju-mind-2610/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="일산·파주 여성 전문의 정신건강의학과">
+<meta property="og:description" content="여성 전문의가 진료하는 곳, 토요일·야간 진료, 인지행동치료 여부와 전화로 물어볼 질문을 정리했습니다.">
+<meta property="og:image" content="https://lab.bkan.dev/frontend/goyang-paju-mind-2610/og.jpg?v=1">
+<meta property="og:url" content="https://lab.bkan.dev/frontend/goyang-paju-mind-2610/">
+<meta name="theme-color" content="#ece7e1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root {
+  --sand: #ece7e1; --paper: #f6f3ef; --paper-2: #f1ede8; --ink: #24211e; --soft: #857c73; --faint: #b3aaa1;
+  --mocha: #9f8877; --mocha-ink: #fffaf5; --tint: #e5dbd1; --line: #ddd5cc; --glow: #f2d7a2;
+  --good: #5d7a5a; --caution: #9a6b3c;
+  --lift: 10px 12px 28px rgba(140, 118, 96, .16), -8px -8px 22px rgba(255, 255, 255, .72);
+  --lift-sm: 4px 6px 14px rgba(140, 118, 96, .14), -4px -4px 12px rgba(255, 255, 255, .7);
+  --sink: inset 3px 3px 8px rgba(140, 118, 96, .16), inset -3px -3px 8px rgba(255, 255, 255, .8);
+  --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", serif;
+  --text: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --ease: cubic-bezier(.22, .7, .2, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sand: #1d1916; --paper: #26211d; --paper-2: #2b2521; --ink: #efe7de; --soft: #ab9f93; --faint: #776c62;
+    --mocha: #c2a893; --mocha-ink: #1d1916; --tint: #3a312a; --line: #3a322c; --glow: #8a6a3a;
+    --good: #a3c29f; --caution: #e0b07e;
+    --lift: 8px 10px 24px rgba(0, 0, 0, .38), -6px -6px 18px rgba(255, 240, 225, .03);
+    --lift-sm: 3px 5px 12px rgba(0, 0, 0, .34), -3px -3px 10px rgba(255, 240, 225, .03);
+    --sink: inset 3px 3px 8px rgba(0, 0, 0, .4), inset -3px -3px 8px rgba(255, 240, 225, .03);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --sand: #1d1916; --paper: #26211d; --paper-2: #2b2521; --ink: #efe7de; --soft: #ab9f93; --faint: #776c62;
+  --mocha: #c2a893; --mocha-ink: #1d1916; --tint: #3a312a; --line: #3a322c; --glow: #8a6a3a;
+  --good: #a3c29f; --caution: #e0b07e;
+  --lift: 8px 10px 24px rgba(0, 0, 0, .38), -6px -6px 18px rgba(255, 240, 225, .03);
+  --lift-sm: 3px 5px 12px rgba(0, 0, 0, .34), -3px -3px 10px rgba(255, 240, 225, .03);
+  --sink: inset 3px 3px 8px rgba(0, 0, 0, .4), inset -3px -3px 8px rgba(255, 240, 225, .03);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--sand); color: var(--ink);
+  font: 400 15.5px/1.7 var(--text); letter-spacing: -.003em; word-break: keep-all; overflow-wrap: break-word;
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--mocha); outline-offset: 3px; border-radius: 10px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg.i { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* 뼈대: 데스크톱은 왼쪽 고정 문구 + 오른쪽 패널, 좁으면 한 줄 */
+.frame {
+  max-width: 1180px; margin: 0 auto;
+  padding: max(28px, env(safe-area-inset-top)) 18px calc(96px + env(safe-area-inset-bottom));
+}
+.side { padding: 8px 4px 28px; }
+.panel { display: grid; gap: 22px; }
+@media (min-width: 1000px) {
+  .frame { display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 72px; padding: 56px 40px 80px; }
+  .side { position: sticky; top: 48px; align-self: start; padding: 24px 0 0; }
+  .panel { background: var(--paper); border-radius: 40px; box-shadow: var(--lift); padding: 40px 34px 34px; }
+}
+
+/* 왼쪽 문구 */
+.where { margin: 0; color: var(--soft); font: 400 15px/1.5 var(--text); letter-spacing: .02em; }
+h1 {
+  margin: 14px 0 0; font: 400 clamp(34px, 8.4vw, 50px)/1.18 var(--display); letter-spacing: -.035em;
+}
+h1 .thin { display: block; font-weight: 300; color: var(--soft); font-size: .62em; letter-spacing: -.02em; margin-bottom: 6px; }
+.lede { margin: 18px 0 0; color: var(--soft); max-width: 30em; font-size: 15.5px; }
+.ticks { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.ticks li { display: flex; gap: 14px; align-items: center; font-size: 15.5px; }
+.tick {
+  width: 34px; height: 34px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: var(--mocha); color: var(--mocha-ink); box-shadow: var(--lift-sm);
+}
+.tick svg.i { width: 17px; height: 17px; stroke-width: 2; }
+.ticks b { font-weight: 600; }
+.sidenav { display: none; }
+@media (min-width: 1000px) {
+  .sidenav { display: flex; gap: 6px; margin-top: 40px; flex-wrap: wrap; }
+  .sidenav a {
+    text-decoration: none; padding: 8px 16px; border-radius: 999px; color: var(--soft); font-size: 14.5px;
+    transition: background .25s var(--ease), color .25s var(--ease);
+  }
+  .sidenav a:hover { color: var(--ink); }
+  .sidenav a[aria-current="true"] { background: var(--paper); color: var(--ink); box-shadow: var(--lift-sm); }
+}
+.made { margin-top: 36px; font-size: 13px; color: var(--faint); }
+.made a { color: var(--soft); }
+
+/* 히어로 구슬: 페이지에서 유일하게 스스로 움직이는 요소 */
+.greet { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.greet p { margin: 0; }
+.greet .hello { font: 300 17px/1.3 var(--display); color: var(--soft); }
+.greet .big { font: 400 27px/1.25 var(--display); letter-spacing: -.03em; margin-top: 2px; }
+.greet .sub { margin-top: 8px; color: var(--soft); font-size: 14px; line-height: 1.6; }
+.orb {
+  width: 104px; height: 104px; border-radius: 50%; flex: none; position: relative; display: grid; place-items: center;
+  background: radial-gradient(circle at 45% 40%, #fffaf0 0%, #fbefd8 38%, var(--paper) 72%);
+  box-shadow: var(--lift), 0 0 0 0 var(--glow); color: #d7a85d;
+  animation: breathe 10s var(--ease) infinite;
+}
+:root[data-theme="dark"] .orb { background: radial-gradient(circle at 45% 40%, #4a3d2c 0%, #352c24 45%, var(--paper) 75%); color: #e6bd78; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .orb { background: radial-gradient(circle at 45% 40%, #4a3d2c 0%, #352c24 45%, var(--paper) 75%); color: #e6bd78; } }
+.orb svg { width: 40px; height: 40px; stroke-width: 1.3; }
+@keyframes breathe {
+  0%, 100% { transform: scale(.96); box-shadow: var(--lift), 0 0 0 0 transparent; }
+  45% { transform: scale(1.03); box-shadow: var(--lift), 0 0 34px 8px color-mix(in srgb, var(--glow) 55%, transparent); }
+  60% { transform: scale(1.03); box-shadow: var(--lift), 0 0 34px 8px color-mix(in srgb, var(--glow) 55%, transparent); }
+}
+
+.mhead { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.orb-m { width: 64px; height: 64px; }
+.orb-m svg { width: 26px; height: 26px; }
+@media (max-width: 999px) { .greet { display: none; } }
+@media (min-width: 1000px) { .orb-m { display: none; } }
+
+/* 섹션 */
+.sec { scroll-margin-top: 20px; }
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 14px; }
+h2 { margin: 0; font: 400 24px/1.3 var(--display); letter-spacing: -.03em; }
+h3 { margin: 0; font: 500 17px/1.45 var(--display); letter-spacing: -.02em; }
+.sec-note { color: var(--soft); font-size: 13.5px; margin: -6px 0 16px; }
+.divider { height: 1px; background: var(--line); margin: 6px 4px; border: 0; }
+
+/* 탭: 밑줄이 눌린 탭으로 미끄러진다 */
+.tabs { position: relative; display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.tabs button {
+  flex: 1; background: none; border: 0; padding: 10px 4px 12px; cursor: pointer; color: var(--faint);
+  font-size: 15px; transition: color .25s var(--ease);
+}
+.tabs button[aria-selected="true"] { color: var(--ink); font-weight: 500; }
+.tabs .bar {
+  position: absolute; bottom: -1px; left: 0; height: 2px; width: 60px; background: var(--ink); border-radius: 2px;
+  transition: transform .42s var(--ease), width .42s var(--ease);
+}
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; margin: 0 -2px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chips button {
+  flex: none; border: 0; cursor: pointer; padding: 7px 14px; border-radius: 999px; font-size: 13.5px;
+  background: var(--paper); color: var(--soft); box-shadow: var(--lift-sm);
+  transition: background .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease), transform .15s var(--ease);
+}
+.chips button:active { transform: scale(.96); }
+.chips button[aria-pressed="true"] { background: var(--tint); color: var(--ink); box-shadow: var(--sink); }
+.chips .n { color: var(--faint); margin-left: 4px; font-size: 12px; }
+.summary { margin: 2px 2px 14px; padding: 14px 16px; border-radius: 20px; box-shadow: var(--sink); font-size: 14px; line-height: 1.65; }
+.summary:empty { display: none; }
+.tally { color: var(--soft); font-size: 13.5px; margin: 4px 2px 14px; }
+
+.group-h { display: flex; align-items: center; gap: 10px; margin: 22px 2px 12px; font: 500 15px/1.4 var(--text); }
+.group-h .mark { width: 8px; height: 8px; border-radius: 50%; background: var(--mocha); }
+.group-h.cand .mark { background: transparent; border: 1.5px solid var(--mocha); }
+.group-h small { color: var(--faint); font-weight: 400; font-size: 13px; }
+.group-desc { margin: -6px 2px 12px; color: var(--soft); font-size: 13.5px; }
+.list { display: grid; gap: 14px; }
+.empty { padding: 18px; text-align: center; color: var(--soft); font-size: 14px; border-radius: 22px; box-shadow: var(--sink); }
+
+/* 병원 카드 */
+.card { background: var(--paper); border-radius: 26px; box-shadow: var(--lift-sm); overflow: hidden; }
+@media (min-width: 1000px) { .card { background: var(--paper-2); } }
+.card-head {
+  width: 100%; display: grid; grid-template-columns: 52px minmax(0, 1fr) 40px; gap: 14px; align-items: center;
+  padding: 16px 16px 16px 16px; background: none; border: 0; text-align: left; cursor: pointer;
+}
+.init {
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  box-shadow: var(--sink); font: 400 20px/1 var(--display); color: var(--mocha);
+}
+.c-name { display: block; font: 400 17.5px/1.35 var(--display); letter-spacing: -.02em; }
+.c-where { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px 2px 7px; border-radius: 999px;
+  font-size: 12.5px; line-height: 1.6; background: var(--tint); color: var(--ink);
+}
+.badge svg.i { width: 14px; height: 14px; }
+.badge.off { background: none; color: var(--faint); box-shadow: inset 0 0 0 1px var(--line); }
+.plus {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; justify-self: end;
+  background: var(--mocha); color: var(--mocha-ink); box-shadow: var(--lift-sm);
+  transition: transform .45s var(--ease), background .3s var(--ease);
+}
+.plus svg { width: 18px; height: 18px; stroke-width: 2; }
+.card-head:active .plus { transform: scale(.9); }
+.card.open .plus { transform: rotate(135deg); background: var(--ink); color: var(--paper); }
+.reason { padding: 0 18px 16px 82px; margin-top: -6px; color: var(--soft); font-size: 13.5px; line-height: 1.6; }
+.body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+.card.open .body { grid-template-rows: 1fr; }
+.body > div { overflow: hidden; }
+.inner { padding: 4px 18px 20px; border-top: 1px solid var(--line); margin: 0 16px; padding-left: 0; padding-right: 0; }
+.facts { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 10px 12px; margin: 16px 0 0; font-size: 14px; }
+.facts dt { color: var(--soft); }
+.facts dd { margin: 0; }
+.facts .muted { color: var(--faint); }
+.sig { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.sig li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; vertical-align: 2px; background: var(--faint); }
+.sig li.good::before { background: var(--good); }
+.sig li.bad::before { background: var(--caution); }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.act {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 999px; font-size: 13.5px;
+  text-decoration: none; background: var(--paper); box-shadow: var(--lift-sm); border: 0; cursor: pointer;
+  transition: transform .15s var(--ease);
+}
+.act:active { transform: scale(.96); }
+.act.main { background: var(--ink); color: var(--paper); }
+.act svg.i { width: 16px; height: 16px; }
+.srcs { margin-top: 14px; font-size: 12.5px; color: var(--faint); }
+.srcs a { color: var(--soft); }
+.qprog { font-size: 12.5px; color: var(--soft); margin-left: 2px; }
+
+details.fold { margin-top: 18px; }
+details.fold > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 18px; border-radius: 22px; background: var(--paper); box-shadow: var(--lift-sm); font-weight: 500;
+}
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary small { display: block; font-weight: 400; color: var(--soft); font-size: 13px; margin-top: 2px; }
+details.fold > summary .plus { width: 32px; height: 32px; }
+details.fold[open] > summary .plus { transform: rotate(135deg); background: var(--ink); color: var(--paper); }
+details.fold .list { margin-top: 14px; }
+
+/* 안내 */
+.notes { display: grid; gap: 14px; }
+.note { padding: 20px 20px 18px; border-radius: 26px; background: var(--paper); box-shadow: var(--lift-sm); }
+@media (min-width: 1000px) { .note { background: var(--paper-2); } }
+.note p { margin: 8px 0 0; color: var(--soft); font-size: 14.5px; }
+.steps { list-style: none; counter-reset: s; margin: 14px 0 0; padding: 0; display: grid; gap: 0; }
+.steps li { counter-increment: s; position: relative; padding: 0 0 16px 40px; font-size: 14.5px; color: var(--soft); }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center; font: 500 13px/1 var(--text); color: var(--mocha); box-shadow: var(--sink);
+}
+.steps li::after { content: ""; position: absolute; left: 12.5px; top: 30px; bottom: 4px; width: 1px; background: var(--line); }
+.steps li:last-child { padding-bottom: 0; }
+.steps li:last-child::after { display: none; }
+.steps b { display: block; color: var(--ink); font-weight: 500; }
+
+/* 질문 */
+.picker { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+.picker label { font-size: 13.5px; color: var(--soft); flex: none; }
+.picker select {
+  flex: 1; min-width: 0; appearance: none; border: 0; border-radius: 999px; padding: 10px 38px 10px 16px; font: 500 14.5px/1.3 var(--text);
+  color: var(--ink); background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239f8877' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center;
+  box-shadow: var(--lift-sm);
+}
+.ring { position: relative; width: 46px; height: 46px; flex: none; }
+.ring svg { width: 46px; height: 46px; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 4; }
+.ring .track { stroke: var(--tint); }
+.ring .val { stroke: var(--mocha); stroke-linecap: round; transition: stroke-dashoffset .5s var(--ease); }
+.ring span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: var(--soft); }
+.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.q label {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; cursor: pointer;
+  padding: 14px 16px; border-radius: 22px; background: var(--paper); box-shadow: var(--lift-sm);
+  transition: box-shadow .3s var(--ease), background .3s var(--ease);
+}
+@media (min-width: 1000px) { .q label { background: var(--paper-2); } }
+.q input { position: absolute; opacity: 0; pointer-events: none; }
+.q .box {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--sink);
+  color: var(--mocha-ink); transition: background .3s var(--ease), box-shadow .3s var(--ease);
+}
+.q .box path { stroke-dasharray: 20; stroke-dashoffset: 20; transition: stroke-dashoffset .35s var(--ease) .05s; }
+.q input:checked + label .box { background: var(--mocha); box-shadow: var(--lift-sm); }
+.q input:checked + label .box path { stroke-dashoffset: 0; }
+.q input:checked + label .qt { color: var(--soft); }
+.q input:focus-visible + label { outline: 2px solid var(--mocha); outline-offset: 3px; }
+.qt { font-size: 15px; line-height: 1.55; padding-top: 3px; }
+.qh { display: block; color: var(--faint); font-size: 13px; margin-top: 3px; }
+.memo { margin-top: 14px; }
+.memo label { display: block; font-size: 13.5px; color: var(--soft); margin: 0 0 6px 4px; }
+.memo textarea {
+  width: 100%; min-height: 92px; resize: vertical; border: 0; border-radius: 20px; padding: 14px 16px; font: 400 14.5px/1.6 var(--text);
+  color: var(--ink); background: var(--paper); box-shadow: var(--sink);
+}
+.memo-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 8px; font-size: 12.5px; color: var(--faint); }
+.memo-foot button { border: 0; background: none; color: var(--soft); text-decoration: underline; cursor: pointer; font-size: 12.5px; }
+
+/* 한숨 돌리는 카드 */
+.breath {
+  position: relative; overflow: hidden; padding: 22px 22px 24px; border-radius: 26px; background: var(--tint);
+  font: 400 18px/1.5 var(--display); letter-spacing: -.02em;
+}
+.breath svg { position: absolute; right: 14px; bottom: 10px; width: 52%; height: 70px; stroke: var(--mocha); fill: none; stroke-width: 1.2; opacity: .8; }
+.breath circle { fill: var(--mocha); stroke: none; }
+.breath p { position: relative; margin: 0; max-width: 13em; }
+
+/* 도움 */
+.help-list { display: grid; gap: 12px; }
+.help { padding: 18px 20px; border-radius: 24px; background: var(--paper); box-shadow: var(--lift-sm); font-size: 14px; }
+@media (min-width: 1000px) { .help { background: var(--paper-2); } }
+.help h3 { font-size: 16px; }
+.help p { margin: 6px 0 0; color: var(--soft); }
+.help .tel { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-weight: 600; text-decoration: none; color: var(--ink); }
+.help.urgent { box-shadow: var(--sink); background: var(--tint); }
+.fine { color: var(--soft); font-size: 13px; line-height: 1.7; }
+.fine p { margin: 0 0 10px; }
+
+/* 하단 탭바 (좁은 화면) */
+.tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 -8px 24px rgba(120, 100, 80, .1);
+}
+.tabbar a {
+  display: grid; justify-items: center; gap: 2px; padding: 6px 0; text-decoration: none; font-size: 11.5px; color: var(--faint);
+  transition: color .25s var(--ease);
+}
+.tabbar svg.i { width: 24px; height: 24px; transition: transform .3s var(--ease), fill .3s var(--ease); }
+.tabbar a[aria-current="true"] { color: var(--ink); }
+.tabbar a[aria-current="true"] svg.i { fill: var(--ink); stroke: var(--ink); transform: translateY(-1px); }
+.tabbar a[aria-current="true"] svg.i .cut { stroke: var(--paper); }
+@media (min-width: 1000px) { .tabbar { display: none; } }
+
+.loading { color: var(--soft); font-size: 14px; padding: 10px 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l7-7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h10M9 12h10M9 17.5h10"/><path d="M4.5 6.5l1 1 2-2M4.5 12l1 1 2-2M4.5 17.5l1 1 2-2"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.6-5.8 7-5.8s6.2 2 7 5.8"/></symbol>
+</svg>
+
+<div class="frame">
+  <aside class="side">
+    <div class="mhead"><p class="where">고양 일산동구, 일산서구와 파주</p><div class="orb orb-m" aria-hidden="true"><svg class="i"><use href="#i-sun"/></svg></div></div>
+    <h1><span class="thin">여성 전문의가 진료하는</span>일산·파주 정신건강의학과</h1>
+    <p class="lede">공개된 정보로 이 지역의 정신건강의학과를 빠짐없이 살펴본 뒤, 여성 전문의가 있는 곳을 골라 토요일·야간 진료와 인지행동치료 여부를 확인했습니다.</p>
+    <ul class="ticks" id="ticks">
+      <li><span class="tick"><svg class="i"><use href="#i-check"/></svg></span><span class="loading">정리한 숫자를 불러오는 중입니다</span></li>
+    </ul>
+    <nav class="sidenav" aria-label="이 페이지 안에서 이동">
+      <a href="#about">안내</a><a href="#clinics">병원</a><a href="#questions">질문</a><a href="#help">도움</a>
+    </nav>
+    <p class="made"><a href="/frontend/">bkan lab</a>의 실험 페이지입니다.</p>
+  </aside>
+
+  <main class="panel">
+    <div class="greet">
+      <div>
+        <p class="hello">처음 찾아보는 분께</p>
+        <p class="big">천천히 골라도<br>괜찮아요</p>
+        <p class="sub">마음에 드는 곳 하나에<br>전화해 보는 것부터.</p>
+      </div>
+      <div class="orb" aria-hidden="true"><svg class="i"><use href="#i-sun"/></svg></div>
+    </div>
+
+    <section class="sec" id="about" aria-labelledby="about-h">
+      <div class="sec-h"><h2 id="about-h">먼저 알아 두면 좋은 것</h2></div>
+      <div class="notes">
+        <article class="note">
+          <h3>몸 검사에서 이상이 없었다면</h3>
+          <p>두근거림, 어지러움, 숨 막히는 느낌 때문에 내과나 응급실부터 찾는 일은 흔합니다. 검사에서 이상이 없다는 결과는 헛걸음이 아니라 공황장애를 진단하기 전에 거쳐야 하는 확인 과정입니다.</p>
+        </article>
+        <article class="note">
+          <h3>약과 인지행동치료를 함께 권하는 이유</h3>
+          <p>약은 증상을 가라앉히고 인지행동치료(CBT)는 몸의 감각을 위험 신호로 받아들이는 습관을 바꾸도록 돕습니다. 2018년 한국형 공황장애 치료지침은 항우울제와 인지행동치료를 병행하는 방법을 가장 우선으로 권합니다.</p>
+        </article>
+        <article class="note">
+          <h3>인지행동치료는 이렇게 진행됩니다</h3>
+          <p>병원마다 다르지만 보통 주 1회씩, 열 번 안팎으로 진행합니다.</p>
+          <ol class="steps">
+            <li><b>이해하기</b>공황 증상이 몸에서 어떻게 생기는지, 그리고 왜 위험하지 않은지 배웁니다.</li>
+            <li><b>생각 점검</b>"심장이 멈출 것 같다" 같은 생각이 맞는지 근거를 들어 따져 봅니다.</li>
+            <li><b>감각에 익숙해지기</b>제자리 뛰기처럼 공황 때와 비슷한 몸의 감각을 일부러 만들어 보고 그 감각이 지나간다는 것을 직접 겪어 봅니다.</li>
+            <li><b>피하던 상황에 다가가기</b>피하게 된 장소나 상황에 단계적으로 다시 가 봅니다.</li>
+            <li><b>다시 올 때 대비</b>증상이 다시 나타날 때 활용할 계획을 세웁니다.</li>
+          </ol>
+        </article>
+        <article class="note">
+          <h3>비용과 기록이 걱정된다면</h3>
+          <p>전문의가 직접 하는 인지행동치료는 2018년 7월부터 건강보험이 적용되며 1년에 12번까지 급여로 받을 수 있습니다. 실손보험은 2016년부터 표준약관이 바뀌었기 때문에, 그 뒤에 가입했다면 공황장애 같은 일부 정신질환의 급여 진료비도 보장 대상에 들어갑니다. 정확한 범위는 가입한 상품의 약관에서 확인하세요. 진료 기록은 본인이 동의했거나 법에 정한 경우가 아니라면 회사를 비롯한 다른 사람이 볼 수 없습니다(의료법 제21조).</p>
+        </article>
+        <article class="note">
+          <h3>이 페이지가 병원을 고른 기준</h3>
+          <p>가장 먼저 여성 전문의가 있는지를 봤습니다. 그다음으로 원내에서 인지행동치료를 하는지, 후기에 나타난 진료 분위기는 어떤지, 토요일이나 야간 진료가 가능한지를 확인했습니다. 네 가지가 모두 확인된 곳은 추천으로, 여성 전문의는 확인됐지만 나머지 가운데 빠진 항목이 있는 곳은 후보로 나눴습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="sec" id="clinics" aria-labelledby="clinics-h">
+      <div class="sec-h"><h2 id="clinics-h">병원</h2></div>
+      <div class="tabs" role="tablist" aria-label="진료 시간으로 거르기">
+        <button role="tab" aria-selected="true" data-tab="all">전체</button>
+        <button role="tab" aria-selected="false" data-tab="sat">토요일</button>
+        <button role="tab" aria-selected="false" data-tab="night">야간</button>
+        <span class="bar" aria-hidden="true"></span>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="지역으로 거르기"></div>
+      <p class="summary" id="summary"></p>
+      <p class="tally" id="tally" aria-live="polite"></p>
+      <div id="groups"><p class="loading">병원 목록을 불러오는 중입니다</p></div>
+
+      <details class="fold" id="unk-fold">
+        <summary><span>여성 전문의 여부를 확인하지 못한 곳<small id="unk-sub"></small></span><span class="plus" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary>
+        <div class="list" id="unk-list"></div>
+      </details>
+
+      <details class="fold" id="hosp-fold">
+        <summary><span>대학병원과 비교해 보기<small>진료 체계는 갖췄지만 초진까지 오래 기다리는 편입니다</small></span><span class="plus" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary>
+        <div class="list" id="hosp-list"></div>
+      </details>
+    </section>
+
+    <div class="breath" aria-hidden="true">
+      <p>한 번에 다 정하지 않아도 돼요. 전화 한 통이 첫걸음입니다.</p>
+      <svg viewBox="0 0 200 70" preserveAspectRatio="none"><path d="M4 62 C 40 66, 62 40, 96 46 S 150 34, 176 12"/><circle cx="176" cy="12" r="5"/></svg>
+    </div>
+
+    <hr class="divider">
+
+    <section class="sec" id="questions" aria-labelledby="questions-h">
+      <div class="sec-h"><h2 id="questions-h">전화로 물어볼 것</h2></div>
+      <p class="sec-note">병원을 고르고 통화하면서 체크하세요. 체크와 메모는 이 기기에만 저장됩니다.</p>
+      <div class="picker">
+        <label for="pick">병원</label>
+        <select id="pick"></select>
+        <div class="ring" aria-hidden="true">
+          <svg viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="19"/><circle class="val" id="ring-val" cx="23" cy="23" r="19" stroke-dasharray="119.4" stroke-dashoffset="119.4"/></svg>
+          <span id="ring-n">0</span>
+        </div>
+      </div>
+      <ul class="qs" id="qs"></ul>
+      <div class="memo">
+        <label for="memo">통화 메모</label>
+        <textarea id="memo" placeholder="예: 김 원장님 화·목 진료, 초진 2주 뒤 가능"></textarea>
+        <div class="memo-foot"><span id="memo-state">입력하면 바로 저장됩니다</span><button type="button" id="reset">이 병원 체크 지우기</button></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="sec" id="help" aria-labelledby="help-h">
+      <div class="sec-h"><h2 id="help-h">도움받을 곳</h2></div>
+      <div class="help-list" id="help-list"></div>
+      <div class="fine" id="fine" style="margin-top:18px"></div>
+    </section>
+  </main>
+</div>
+
+<nav class="tabbar" aria-label="이 페이지 안에서 이동">
+  <a href="#about"><svg class="i"><use href="#i-leaf"/></svg>안내</a>
+  <a href="#clinics"><svg class="i"><use href="#i-pin"/></svg>병원</a>
+  <a href="#questions"><svg class="i"><use href="#i-list"/></svg>질문</a>
+  <a href="#help"><svg class="i"><use href="#i-person"/></svg>도움</a>
+</nav>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "lab:goyang-paju-mind-2610";
+  var state = { tab: "all", region: "all", data: null, pick: null };
+  var store = loadStore();
+
+  function loadStore() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || { checks: {}, memo: {} }; }
+    catch (e) { return { checks: {}, memo: {} }; }
+  }
+  function saveStore() {
+    try { localStorage.setItem(KEY, JSON.stringify(store)); return true; } catch (e) { return false; }
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function icon(id) { return '<svg class="i" aria-hidden="true"><use href="#i-' + id + '"/></svg>'; }
+  function $(id) { return document.getElementById(id); }
+
+  // 탭 밑줄
+  var tabs = document.querySelectorAll(".tabs [role=tab]");
+  var bar = document.querySelector(".tabs .bar");
+  function moveBar() {
+    var on = document.querySelector('.tabs [aria-selected="true"]');
+    if (!on) return;
+    bar.style.width = (on.offsetWidth * .6) + "px";
+    bar.style.transform = "translateX(" + (on.offsetLeft + on.offsetWidth * .2) + "px)";
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", String(x === t)); });
+      state.tab = t.dataset.tab; moveBar(); renderChips(); renderClinics();
+    });
+  });
+  window.addEventListener("resize", moveBar);
+
+  function passTab(c) {
+    if (state.tab === "sat") return c.sat === true;
+    if (state.tab === "night") return c.night === true;
+    return true;
+  }
+  function passRegion(c) { return state.region === "all" || c.region === state.region; }
+
+  function badges(c) {
+    var b = [];
+    if (c.female && c.female.kind === "원장") b.push('<span class="badge">' + icon("person") + "여성 원장</span>");
+    else if (c.female && c.female.kind === "재직") b.push('<span class="badge">' + icon("person") + "여성 전문의 재직</span>");
+    if (c.sat === true) b.push('<span class="badge">' + icon("sun") + "토요일</span>");
+    if (c.night === true) b.push('<span class="badge">' + icon("moon") + "야간</span>");
+    if (c.cbt && c.cbt.badge) b.push('<span class="badge">' + icon("leaf") + "인지행동치료</span>");
+    return b.join("");
+  }
+  function yn(v, yes, no) { return v === true ? yes : v === false ? no : '<span class="muted">미확인</span>'; }
+  function val(v) { return v ? esc(v) : '<span class="muted">미확인</span>'; }
+
+  function checkedCount(id) { return (store.checks[id] || []).length; }
+
+  function card(c, i) {
+    var id = "c-" + c.id;
+    var f = c.female || {};
+    var sig = (c.signals || []).map(function (s) {
+      return '<li class="' + esc(s.tone || "") + '">' + esc(s.t) + "</li>";
+    }).join("");
+    var acts = [];
+    if (c.phone) acts.push('<a class="act main" href="tel:' + esc(c.phone.replace(/[^0-9+]/g, "")) + '">' + icon("phone") + esc(c.phone) + "</a>");
+    var mapUrl = c.map || "https://map.kakao.com/?q=" + encodeURIComponent(c.name);
+    acts.push('<a class="act" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + icon("pin") + "카카오맵</a>");
+    if (c.naver) acts.push('<a class="act" href="' + esc(c.naver) + '" target="_blank" rel="noopener">' + icon("pin") + "네이버 지도</a>");
+    if (c.homepage) acts.push('<a class="act" href="' + esc(c.homepage) + '" target="_blank" rel="noopener">' + icon("link") + "홈페이지</a>");
+    if (c.kind !== "hospital") acts.push('<button type="button" class="act" data-ask="' + esc(c.id) + '">' + icon("list") + '질문 체크하기<span class="qprog">' + checkedCount(c.id) + "/" + state.data.questions.length + "</span></button>");
+    var srcs = (c.sources || []).map(function (s) {
+      return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + "</a>";
+    }).join(", ");
+    var doctors = (f.doctors || []).length ? esc(f.doctors.join(", ")) : '<span class="muted">미확인</span>';
+    return '<article class="card" id="' + id + '">' +
+      '<button class="card-head" aria-expanded="false" aria-controls="' + id + '-b">' +
+        '<span class="init" aria-hidden="true">' + esc((c.short || c.name).charAt(0)) + "</span>" +
+        '<span><span class="c-name">' + esc(c.name) + '</span><span class="c-where">' + esc(c.area || "") + "</span>" +
+        '<span class="badges">' + badges(c) + "</span></span>" +
+        '<span class="plus" aria-hidden="true">' + icon("plus") + "</span>" +
+      "</button>" +
+      (c.reason ? '<p class="reason">' + esc(c.reason) + "</p>" : "") +
+      '<div class="body" id="' + id + '-b" role="region" aria-label="' + esc(c.name) + ' 자세히" inert><div><div class="inner">' +
+        '<dl class="facts">' +
+          "<dt>여성 전문의</dt><dd>" + doctors + (f.evidence ? '<br><span class="muted">' + esc(f.evidence) + "</span>" : "") + "</dd>" +
+          "<dt>지정 진료</dt><dd>" + val(f.selectable) + "</dd>" +
+          "<dt>토요일</dt><dd>" + yn(c.sat, "진료" + (c.sat_note ? " (" + esc(c.sat_note) + ")" : ""), "없음") + "</dd>" +
+          "<dt>야간</dt><dd>" + yn(c.night, "진료" + (c.night_note ? " (" + esc(c.night_note) + ")" : ""), "없음") + "</dd>" +
+          "<dt>진료 시간</dt><dd>" + val(c.hours) + "</dd>" +
+          "<dt>인지행동치료</dt><dd>" + val(c.cbt && c.cbt.form) + (c.cbt && c.cbt.note ? '<br><span class="muted">' + esc(c.cbt.note) + "</span>" : "") + "</dd>" +
+          "<dt>치료 담당 성별</dt><dd>" + val(c.cbt && c.cbt.gender) + "</dd>" +
+          "<dt>후기 신호</dt><dd>" + (sig ? '<ul class="sig">' + sig + "</ul>" : '<span class="muted">미확인</span>') + (c.reviews ? '<span class="muted">' + esc(c.reviews) + "</span>" : "") + "</dd>" +
+          "<dt>초진 대기</dt><dd>" + val(c.wait) + "</dd>" +
+          "<dt>주소</dt><dd>" + val(c.address) + "</dd>" +
+        "</dl>" +
+        '<div class="acts">' + acts.join("") + "</div>" +
+        (srcs ? '<p class="srcs">근거: ' + srcs + " (" + esc(c.checked_at || state.data.checked_at) + " 확인)</p>" : "") +
+      "</div></div></div></article>";
+  }
+
+  function bindCards(root) {
+    root.querySelectorAll(".card-head").forEach(function (h) {
+      h.addEventListener("click", function () {
+        var cardEl = h.closest(".card");
+        var open = !cardEl.classList.contains("open");
+        cardEl.classList.toggle("open", open);
+        cardEl.querySelector(".body").inert = !open;
+        h.setAttribute("aria-expanded", String(open));
+      });
+    });
+    root.querySelectorAll("[data-ask]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        setPick(b.dataset.ask);
+        $("questions").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      });
+    });
+  }
+
+  function renderChips() {
+    var d = state.data;
+    var counts = {};
+    d.clinics.forEach(function (c) {
+      if (passTab(c)) counts[c.region] = (counts[c.region] || 0) + 1;
+    });
+    var html = '<button type="button" data-region="all" aria-pressed="' + (state.region === "all") + '">전체 지역</button>';
+    d.regions.forEach(function (r) {
+      html += '<button type="button" data-region="' + esc(r) + '" aria-pressed="' + (state.region === r) + '">' + esc(r) + '<span class="n">' + (counts[r] || 0) + "</span></button>";
+    });
+    $("chips").innerHTML = html;
+    $("chips").querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        state.region = b.dataset.region;
+        $("chips").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        renderClinics();
+      });
+    });
+  }
+
+  function renderClinics() {
+    var d = state.data;
+    var shown = d.clinics.filter(function (c) { return passTab(c) && passRegion(c); });
+    var picks = shown.filter(function (c) { return c.tier === "pick"; });
+    var cands = shown.filter(function (c) { return c.tier === "candidate"; });
+    var unk = shown.filter(function (c) { return c.tier === "check"; });
+    var html = "";
+    if (picks.length) {
+      html += '<div class="group-h"><span class="mark"></span>추천<small>' + picks.length + "곳</small></div>" +
+        '<p class="group-desc">여성 전문의, 원내 인지행동치료, 좋은 후기 신호, 토요일이나 야간 진료가 모두 확인된 곳</p>' +
+        '<div class="list">' + picks.map(card).join("") + "</div>";
+    }
+    if (cands.length) {
+      html += '<div class="group-h cand"><span class="mark"></span>후보<small>' + cands.length + "곳</small></div>" +
+        '<p class="group-desc">여성 전문의는 확인됐고, 추천 기준 중 일부가 빠졌거나 확인되지 않은 곳</p>' +
+        '<div class="list">' + cands.map(card).join("") + "</div>";
+    }
+    if (!picks.length && !cands.length) {
+      html = '<p class="empty">이 조건에 맞는 곳이 없습니다. 위에서 탭이나 지역을 바꿔 보세요.</p>';
+    }
+    $("groups").innerHTML = html;
+    bindCards($("groups"));
+    $("unk-list").innerHTML = unk.length ? unk.map(card).join("") : '<p class="empty">이 조건에서는 없습니다.</p>';
+    $("unk-sub").textContent = unk.length + "곳, 전화로 여성 전문의가 있는지 먼저 물어보세요";
+    bindCards($("unk-list"));
+    $("tally").textContent = "지금 조건에서 " + (picks.length + cands.length) + "곳이 보입니다.";
+  }
+
+  function renderHospitals() {
+    var d = state.data;
+    $("hosp-list").innerHTML = (d.hospitals || []).map(card).join("");
+    bindCards($("hosp-list"));
+  }
+
+  function renderTicks() {
+    var n = state.data.counts;
+    var items = [
+      "정신건강의학과 <b>" + n.surveyed + "곳</b>을 빠짐없이 훑었습니다",
+      "여성 원장이 확인된 의원 <b>" + n.female + "곳</b>, 성별을 확인하지 못한 의원 <b>" + n.unknown + "곳</b>",
+      "남성 원장만 확인된 <b>" + n.male_only + "곳</b>, 입원·중독 전문병원과 한의원 <b>" + n.other_types + "곳</b>, 종합병원 등 <b>" + n.general + "곳</b>은 목록에서 뺐습니다",
+      "여성 전문의가 있는 종합병원 <b>" + n.hospitals + "곳</b>은 따로 비교했습니다",
+      "<b>" + esc(n.checked_label) + "</b>에 확인한 정보입니다"
+    ];
+    $("ticks").innerHTML = items.map(function (t) {
+      return '<li><span class="tick">' + icon("check") + "</span><span>" + t + "</span></li>";
+    }).join("");
+  }
+
+  // 질문 체크
+  function setPick(id) {
+    var b = $("reset"); b.dataset.confirm = ""; b.textContent = "이 병원 체크 지우기";
+    state.pick = id; $("pick").value = id; renderQs();
+  }
+  function renderPicker() {
+    var d = state.data;
+    var opts = d.clinics.filter(function (c) { return c.tier !== "check"; }).concat(d.clinics.filter(function (c) { return c.tier === "check"; }));
+    $("pick").innerHTML = opts.map(function (c) {
+      return '<option value="' + esc(c.id) + '">' + esc(c.name) + "</option>";
+    }).join("");
+    $("pick").addEventListener("change", function () { setPick($("pick").value); });
+    state.pick = opts.length ? opts[0].id : null;
+  }
+  function renderQs() {
+    var d = state.data, id = state.pick;
+    var on = store.checks[id] || [];
+    $("qs").innerHTML = d.questions.map(function (q) {
+      var qid = "q-" + q.id;
+      return '<li class="q"><input type="checkbox" id="' + qid + '" data-q="' + esc(q.id) + '"' + (on.indexOf(q.id) > -1 ? " checked" : "") + ">" +
+        '<label for="' + qid + '"><span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4L18 8.5" stroke-width="2.4"/></svg></span>' +
+        '<span class="qt">' + esc(q.text) + (q.hint ? '<span class="qh">' + esc(q.hint) + "</span>" : "") + "</span></label></li>";
+    }).join("");
+    $("qs").querySelectorAll("input").forEach(function (inp) {
+      inp.addEventListener("change", function () {
+        var list = store.checks[id] || [];
+        list = list.filter(function (x) { return x !== inp.dataset.q; });
+        if (inp.checked) list.push(inp.dataset.q);
+        store.checks[id] = list; saveStore(); ring(); syncProg();
+      });
+    });
+    $("memo").value = store.memo[id] || "";
+    $("memo-state").textContent = "입력하면 바로 저장됩니다";
+    ring();
+  }
+  function ring() {
+    var total = state.data.questions.length, n = checkedCount(state.pick);
+    $("ring-val").style.strokeDashoffset = String(119.4 * (1 - n / total));
+    $("ring-n").textContent = n + "/" + total;
+  }
+  function syncProg() {
+    document.querySelectorAll('[data-ask="' + state.pick + '"] .qprog').forEach(function (s) {
+      s.textContent = checkedCount(state.pick) + "/" + state.data.questions.length;
+    });
+  }
+  $("memo").addEventListener("input", function () {
+    store.memo[state.pick] = $("memo").value;
+    $("memo-state").textContent = saveStore() ? "저장했습니다" : "이 브라우저에서는 저장할 수 없습니다";
+  });
+  $("reset").addEventListener("click", function () {
+    var b = $("reset");
+    if (b.dataset.confirm !== "1") { b.dataset.confirm = "1"; b.textContent = "한 번 더 누르면 지웁니다"; return; }
+    delete store.checks[state.pick]; delete store.memo[state.pick]; saveStore();
+    b.dataset.confirm = ""; b.textContent = "이 병원 체크 지우기"; renderQs(); syncProg();
+  });
+
+  function renderHelp() {
+    var d = state.data;
+    $("help-list").innerHTML = (d.help || []).map(function (h) {
+      return '<article class="help' + (h.urgent ? " urgent" : "") + '"><h3>' + esc(h.title) + "</h3><p>" + esc(h.body) + "</p>" +
+        (h.phone ? '<a class="tel" href="tel:' + esc(h.phone.replace(/[^0-9]/g, "")) + '">' + icon("phone") + esc(h.phone) + "</a>" : "") + "</article>";
+    }).join("");
+    $("fine").innerHTML = (d.fine || []).map(function (p) { return "<p>" + p + "</p>"; }).join("");
+  }
+
+  // 지금 보이는 섹션을 탭바·사이드 내비에 표시
+  function spy() {
+    var ids = ["about", "clinics", "questions", "help"];
+    var links = document.querySelectorAll(".tabbar a, .sidenav a");
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.setAttribute("aria-current", String(a.getAttribute("href") === "#" + e.target.id)); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ids.forEach(function (id) { io.observe($(id)); });
+  }
+
+  fetch("data.json", { cache: "no-cache" }).then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (d) {
+    state.data = d;
+    $("summary").textContent = d.summary || "";
+    renderTicks(); renderChips(); renderClinics(); renderHospitals(); renderPicker(); renderQs(); renderHelp();
+    moveBar(); spy();
+  }).catch(function () {
+    $("groups").innerHTML = '<p class="empty">목록을 불러오지 못했습니다. 새로고침해 보세요.</p>';
+  });
+  moveBar();
+})();
+</script>
+</body>
+</html>
