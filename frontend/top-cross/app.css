@@ -64,6 +64,8 @@ html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent;
 body {
   margin: 0; min-height: 100vh; color: var(--ink);
   font: 400 1rem/1.62 var(--text); word-break: keep-all; overflow-wrap: break-word;
+  /* color-mix 미지원(iOS 16.2 미만)이면 아래 줄 전체가 무시되므로 단색을 먼저 깐다 */
+  background: var(--bg);
   background:
     radial-gradient(60rem 40rem at 12% -8%, color-mix(in srgb, var(--sky-c) 70%, transparent), transparent 70%),
     radial-gradient(50rem 36rem at 110% 30%, color-mix(in srgb, var(--sky-a) 22%, transparent), transparent 70%),
@@ -371,6 +373,7 @@ a { color: inherit; }
   position: fixed; left: 50%; bottom: 0; translate: -50% 0; z-index: 10; width: min(30rem, 100%);
   display: grid; grid-template-columns: repeat(5, 1fr);
   padding: .55rem .6rem calc(.55rem + env(safe-area-inset-bottom, 0px));
+  background: var(--bg);
   background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-radius: 28px 28px 0 0; box-shadow: 0 -8px 24px var(--lo-2), 0 -1px 0 var(--hi);
 }
@@ -386,6 +389,9 @@ a { color: inherit; }
   overflow: auto; overscroll-behavior: contain;
 }
 .sheet[open] { animation: sheet-up .45s var(--ease); }
+/* dialog 미지원(iOS 15.4 미만): 닫힌 시트는 숨기고, app.js가 open만 붙인 시트는 화면 아래에 고정 */
+.sheet:not([open]) { display: none; }
+.sheet.nomodal { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; }
 .sheet::backdrop { background: rgba(40, 38, 52, .28); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 @keyframes sheet-up { from { transform: translateY(40%); opacity: 0; } }
 @media (min-width: 40rem) { .sheet { margin: auto; border-radius: 32px; } }

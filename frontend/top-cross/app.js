@@ -3,7 +3,10 @@
 (() => {
 'use strict';
 
-const STORE_KEY = 'topx:v1';
+const STORE_KEY = 'topx:v2';
+// v12까지 쓰던 키. 업데이트 전부터 열려 있던 옛 창은 이 키에 상태 전체를 덮어쓰므로, 새 코드는 이 키를 쓰지 않고
+// 옛 창이 바꾼 만큼(LEGACY_SEEN에 남긴 마지막 흡수본과의 차이)만 새 키로 옮긴다
+const LEGACY_KEY = 'topx:v1', LEGACY_SEEN = 'topx:v1seen';
 
 const KIND = {
   item: '아이템', equip: '장비', ougi: '오의·특기', spell: '술', summon: '소환',
@@ -55,15 +58,25 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---------- 상태 ---------- */
 // 저장값이 없거나(키 없음·사이트 데이터 삭제) 읽지 못하면(파싱 실패·getItem 예외) null. 빈 기록과 구분한다
-function readStore() {
+const parseStore = t => {
+  const raw = JSON.parse(t);
+  return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스', showCommon: !!raw.showCommon };
+};
+function readStore(key = STORE_KEY) {
   try {
-    const t = localStorage.getItem(STORE_KEY);
-    if (t == null) return null;
-    const raw = JSON.parse(t);
-    return { checked: raw.checked || {}, pos: raw.pos ?? null, theme: raw.theme || 'auto', view: raw.view || 'home', era: raw.era || null, onlyLeft: !!raw.onlyLeft, onlyMiss: !!raw.onlyMiss, char: raw.char || '크레스', showCommon: !!raw.showCommon };
+    const t = localStorage.getItem(key);
+    return t == null ? null : parseStore(t);
   } catch { return null; }
 }
-const loadState = () => readStore() || { checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스', showCommon: false };
+const EMPTY = () => ({ checked: {}, pos: null, theme: 'auto', view: 'home', era: null, onlyLeft: false, onlyMiss: false, char: '크레스', showCommon: false });
+// 새 키가 없으면(처음 업데이트) 옛 키 기록을 그대로 이어받고, 그 값을 흡수본으로 남긴다
+function loadState() {
+  const s = readStore();
+  if (s) return s;
+  const old = readStore(LEGACY_KEY);
+  if (old) try { localStorage.setItem(LEGACY_SEEN, localStorage.getItem(LEGACY_KEY)); } catch {}
+  return old || EMPTY();
+}
 let S = loadState();
 // 탭(창)이 여럿이면 다른 탭이 그사이 저장한 값을 덮지 않도록, 저장 직전 최신 값에 이 탭에서 바꾼 것만 얹는다.
 // base = 이 탭이 마지막으로 읽거나 저장한 값. replace는 백업 복원·초기화처럼 통째로 바꿀 때.
@@ -87,6 +100,28 @@ function save(opts = {}) {
     base = snap(S);
   } catch { toast('이 브라우저에서는 진행 상태를 저장할 수 없습니다. 개인 정보 보호 모드를 꺼 주세요.'); }
 }
+// 옛 창이 옛 키에 쓴 것 중 마지막 흡수 뒤 바뀐 체크·위치·테마만 이 창 상태에 얹고 저장한다. 바뀐 게 있으면 true.
+// 옛 창은 S 전체를 쓰므로 통째로 받으면 새 창에서 한 체크와 「흔한 소모품도 보기」가 지워진다
+function absorbLegacy() {
+  try {
+    const t = localStorage.getItem(LEGACY_KEY);
+    const seenT = localStorage.getItem(LEGACY_SEEN);
+    if (t == null || t === seenT) return false;
+    const raw = JSON.parse(t), L = parseStore(t), P = seenT ? parseStore(seenT) : EMPTY();
+    let changed = false;
+    for (const k of new Set([...Object.keys(L.checked), ...Object.keys(P.checked)])) {
+      if (!!L.checked[k] === !!P.checked[k]) continue;
+      if (L.checked[k]) S.checked[k] = L.checked[k]; else delete S.checked[k];
+      changed = true;
+    }
+    // v8 창은 showCommon 필드 자체를 쓰지 않는다: 없는 필드는 꺼짐으로 읽지 말고 건너뛴다
+    for (const k of SHARED) if (k in raw && L[k] !== P[k]) { S[k] = L[k]; changed = true; }
+    if (changed) save();
+    localStorage.setItem(LEGACY_SEEN, t);
+    return changed;
+  } catch { return false; }
+}
+absorbLegacy();
 
 /* ---------- 데이터 ---------- */
 // id 찾기 표는 프로토타입 없는 객체로(백업·저장값의 'constructor' 같은 이름이 있는 id로 보이지 않게)
@@ -512,9 +547,11 @@ function openSheet(html, cls = '') {
   const s = sheet();
   s.className = 'sheet ' + cls;
   $('.sheet-in', s).innerHTML = html;
-  if (!s.open) s.showModal();
+  // showModal이 없는 옛 사파리(iOS 15.4 미만)는 open 속성만 붙인다(app.css .sheet.nomodal이 화면 아래에 고정)
+  if (typeof s.showModal !== 'function') { s.classList.add('nomodal'); s.setAttribute('open', ''); }
+  else if (!s.open) s.showModal();
 }
-function closeSheet() { const s = sheet(); if (s.open) s.close(); }
+function closeSheet() { const s = sheet(); if (typeof s.close !== 'function') s.removeAttribute('open'); else if (s.open) s.close(); }
 function pickSheet() {
   const p = posIdx();
   return `<h2 class="sheet-h">어디까지 왔나요</h2><p class="sheet-p">마지막으로 지난 관문을 고르세요. 그 다음 관문 전에 챙길 것을 첫 화면에 모아 드립니다.</p>
@@ -710,12 +747,17 @@ document.addEventListener('toggle', ev => {
 }, true);
 // 다른 탭(창)에서 저장하면 이 탭도 같은 체크·위치로 맞춘다
 addEventListener('storage', ev => {
-  if (ev.key !== null && ev.key !== STORE_KEY) return;
-  // 키가 지워졌거나 읽지 못하는 값이면 따르지 않는다(다음 저장 때 이 탭 기록을 통째로 쓴다)
-  const L = readStore(), oldPos = S.pos, oldEra = S.era;
-  if (!L) return;
-  S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
-  base = snap(S);
+  const oldPos = S.pos, oldEra = S.era;
+  // 옛 창(업데이트 전 코드)이 옛 키에 쓰면 바뀐 만큼만 흡수한다(새 키 저장은 다른 새 창에도 전해진다)
+  if (ev.key === LEGACY_KEY) { if (!absorbLegacy()) return; }
+  else {
+    if (ev.key !== null && ev.key !== STORE_KEY) return;
+    // 키가 지워졌거나 읽지 못하는 값이면 따르지 않는다(다음 저장 때 이 탭 기록을 통째로 쓴다)
+    const L = readStore();
+    if (!L) return;
+    S.checked = L.checked; for (const k of SHARED) S[k] = L[k];
+    base = snap(S);
+  }
   applyTheme();
   if (!D) return;
   if (S.pos !== oldPos) eraToCur();
@@ -743,6 +785,8 @@ document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () =>
   if (cur) scrollToCur();
 }));
 $('#sheet').addEventListener('click', ev => { if (ev.target === ev.currentTarget) closeSheet(); });
+// dialog 미지원 브라우저에는 ::backdrop이 없으니 시트 바깥을 누르면 닫기만 하고 그 클릭은 아래로 넘기지 않는다(여는 버튼의 클릭보다 먼저 돌아 막 연 시트는 닫지 않음)
+document.addEventListener('click', ev => { const s = sheet(); if (s.classList.contains('nomodal') && s.hasAttribute('open') && !s.contains(ev.target)) { closeSheet(); ev.stopPropagation(); ev.preventDefault(); } }, true);
 addEventListener('resize', () => placeThumbs(document));
 
 /* PC: 사진이 여러 장이면 마우스로 끌어 넘긴다(터치는 기본 스크롤). 놓으면 가까운 사진에 맞춘다 */
