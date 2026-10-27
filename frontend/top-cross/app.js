@@ -177,6 +177,9 @@ function drawRings(root = document) {
 }
 
 /* ---------- 뷰: 홈 ---------- */
+// 지역 머리 숫자. 마지막 기회 지역은 목록이 아직 안 챙긴 것뿐이라 x/y의 x가 늘 0이 되므로 「남은 N」(진행률 집계 대상 중 미체크)으로 쓴다.
+// 첫 렌더(areaDetails)와 체크 뒤 갱신(softRerender)이 이 함수 하나를 쓴다
+const areaCount = (last, done, total) => last ? `남은 ${total - done}` : `${done}/${total}`;
 // 다음 관문 전에 챙길 것을 지역 순서(스토리 순서)로 보여 준다.
 // 이번 구간에 지나가는 지역(data.json gates[].areas)은 전부, 앞 구간 지역은 이 관문에서 사라지는 항목만(마지막 기회).
 // 다 챙긴 지역은 접고, 남은 지역은 펼쳐 둔다.
@@ -189,7 +192,7 @@ function areaDetails(a, list, opts = {}) {
   return `<details class="area${opts.last ? ' last' : ''}"${open ? ' open' : ''} data-area="${esc(a.id)}"${opts.home ? ' data-home="1"' : ''}>
     <summary>
       <span class="a-name">${nameJp(a.name, a.jp)}</span>
-      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count"${pr.length ? '' : ' hidden'}>${dn}/${pr.length}</span></span>
+      <span class="a-meta">${opts.last ? '<span class="a-due">이 관문 전 마지막 기회</span>' : until ? `<span class="a-due${passed(until) ? ' past' : ''}">${esc(until.title)} 전까지</span>` : ''}<span class="a-due a-miss"${missLeft ? '' : ' hidden'}>놓치면 끝 ${missLeft}</span><span class="a-count"${pr.length ? '' : ' hidden'}>${areaCount(opts.last, dn, pr.length)}</span></span>
       ${svg('chevron', 'ic chev')}
     </summary>
     <div class="a-body">${sortEntries(list).map(e => entryHTML(e, { showArea: !!e.when })).join('')}</div>
@@ -370,10 +373,10 @@ function viewRoute() {
     </div>`;
   return `<section class="route guide">
     <div class="route-top"${q ? ' hidden' : ''}>
-    <div class="seg" role="tablist" aria-label="시대">
+    <div class="seg-box"><div class="seg" role="tablist" aria-label="시대">
       <span class="seg-thumb" aria-hidden="true"></span>
       ${D.eras.map(x => `<button role="tab" class="seg-b${x.id === era ? ' cur' : ''}" aria-selected="${x.id === era}" data-act="era-tab" data-era="${x.id}">${esc(x.name)}</button>`).join('')}
-    </div>
+    </div></div>
     <p class="era-range">${esc(eraById[era]?.range || '')}</p>
     ${eraGates.length ? `<ol class="gate-line">${eraGates.map(g => `<li class="${passed(g) ? 'passed' : ''}${nextGate() === g ? ' next' : ''}"><span class="dot"></span><span>${esc(g.title)}</span></li>`).join('')}</ol>` : ''}
     </div>
@@ -563,8 +566,11 @@ function placeThumbs(root) {
   root.querySelectorAll('.seg').forEach(seg => {
     const cur = seg.querySelector('.seg-b.cur'), th = seg.querySelector('.seg-thumb');
     if (!cur || !th) return;
+    // 아주 좁으면 시대 탭이 여러 줄 격자가 되므로(app.css .seg) 그때만 알약 높이와 줄 위치를 따라간다
+    const grid = getComputedStyle(seg).display === 'grid';
     th.style.width = cur.offsetWidth + 'px';
-    th.style.transform = `translateX(${cur.offsetLeft - 4}px)`;
+    th.style.height = grid ? cur.offsetHeight + 'px' : '';
+    th.style.transform = `translate(${cur.offsetLeft - 4}px, ${grid ? cur.offsetTop - seg.querySelector('.seg-b').offsetTop : 0}px)`;
   });
 }
 function go(view) { S.view = view; save(); render(); }
@@ -581,7 +587,7 @@ function softRerender() {
     const lh = $('.panel.late summary h2'); if (lh) lh.innerHTML = lateTitle(document.querySelectorAll('.panel.late .entry:not(.done):not(.common)').length);
     document.querySelectorAll('details.area[data-home]').forEach(d => {
       const es = d.querySelectorAll('.entry:not(.noprog)'), c = d.querySelector('.a-count');
-      if (c) c.textContent = `${d.querySelectorAll('.entry.done:not(.noprog)').length}/${es.length}`;
+      if (c) c.textContent = areaCount(d.classList.contains('last'), d.querySelectorAll('.entry.done:not(.noprog)').length, es.length);
       const m = d.querySelector('.a-miss'), ml = d.querySelectorAll('.entry.miss:not(.done):not(.common)').length;
       if (m) { m.textContent = `놓치면 끝 ${ml}`; m.hidden = !ml; }
     });
@@ -851,13 +857,16 @@ async function saveShots(btn) {
 // 새로고침 때 브라우저가 옛 스크롤 위치를 되살리지 않게 한다(화면은 앱이 다시 그리고 공략 탭은 지금 장으로 내려간다)
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 applyTheme();
+// 시작 뒤 사용자 입력(휠·터치·키·포인터·장 열기/검색의 click·input)이 한 번이라도 있었는지. scroll 이벤트는 쓰지 않는다(scrollToCur 자신도 scroll을 낸다)
+let touched = false;
+for (const t of ['wheel', 'touchstart', 'keydown', 'pointerdown', 'click', 'input']) addEventListener(t, () => { touched = true; }, { capture: true, passive: true, once: true });
 loadData().then(() => {
   document.documentElement.classList.add('ready');
   eraToCur();
   render({ noScroll: true });
   if (S.view === 'route') scrollToCur();
-  // 글꼴이 늦게 와 장 높이가 바뀌면 한 번 더 지금 장으로(그사이 다른 탭으로 갔으면 그대로)
-  document.fonts?.ready.then(() => { if (S.view === 'route' && !query) scrollToCur(); });
+  // 글꼴이 늦게 와 장 높이가 바뀌면 한 번 더 지금 장으로(그사이 다른 탭으로 갔거나 사용자가 손을 댔으면 그대로)
+  document.fonts?.ready.then(() => { if (S.view === 'route' && !query && !touched) scrollToCur(); });
   navigator.storage?.persist?.().catch(() => {});
 }).catch(() => {
   $('#view').innerHTML = '<p class="empty">공략 데이터를 불러오지 못했습니다. 인터넷 연결을 확인하고 새로고침해 주세요. 한 번 연 뒤에는 오프라인에서도 열립니다.</p>';
