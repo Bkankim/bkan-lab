@@ -184,8 +184,8 @@ a { color: inherit; }
 @keyframes pop { 40% { transform: scale(.86); } 75% { transform: scale(1.06); } }
 .body { min-width: 0; }
 .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; }
-.head h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
-.jp { font-size: .8rem; font-weight: 400; color: var(--faint); }
+.head h3 { margin: 0; min-width: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.jp { font-size: .8rem; font-weight: 400; color: var(--faint); overflow-wrap: anywhere; }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .4rem; margin: .35rem 0 .4rem; font-size: .78rem; color: var(--soft); }
 .kind { margin-right: .15rem; }
 .where { display: inline-flex; align-items: center; gap: .2rem; margin-right: .15rem; }
@@ -224,6 +224,15 @@ a { color: inherit; }
 .seg-b { position: relative; flex: 1 0 auto; min-height: 2.5rem; padding: 0 .62rem; border-radius: 999px; font-size: .84rem; color: var(--soft); transition: color .3s; }
 /* 좁은 폭: 시대 탭 6개가 한 줄에 다 보이도록 줄이고, 두 낱말 이름(숨은 던전·클리어 후)은 두 줄로 */
 @media (max-width: 380px) { .seg-b { flex: 1 1 auto; padding: .15rem .38rem; font-size: .8rem; line-height: 1.2; } }
+/* 루트 글자를 키우면 같은 폭에서 더 좁아지므로 시대 탭(.seg-box 안)은 rem 컨테이너 폭으로도 줄인다.
+   그래도 한 줄에 다 안 들어가는 폭(320px에 글자 130%, 280px 등)은 3칸 2줄 격자로 6개를 다 보인다.
+   한 줄이 들어가는 최소 폭은 실측 약 16.3rem 이하(웹 글꼴), 시스템 글꼴 차이 여유를 두어 17rem에서 격자로 */
+.seg-box { container-type: inline-size; }
+@container (max-width: 21.75rem) { .seg:not(.small) .seg-b { flex: 1 1 auto; padding: .15rem .38rem; font-size: .8rem; line-height: 1.2; } }
+@container (max-width: 17rem) {
+  .seg:not(.small) { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 26px; overflow: visible; }
+  .seg:not(.small) .seg-thumb { bottom: auto; }
+}
 .seg-b.cur { color: var(--ink); font-weight: 500; }
 .seg.small { margin: .6rem 0 1rem; }
 .era-range { color: var(--soft); font-size: .88rem; margin: .7rem .4rem 0; }
@@ -236,11 +245,11 @@ a { color: inherit; }
 .gate-line li.next { color: var(--ink); font-weight: 500; }
 .gate-line li.next .dot { background: radial-gradient(circle at 35% 30%, #fff, var(--sky-a) 50%, var(--sky-b)); box-shadow: 0 0 0 4px var(--bg), 0 0 14px var(--sky-a); }
 
-.filters { display: grid; gap: .7rem; margin: .9rem -1rem .4rem; position: sticky; top: 0; z-index: 3; padding: calc(.5rem + env(safe-area-inset-top, 0px)) 1rem .6rem; background: linear-gradient(var(--bg) 78%, transparent); }
+.filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: .7rem; margin: .9rem -1rem .4rem; position: sticky; top: 0; z-index: 3; padding: calc(.5rem + env(safe-area-inset-top, 0px)) 1rem .6rem; background: linear-gradient(var(--bg) 78%, transparent); }
 .search { display: flex; align-items: center; gap: .55rem; min-height: 3rem; padding: 0 1rem; border-radius: 999px; box-shadow: var(--press); color: var(--faint); }
 .search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; font-size: 1rem; color: var(--ink); }
 .search input::placeholder { color: var(--faint); }
-.toggles { display: flex; gap: .55rem; }
+.toggles { display: flex; flex-wrap: wrap; gap: .55rem; }
 .count { color: var(--soft); font-size: .88rem; margin: .4rem .4rem 0; }
 
 .area { margin-top: 1rem; border-radius: 26px; background: var(--bg); box-shadow: var(--raise-s); }
@@ -331,7 +340,7 @@ a { color: inherit; }
 .pw-cell b { font-size: 1.05rem; font-weight: 500; }
 .pw-cell b .jp { font-size: .72rem; font-weight: 400; }
 .pw-cell small { font-size: .68rem; color: var(--faint); }
-.pw-cell.hit { background: var(--accent); color: var(--accent-ink); box-shadow: var(--press-s); }
+.pw-cell.hit { background: var(--accent-t); color: var(--accent-ink); box-shadow: var(--press-s); }
 .pw-cell.hit small, .pw-cell.hit .jp { color: inherit; opacity: .8; }
 .pw-seq { margin: .9rem 0 0; }
 .myst { padding: .9rem 0 .2rem; border-top: 1px solid var(--lo-2); margin-top: .9rem; }
@@ -341,9 +350,10 @@ a { color: inherit; }
 .myst p { margin: .35rem 0 0; font-size: .92rem; }
 .myst .cmd { font-size: .95rem; color: var(--accent-t); letter-spacing: .02em; }
 .tbl { display: grid; margin-top: .4rem; }
-.tr { display: grid; grid-template-columns: 6.2rem 1fr; gap: .75rem; padding: .55rem 0; border-top: 1px solid var(--lo-2); font-size: .9rem; }
+.tr { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); gap: .75rem; padding: .55rem 0; border-top: 1px solid var(--lo-2); font-size: .9rem; }
 .tr:first-child { border-top: 0; }
 .td-a { color: var(--soft); }
+.td-a, .td-b { overflow-wrap: anywhere; }
 .td-loc { display: flex; gap: .25rem; align-items: center; margin-top: .2rem; font-size: .8rem; color: var(--soft); }
 
 /* ---------- 설정 ---------- */
