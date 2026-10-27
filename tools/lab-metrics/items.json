@@ -80,6 +80,19 @@
         "b2184d6e": "조건이 늦게 풀리는 카드를 이른 시점에 배치",
         "a4e12d49": "참고 탭 설명이 불친절"
       }
+    },
+    "goyang-paju-mind-2610": {
+      "segments": [
+        {
+          "runtime": "claude-code",
+          "session": "1dcc3dc3-4bdd-4b15-9247-f3aa4fb7023e"
+        }
+      ],
+      "corrections": [],
+      "first_release_to": "2026-10-27T10:47:53Z",
+      "made": "정신건강의학과 45곳 전수 조사 · 여성 전문의 판정 · 통화 질문 체크",
+      "revisions": 0,
+      "corrections_why": {}
     }
   }
 }
