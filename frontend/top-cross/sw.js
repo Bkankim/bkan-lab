@@ -1,8 +1,8 @@
 // 테오판 X 놓침 방지 안내: 한 번 열면 오프라인에서도 열리도록 캐시한다.
 // 앱 파일을 바꾸면 VERSION을 올린다.
-const VERSION = 'topx-v12';
+const VERSION = 'topx-v13';
 // index.html은 라이브에서 './'로 308 리다이렉트되므로 넣지 않는다(리다이렉트된 응답은 페이지 탐색에 쓰면 네트워크 오류)
-const CORE = ['./', './app.css?v=12', './app.js?v=12', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CORE = ['./', './app.css?v=13', './app.js?v=13', './data.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 // 응답이 이만큼 늦으면 캐시본을 먼저 보여 주고, 새 응답은 뒤에서 받아 다음에 쓴다
 const WAIT_MS = 3000;
 
