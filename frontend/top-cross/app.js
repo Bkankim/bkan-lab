@@ -857,13 +857,14 @@ async function saveShots(btn) {
 // 새로고침 때 브라우저가 옛 스크롤 위치를 되살리지 않게 한다(화면은 앱이 다시 그리고 공략 탭은 지금 장으로 내려간다)
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 applyTheme();
-// 시작 뒤 사용자 입력(휠·터치·키·포인터·장 열기/검색의 click·input)이 한 번이라도 있었는지. scroll 이벤트는 쓰지 않는다(scrollToCur 자신도 scroll을 낸다)
+// 첫 scrollToCur 뒤 사용자 입력(휠·터치·키·포인터·장 열기/검색의 click·input)이 있었는지. scroll 이벤트는 쓰지 않는다(scrollToCur 자신도 scroll을 낸다)
 let touched = false;
-for (const t of ['wheel', 'touchstart', 'keydown', 'pointerdown', 'click', 'input']) addEventListener(t, () => { touched = true; }, { capture: true, passive: true, once: true });
+for (const t of ['wheel', 'touchstart', 'keydown', 'pointerdown', 'click', 'input']) addEventListener(t, () => { touched = true; }, { capture: true, passive: true });
 loadData().then(() => {
   document.documentElement.classList.add('ready');
   eraToCur();
   render({ noScroll: true });
+  touched = false; // 데이터를 기다리는 동안의 입력은 첫 scrollToCur이 이미 덮으므로 세지 않는다
   if (S.view === 'route') scrollToCur();
   // 글꼴이 늦게 와 장 높이가 바뀌면 한 번 더 지금 장으로(그사이 다른 탭으로 갔거나 사용자가 손을 댔으면 그대로)
   document.fonts?.ready.then(() => { if (S.view === 'route' && !query && !touched) scrollToCur(); });
