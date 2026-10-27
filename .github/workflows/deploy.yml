@@ -67,6 +67,8 @@ jobs:
             hj_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/hwajeong-2612/data.json")
             tc_og=$(curl -s -L "$SITE/frontend/top-cross/" | head -c 20000)
             tc_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/top-cross/data.json")
+            gp_og=$(curl -s -L "$SITE/frontend/goyang-paju-mind-2610/" | head -c 20000)
+            gp_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/goyang-paju-mind-2610/data.json")
             missing=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/no-such-page-$(date +%s)/")
             custom_css=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$CUSTOM/assets/lab.css")
             fail=0
@@ -89,6 +91,12 @@ jobs:
                   "$(printf '%s' "$tc_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/top-cross/og.jpg' && echo 1 || echo 0)"
             check "top-cross data.json served as json" \
                   "$(printf '%s' "$tc_data" | grep -q '^200 application/json' && echo 1 || echo 0)"
+            check "frontend lists goyang-paju-mind" \
+                  "$(printf '%s' "$fe" | grep -qF 'href="/frontend/goyang-paju-mind-2610/"' && echo 1 || echo 0)"
+            check "goyang-paju-mind page has og:image" \
+                  "$(printf '%s' "$gp_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/goyang-paju-mind-2610/og.jpg' && echo 1 || echo 0)"
+            check "goyang-paju-mind data.json served as json" \
+                  "$(printf '%s' "$gp_data" | grep -q '^200 application/json' && echo 1 || echo 0)"
             check "unknown path returns 404" "$([ "$missing" = "404" ] && echo 1 || echo 0)"
             check "custom domain reachable (lab.bkan.dev/assets/lab.css)" \
                   "$(printf '%s' "$custom_css" | grep -q '^200 text/css' && echo 1 || echo 0)"
