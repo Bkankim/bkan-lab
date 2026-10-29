@@ -1,40 +1,40 @@
 {
   "slug": "shoulder-slap-2610",
-  "measured_at": "2026-10-29T10:52:07Z",
+  "measured_at": "2026-10-29T11:18:51Z",
   "pricing_as_of": "2026-10-06",
   "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
-  "elapsed_ms": 7916339,
-  "ai_work_ms": 5750456,
-  "agent_sum_ms": 15160989,
-  "parallelism": 2.64,
-  "clicks": 18,
+  "elapsed_ms": 9520551,
+  "ai_work_ms": 6031954,
+  "agent_sum_ms": 15442486,
+  "parallelism": 2.56,
+  "clicks": 21,
   "resends_merged": 1,
   "corrections": 0,
   "approvals": 0,
   "approval_wait_ms": 0,
-  "input_chars": 3841,
-  "ai_ms_per_click": 319469,
+  "input_chars": 3967,
+  "ai_ms_per_click": 287235,
   "subagents": 24,
   "subagent_types": {
     "fork": 8,
     "general-purpose": 14,
     "humanize-monolith": 2
   },
-  "tool_calls": 1458,
+  "tool_calls": 1479,
   "aside_exec_calls": 12,
   "web_search_requests": 0,
   "models": [
     {
       "model": "claude-opus-5-5",
-      "requests": 659,
-      "output_tokens": 528209,
-      "output_share": 0.61
+      "requests": 683,
+      "output_tokens": 543031,
+      "output_share": 0.616
     },
     {
       "model": "claude-sonnet-5-5",
       "requests": 662,
       "output_tokens": 334549,
-      "output_share": 0.386
+      "output_share": 0.38
     },
     {
       "model": "gpt-6.1-sol",
@@ -44,19 +44,19 @@
     }
   ],
   "tokens": {
-    "input": 72797,
+    "input": 72845,
     "cache_write_5m": 2727995,
-    "cache_write_1h": 897523,
-    "cache_read": 196566879,
-    "output": 866286
+    "cache_write_1h": 935707,
+    "cache_read": 206006669,
+    "output": 881108
   },
-  "cost_usd_api_equiv": 70.28,
+  "cost_usd_api_equiv": 72.77,
   "unpriced_models": {
     "gpt-6.1-sol": 19
   },
   "period": {
     "from": "2026-10-29T08:40:10Z",
-    "to": "2026-10-29T10:52:06Z"
+    "to": "2026-10-29T11:18:51Z"
   },
   "runtimes": [
     "claude-code",
