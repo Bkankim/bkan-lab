@@ -500,6 +500,21 @@ def unit_small(text):
     return re.sub(r"(\d+)(시간|분)", r"\1<small>\2</small>", text)
 
 
+def percent_shares(models):
+    """화면용 정수 %: 합은 100, 0보다 큰 비율은 최소 1%(반올림으로 0%가 보이지 않게)."""
+    raw = [m["output_share"] * 100 for m in models]
+    out = [max(1, int(v)) if v > 0 else 0 for v in raw]
+    order = sorted(range(len(raw)), key=lambda i: raw[i] - int(raw[i]), reverse=True)
+    i = 0
+    while sum(out) < 100 and order:
+        out[order[i % len(order)]] += 1
+        i += 1
+    while sum(out) > 100:
+        j = max((k for k in range(len(out)) if out[k] > 1), key=lambda k: out[k])
+        out[j] -= 1
+    return out
+
+
 def render_entry(r):
     usd = r["cost_usd_api_equiv"]
     # 첫 배포 기록이 있으면 딸깍 칸을 "첫 배포 -> 지금"으로 보여 준다(가장 센 숫자를 큰 칸에)
@@ -525,7 +540,7 @@ def render_entry(r):
     facts.append(("경과", fmt_ms(r["elapsed_ms"])))
     models = r["models"]
     facts.append(("모델", model_name(models[0]["model"]) if len(models) == 1 else
-                  "<br>".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in models)))
+                  "<br>".join(f"{model_name(m['model'])} {p}%" for m, p in zip(models, percent_shares(models)))))
     cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
     made = (f'<span class="fact made"><span class="k">만든 것</span>{r["made"]}</span>'
             if r.get("made") else "")
