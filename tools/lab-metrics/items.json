@@ -93,6 +93,35 @@
       "made": "정신건강의학과 45곳 전수 조사 · 여성 전문의 판정 · 통화 질문 체크",
       "revisions": 0,
       "corrections_why": {}
+    },
+    "shoulder-slap-2610": {
+      "segments": [
+        {
+          "runtime": "claude-code",
+          "session": "0400dc75-a613-48b0-aa32-101f5d6866de"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a186ed-4d9e-7790-9fd8-6297fbe9caec"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a186ed-4d9e-7842-8ec8-82239d4d6b8f"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "ecb05b04-d142-40f8-8042-f7f29e28253c"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "77e5f191-3c02-44d4-9bf8-447b62cce339"
+        }
+      ],
+      "corrections": [],
+      "first_release_to": "2026-10-29T09:27:26Z",
+      "made": "어깨 전문의 29명 공식 약력·사진 수집 · 대표 논문 48편 PubMed 대조 · 석고상 히어로 생성",
+      "revisions": 0,
+      "corrections_why": {}
     }
   }
 }
