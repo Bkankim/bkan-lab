@@ -525,7 +525,7 @@ def render_entry(r):
     facts.append(("경과", fmt_ms(r["elapsed_ms"])))
     models = r["models"]
     facts.append(("모델", model_name(models[0]["model"]) if len(models) == 1 else
-                  " · ".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in models)))
+                  "<br>".join(f"{model_name(m['model'])} {m['output_share']:.0%}" for m in models)))
     cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
     made = (f'<span class="fact made"><span class="k">만든 것</span>{r["made"]}</span>'
             if r.get("made") else "")
