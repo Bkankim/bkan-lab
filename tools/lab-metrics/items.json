@@ -119,13 +119,21 @@
         {
           "runtime": "claude-code",
           "session": "77e5f191-3c02-44d4-9bf8-447b62cce339"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "beb61212-65b3-4210-8bf3-28255e40af7b"
+        },
+        {
+          "runtime": "claude-code",
+          "session": "03378057-5e35-4082-9a98-aa6af3043a0f"
         }
       ],
       "corrections": [],
       "first_release_to": "2026-10-29T09:27:26Z",
-      "made": "어깨 전문의 29명 공식 약력·사진 수집 · 대표 논문 48편 PubMed 대조 · 석고상 히어로 생성",
-      "used": "지인이 어깨 전문의를 고를 때 실제로 쓰고 있습니다",
-      "revisions": 0,
+      "made": "서울·부천·인천 상급종합·관절전문병원 27곳 어깨 전문의 전수 · 73명 PubMed 근거 등급 · 출발지 4곳 도로거리 · 석고상 히어로 생성",
+      "used": "공유 링크로 실제 진료 예약 전 비교에 쓰고 있습니다",
+      "revisions": 1,
       "corrections_why": {}
     }
   }
