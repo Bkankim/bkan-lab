@@ -428,6 +428,7 @@ def build_item(slug, item, pricing):
         "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
         **r,
         "made": item.get("made"),
+        "used": item.get("used"),
         "revisions": item.get("revisions"),
     }
     if item.get("first_release_to"):
@@ -528,9 +529,12 @@ def render_entry(r):
     cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
     made = (f'<span class="fact made"><span class="k">만든 것</span>{r["made"]}</span>'
             if r.get("made") else "")
+    # 만든 것이 실제로 어디에 쓰였는지를 바로 아래 줄에 짝으로 둔다
+    used = (f'<span class="fact used"><span class="k">쓰임</span>{r["used"]}</span>'
+            if r.get("used") else "")
     rest = "".join(f'<span class="fact"><span class="k">{k}</span>{v}</span>' for k, v in facts)
     return (f'<span class="ledger"><span class="stats">{cells}</span>'
-            f'<span class="facts">{made}{rest}</span></span>')
+            f'<span class="facts">{made}{used}{rest}</span></span>')
 
 
 def render_page(page, results):

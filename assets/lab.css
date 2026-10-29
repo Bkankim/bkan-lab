@@ -171,11 +171,12 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
 }
 .fact { display: flex; flex-direction: column; min-width: 0; }
 .fact .k { font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
-.fact.made { grid-column: 1 / -1; }
+.fact.made, .fact.used { grid-column: 1 / -1; }
 @media (max-width: 40rem) {
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: .7rem; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .fact:not(.made):last-child:nth-child(even) { grid-column: 1 / -1; }
+  .facts:not(:has(.used)) .fact:not(.made):last-child:nth-child(even),
+  .facts:has(.used) .fact:not(.made):not(.used):last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* 측정 방법 */
