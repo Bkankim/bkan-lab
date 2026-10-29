@@ -1,0 +1,2246 @@
+{
+ "checked": "2026-10-29",
+ "papers_unique": 48,
+ "origin": "강서구 화곡역",
+ "doctors": [
+  {
+   "id": "A01",
+   "rank": 1,
+   "tie": false,
+   "name": "김세훈",
+   "career_note": "서울대학교병원 정형외과 어깨 진료. 논문 영문명은 Sae Hoon Kim으로 확인.",
+   "fields": "SLAP 영상 평가와 이두건 복합체 치료, 회전근개 및 어깨 관절경.",
+   "consult": "SLAP가 실제 통증 원인인지와 이두건 병변이 함께 있는지 구분하고, 수술이 필요할 경우 선택지의 근거를 비교해 듣는 상담에 적합.",
+   "limits": "대표 무작위 연구는 회전근개 파열 동반 환자군이다. 논문 참여가 단독 SLAP 환자 수술 성적의 우월성을 의미하지 않는다.",
+   "papers": [
+    {
+     "topic": "SLAP 병변 진단에서 자세별 CT 관절조영 비교",
+     "year": "2012",
+     "journal": "Radiology",
+     "study": "진단 정확도 비교연구",
+     "role": "공동저자",
+     "interp": "47명 49어깨에서 관절경 결과와 대조. 영상 진단을 다룬 연구이며 치료 우열 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/22344405/",
+     "pmid": "22344405",
+     "title_en": "Superior labral anterior-to-posterior lesions: comparison of external rotation and active supination CT arthrography with neutral CT arthrography."
+    },
+    {
+     "topic": "이두건 복합체 변연절제와 절단술 및 고정술 비교",
+     "year": "2016",
+     "journal": "Arthroscopy",
+     "study": "전향적 무작위 비교시험",
+     "role": "공동저자",
+     "interp": "회전근개 봉합을 함께 받은 환자 연구. 단독 SLAP 의심 환자에게 결과를 그대로 적용할 수 없음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26921128/",
+     "pmid": "26921128",
+     "title_en": "Comparison of Treatments for Superior Labrum-Biceps Complex Lesions With Concomitant Rotator Cuff Repair: A Prospective, Randomized, Comparative Analysis of Debridement, Biceps Tenotomy, and Biceps Tenodesis."
+    },
+    {
+     "topic": "이두건 고정술의 간섭나사와 봉합나사 비교",
+     "year": "2017",
+     "journal": "AJSM",
+     "study": "전향적 무작위 비교시험",
+     "role": "공동저자",
+     "interp": "회전근개 파열과 이두건 복합체 병변 동반 환자. 고정 방식의 임상·해부학적 결과를 비교.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28146397/",
+     "pmid": "28146397",
+     "title_en": "A Prospective Randomized Study Comparing the Interference Screw and Suture Anchor Techniques for Biceps Tenodesis."
+    }
+   ],
+   "evidence": "SLAP 영상 진단과 이두건 치료 무작위 비교연구",
+   "hospital_short": "서울대학교병원",
+   "km": 18.3,
+   "address": "서울 종로구 대학로 101",
+   "hospital": "서울대학교병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨",
+    "견관절",
+    "견갑골",
+    "견관절강직",
+    "견관절회전근개파열",
+    "어깨관절외상",
+    "암환자어깨관절문제"
+   ],
+   "education": [
+    "2008 ~ 2011 서울대학교 의과대학원 의학박사(정형외과)",
+    "2002 ~ 2004 서울대학교 의과대학원 석사(정형외과)",
+    "1993 ~ 1999 서울대학교 의과대학 의학사"
+   ],
+   "career": [
+    "2017. 4. ~ 현재 서울대학교병원 임상교수",
+    "2017 Best Orthopaedic Research Society Poster – Shoulder and Elbow 수상",
+    "2013 ~ 현재 Biomed Research International 지 정형외과 분과 편집장",
+    "2012 최다 논문 인용상 (2008~2011) / Arthroscopy지에서 20개의 최다 인용 논문 표창",
+    "2011. 12. ~ 2012. 12. 미국 UCSD 해외연수",
+    "2007. 9. ~ 2017. 3. 서울대학교병원 임상부교수",
+    "2007. 5. ~ 2007. 8. 서울대학교병원 전임의",
+    "2004. 3. ~ 2007. 4. 육군 군의관",
+    "2004 정형외과 전문의 시험 수석 / 대한의사협회 표창",
+    "2000. 3. ~ 2004. 2. 서울대학교병원 전공의"
+   ],
+   "societies": [
+    "2013 ~ 현재 Biomed Research International / Editorial Board (정형외과 분과 편집위원)",
+    "2013 ~ 현재 대한견주관절학회 전산위원회 / 위원",
+    "2008 ~ 현재 국제관절경학회 / 회원",
+    "2007 ~ 현재 미국정형외과학회 / 회원"
+   ],
+   "sources": [
+    "https://www.snuh.org/blog/01206/career.do?hsp_cd=1",
+    "https://www.snuh.org/m/blog/01206/ajaxMobileCareer.do?firstIndex=0&lastIndex=40",
+    "https://search.snuh.org/search/search.jsp?searchTarget=ALL&wnquery=%EA%B9%80%EC%84%B8%ED%9B%88"
+   ],
+   "photo": "img/A01.webp",
+   "societies_total": 4
+  },
+  {
+   "id": "A02",
+   "rank": 2,
+   "tie": false,
+   "name": "유재철",
+   "career_note": "성균관대학교 의과대학 교수. 공식 약력에 2025년 4월부터 골관절센터장 및 스포츠의학실장. 1994년 고려대학교 의학사.",
+   "fields": "단독 SLAP 봉합, 이두건 절단술·고정술, 스포츠 어깨와 회전근개.",
+   "consult": "SLAP 보존 또는 봉합, 이두건 처리 여부 등 수술 적응증과 방법을 함께 검토하는 상담에 적합.",
+   "limits": "생역학 연구와 임상연구를 구분해야 한다. 이두건 비교연구 상당수는 중장년 회전근개 파열 동반 환자 대상.",
+   "papers": [
+    {
+     "topic": "단독 제2형 SLAP 후방 봉합의 장기 임상 결과",
+     "year": "2021",
+     "journal": "KSSTA",
+     "study": "후향적 증례군 연구",
+     "role": "공동저자",
+     "interp": "54명, 평균 약 91개월 추적. 단독 SLAP와 직접 관련되지만 다른 수술과 무작위 비교한 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/34100096/",
+     "pmid": "34100096",
+     "title_en": "Posterior repair of isolated type 2 superior labrum anterior-posterior lesion prevents external rotation deficiency: long-term outcome study."
+    },
+    {
+     "topic": "회전근개 파열 동반 이두건 절단술과 고정술 비교",
+     "year": "2010",
+     "journal": "AJSM",
+     "study": "전향적 코호트 비교연구",
+     "role": "공동저자",
+     "interp": "55세 초과 환자를 순차적으로 두 군에 배정. 무작위 시험은 아니며 외형 변형과 기능을 비교.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/20551285/",
+     "pmid": "20551285",
+     "title_en": "Treatment of biceps tendon lesions in the setting of rotator cuff tears: prospective cohort study of tenotomy versus tenodesis."
+    },
+    {
+     "topic": "후방 제2형 SLAP 봉합 방법의 초기 강도 비교",
+     "year": "2008",
+     "journal": "JSES",
+     "study": "사체 생역학 실험",
+     "role": "제1저자",
+     "interp": "사체 15구의 봉합 구조를 비교. 실제 환자의 통증 회복이나 운동 복귀율을 검증한 임상시험은 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/18069010/",
+     "pmid": "18069010",
+     "title_en": "A biomechanical comparison of repair techniques in posterior type II superior labral anterior and posterior (SLAP) lesions."
+    }
+   ],
+   "evidence": "단독 SLAP 장기 결과와 이두건 치료 비교",
+   "hospital_short": "삼성서울병원",
+   "km": 30.1,
+   "address": "서울 강남구 일원로 81",
+   "hospital": "삼성서울병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "견갑골주변의스포츠손상",
+    "어깨질병",
+    "어깨탈구및골절",
+    "관절염",
+    "회전근개손상",
+    "어깨및팔(상완)의근육및힘줄의손상",
+    "관절연골장애",
+    "스포츠손상",
+    "어깨관절의탈구",
+    "관절경",
+    "어깨인공관절술"
+   ],
+   "education": [
+    "2004.07 고려대학교 대학원 의학과 (박사)",
+    "2000.07 고려대학교 대학원 의학과 (석사)",
+    "1994.02 고려대학교 의과대학 졸업 (의학사)",
+    "1989.02 노스웨스턴대학교 의예과"
+   ],
+   "career": [
+    "2025.04 ~현재 골관절센터장 兼 스포츠의학실장",
+    "2017.0401 ~현재 성균관의대 삼성서울병원 정형외과 교수",
+    "2010.0302 ~현재 미국 UC Irvine 연수",
+    "2011.0302 ~ 2017.03 삼성서울병원 정형외과 부교수",
+    "2007.03 ~ 2011.02 삼성서울병원 정형외과 조교수",
+    "2005.04 ~ 2007.02 삼성서울병원 정형외과 임상조교수",
+    "2006.05 유럽 ESSKA (유럽관절경학회) Travelling Fellowship 연수",
+    "2003.03 ~ 2005.03 을지대학교 을지병원 정형외과 전임강사",
+    "2004.08 대한스포츠 학회분과 전문의",
+    "2002.03 ~ 2003.02 삼성서울병원 정형외과 전임의",
+    "2002.02 정형외과 전문의 자격 취득",
+    "1998.05 ~ 2002.02 고려대학교병원 레지던트과정 수료",
+    "1995.05 ~ 1998.04 안성시 보건소 지소장",
+    "1994.03 ~ 1995.02 고려대학교병원 인턴과정 수료"
+   ],
+   "societies": [
+    "미국 관절경학회지 편집위원 (Journal of Arthroscopy Editorial Board)",
+    "세계 견주관절학회 2016 학술위원장",
+    "대한견주관절학회 정회원",
+    "국제 관절경 및 슬관절 스포츠의학 회원[International Society of Arthroscopy,Knee Surgery and Orthopaedic Sports Medicine (ISAKOS) 회원]",
+    "아시아 스포츠 학회 학술위원"
+   ],
+   "sources": [
+    "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=417"
+   ],
+   "photo": "img/A02.webp",
+   "societies_total": 12
+  },
+  {
+   "id": "A03",
+   "rank": 3,
+   "tie": false,
+   "name": "박진영",
+   "career_note": "네온정형외과 소속을 KBO 의료협력체계에서 확인. 이전 건국대학교병원 시기의 연구와 현재 영문 저자명 Jin-Young Park을 대조.",
+   "fields": "오버헤드 스포츠와 SLAP 봉합, 이두건 고정술, 운동 복귀.",
+   "consult": "웨이트나 던지기 등 운동 목표가 중요하거나 SLAP 수술과 운동 복귀의 현실적인 기대치를 듣고 싶은 경우 우선 검토할 후보.",
+   "limits": "선수 연구는 일반 생활체육인과 다르다. 2026년 이두구 압통 연구는 홀짝 배정이며 SLAP II~IV를 제외했으므로 SLAP 수술 근거로 단순 확대하지 않는다.",
+   "papers": [
+    {
+     "topic": "엘리트 오버헤드 선수의 제2형 SLAP 봉합 결과",
+     "year": "2013",
+     "journal": "AJSM",
+     "study": "후향적 증례군 연구",
+     "role": "제1저자",
+     "interp": "선수 24명 연구. 관절와순 치유와 경기 복귀가 항상 일치하지 않음을 다뤄 운동 목표 상담에 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/23644148/",
+     "pmid": "23644148",
+     "title_en": "Clinical and radiological outcomes of type 2 superior labral anterior posterior repairs in elite overhead athletes."
+    },
+    {
+     "topic": "이두구 압통만 있는 환자에게 이두건 고정술을 더할지 비교",
+     "year": "2026",
+     "journal": "JSES international",
+     "study": "전향적 비교시험",
+     "role": "공동저자",
+     "interp": "논문은 무작위 연구로 명명했으나 등록번호 홀짝 배정. 회전근개 파열 동반 90명이며 SLAP II~IV 등 구조 병변은 제외.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41377610/",
+     "pmid": "41377610",
+     "title_en": "Tenderness on the bicipital groove: is it an indication for biceps procedure during rotator cuff repair?-A prospective randomized controlled study."
+    },
+    {
+     "topic": "회전근개 봉합 시 브리지 방식 이두건 고정술",
+     "year": "2016",
+     "journal": "Arthroscopy Techniques",
+     "study": "수술 술기 보고",
+     "role": "제1저자",
+     "interp": "새로운 고정 방법을 설명하는 Technical Note. 다른 방법보다 우월한지 검증하는 임상 비교시험은 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/27909678/",
+     "pmid": "27909678",
+     "title_en": "Bridge Tenodesis: A Secure Fixation Technique for Biceps Long Head Tendinopathy During Arthroscopic Rotator Cuff Repair Using a Suture-Bridge Technique."
+    }
+   ],
+   "evidence": "선수 SLAP 결과와 이두건 고정술 임상·술기 연구",
+   "hospital_short": "네온정형외과",
+   "km": 23.0,
+   "address": "서울 강남구 선릉로131길 8",
+   "hospital": "네온정형외과",
+   "title": "원장",
+   "dept": "정형외과",
+   "specialty": [],
+   "education": [
+    "서울대학교 의과대학 졸업",
+    "서울대학교 의과대학원 박사취득",
+    "서울대학교 정형외과 전공의 수료"
+   ],
+   "career": [
+    "단국대학교 의과대학 부교수",
+    "건국대학교 의학전문대학원 교수",
+    "건국대학교병원,정형외과과장,어깨팔꿈치센터장",
+    "(현)박진영 네온 정형외과 원장",
+    "미국 뉴욕 컬럼비아 대학원 병원 어깨,팔꿈치,스포츠센터 임상강사",
+    "미국 메이어 클리닉,정형외과 연수",
+    "대한견-주관절학회 선정:미국,일본,유럽 traveling fellow 수상",
+    "제마스포츠의학상,대한선수트레이너협회 Best MD상 수상",
+    "EBS ‘명의’ 200인 선정",
+    "2008년 베이징 올림픽, 대한민국 선수단 팀닥터",
+    "대한올림픽위원회(Korean Olympic Committee) 의무위원"
+   ],
+   "societies": [
+    "대한견-주관절학회, 회장 (역임)",
+    "제 13차 세계 견-주관절학회 조직위원회, 조직위원장",
+    "대한스포츠학회, 대한정형외과초음파학회, 상근부회장",
+    "제 4차 아시아 견관절학회 조직위원회 학술위원장 (역임)",
+    "미국 견-주관절학회, 국제회원"
+   ],
+   "sources": [
+    "http://www.neon.or.kr/bbs/board.php?bo_table=board0103",
+    "https://www.koreabaseball.com/kbo/aboutkbo/medicalcommittee/medicalorganization.aspx"
+   ],
+   "photo": "img/A03.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A04",
+   "rank": 4,
+   "tie": false,
+   "name": "신상진",
+   "career_note": "이대서울병원 정형외과 및 어깨질환센터. 연세대학교 의과대학 졸업.",
+   "fields": "SLAP 비수술 치료, 이두건 고정술, 회전근개와 스포츠 어깨.",
+   "consult": "SLAP·이두건염이 의심되는 단계에서 보존 치료 계획부터 평가받고 싶을 때 잘 맞는다. 화곡역에서의 접근성도 높다.",
+   "limits": "SLAP 비수술 연구는 30~45세 생활체육인 46명의 단일군 연구다. 특정 환자의 비수술 성공 가능성을 숫자로 예측하는 도구는 아니다.",
+   "papers": [
+    {
+     "topic": "증상성 SLAP 병변의 비수술 치료 경과",
+     "year": "2017",
+     "journal": "KSSTA",
+     "study": "전향적 단일군 임상연구",
+     "role": "제1저자",
+     "interp": "30~45세 생활체육 참여자 46명에서 주사와 근력운동을 시행. 비교군이 없으며 모든 연령·직업에 동일 적용할 수 없음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/27342986/",
+     "pmid": "27342986",
+     "title_en": "Clinical outcomes of non-operative treatment for patients presenting SLAP lesions in diagnostic provocative tests and MR arthrography."
+    },
+    {
+     "topic": "관절경 상흉근 고정술과 개방 하흉근 고정술의 회복 비교",
+     "year": "2024",
+     "journal": "JSES",
+     "study": "후향적 비교연구",
+     "role": "공동저자",
+     "interp": "이두건 건초염·부분파열·지지구조 병변 환자 72명. 전층 회전근개 파열은 제외하여 이두건 증상 상담에 비교적 직접 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37572747/",
+     "pmid": "37572747",
+     "title_en": "Arthroscopic suprapectoral biceps tenodesis provided earlier shoulder function restoration compared with open subpectoral biceps tenodesis during the recovery phase."
+    }
+   ],
+   "evidence": "SLAP 비수술 치료와 이두건 고정술 회복 비교",
+   "hospital_short": "이대서울병원",
+   "km": 2.1,
+   "address": "서울 강서구 공항대로 260",
+   "hospital": "이대서울병원",
+   "title": "교수",
+   "dept": "정형외과 · 어깨질환센터장",
+   "specialty": [
+    "어깨관절",
+    "스포츠 손상",
+    "회전근개 파열",
+    "오십견",
+    "재발성 어깨 탈구"
+   ],
+   "education": [
+    "연세대 의과대학원 의학박사",
+    "연세대학교 의과대학 졸업"
+   ],
+   "career": [
+    "현재 | 이대서울병원 정형외과 교수",
+    "2010-2011 | UC Irvine Biomechanics department 연구강사",
+    "2000-2003 | Duke University Medical Center Sports Medicine 연구 강사",
+    "1998-2000 | 신촌세브란스병원 정형외과 연구강사",
+    "1994-1998 | 신촌세브란스병원 정형외과 전공의 수료"
+   ],
+   "societies": [
+    "2023 | 대한민국의학한림원 정회원",
+    "2016 | 대한견주관절학회 정회원 및 평의원",
+    "2015 | American Shoulder and Elbow Society Member",
+    "2016 | 대한정형외과학회 학술위원",
+    "2007 | 대한스포츠학회 총무이사"
+   ],
+   "sources": [
+    "https://seoul.eumc.ac.kr/doctor/basicInfo.do?dept_cd=JOS&dr_sid=1002384"
+   ],
+   "photo": "img/A04.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A05",
+   "rank": 5,
+   "tie": false,
+   "name": "이성민",
+   "career_note": "경희대학교병원 정형외과. 공식 의과대학 의료진 페이지에서 Sung-Min Rhee를 확인.",
+   "fields": "SLAP 치유와 증상의 관계, MRI 이두건 진단, 하흉근 이두건 고정술.",
+   "consult": "MRI 판독과 통증 위치가 맞지 않거나 이두건 고정술을 권유받아 진단 근거와 수술 방법을 재검토하려는 경우에 적합.",
+   "limits": "일반 MRI 진단 연구와 고정술 연구는 회전근개 수술 집단이 중심이다. 영상 이상만으로 수술을 결정하는 근거로 쓰지 않는다.",
+   "papers": [
+    {
+     "topic": "제2형 SLAP 봉합 후 해부학적 치유와 임상 결과",
+     "year": "2018",
+     "journal": "CiOS",
+     "study": "후향적 관찰연구",
+     "role": "공동저자",
+     "interp": "43명에서 영상 치유와 증상 호전을 대조. 단독 SLAP와 Bankart 동반 환자가 함께 포함됨.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/30174813/",
+     "pmid": "30174813",
+     "title_en": "Is Anatomical Healing Essential for Better Clinical Outcome in Type II SLAP Repair? Clinico-Radiological Outcome after Type II SLAP Repair."
+    },
+    {
+     "topic": "일반 3T MRI의 관절내 이두건 병변 진단 정확도",
+     "year": "2019",
+     "journal": "BMC Musculoskelet Disord",
+     "study": "후향적 진단 정확도 연구",
+     "role": "공동저자",
+     "interp": "회전근개 수술 환자 554명의 MRI와 관절경 결과를 비교. 수술 예정 집단이므로 일반 외래와 진단 성능이 다를 수 있음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/31153372/",
+     "pmid": "31153372",
+     "title_en": "Accuracy of MRI in diagnosing intra-articular pathology of the long head of the biceps tendon: results with a large cohort of patients."
+    },
+    {
+     "topic": "하흉근 이두건 고정술의 단일 및 이중 고정 비교",
+     "year": "2019",
+     "journal": "KSSTA",
+     "study": "임상 비교연구",
+     "role": "제1저자",
+     "interp": "회전근개 파열 동반 130명. 기능과 외형 변형을 비교한 Level III 연구.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/31410527/",
+     "pmid": "31410527",
+     "title_en": "Double on-lay fixation using all suture-type anchor for subpectoral biceps tenodesis has favorable functional outcomes and leads to less cosmetic deformities than single on-lay fixation."
+    }
+   ],
+   "evidence": "SLAP 치유·증상 관계와 이두건 MRI·고정술",
+   "hospital_short": "경희대병원",
+   "km": 25.5,
+   "address": "서울 동대문구 경희대로 23",
+   "hospital": "경희대학교병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 및 팔꿈치 관절 질환 및 스포츠 외상",
+    "어깨 관절경 수술 및 인공관절수술"
+   ],
+   "education": [],
+   "career": [
+    "경희대학교병원 정형외과 부교수",
+    "경희대학교병원 정형외과 조교수",
+    "분당 서울대학교병원 정형외과 전임의",
+    "2019 ~ 독일 카데바 어깨관절 인공관절치환술 워크샵",
+    "2019 ~ 방콕 카데바 팔꿈치관절 인공관절치환술 워크샵",
+    "2021 사단법인 대한견주관절학회 젊은의학자상 수상",
+    "2021 대한관절경학회 우수구연상 수상",
+    "2021 미국정형연구학회 신진연구자상 최종 후보",
+    "2016 분당 서울대학교병원 모범연구자상 수상"
+   ],
+   "societies": [
+    "대한정형외과학회 평생회원",
+    "대한견주관절학회 정회원",
+    "대한관절경학회 정회원",
+    "미국정형외과학회(American Academy of Orthopaedic Surgeons) 정회원",
+    "Journal of Shoulder and Elbow Surgery 논문심사위원"
+   ],
+   "sources": [
+    "https://med.khmc.or.kr/kr/treatment/doctor/15322/profile.do",
+    "https://med.khmc.or.kr/kr/treatment/department/2050000000/timetable.do",
+    "https://khusm.khu.ac.kr/bbs/board.php?bo_table=s2_1_2&wr_id=295"
+   ],
+   "photo": "img/A05.webp",
+   "chips": [
+    {
+     "tone": "warn",
+     "text": "해외연수 중 · 2027년 7월까지"
+    }
+   ],
+   "note": "경희대병원 정형외과 진료시간표에 해외연수(2026.7.20~2027.7.31)로 표시돼 있다. 그동안은 외래 진료가 어려울 수 있으니 예약 전에 병원에 확인한다.",
+   "societies_total": 10
+  },
+  {
+   "id": "A06",
+   "rank": 6,
+   "tie": false,
+   "name": "김수철",
+   "career_note": "삼성서울병원 견주관절 의료진. 2025년 학회 프로그램에 임상조교수로 소개. 논문 영문명 Su Cheol Kim.",
+   "fields": "단독 SLAP 장기 결과, 이두건 고정·절단 비교, 견갑하근과 이두건 불안정성.",
+   "consult": "상부 관절와순 병변과 이두건 지지구조 손상을 함께 살피거나 단독 SLAP 봉합 후 장기 결과를 상담할 후보.",
+   "limits": "2025년 견갑하근 연구는 사체 실험이다.",
+   "papers": [
+    {
+     "topic": "단독 제2형 SLAP 후방 봉합의 장기 임상 결과",
+     "year": "2021",
+     "journal": "KSSTA",
+     "study": "후향적 증례군 연구",
+     "role": "제1저자",
+     "interp": "54명, 평균 약 91개월 추적. 단독 SLAP와 직접 관련되지만 다른 수술과 무작위 비교한 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/34100096/",
+     "pmid": "34100096",
+     "title_en": "Posterior repair of isolated type 2 superior labrum anterior-posterior lesion prevents external rotation deficiency: long-term outcome study."
+    },
+    {
+     "topic": "이두건 고정 방식과 절단술의 외형 변형 및 통증 비교",
+     "year": "2025",
+     "journal": "Arthroscopy",
+     "study": "후향적 코호트 비교연구",
+     "role": "공동저자",
+     "interp": "회전근개 봉합 동반 155명. 군 간 나이·성별 차이가 있어 선택 편향 가능성이 명시됨.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39581279/",
+     "pmid": "39581279",
+     "title_en": "The Incidence of Popeye Deformity After Soft-Tissue Biceps Tenodesis Is Comparable to Biceps Anchor Tenodesis and Lower Than Biceps Tenotomy During Arthroscopic Rotator Cuff Repair."
+    },
+    {
+     "topic": "이두건 아탈구와 견갑하근 부분파열의 자세별 역학",
+     "year": "2025",
+     "journal": "CiOS",
+     "study": "사체 생역학 실험",
+     "role": "제1저자",
+     "interp": "이두건 불안정성과 견갑하근 손상의 연결을 분석. 실제 환자 치료 효과를 직접 비교한 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/40785757/",
+     "pmid": "40785757",
+     "title_en": "Arm Position with Increased Risk of Partial Subscapularis Tear Progression Owing to Subluxation of the Long Head of Biceps Tendon: Cadaveric Biomechanical Study."
+    }
+   ],
+   "evidence": "단독 SLAP 장기 연구 제1저자와 이두건 연구",
+   "hospital_short": "청담리온정형외과",
+   "km": 24.0,
+   "address": "서울 강남구 삼성로119길 8",
+   "hospital": "청담리온정형외과의원",
+   "title": "원장",
+   "dept": "정형외과",
+   "specialty": [],
+   "education": [
+    "중앙대학교 의과대학 졸업",
+    "부산과학고등학교 졸업"
+   ],
+   "career": [
+    "(전) 삼성서울병원 정형외과 교수",
+    "(전) 중앙대학교병원 정형외과 교수",
+    "삼성서울병원 견주관절-스포츠센터 전임의",
+    "삼성서울병원 견주관절 전임의",
+    "삼성서울병원 정형외과 전공의",
+    "Centre Hospitalier Prive Saint-Gregoir, FR 연수",
+    "Institut De Chirurgie Reparatrice, Locomoteur & Sports, FR 연수",
+    "대한견주관절의학회 젊은의학자상 (2026)",
+    "대한견주관절의학회 청강의학상 우수상 (2025)"
+   ],
+   "societies": [
+    "대한견주관절의학회 제도개선위원회, 학술위원회, 편집위원회 위원",
+    "대한스포츠의학회 학술위원회, 편집위원회 위원",
+    "대한정형외과 스포츠의학회 학술위원회 위원",
+    "대한정형통증의학회 도수수련위원회 위원",
+    "대한정형외과초음파학회 전산정보위원회, KOUS 20주년 기념집 출간 위원회 위원"
+   ],
+   "sources": [
+    "https://www.cdreon.com/",
+    "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2875",
+    "https://www.samsunghospital.com/home/reservation/deptDetailInfo.do?DP_CODE=OS&TYPE=02"
+   ],
+   "photo": "img/A06.webp",
+   "chips": [
+    {
+     "tone": "info",
+     "text": "2026년 병원 이동"
+    }
+   ],
+   "note": "삼성서울병원 정형외과 의료진 목록에서 빠졌고, 청담리온정형외과의원 원장으로 소개돼 있다. 학력과 수련 이력이 예전 삼성서울병원 프로필과 같다. 거리는 새 병원 기준으로 다시 계산했다.",
+   "societies_total": 5
+  },
+  {
+   "id": "A07",
+   "rank": 7,
+   "tie": false,
+   "name": "조남수",
+   "career_note": "제일정형외과병원 관절센터 의료진. 공식 소개에서 어깨·팔꿈치 및 스포츠 손상 진료를 확인.",
+   "fields": "이두건 절단·고정술, 관절 밖 이두건 병변, SLAP 수술 후 통증 재평가.",
+   "consult": "앞쪽 어깨의 이두구 통증이 지속되거나 SLAP 봉합 후 통증이 남는 상황에서 병변 위치와 통증 원인을 다시 묻기 좋은 후보.",
+   "limits": "관절 밖 병변 연구는 수술로 제거한 힘줄을 분석한 증례군이다. 모든 이두구 통증 환자에게 고정술이 필요하다는 의미는 아니다.",
+   "papers": [
+    {
+     "topic": "깔때기형 이두건 절단술과 회전근개 내 고정술 비교",
+     "year": "2014",
+     "journal": "AJSM",
+     "study": "코호트 비교연구",
+     "role": "제1저자",
+     "interp": "회전근개 파열 동반 83명. 기능과 외형 변형을 비교하며 단독 SLAP 수술 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/24576743/",
+     "pmid": "24576743",
+     "title_en": "Funnel tenotomy versus intracuff tenodesis for lesions of the long head of the biceps tendon associated with rotator cuff tears."
+    },
+    {
+     "topic": "관절 밖에 숨어 있는 이두건 병변의 범위 분석",
+     "year": "2015",
+     "journal": "AJSM",
+     "study": "증례군 및 절제조직 분석",
+     "role": "공동저자",
+     "interp": "하흉근 고정술 36례의 제거된 힘줄을 분석. 관절 밖 이두구 통증 원인 평가와 관련되지만 수술 필요성 자체를 입증하지 않음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/25359700/",
+     "pmid": "25359700",
+     "title_en": "Analysis of \"hidden lesions\" of the extra-articular biceps after subpectoral biceps tenodesis: the subpectoral portion as the optimal tenodesis site."
+    },
+    {
+     "topic": "SLAP 봉합 후 매듭 통증에 대한 매듭 제거 결과",
+     "year": "2017",
+     "journal": "AJSM",
+     "study": "후향적 증례군 연구",
+     "role": "공동저자",
+     "interp": "SLAP 봉합 후 지속 통증 환자 11명. 최초 진단보다 이미 수술한 환자의 재평가에 더 관련됨.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28696789/",
+     "pmid": "28696789",
+     "title_en": "Arthroscopic Knot Removal for Failed Superior Labrum Anterior-Posterior Repair Secondary to Knot-Induced Pain."
+    }
+   ],
+   "evidence": "이두건 절단·고정 비교와 관절 밖 숨은 병변",
+   "hospital_short": "제일정형외과병원",
+   "km": 24.5,
+   "address": "서울 강남구 영동대로 726",
+   "hospital": "제일정형외과병원",
+   "title": "센터장",
+   "dept": "K-관절센터 정형외과",
+   "specialty": [
+    "어깨 및 팔꿈치 관절(견·주관절)",
+    "스포츠손상 및 외상",
+    "관절경 및 인공관절수술",
+    "회전근개 파열",
+    "오십견",
+    "어깨 골절"
+   ],
+   "education": [
+    "경희대학교 의과대학 졸업",
+    "경희대학교 대학원 의학박사"
+   ],
+   "career": [
+    "EBS 명의 선정 (2017년 11월 10일 \"엄마, 참지마세요- 어깨통증\"방송)",
+    "前 경희대학교 의과대학 정형외과 교수",
+    "前 강동경희대학교병원 스포츠의학센터 센터장",
+    "現 제일정형외과병원 관절센터 센터장",
+    "2011 Hospital for Special Surgery, New York, NY 연수",
+    "2012 Kerlan-Jobe Orthopaedic Clinic, Los Angeles, CA 연수",
+    "2015 Orthopaedic Biomechanics Laboratory, UC Irvine, CA 방문교수",
+    "2022-2023 ~ 2026-2027 시즌 서울 삼성 썬더스 농구단 공식 메디컬팀 수석 팀닥터",
+    "2023년 국제관절경학회지 임상연구부문 최우수 논문상 (2023 Arthroscopy Best Clinical Research Award) 수상",
+    "2010년 대한정형외과학회 학술상 만례재단상 수상",
+    "2010년, 2018년, 2019년 대한견·주관절학회 학술상 수상"
+   ],
+   "societies": [
+    "미국 견주관절학회 정회원",
+    "대한견·주관절학회 대외협력위원회 위원장",
+    "대한관절경학회 학술위원회 및 전산정보홍보위원회 위원",
+    "대한스포츠의학회 학술위원회 위원 및 수술파트 간사",
+    "대한정형외과 초음파학회 및 대한충격파치료학회 학술이사"
+   ],
+   "sources": [
+    "https://www.cheilos.com/medi/doctor_view.php?idx=19",
+    "https://www.cheilos.com/Medicalcenter/Medicalcenter_center02_04.php"
+   ],
+   "photo": "img/A07.webp",
+   "societies_total": 7
+  },
+  {
+   "id": "A08",
+   "rank": 8,
+   "tie": false,
+   "name": "고경환",
+   "career_note": "서울아산병원 정형외과 교수. 공식 약력에 2025년 3월 교수. 이전 삼성서울병원 연구 경력을 영문명 Kyoung Hwan Koh로 연결.",
+   "fields": "이두건 절단·고정 비교, 이두건 아탈구와 견갑하근 손상, 어깨 관절경.",
+   "consult": "이두건염이라고 들었지만 견갑하근 부분파열이나 이두건 아탈구가 의심되는 경우 추가 평가 후보.",
+   "limits": "대표 이두건 비교연구는 55세 초과 회전근개 파열 동반 환자 대상. 공식 예약 안내의 환자 구분도 확인해야 한다.",
+   "papers": [
+    {
+     "topic": "회전근개 파열 동반 이두건 절단술과 고정술 비교",
+     "year": "2010",
+     "journal": "AJSM",
+     "study": "전향적 코호트 비교연구",
+     "role": "제1저자",
+     "interp": "55세 초과 환자를 순차적으로 두 군에 배정. 무작위 시험은 아니며 외형 변형과 기능을 비교.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/20551285/",
+     "pmid": "20551285",
+     "title_en": "Treatment of biceps tendon lesions in the setting of rotator cuff tears: prospective cohort study of tenotomy versus tenodesis."
+    },
+    {
+     "topic": "이두건 아탈구와 견갑하근 손상의 관계",
+     "year": "2017",
+     "journal": "CiOS",
+     "study": "후향적 영상 및 관절경 분석",
+     "role": "제1저자",
+     "interp": "270명의 MRI와 관절경 소견을 비교. 이두건염 의심 시 견갑하근과 지지구조를 함께 살피는 근거.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28861201/",
+     "pmid": "28861201",
+     "title_en": "Arthroscopic Evaluation of Subluxation of the Long Head of the Biceps Tendon and Its Relationship with Subscapularis Tears."
+    },
+    {
+     "topic": "전방 SLAP 봉합나사와 견갑상신경의 거리",
+     "year": "2011",
+     "journal": "JSES",
+     "study": "사체 해부학 실험",
+     "role": "제1저자",
+     "interp": "사체 12어깨에서 나사 삽입의 신경 위험을 평가. 특정 의사의 실제 합병증률을 의미하지 않음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/20951610/",
+     "pmid": "20951610",
+     "title_en": "Medial perforation of the glenoid neck following SLAP repair places the suprascapular nerve at risk: a cadaveric study."
+    }
+   ],
+   "evidence": "이두건 치료 비교와 아탈구·견갑하근 연결",
+   "hospital_short": "서울아산병원",
+   "km": 31.5,
+   "address": "서울 송파구 올림픽로43길 88",
+   "hospital": "서울아산병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 & 팔꿈치 질환",
+    "외상",
+    "팔꿈치 클리닉"
+   ],
+   "education": [
+    "2012.03 ~ 2015.08 강원대학교 의학 박사",
+    "2008.03 ~ 2010.02 성균관대학교 의학 석사",
+    "1993.03 ~ 2000.02 서울대학교 의학 학사"
+   ],
+   "career": [
+    "2025.03 ~ 울산의대 서울아산병원 정형외과 교수",
+    "2019.03 ~ 서울아산병원 정형외과 의국장",
+    "2019.03 ~ 2025.02 울산의대 서울아산병원 정형외과 부교수",
+    "2018.03 ~ 2019.02 서울아산병원 정형외과 임상부교수",
+    "2014.03 ~ 2018.02 인제대학교 일산백병원 조교수",
+    "2012.03 ~ 2014.02 서울의료원",
+    "2010.03 ~ 2012.02 삼성서울병원 정형외과 임상조교수",
+    "2008.03 ~ 2010.02 삼성서울병원 정형외과 임상강사(전임의, 펠로우)",
+    "2004.05 ~ 2008.02 삼성서울병원 정형외과 전공의(레지던트)",
+    "2001.03 ~ 2004.04 군의관 복무",
+    "2000.03 ~ 2001.02 서울대학교병원 수련의(인턴)"
+   ],
+   "societies": [],
+   "sources": [
+    "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SENkZStncjdkWUIwemxMN3ZJRGs0QT09",
+    "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SENkZStncjdkWUIwemxMN3ZJRGs0QT09&pageIndex=1&tabIndex1=3"
+   ],
+   "photo": "img/A08.webp",
+   "societies_total": 0
+  },
+  {
+   "id": "A09",
+   "rank": 9,
+   "tie": false,
+   "name": "권지은",
+   "career_note": "이대목동병원 정형외과 의료진. 영문 저자명 Jieun Kwon 확인.",
+   "fields": "제2형 SLAP 봉합 임상 결과, 회전근개 치유 예측과 부분파열 경과.",
+   "consult": "가까운 대학병원에서 SLAP 의심 병변과 회전근개 상태를 함께 점검하고 싶은 경우 검토할 후보. SLAP 직접 연구도 확인된다.",
+   "limits": "회전근개 치유 점수는 SLAP 또는 이두건염의 진단 점수가 아니다.",
+   "papers": [
+    {
+     "topic": "제2형 SLAP 봉합의 결과와 나이에 따른 차이",
+     "year": "2015",
+     "journal": "Clinics in Shoulder and Elbow",
+     "study": "후향적 증례군 및 연령군 비교",
+     "role": "제1저자",
+     "interp": "50명을 분석한 SLAP 임상연구. 연령을 의사 선택 기준으로 쓰는 연구가 아니라 환자 결과를 분석한 연구.",
+     "url": "https://doi.org/10.5397/cise.2015.18.1.36",
+     "pmid": null
+    },
+    {
+     "topic": "회전근개 봉합 후 치유를 예측하는 점수 개발",
+     "year": "2019",
+     "journal": "AJSM",
+     "study": "후향적 환자대조군 연구",
+     "role": "제1저자",
+     "interp": "603명 자료로 치유 위험 요인을 분석. SLAP 병변을 진단하거나 단독 이두건염 치료를 비교하는 점수는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/30485753/",
+     "pmid": "30485753",
+     "title_en": "The Rotator Cuff Healing Index: A New Scoring System to Predict Rotator Cuff Healing After Surgical Repair."
+    }
+   ],
+   "evidence": "제2형 SLAP 임상연구와 회전근개 치유 연구",
+   "hospital_short": "이대목동병원",
+   "km": 5.8,
+   "address": "서울 양천구 안양천로 1071",
+   "hospital": "이대목동병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 질환 및 외상",
+    "팔꿈치 질환 및 외상",
+    "오십견",
+    "회전근 개 질환",
+    "어깨 탈구",
+    "어깨 스포츠 손상"
+   ],
+   "education": [
+    "서울대학교 의과대학 석사",
+    "서울대학교 의과대학 졸업"
+   ],
+   "career": [
+    "현재 | 이대목동병원 정형외과 임상부교수",
+    "2020 | 이대목동병원 정형외과 임상조교수",
+    "2015-2019 | 국립경찰병원 정형외과 전문의",
+    "2014-2015 | 분당서울대학교병원 정형외과 전임의",
+    "2010-2014 | 서울대학교병원 정형외과 전공의",
+    "2009-2010 | 서울대학교병원 인턴",
+    "2019 | 대한정형외과학회 추계학술대회 학술본상(임상) 수상",
+    "2016 | 대한정형외과학회 추계학술대회 학술전시장려상 수상"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한견주관절학회 정회원",
+    "대한스포츠의학회 정회원"
+   ],
+   "sources": [
+    "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dr_sid=1014389&dept_cd=OS",
+    "https://mokdong.eumc.ac.kr/medical/dept/deptDoctor.do?dept_cd=OS"
+   ],
+   "photo": "img/A09.webp",
+   "societies_total": 3
+  },
+  {
+   "id": "A10",
+   "rank": 10,
+   "tie": true,
+   "name": "윤태환",
+   "career_note": "세브란스병원 정형외과. 공식 약력에 2025년부터 임상부교수, 2024~2025년 Columbia 연수.",
+   "fields": "견갑하근과 이두건 지지구조, 회전근개, 관절와순 및 재발성 불안정성.",
+   "consult": "앞쪽 어깨 통증에 숨은 견갑하근 손상이나 관절와순 문제가 함께 의심되면 적합성이 높아지는 후보.",
+   "limits": "확인한 대표 연구는 견갑하근 및 Bankart 병변 중심이다. 단독 SLAP·단순 이두건염 연구와 적용 범위를 구분한다.",
+   "papers": [
+    {
+     "topic": "내측 이두건 지지구조에 가려진 견갑하근 파열",
+     "year": "2023",
+     "journal": "Archives of orthopaedic and trauma surgery",
+     "study": "후향적 관찰연구",
+     "role": "공동저자",
+     "interp": "견갑하근 봉합 환자 430명을 분석. 이두건 지지구조와 숨은 견갑하근 손상의 관계를 다룸.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/36369526/",
+     "pmid": "36369526",
+     "title_en": "Subscapularis tendon tears hidden by the medial biceps sling can be missed on arthroscopic examination."
+    },
+    {
+     "topic": "첫 Bankart 봉합과 재봉합의 관절낭 관절와순 복원 비교",
+     "year": "2023",
+     "journal": "Archives of orthopaedic and trauma surgery",
+     "study": "대응군 비교연구",
+     "role": "공동저자",
+     "interp": "각 24명씩 맞춰 영상과 임상 결과를 비교. 재발성 불안정성 및 재수술에 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/36282315/",
+     "pmid": "36282315",
+     "title_en": "Comparison of arthroscopic primary and revision Bankart repair for capsulolabral restoration: a matched-pair analysis."
+    }
+   ],
+   "evidence": "견갑하근·이두건 지지구조와 관절와순 재수술",
+   "hospital_short": "세브란스병원",
+   "km": 12.8,
+   "address": "서울 서대문구 연세로 50-1",
+   "hospital": "세브란스병원",
+   "title": "임상부교수",
+   "dept": "정형외과",
+   "specialty": [
+    "회전근개파열",
+    "어깨탈구",
+    "관절와순",
+    "골절",
+    "통증(회전근개/어깨탈구 집중진료)",
+    "상완",
+    "쇄골",
+    "견갑골 :만 18세 이상"
+   ],
+   "education": [
+    "2018.9 - 2022.2 연세대학교 의과대학 대학원 의학박사"
+   ],
+   "career": [
+    "2025 - 현재 연세대학교 의과대학 세브란스병원 정형외과학교실 임상부교수",
+    "2024 - 2025 NewYork Columbia University Irving Medical Center Orthopedics 연수",
+    "2022 - 2024 강남세브란스병원 정형외과 임상조교수",
+    "2019 - 2022 연세대학교 의과대학 세브란스병원 정형외과학교실 임상조교수",
+    "2018 - 2019 용인세브란스병원 정형외과 진료교수",
+    "2017 - 2018 연세대학교 의과대학 세브란스병원 임상강사",
+    "2010 - 2014 연세대학교 의과대학 세브란스병원 정형외과 레지던트",
+    "2009 - 2010 연세대학교 의과대학 세브란스병원 정형외과 인턴"
+   ],
+   "societies": [
+    "대한견주관절학회 학술위원",
+    "대한견주관절학회 편집위원",
+    "대한견주관절학회 Clinics in Shoulder and Elbow 국제화위원회 간사",
+    "대한관절경학회 학술위원",
+    "Journal of Bone and Joint Surgery (JBJS) Open Access 논문 심사위원"
+   ],
+   "sources": [
+    "https://sev.severance.healthcare/sev/doctor/doctor-view.do?deptSeq=85&empNo=eXVoczIwMjBAKUApNMUCiloLFPpuVaDNDBFKNXjCj96JwNCIqpyJRiz%2Fq70%3D"
+   ],
+   "photo": "img/A10.webp",
+   "societies_total": 13
+  },
+  {
+   "id": "A11",
+   "rank": 10,
+   "tie": true,
+   "name": "이상현",
+   "career_note": "이대서울병원 정형외과 임상부교수. 한림대학교 의학 학사·석사·박사, 강남성심병원과 중앙대광명병원 경력.",
+   "fields": "큰 회전근개 파열 재건과 이두건 활용, 어깨 관절경.",
+   "consult": "큰 회전근개 파열이 함께 있어 이두건을 보존하거나 재건에 활용하는 방법을 가까운 곳에서 상담하려는 경우 후보.",
+   "limits": "이두건을 재료로 쓰는 재건 연구는 회전근개 파열 연구다. 이를 단독 이두건염 치료 성적이라고 해석하지 않는다.",
+   "papers": [
+    {
+     "topic": "큰 회전근개 파열에서 이두건을 이용한 전방 케이블 재건",
+     "year": "2023",
+     "journal": "KSSTA",
+     "study": "전향적 증례군 연구",
+     "role": "공동저자",
+     "interp": "이두건을 이식 재료로 이용한 회전근개 재건. 단독 이두건염 치료 효과를 검증한 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/35974193/",
+     "pmid": "35974193",
+     "title_en": "Satisfactory functional and structural outcomes of anterior cable reconstruction using the proximal biceps tendon for large retracted rotator cuff tears."
+    }
+   ],
+   "evidence": "큰 회전근개 파열에서 이두건을 활용한 재건",
+   "hospital_short": "이대서울병원",
+   "km": 2.1,
+   "address": "서울 강서구 공항대로 260",
+   "hospital": "이대서울병원",
+   "title": "교수",
+   "dept": "정형외과 · 어깨질환센터",
+   "specialty": [
+    "어깨 및 팔꿈치 관절의 외상 및 질환, 상지 근위부의 골절 (쇄골, 상완골, 어깨 및 팔꿈치), 소아의 어깨 및 팔꿈치 관절의 외상 및 질환, 회전근개 파열, 오십견(동결견), 재발성 탈구, 관절경, 인공관절 치환술"
+   ],
+   "education": [
+    "한림대학교 의학박사",
+    "한림대학교 의학석사",
+    "한림대학교 의과대학 졸업"
+   ],
+   "career": [
+    "이대서울병원 정형외과 임상부교수",
+    "한림대학교 강남성심병원 정형외과 조교수",
+    "중앙대학교 광명병원 정형외과 임상조교수",
+    "서울특별시 서울의료원 정형외과 과장",
+    "서울특별시 서남병원 정형외과 과장",
+    "이화여자대학교 의과대학 부속 서울병원 정형외과 전임의",
+    "한림대학교 의과대학 부속 춘천성심병원 정형외과 전공의",
+    "한림대학교성심병원 인턴",
+    "국민연금공단 자문의",
+    "근로복지공단 자문의",
+    "AO Trauma Masters Course 수료",
+    "수상: 2025 유럽견주관절학회 (SECEC) 최우수 비디오 전시상 (Best Video Presentation)",
+    "수상: 제70차 대한정형외과학회 국제학술대회 학술상 (비디오전시장려상)",
+    "수상: 7th Asia Arthroscopy Congress 최우수구연상",
+    "수상: 제31회 대한견주관절의학회 국제학술대회 최우수 연제상"
+   ],
+   "societies": [
+    "대한관절경학회 학술위원",
+    "대한견주관절학회 학술지 심사위원"
+   ],
+   "sources": [
+    "https://seoul.eumc.ac.kr/doctor/basicInfo.do?dept_cd=JOS&dr_sid=1013006"
+   ],
+   "photo": "img/A11.webp",
+   "societies_total": 2,
+   "note": "같은 영문 이름이 저자로 실린 2020년 이두건 불안정성 논문은 저자 소속이 이 의사의 이력과 이어지지 않아 동명이인일 수 있어 대표 논문에서 뺐다."
+  },
+  {
+   "id": "A12",
+   "rank": 10,
+   "tie": true,
+   "name": "손민수",
+   "career_note": "국립중앙의료원 정형외과. 2025년 4월 진료부원장 임명 공식 보도. 제주대학교 의과대학, 삼성서울병원 수련 경력.",
+   "fields": "어깨·팔꿈치와 스포츠 손상, 이두건 고정술 및 회전근개.",
+   "consult": "이두건 병변과 회전근개 상태를 함께 평가하고 견주관절 분야 진료 의견을 듣기 위한 후보.",
+   "limits": "확인한 이두건 논문은 회전근개 파열 동반 고정술 증례군이다. 현재 진료 일정은 행정 보직과 별개로 확인해야 한다.",
+   "papers": [
+    {
+     "topic": "회전근개 파열 동반 봉합나사 이두건 고정술 결과",
+     "year": "2014",
+     "journal": "JSES",
+     "study": "후향적 증례군 연구",
+     "role": "공동저자",
+     "interp": "84명에서 통증·기능·영상 소견을 추적. 단독 이두건염에 대한 비교시험은 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/24021158/",
+     "pmid": "24021158",
+     "title_en": "Clinical and radiologic results of arthroscopic biceps tenodesis with suture anchor in the setting of rotator cuff tear."
+    }
+   ],
+   "evidence": "이두건 고정술 임상 결과와 견주관절 진료",
+   "hospital_short": "국립중앙의료원",
+   "km": 19.1,
+   "address": "서울 중구 을지로 245",
+   "hospital": "국립중앙의료원",
+   "title": "진료부원장",
+   "dept": "정형외과 전문의",
+   "specialty": [
+    "어깨 관절,팔꿈치 관절 및 스포츠 의학"
+   ],
+   "education": [
+    "2005. 2 제주대학교 의과대학 졸업",
+    "2010. 8 삼성서울병원 정형외과 전공의 과정 수료"
+   ],
+   "career": [
+    "정형외과 전문의 취득",
+    "삼성서울병원 정형외과 견관절-스포츠의학 센터 전임의",
+    "국립중앙의료원 정형외과 과장",
+    "국립중앙의료원 진료부장",
+    "현재 국립중앙의료원 정형외과 전문의",
+    "현재 국립중앙의료원 진료부원장"
+   ],
+   "societies": [
+    "현 대한정형외과학회 정회원",
+    "현 대한견주관절학회 정회원",
+    "현 대한정형외과 초음파학회 정회원"
+   ],
+   "sources": [
+    "https://www.nmc.or.kr/nmc/medicalDept/deptDetail?typeCd=A&deptCd=2050000000&cntrCd=2050000000&deptNm=%EC%A0%95%ED%98%95%EC%99%B8%EA%B3%BC&viewType=316",
+    "https://www.nmc.or.kr/nmc/doctor/search",
+    "https://www.nmc.or.kr/nmc/board/B0000008/24272"
+   ],
+   "photo": "img/A12.webp",
+   "societies_total": 3
+  },
+  {
+   "id": "A13",
+   "rank": 10,
+   "tie": true,
+   "name": "박인",
+   "career_note": "이대목동병원 정형외과 의료진. 영문 저자명 In Park과 이전 소속 연구를 확인.",
+   "fields": "반복 탈구, 관절와 뼈 결손, Bankart 재수술과 이두건 건초 초음파.",
+   "consult": "이두건염 의심 외에 빠지는 느낌, 외상 후 불안감, 이전 관절와순 수술력이 있다면 적합성이 커지는 후보.",
+   "limits": "건초 액체만으로 이두건염이나 SLAP를 확진할 수 없다. 주된 임상 연구 축은 상부 SLAP보다 전방 불안정성이다.",
+   "papers": [
+    {
+     "topic": "초음파에서 이두건 장두 건초의 액체 저류 평가",
+     "year": "2015",
+     "journal": "CiOS",
+     "study": "후향적 관찰연구",
+     "role": "제1저자",
+     "interp": "어깨 통증 환자 303명 분석. 건초 액체는 관절 활막염과도 관련되어 SLAP나 이두건염 확진 소견으로 단독 사용하기 어려움.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26330958/",
+     "pmid": "26330958",
+     "title_en": "Evaluation of the Effusion within Biceps Long Head Tendon Sheath Using Ultrasonography."
+    },
+    {
+     "topic": "반복 탈구 수술 실패와 관절와 오목함의 관계",
+     "year": "2023",
+     "journal": "AJSM",
+     "study": "환자대조군 연구",
+     "role": "제1저자",
+     "interp": "반복성 전방 불안정성 120명 분석. 관절와 뼈 구조를 포함한 안정성 평가와 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37853648/",
+     "pmid": "37853648",
+     "title_en": "Correlation of Glenoid Concavity With Surgical Failure After Arthroscopic Stabilization for Recurrent Anterior Shoulder Instability."
+    }
+   ],
+   "evidence": "탈구·관절와순 재수술과 이두건 건초 초음파",
+   "hospital_short": "이대목동병원",
+   "km": 5.8,
+   "address": "서울 양천구 안양천로 1071",
+   "hospital": "이대목동병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 관절, 팔꿈치 관절, 스포츠 손상, 회전근개 파열, 오십견, 재발성 어깨 탈구, 어깨 및 팔꿈치 골절"
+   ],
+   "education": [
+    "가톨릭대학교 의과대학원 의학박사",
+    "가톨릭대학교 의과대학 졸업"
+   ],
+   "career": [
+    "2026-현재 이대목동병원 정형외과 부교수",
+    "2024-2026 이대서울병원 정형외과 부교수",
+    "2021-2024 이대서울병원 정형외과 조교수",
+    "2019-2021 이대서울병원 정형외과 임상조교수",
+    "2017-2019 이대목동병원 정형외과 전임의",
+    "2013-2014 서울성모병원 정형외과 전임의",
+    "2009-2013 가톨릭중앙의료원 정형외과 전공의",
+    "2008-2009 가톨릭중앙의료원 인턴"
+   ],
+   "societies": [
+    "2013 대한견주관절학회",
+    "2009 대한정형외과학회",
+    "2008 대한골절학회"
+   ],
+   "sources": [
+    "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dr_sid=1007611&dept_cd=OS",
+    "https://mokdong.eumc.ac.kr/medical/dept/deptDoctor.do?dept_cd=OS"
+   ],
+   "photo": "img/A13.webp",
+   "note": "2026년부터 이대목동병원 소속이다. 2019년부터 2026년까지는 이대서울병원에서 진료했다.",
+   "societies_total": 3
+  },
+  {
+   "id": "A14",
+   "rank": 10,
+   "tie": true,
+   "name": "전인호",
+   "career_note": "서울아산병원 정형외과. 어깨와 팔꿈치 분야 진료 및 치료 결정 클리닉 운영을 공식 안내에서 확인.",
+   "fields": "복잡한 어깨 질환, 봉합 불가능 회전근개 파열, 재건술과 인공관절의 선택.",
+   "consult": "SLAP 의심 외에 큰 회전근개 파열이나 복합 병변이 확인되어 전체 치료 방향을 재검토할 때 적합성이 커진다.",
+   "limits": "SLAP·이두건염 의심만으로 복잡 재건술 전문가를 우선할 근거는 제한적이다. 팔꿈치 전용 클리닉에는 어깨 예약이 불가하다는 공식 안내가 있다.",
+   "papers": [
+    {
+     "topic": "고령의 봉합 불가능 회전근개 파열에서 재건술과 인공관절 비교",
+     "year": "2024",
+     "journal": "OJSM",
+     "study": "후향적 코호트 비교연구",
+     "role": "공동저자",
+     "interp": "65세 이상 64명 비교. SLAP·이두건염 의심만으로 이 수술이 필요하다는 근거는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/38482338/",
+     "pmid": "38482338",
+     "title_en": "Clinical Outcomes of Arthroscopic Superior Capsular Reconstruction Using Fascia Lata Autograft Versus Reverse Shoulder Arthroplasty in Patients 65 Years and Older With Irreparable Rotator Cuff Tears: A Retrospective Cohort Study."
+    },
+    {
+     "topic": "봉합 불가능 회전근개 파열의 최근 치료 전략",
+     "year": "2025",
+     "journal": "Indian journal of orthopaedics",
+     "study": "종설",
+     "role": "제1저자",
+     "interp": "보존 치료와 여러 재건·인공관절 치료를 정리. 개별 수술의 새로운 무작위 임상시험은 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/40511355/",
+     "pmid": "40511355",
+     "title_en": "Advancements in the Management of Irreparable Rotator Cuff Tears."
+    }
+   ],
+   "evidence": "복합 어깨 질환과 큰 회전근개 파열 치료 결정",
+   "hospital_short": "서울아산병원",
+   "km": 31.5,
+   "address": "서울 송파구 올림픽로43길 88",
+   "hospital": "서울아산병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨팔꿈치 치료결정 클리닉,팔꿈치 클리닉"
+   ],
+   "education": [
+    "2006.03 ~ 2010.08 충남대학교 의학 박사",
+    "1994.03 ~ 1996.02 경북대학교 의학 석사",
+    "1987.03 ~ 1993.02 경북대학교 의학 학사"
+   ],
+   "career": [
+    "2023.01 ~ 아시아·태평양 정형외과학회(APOA, Asia Pacific Orthopaedic Association) 수부상지학회장",
+    "2022.03 ~ 서울아산병원 국제진료센터소장",
+    "2022.03 ~ 서울아산병원 국제사업실장",
+    "2017.04 ~ 울산의대 서울아산병원 정형외과 교수",
+    "2014 ~ Editor in Journal of Shoulder Elbow Surgery",
+    "2010.10 ~ 2017.03 울산의대 서울아산병원 정형외과 부교수",
+    "2009.09 ~ 2010.09 경북대학교병원 정형외과 부교수",
+    "2008 ~ 2009 미국 메이요 클리닉 견주관절 Fellow",
+    "2005.03 ~ 2009.09 경북대학교병원 정형외과 조교수",
+    "2004.01 ~ 2005.02 경북대학교병원 정형외과 임상조교수",
+    "2001 ~ 2003 영국 노팅엄대학 견주관절 Fellow",
+    "2001.05 ~ 2002.02 경북대병원 정형외과 전임의"
+   ],
+   "societies": [],
+   "sources": [
+    "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Q1NVN1dVNGtHR0d2TitDUDIrSCtCZz09&searchHpCd=D038",
+    "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Q1NVN1dVNGtHR0d2TitDUDIrSCtCZz09&searchHpCd=D038&tabIndex1=3"
+   ],
+   "photo": "img/A14.webp",
+   "note": "서울아산병원은 어깨 진료를 '어깨팔꿈치 치료결정 클리닉'으로 예약한다. 팔꿈치 전용 클리닉으로는 어깨 진료를 예약할 수 없다.",
+   "societies_total": 0
+  },
+  {
+   "id": "A15",
+   "rank": 10,
+   "tie": true,
+   "name": "정웅교",
+   "career_note": "고려대학교 의과대학 정형외과. 공식 조직도 및 대학 산학 연구자 자료에서 소속 확인. 고려대 의학사·석사·박사.",
+   "fields": "스포츠 어깨, Bankart 봉합, 수술 후 신경근 조절과 회전근개.",
+   "consult": "탈구나 불안정성, 운동 복귀 시 기능 회복 문제가 함께 있을 때 검토할 후보.",
+   "limits": "대표 확인 연구는 전방 관절와순과 Bankart 병변이다. 상부 SLAP와 같은 병변으로 취급해서는 안 된다.",
+   "papers": [
+    {
+     "topic": "Bankart 봉합의 최하방 나사 위치와 재발 비교",
+     "year": "2026",
+     "journal": "Arthroscopy",
+     "study": "후향적 코호트 비교연구",
+     "role": "공동저자",
+     "interp": "전방 불안정성과 전하방 관절와순 파열 대상. 상부 SLAP 병변과 병변 위치가 다름.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42736621/",
+     "pmid": "42736621",
+     "title_en": "Arthroscopic Bankart Repair With a 6 o'Clock Anchor Reduces Recurrence and Improves Clinical Outcomes in Recurrent Anterior Instability."
+    },
+    {
+     "topic": "Bankart 봉합 후 근력과 신경근 조절 회복",
+     "year": "2020",
+     "journal": "JSES",
+     "study": "환자 및 대조군 비교연구",
+     "role": "공동저자",
+     "interp": "수술 환자 32명과 무증상 대조군 32명 비교. 운동 복귀 시 근력 외의 회복 지표를 다룸.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/32147338/",
+     "pmid": "32147338",
+     "title_en": "Which muscle performance can be improved after arthroscopic Bankart repair?"
+    }
+   ],
+   "evidence": "Bankart 봉합과 불안정성 회복 연구",
+   "hospital_short": "고려대 안암병원",
+   "km": 21.1,
+   "address": "서울 성북구 고려대로 73",
+   "hospital": "고려대학교 안암병원",
+   "title": "교수",
+   "dept": "정형외과 · 어깨 팔꿈치 통증 클리닉",
+   "specialty": [
+    "어깨팔꿈치 관절,스포츠의학(상지)"
+   ],
+   "education": [
+    "2003 ~ 2007 고려대학교 대학원 박사",
+    "1999 ~ 2001 고려대학교 대학원 석사",
+    "1990 ~ 1996 고려대학교 의과대학 학사"
+   ],
+   "career": [
+    "2015 ~ 고려대학교 의과대학 정형외과학 교실 교수",
+    "2011 ~ 2015 고려대학교 의과대학 정형외과학 교실 부교수",
+    "2006 ~ 2011 고려대학교 안암병원 정형외과 임상조교수",
+    "2005 ~ 2006 한림대학교 성심병원 연구전임강사",
+    "2004 ~ 2005 삼성서울병원 견관절 & 스포츠 의학 전임의",
+    "2001 ~ 2004 군의관",
+    "1997 ~ 2001 고려대학교 안암병원 정형외과 레지던트",
+    "1996 ~ 1997 고려대학교 구로병원 인턴",
+    "2018 ~ 고려대학교 체육위원회 야구부장",
+    "2017 ~ 대한아이스하키 국가대표 팀닥터",
+    "수상: 2018 대한정형외과학회 SICOT 93 서울 학술장려상",
+    "수상: 2017 대한견주관절 춘계학술대회 최우수 연제상"
+   ],
+   "societies": [
+    "2004 ~ 대한견주관절학회 정회원",
+    "2007 ~ ISAKOS (세계스포츠관절경학회) 정회원",
+    "2016 ~ 대한정형외과 초음파학회 이사",
+    "2017 ~ 대한정형외과학회지 부편집인",
+    "2010 ~ AO Korea 지역 임원"
+   ],
+   "sources": [
+    "https://anam.kumc.or.kr/kr/doctor-department/doctor/view.do?drNo=2299"
+   ],
+   "photo": "img/A15.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A16",
+   "rank": 10,
+   "tie": true,
+   "name": "김종호",
+   "career_note": "가톨릭대학교 여의도성모병원 정형외과. 2025년 학술상 관련 공식 병원 보도에서 어깨·팔꿈치 분야 확인.",
+   "fields": "회전근개와 이두건을 활용한 재건, 스포츠 어깨 및 불안정성.",
+   "consult": "회전근개 파열이 동반되고 이두건을 어떻게 보존·활용할지 치료 전략이 궁금한 상황에서 검토할 후보.",
+   "limits": "대표 이두건 논문은 큰 회전근개 파열의 보강·재건 연구다. 단독 이두건염의 수술 적응증을 직접 비교한 것은 아니다.",
+   "papers": [
+    {
+     "topic": "광범위 회전근개 파열에서 이두건 경로 변경술 초기 결과",
+     "year": "2021",
+     "journal": "JSES",
+     "study": "전향적 증례군 연구",
+     "role": "제1저자",
+     "interp": "큰 파열을 이두건으로 보강하는 연구. 이두건을 연구했다는 이유만으로 단독 이두건염 전문가의 우열을 단정하지 않음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/32919044/",
+     "pmid": "32919044",
+     "title_en": "Preliminary outcomes of arthroscopic biceps rerouting for the treatment of large to massive rotator cuff tears."
+    },
+    {
+     "topic": "이두건 장두를 이용한 상부관절낭 재건술",
+     "year": "2018",
+     "journal": "Arthroscopy Techniques",
+     "study": "수술 술기 보고",
+     "role": "공동저자",
+     "interp": "광범위 회전근개 파열용 술기 설명. 단독 SLAP 또는 단순 이두건염을 대상으로 한 임상 비교연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/29552475/",
+     "pmid": "29552475",
+     "title_en": "Arthroscopic In Situ Superior Capsular Reconstruction Using the Long Head of the Biceps Tendon."
+    }
+   ],
+   "evidence": "큰 회전근개 파열의 이두건 활용 재건",
+   "hospital_short": "여의도성모병원",
+   "km": 10.2,
+   "address": "서울 영등포구 63로 10",
+   "hospital": "가톨릭대학교 여의도성모병원",
+   "title": "조교수",
+   "dept": "정형외과 · 수련교육과장",
+   "specialty": [
+    "어깨,팔꿈치 질환,관절경 수술,인공관절,상지 스포츠손상"
+   ],
+   "education": [
+    "2003~2009 가톨릭대학교 의학 학사",
+    "2016~2020 가톨릭대학교 정형외과학 박사"
+   ],
+   "career": [
+    "2023~현재 여의도성모병원 정형외과 조교수",
+    "2022~2023 여의도성모병원 정형외과 임상조교수",
+    "2020~2022 여의도성모병원 정형외과 임상진료조교수",
+    "2018~2019 원광대학교 산본병원 정형외과 임상조교수",
+    "2017~2018 서울성모병원 정형외과 임상강사",
+    "2018~2018 Peongchang Olympics FOP Physician",
+    "2016~2017 FIS Freestyle Ski and Snowboard Worldcup Snow FOP Physician",
+    "연수: 2024~2024 가톨릭의대 정형외과학 교실 단기해외연수 (일본 견관절학회 Dr. Sugaya, Dr. Mihata, Dr. Yamamoto)",
+    "수상: 2025 (사)대한견주관절의학회 젊은의학자상",
+    "수상: 2025 아시아태평양 정형외과학회 Young Ambassador 선정",
+    "수상: 2024 대한정형외과학회 춘계학술대회 최신의료기술 우수발표상"
+   ],
+   "societies": [
+    "2026~2027 대한정형외과학회 총무이사",
+    "현재 (사)대한견주관절의학회 정회원, 대외협력위원, 학술위원, 중개연구위원",
+    "현재 대한정형외과 초음파학회 정회원, 전산정보위원, 학술위원",
+    "현재 대한관절경학회 정회원, 학술위원, 편집위원, 전산홍보위원",
+    "현재 대한정형외과 스포츠의학회 정회원, 편집위원"
+   ],
+   "sources": [
+    "https://www.cmcsungmo.or.kr/page/doctor/159/D0000394",
+    "https://www.cmcsungmo.or.kr/page/board/news/531109"
+   ],
+   "photo": "img/A16.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A17",
+   "rank": 10,
+   "tie": true,
+   "name": "도우성",
+   "career_note": "세브란스병원 정형외과. 공식 의료진 소개에 재발성 탈구, 관절와 뼈 결손 및 회전근개 진료.",
+   "fields": "반복성 불안정성, Bankart 병변과 골결손, 숨은 견갑하근 손상.",
+   "consult": "외상 뒤 통증이 생겼거나 빠지는 느낌이 명확하지 않아도 아탈구·불안정성을 감별해야 하는 경우 적합성이 커진다.",
+   "limits": "주요 확인 논문은 불안정성과 견갑하근 병변이다. 군인 대상 MRI 연구 결과를 모든 연령의 만성 통증에 그대로 적용하기 어렵다.",
+   "papers": [
+    {
+     "topic": "환자가 인식하지 못한 첫 어깨 아탈구의 MRI 특징",
+     "year": "2026",
+     "journal": "OJSM",
+     "study": "횡단면 관찰연구",
+     "role": "제1저자",
+     "interp": "남성 군인 75명 연구. 외상 후 통증이 있으나 빠지는 느낌이 뚜렷하지 않은 상황의 감별과 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41710459/",
+     "pmid": "41710459",
+     "title_en": "Unperceived First-Time Anterior Shoulder Subluxation: The Role of MRI in Detection and Characterization of Pathoanatomy."
+    },
+    {
+     "topic": "내측 이두건 지지구조에 가려진 견갑하근 파열",
+     "year": "2023",
+     "journal": "Archives of orthopaedic and trauma surgery",
+     "study": "후향적 관찰연구",
+     "role": "공동저자",
+     "interp": "견갑하근 봉합 환자 430명을 분석. 이두건 지지구조와 숨은 견갑하근 손상의 관계를 다룸.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/36369526/",
+     "pmid": "36369526",
+     "title_en": "Subscapularis tendon tears hidden by the medial biceps sling can be missed on arthroscopic examination."
+    }
+   ],
+   "evidence": "아탈구·반복 탈구와 숨은 견갑하근 손상",
+   "hospital_short": "세브란스병원",
+   "km": 12.8,
+   "address": "서울 서대문구 연세로 50-1",
+   "hospital": "세브란스병원",
+   "title": "임상조교수",
+   "dept": "정형외과",
+   "specialty": [
+    "재발성 어깨탈구(관절경 뼈이식/재건술),회전근개 파열(부분파열 정밀봉합/광범위 힘줄이식),어깨 인공관절,어깨 고난도 복합 골절 및 외상,:18세 이상"
+   ],
+   "education": [
+    "연세대학교 의학과 학사",
+    "연세대학교 대학원 의학박사"
+   ],
+   "career": [
+    "연세대학교 의과대학 정형외과학교실 임상조교수",
+    "연세대학교 의과대학 정형외과학교실 견주관절 전임의",
+    "세브란스 병원 정형외과 전공의",
+    "세브란스 병원 수련의",
+    "주요업적: 제9회 세경학술상 본상 (2025)",
+    "주요업적: 국제군진외상 학술대회 우수상 (2024)"
+   ],
+   "societies": [
+    "대한견주관절학회 회원",
+    "대한관절경학회 회원"
+   ],
+   "sources": [
+    "https://sev.severance.healthcare/sev/doctor/doctor-view.do?empNo=eXVoczIwMjBAKUApM9Yii0MnFedHVaHIDRZINr9nKlhr%2BVSCjmAA1cy3J9M%3D"
+   ],
+   "photo": "img/A17.webp",
+   "societies_total": 2
+  },
+  {
+   "id": "A18",
+   "rank": 10,
+   "tie": true,
+   "name": "이상훈",
+   "career_note": "CM병원 정형외과. 서울시 의료관광 공식 병원 소개와 서울대 동창회 인터뷰로 소속 대조. 영문 성은 Lhee.",
+   "fields": "스포츠 어깨, 관절와순과 골성 Bankart, 회전근개 영상 및 수술.",
+   "consult": "스포츠 활동 중 어깨 불안정성이나 관절와순 손상이 함께 의심되고 운동 목표를 중심으로 상담하고 싶을 때 후보.",
+   "limits": "동명이인 Lee SH 논문을 무조건 합치지 않았다. 확인한 대표 논문은 전방 관절와순과 회전근개 중심이다.",
+   "papers": [
+    {
+     "topic": "Bankart 봉합 후 관절와순 높이와 조직 상태 및 결과",
+     "year": "2012",
+     "journal": "JSES",
+     "study": "추적 영상 관찰연구",
+     "role": "공동저자",
+     "interp": "40명에서 조직 상태와 수술 후 관절와순 높이를 분석. 전방 불안정성·관절와순 상담에 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/22749899/",
+     "pmid": "22749899",
+     "title_en": "Change in labrum height after arthroscopic Bankart repair: correlation with preoperative tissue quality and clinical outcome."
+    },
+    {
+     "topic": "회전근개 봉합 후 MRI상 극상근 위축 모습 변화",
+     "year": "2017",
+     "journal": "JSES",
+     "study": "후향적 영상 관찰연구",
+     "role": "제1저자",
+     "interp": "209명 분석. 수술 전후 영상 모양과 실제 근육 상태의 해석에 관련.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/27914845/",
+     "pmid": "27914845",
+     "title_en": "Does magnetic resonance imaging appearance of supraspinatus muscle atrophy change after repairing rotator cuff tears?"
+    }
+   ],
+   "evidence": "스포츠 어깨와 전방 관절와순 및 회전근개",
+   "hospital_short": "CM병원",
+   "km": 7.3,
+   "address": "서울 영등포구 영등포로36길 13",
+   "hospital": "CM병원",
+   "title": "병원장",
+   "dept": "정형외과 · 상지관절 1과",
+   "specialty": [
+    "스포츠 의학 / 견·주관절 / 상지관절 / 인공관절 / 관절경"
+   ],
+   "education": [
+    "서울대학교 의과대학 졸업",
+    "서울대학교 대학원 졸업. 의학박사"
+   ],
+   "career": [
+    "서울대학교병원 정형외과 전공의",
+    "미국 New York Columbia University Medical center임상강사",
+    "건국대학교병원 정형외과 교수",
+    "카이스트 기계공학과 교수",
+    "선문대학교 보건대학교 교수",
+    "대한체육회 한국올림픽위원회 의무위원장",
+    "국가대표 진천선수촌 메디컬센터 대표",
+    "IOC 인증 스포츠전문의",
+    "대한민국 국가대표 의무위원장",
+    "대한럭비협회 이사",
+    "대한민국 배구 국가대표 팀닥터",
+    "프로야구 수석 팀닥터",
+    "프로배구 우리카드WON 수석팀닥터",
+    "2009 대한견주관절학회 최우수 학술상",
+    "2010 대한정형외과 선정 ‘젊은 의학자’상",
+    "2012 대한수부외과 학회 우수논문상",
+    "2010~2016 세계인명사전 등재"
+   ],
+   "societies": [
+    "건-인대 연구회 회장",
+    "세계 견주관절학회 2016 임원"
+   ],
+   "sources": [
+    "https://www.cmhospital.co.kr/cmhospital/sub_02_1.php#j_gwaU1",
+    "https://www.cmhospital.co.kr/cmhospital/doc_pop/doc_02.php"
+   ],
+   "photo": "img/A18.webp",
+   "societies_total": 2
+  },
+  {
+   "id": "A19",
+   "rank": 19,
+   "tie": true,
+   "name": "김대하",
+   "career_note": "SNU서울병원 정형외과. 서울대학교 의과대학, 분당서울대병원 견주관절 전임의 및 CM병원 경력.",
+   "fields": "어깨 관절경과 회전근개, 스포츠 손상, 초음파를 이용한 견갑하근 평가.",
+   "consult": "화곡역에서 가까운 곳에서 앞쪽 어깨 통증을 평가하고 영상 재검토 및 보존 치료 계획을 듣는 후보.",
+   "limits": "확인한 대표 개인 저자 논문은 견갑하근 관련 초음파 연구다. 단독 SLAP 또는 이두건염 치료 비교 논문은 이번 확인 범위에서 확보하지 못했다.",
+   "papers": [
+    {
+     "topic": "어깨 회전 자세별 초음파 거리와 견갑하근 손상",
+     "year": "2016",
+     "journal": "Arthroscopy",
+     "study": "전향적 예후 코호트 연구",
+     "role": "공동저자",
+     "interp": "회전근개 수술 예정 168명과 대조군을 분석. 영상과 진찰을 결합하는 연구이며 SLAP 진단 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/27050023/",
+     "pmid": "27050023",
+     "title_en": "Measurement of Coracohumeral Distance in 3 Shoulder Positions Using Dynamic Ultrasonography: Correlation With Subscapularis Tear."
+    }
+   ],
+   "evidence": "근거리 진료와 견갑하근 초음파 연구",
+   "hospital_short": "SNU서울병원",
+   "km": 2.4,
+   "address": "서울 강서구 공항대로 237",
+   "hospital": "SNU서울병원",
+   "title": "원장",
+   "dept": "정형외과 · 어깨·손·손목·팔꿈치",
+   "specialty": [
+    "어깨·팔꿈치·손목 관절질환",
+    "스포츠손상",
+    "어깨골절, 팔꿈치골절, 손목골절(당일수술)"
+   ],
+   "education": [
+    "서울대학교 의과대학 졸업"
+   ],
+   "career": [
+    "스포츠의학 인증 전문의",
+    "서울대학교병원 수련의",
+    "서울대학교병원 정형외과 전공의",
+    "외국인 노동자전용의원 정형외과장(공중보건의)",
+    "서울대학교병원 정형외과 임상 자문의",
+    "분당서울대학교병원 정형외과 임상자문의",
+    "서울특별시 보라매병원 정형외과 임상자문의",
+    "분당서울대병원 관절클리닉 견주관절 전임의",
+    "CM병원 정형외과 과장",
+    "CM병원 진천선수촌 메디컬센터 파견",
+    "교육수련: AO principle course 이수",
+    "교육수련: Functional movement screen level 1,2 이수"
+   ],
+   "societies": [
+    "대한정형외과 정회원",
+    "대한견주관절학회 정회원",
+    "대한스포츠의학회 정회원"
+   ],
+   "sources": [
+    "https://www.snuseoul.kr/page/sub0104.php"
+   ],
+   "photo": "img/A19.webp",
+   "societies_total": 3
+  },
+  {
+   "id": "A20",
+   "rank": 19,
+   "tie": true,
+   "name": "최준하",
+   "career_note": "210정형외과 대표원장. 공식 소개에 나누리병원 경력, 분당서울대병원 임상자문의 및 프로야구 현장 진료 경력.",
+   "fields": "회전근개와 어깨 관절경, 스포츠 손상 및 회복 관리.",
+   "consult": "비교적 가까운 목동에서 진찰과 영상 해석, 운동 조절 및 재활 방향을 먼저 상담할 후보.",
+   "limits": "확인된 무작위 연구는 회전근개와 견봉쇄골 관절염의 추가 수술 여부다. 단독 SLAP·이두건염 수술의 직접 근거는 아니다.",
+   "papers": [
+    {
+     "topic": "회전근개 수술 때 무증상 견봉쇄골 관절염을 함께 수술할지 비교",
+     "year": "2014",
+     "journal": "AJSM",
+     "study": "전향적 무작위 비교시험",
+     "role": "공동저자",
+     "interp": "78명 연구. 동반 영상 소견을 무조건 추가 수술할 필요가 있는지 평가. 이두건 수술의 직접 근거는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/25193889/",
+     "pmid": "25193889",
+     "title_en": "Is arthroscopic distal clavicle resection necessary for patients with radiological acromioclavicular joint arthritis and rotator cuff tears? A prospective randomized comparative study."
+    }
+   ],
+   "evidence": "스포츠 어깨와 회전근개 동반 병변 연구",
+   "hospital_short": "210정형외과의원",
+   "km": 4.9,
+   "address": "서울 양천구 목동동로 150",
+   "hospital": "210정형외과의원",
+   "title": "대표원장",
+   "dept": "정형외과 · 어깨·팔꿈치 세부전공",
+   "specialty": [
+    "어깨·팔꿈치 세부전공"
+   ],
+   "education": [],
+   "career": [
+    "분당 서울대학교병원 정형외과 전임의",
+    "분당 서울대학교병원 정형외과 임상 자문의",
+    "전) LG트윈스 야구단 필드 닥터",
+    "대한스포츠의학회 분과전문의",
+    "전) 한림대학교 정형외과 외래 교수 및 협력의",
+    "전) 더드림병원 원장",
+    "전) 나누리병원 과장",
+    "미국 Chicago Rockford orthopedic center 연수",
+    "미국 OSF Saint Anthony Medical center 연수",
+    "소매틱 기반 치료 MST(Medical Somatic Training) 연구·개발"
+   ],
+   "societies": [
+    "대한 견주관절학회 정회원",
+    "국제 관절경 및 슬관절 스포츠 의학회 정회원",
+    "대한슬관절학회 정회원",
+    "대한골절학회 정회원"
+   ],
+   "sources": [
+    "https://www.orthopedics210.com/doctors",
+    "https://www.orthopedics210.com/doctor"
+   ],
+   "photo": "img/A20.webp",
+   "societies_total": 4
+  },
+  {
+   "id": "A21",
+   "rank": 19,
+   "tie": true,
+   "name": "김효준",
+   "career_note": "중앙대학교병원 정형외과. 울산대학교 의학 학사·석사·박사 및 이전 을지대학교병원 경력. 영문명 Hyojune Kim.",
+   "fields": "회전근개와 어깨 관절경, 불안정성, 수술 후 통증과 일·운동 복귀.",
+   "consult": "직업과 운동 수준을 포함한 회복 계획, 재파열 위험이나 탈구 동반 여부를 함께 상담할 때 후보.",
+   "limits": "확인한 주요 개인 연구는 회전근개 회복·통증 조절이다. 단독 SLAP 의심과 직접 대응하는 근거는 상대적으로 제한적이다.",
+   "papers": [
+    {
+     "topic": "회전근개 재파열과 일반인의 일 및 운동 복귀",
+     "year": "2023",
+     "journal": "OJSM",
+     "study": "후향적 코호트 연구",
+     "role": "제1저자",
+     "interp": "159명 분석. 직업·운동 목표를 포함한 회복 상담에 관련되나 단독 SLAP 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37533498/",
+     "pmid": "37533498",
+     "title_en": "Effect of Retear After Arthroscopic Rotator Cuff Repair on Return to Work and Sports in Nonathletes: A Retrospective Cohort Study."
+    },
+    {
+     "topic": "회전근개 수술 후 두 종류의 지속 신경차단 비교",
+     "year": "2021",
+     "journal": "Arthroscopy",
+     "study": "전향적 임상 비교연구",
+     "role": "제1저자",
+     "interp": "76명에서 초기 통증 조절을 비교. 통증 관리 연구를 SLAP 진단이나 수술 성공률로 해석하지 않음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/33989719/",
+     "pmid": "33989719",
+     "title_en": "Postoperative Pain Control After Arthroscopic Rotator Cuff Repair: Arthroscopy-Guided Continuous Suprascapular Nerve Block Versus Ultrasound-Guided Continuous Interscalene Block."
+    }
+   ],
+   "evidence": "회전근개 수술 회복과 일·운동 복귀",
+   "hospital_short": "중앙대병원",
+   "km": 13.2,
+   "address": "서울 동작구 흑석로 102",
+   "hospital": "중앙대학교병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "견관절 관절경(회전근개손상, 재발성탈구) 및 주관절 질환(외상과염,내상과염,골관절염) 인공관절, 견관절 및 주관절 스포츠 손상 및 상지외상, 만16세이상 진료(ER은 제외)"
+   ],
+   "education": [
+    "울산대학교 의과대학원 졸업 (박사)",
+    "울산대학교 의과대학원 졸업 (석사)",
+    "울산대학교 의과대학 졸업 (학사)"
+   ],
+   "career": [
+    "중앙대학교병원 정형외과 조교수",
+    "중앙대학교병원 정형외과 임상 조교수",
+    "대전을지대병원 정형외과 조교수",
+    "서울아산병원 정형외과 전임의",
+    "서울아산병원 정형외과 레지던트",
+    "서울아산병원 정형외과 인턴",
+    "업무상질병판정위원회 정형외과 자문위원",
+    "2023 젊은의학자상, 대한견주관절학회",
+    "2021 구연장려상, 대한운동계줄기세포재생의학회",
+    "2021 우수구연상, 대한골절학회",
+    "2021 구연장려상, 대한관절경학회",
+    "2020 구연장려상, 대한골다공증학회"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한견주관절학회 정회원",
+    "대한견주관절학회 전산위원/대외협력위원",
+    "대한정형외과초음파학회 정회원",
+    "학술위원 정형통증학회 정회원"
+   ],
+   "sources": [
+    "https://ch.cauhs.or.kr/home/medical/profView.do?deptNo=203&profNo=1160&empNo=01728",
+    "https://ch.cauhs.or.kr/home/medical/deptProf203.do",
+    "https://ch.cauhs.or.kr/group/board/all/53_View.do?boardMngNo=2&boardNo=1532&page=12"
+   ],
+   "photo": "img/A21.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A22",
+   "rank": 19,
+   "tie": true,
+   "name": "김성훈",
+   "career_note": "국민건강보험 일산병원 정형외과 임상부교수. 연세대학교 의과대학 및 정형외과 수련. 영문명 Seong Hun Kim.",
+   "fields": "어깨와 상완 질환, 어깨 관절경 및 재수술, 회전근개 재건.",
+   "consult": "복합 회전근개 질환이나 이전 어깨 수술 후 재평가가 필요하면 검토할 후보.",
+   "limits": "김유석의 소속과 혼동하면 안 된다. 이두건 논문은 회전근개 보강 재료 연구이며 단독 이두건염의 임상 비교연구가 아니다.",
+   "papers": [
+    {
+     "topic": "큰 회전근개 파열의 피부 패치와 이두건 보강 비교",
+     "year": "2024",
+     "journal": "Arthroscopy",
+     "study": "후향적 환자대조군 연구",
+     "role": "제1저자",
+     "interp": "92명 비교. 이두건은 회전근개 보강 재료로 사용되며 단독 이두건염 환자군과 다름.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37716630/",
+     "pmid": "37716630",
+     "title_en": "No Difference In Clinical Outcomes Following Repair of Large Retracted Anterior Rotator Cuff Tears Using Patch Augmentation With Human Dermal Allograft Versus Anterior Cable Reconstruction With Biceps Tendon Autograft."
+    }
+   ],
+   "evidence": "어깨 재수술과 회전근개 이두건 보강",
+   "hospital_short": "건보 일산병원",
+   "km": 16.6,
+   "address": "경기 고양시 일산동구 일산로 100",
+   "hospital": "국민건강보험 일산병원",
+   "title": "임상부교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 및 상완 관절질환, 관절경, 어깨 재수술, 어깨스포츠손상 및 외상(혹제외), 인공관절치환술",
+    "인공관절센터"
+   ],
+   "education": [
+    "연세대학교 의과대학 대학원",
+    "연세대학교 의과대학 졸업"
+   ],
+   "career": [
+    "현) 국민건강보험 일산병원 정형외과 전문의",
+    "현) 연세대학교 의과대학 정형외과학교실 임상부교수",
+    "University of California, San Diego Hillcrest Medical Center Visiting Scholar",
+    "신촌세브란스병원 정형외과 전공의수료",
+    "신촌세브란스 병원 관절경 및 스포츠의학 전임의",
+    "건강보험심사평가원 자동차보험진료수가심사위원회 심사위원",
+    "건강보험심사평가원 전문심사위원회 위원",
+    "건강보험심사평가원 분류체계개발부 검토위원",
+    "대한의사협회 의료배상공제조합 심사위원회 위원",
+    "중앙선거관리위원회 선거재해보상금심의위원회 위원",
+    "자동차손해배상진흥원 손해배상의료심사위원회 심사위원",
+    "신의료기술평가위원회 위원",
+    "약제 및 치료재료에 대한 독립적 검토자",
+    "식품의약품안전처 임상의사 심사 자문위원",
+    "식품의약품안전처 의료기기위원회 위원",
+    "보건복지부 건강보험분쟁조정위원회 자문위원",
+    "근로복지공단 심사위원회 위원",
+    "근로복지공단 업무상질병판정위원회 위원",
+    "국민연금공단 자문위원",
+    "Clinics in Orthropedic Surgery, 논문심사 위원",
+    "Clinics in Shoulder and Elbow, 논문심사 위원"
+   ],
+   "societies": [
+    "대한정형외과학회 보험위원회 간사",
+    "(사)대한견주관절의학회 보험위원회 간사",
+    "대한관절경학회 부총무",
+    "대한정형외과초음파학회 회원",
+    "대한노년근골격의학회 회원"
+   ],
+   "sources": [
+    "https://www.nhimc.or.kr/doctor/profViewPop.do?deptNo=13&deptYn=Y&profNo=176"
+   ],
+   "photo": "img/A22.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A23",
+   "rank": 19,
+   "tie": true,
+   "name": "김유석",
+   "career_note": "인제대학교 일산백병원 정형외과. 공식 병원 소식에 2026년 5월 15일 진료 시작. 전남대학교 및 삼성서울병원 견주관절 경력.",
+   "fields": "회전근개와 견갑하근 봉합, 어깨 관절경 및 인공관절.",
+   "consult": "견갑하근과 극상건의 복합 파열이 실제로 확인되었거나 어깨 영상과 수술 선택을 재평가할 후보.",
+   "limits": "술기 보고를 환자 장기 성적 연구로 보아서는 안 된다.",
+   "papers": [
+    {
+     "topic": "견갑하근과 극상건 봉합에 하나의 나사를 공유하는 술기",
+     "year": "2025",
+     "journal": "Arthroscopy Techniques",
+     "study": "수술 술기 보고",
+     "role": "공동저자",
+     "interp": "Technical Note로 해부학적 복원 방법을 설명. 장기 임상 성적이나 단독 SLAP 치료 우열을 입증하지 않음.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41220652/",
+     "pmid": "41220652",
+     "title_en": "Arthroscopic Subscapularis Retensioning Repair Using a Knotless-Type Anchor Shared With Supraspinatus Repair."
+    },
+    {
+     "topic": "역행성 어깨 인공관절과 광배근 이전의 중기 결과",
+     "year": "2026",
+     "journal": "Journal of orthopaedic surgery and research",
+     "study": "증례군 연구",
+     "role": "제1저자",
+     "interp": "외회전 장애가 있는 복잡한 회전근개 질환 대상. SLAP·이두건염 의심과는 적용 범위가 다름.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42289739/",
+     "pmid": "42289739",
+     "title_en": "The mid-term outcomes on reverse total shoulder arthroplasty with isolated latissimus dorsi transfer in patients with isolated external rotation lag without pseudoparalysis: an average follow-up of 5 years."
+    }
+   ],
+   "evidence": "견갑하근·극상건 봉합과 어깨 재건",
+   "hospital_short": "일산백병원",
+   "km": 21.7,
+   "address": "경기 고양시 일산서구 주화로 170",
+   "hospital": "인제대학교 일산백병원",
+   "title": "교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨질환(퇴행성 및 외상성, 관절경, 인공관절, 스포츠 손상(재발성탈구), 골절)"
+   ],
+   "education": [
+    "전남대학교 의과대학",
+    "전남대학교 대학원 의학석사"
+   ],
+   "career": [
+    "전남대학교병원 정형외과 전공의",
+    "전남대학교병원 정형외과 전임의, 임상교수",
+    "삼성서울병원 정형외과 견관절 분야 임상강사"
+   ],
+   "societies": [
+    "대한정형외과학회",
+    "대한견주관절학회",
+    "근로복지공단 상시자문위원"
+   ],
+   "sources": [
+    "https://busan.paik.ac.kr/ilsan/user/doctor/view.do?doctorId=2297&menuNo=300007",
+    "https://www.paik.ac.kr/ilsan/user/bbs/BMSR00040/view.do?boardId=31072&menuNo=900125"
+   ],
+   "photo": "img/A23.webp",
+   "societies_total": 3
+  },
+  {
+   "id": "A24",
+   "rank": 19,
+   "tie": true,
+   "name": "소상필",
+   "career_note": "가천대학교 의과대학 공식 약력에 2026년부터 조교수. 울산대 의학사 2017년·석사 2021년·박사 2024년, 서울아산병원 수련.",
+   "fields": "어깨·팔꿈치와 스포츠 손상, 회전근개 재건 및 불안정성.",
+   "consult": "회전근개 복합 질환이나 탈구가 함께 확인되어 인천 지역의 대학병원 의견이 필요한 경우 후보.",
+   "limits": "SLAP·이두건 의심 단계와 가장 직접 연결되는 단독 SLAP·이두건염 연구는 확인이 제한적이다. 졸업 연도로 나이를 추정하지 않았다.",
+   "papers": [
+    {
+     "topic": "고령의 봉합 불가능 회전근개 파열에서 재건술과 인공관절 비교",
+     "year": "2024",
+     "journal": "OJSM",
+     "study": "후향적 코호트 비교연구",
+     "role": "제1저자",
+     "interp": "65세 이상 64명 비교. SLAP·이두건염 의심만으로 이 수술이 필요하다는 근거는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/38482338/",
+     "pmid": "38482338",
+     "title_en": "Clinical Outcomes of Arthroscopic Superior Capsular Reconstruction Using Fascia Lata Autograft Versus Reverse Shoulder Arthroplasty in Patients 65 Years and Older With Irreparable Rotator Cuff Tears: A Retrospective Cohort Study."
+    },
+    {
+     "topic": "Bankart 봉합 전후 상완골두 위치의 MRI 분석",
+     "year": "2026",
+     "journal": "JSES",
+     "study": "후향적 영상 관찰연구",
+     "role": "제1저자",
+     "interp": "전방 불안정성의 수술 전후 변화를 정량 평가. 단독 SLAP 치료 연구와는 구별됨.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42595078/",
+     "pmid": "42595078",
+     "title_en": "Posterior translation of the humeral head after arthroscopic Bankart repair: a quantitative analysis of preoperative and postoperative axial MRI."
+    }
+   ],
+   "evidence": "회전근개 재건과 Bankart 영상 연구",
+   "hospital_short": "가천대 길병원",
+   "km": 19.5,
+   "address": "인천 남동구 남동대로774번길 21",
+   "hospital": "가천대 길병원",
+   "title": "조교수",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 및 팔꿈치 질환/스포츠 손상/인공관절, 어깨 및 팔꿈치 외상 (골절, 탈구)",
+    "상세질환: 회전근개 파열, 어깨 불안정성 및 탈구 (방카르트 병변), 어깨 관절염/인공관절, 팔꿈치 불안정성, 팔꿈치 관절염/인공관절, 어깨 및 팔꿈치의 스포츠 손상, 어깨 및 팔꿈치의 골절 및 외상"
+   ],
+   "education": [
+    "2011.03~2017.02 울산대학교 의과대학 학사",
+    "2019.09~2021.08 울산대학교 의과대학 대학원 석사",
+    "2022.03~2024.08 울산대학교 의과대학 대학원 박사"
+   ],
+   "career": [
+    "2017.03~2018.02 서울아산병원 인턴",
+    "2018.03~2022.02 서울아산병원 정형외과 전공의",
+    "2022.03~2023.02 서울아산병원 정형외과 견주관절 전임의",
+    "2023.05~2026.04 국군수도병원 정형외과 견주관절 군의관",
+    "2026~ 가천대 길병원 정형외과 조교수",
+    "연수: 2023.01 뉴질랜드 Whangarei Hospital 단기 연수"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한견주관절학회 회원",
+    "대한정형외상학회 회원",
+    "아시아태평양정형외과학회 회원",
+    "세계 주관절 네트워크 회원"
+   ],
+   "sources": [
+    "https://www.gilhospital.com/web/www/doctor?p_p_id=searchDoctor_WAR_bookingHomepageportlet&p_p_lifecycle=0&p_p_col_id=column-1&p_p_col_pos=1&p_p_col_count=2&_searchDoctor_WAR_bookingHomepageportlet_action=view_message&_searchDoctor_WAR_bookingHomepageportlet_doctorId=3999150",
+    "https://medicine.gachon.ac.kr/department/pop_list.php?code1=A103&code2=B126&uid=1479"
+   ],
+   "photo": "img/A24.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A25",
+   "rank": 19,
+   "tie": true,
+   "name": "장선호",
+   "career_note": "국민건강보험 일산병원 정형외과. 연세대학교 원주의과대학, 연세대 석사·박사 및 용인세브란스·신촌세브란스 견주관절 경력.",
+   "fields": "어깨 스포츠 손상, 관절경과 회전근개 분야를 공식 의료진 소개에서 확인.",
+   "consult": "일산 지역에서 어깨와 스포츠 손상에 대한 진료 의견을 듣는 후보. 세부 SLAP·이두건 진료 경험은 예약 또는 진료 때 직접 확인할 사항.",
+   "paper_status": "본인과의 저자 연결이 충분히 확인된 SLAP·이두건 관련 원저를 이번 조사에서 확정하지 못했다. 진료 역량이나 실제 논문 유무를 부정하는 뜻은 아니다.",
+   "limits": "공식 소개의 논문 목록과 원문 영문 저자 연결이 명확하지 않은 항목이 있어 개인 대표 논문으로 확정하지 않았다. 이는 연구가 없다는 뜻이 아니다.",
+   "papers": [],
+   "evidence": "견주관절 경력 확인 · 개인 논문 연결 보류",
+   "hospital_short": "건보 일산병원",
+   "km": 16.6,
+   "address": "경기 고양시 일산동구 일산로 100",
+   "hospital": "국민건강보험 일산병원",
+   "title": "전문의",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 및 팔꿈치 관절질환, 관절경, 어깨 재수술, 어깨스포츠손상 및 외상, 인공관절치환술",
+    "인공관절센터"
+   ],
+   "education": [
+    "연세대학교 의학 대학원 석·박사",
+    "연세대학교(원주) 의과대학 졸업"
+   ],
+   "career": [
+    "현) 국민건강보험 일산병원 정형외과 전문의",
+    "용인세브란스병원 진료교수",
+    "세브란스병원 전임의 (견주관절 및 스포츠의학)",
+    "세브란스병원 레지던트",
+    "세브란스병원 인턴"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한견주관절학회 정회원",
+    "대한골절학회 평생회원",
+    "대한관절경학회 회원",
+    "세브란스 관절경 연구회 회원"
+   ],
+   "sources": [
+    "https://www.nhimc.or.kr/doctor/profViewPop.do?deptNo=13&deptYn=Y&profNo=759"
+   ],
+   "photo": "img/A25.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A26",
+   "rank": 19,
+   "tie": true,
+   "name": "이태연",
+   "career_note": "날개병원 병원장. 공식 의료진 약력에 서울대학교 의과대학 및 서울대병원 정형외과 수련, 의학 석사·박사.",
+   "fields": "어깨 관절경과 회전근개, 관절 질환 진료 및 수술.",
+   "consult": "어깨 관절경 분야의 진료 의견과 회전근개 동반 여부, 치료 및 회복 계획을 상담할 후보.",
+   "paper_status": "본인과의 저자 연결이 충분히 확인된 SLAP·이두건 관련 원저를 이번 조사에서 확정하지 못했다. 진료 역량이나 실제 논문 유무를 부정하는 뜻은 아니다.",
+   "limits": "공식 학회 활동은 확인되지만 이번 조사에서 SLAP·이두건 관련 개별 원저의 저자 연결을 충분히 확인하지 못했다. 동명이인 논문은 제외.",
+   "papers": [],
+   "evidence": "어깨 관절경 경력 확인 · 직접 논문 확인 제한",
+   "hospital_short": "날개병원",
+   "km": 20.7,
+   "address": "서울 동대문구 무학로 193-1",
+   "hospital": "날개병원",
+   "title": "병원장",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨(내시경, 인공관절)",
+    "줄기세포치료"
+   ],
+   "education": [
+    "경기고등학교 졸업",
+    "서울대학교 의과대학 졸업",
+    "서울대학교 대학원 의학석사(정형외과학)",
+    "서울대학교 대학원 의학박사(정형외과학)"
+   ],
+   "career": [
+    "서울대학교병원 인턴",
+    "서울대학교 병원 정형외과 레지던트(정형외과 전문의)",
+    "現 날개병원 대표원장",
+    "前 서울정형외과 원장(어깨관절경, 무릎관절경 수술)",
+    "前 인천성민병원 정형외과 과장 (무릎관절경 수술, 인공관절수술, 수지접합 수술, 족부질환 수술)",
+    "前 제주의료원(현 제주대학교병원)정형외과 과장(무릎관절경 수술, 인공관절 수술)",
+    "現 서울대학교병원 정형외과 임상자문의",
+    "現 고려대학교 의과대학 외래교수",
+    "現 건국대학교 의학전문대학원 외래교수",
+    "現 경희대학교 의학전문대학원 외래교수",
+    "前 제10대, 11대 대한정형외과의사회 회장",
+    "現 대한의사협회 자동차보험위원회 위원장"
+   ],
+   "societies": [
+    "現 대한정형외과학회 이사",
+    "現 대한견주관절학회 홍보위원",
+    "現 대한견주관절학회 보험위원",
+    "現 대한운동계줄기세포재생의학회 보험홍보 위원",
+    "前 제10대, 11대 대한정형외과의사회 회장"
+   ],
+   "sources": [
+    "https://www.nalgaehospital.com/sub01/sub02_03.php"
+   ],
+   "photo": "img/A26.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A27",
+   "rank": 19,
+   "tie": true,
+   "name": "금정섭",
+   "career_note": "세종스포츠정형외과 의료진. 건국대학교 의과대학 및 이전 건국대병원 견주관절 임상교수·제일정형외과병원 경력.",
+   "fields": "어깨·팔꿈치 상지 수술과 스포츠 손상, 회전근개 관절경.",
+   "consult": "스포츠 활동과 어깨 기능을 함께 고려한 진료를 상담할 후보.",
+   "limits": "대표 확인 연구는 충돌증후군과 회전근개 연구다. 2009년 SPECT 연구가 SLAP 의심에 해당 검사를 권장한다는 의미는 아니다.",
+   "papers": [
+    {
+     "topic": "정량 SPECT를 이용한 어깨 충돌증후군 평가",
+     "year": "2009",
+     "journal": "CiOS",
+     "study": "전향적 진단 및 예후 연구",
+     "role": "공동저자",
+     "interp": "환자 73명과 지원자 24명 연구. 오래된 특정 검사 연구이며 SLAP 의심에 SPECT를 권한다는 의미는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/19956476/",
+     "pmid": "19956476",
+     "title_en": "The diagnosis and prognosis of impingement syndrome in the shoulder with using quantitative SPECT assessment: a prospective study of 73 patients and 24 volunteers."
+    },
+    {
+     "topic": "봉합교 방식 회전근개 수술 후 초음파 치유 추적",
+     "year": "2010",
+     "journal": "Clinical orthopaedics and related research",
+     "study": "전향적 증례군 연구",
+     "role": "공동저자",
+     "interp": "78명에서 힘줄의 구조적 유지 여부를 추적. 회전근개 관절경 연구이며 단독 이두건염 치료 연구는 아님.",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/19629607/",
+     "pmid": "19629607",
+     "title_en": "Does an arthroscopic suture bridge technique maintain repair integrity?: a serial evaluation by ultrasonography."
+    }
+   ],
+   "evidence": "상지·스포츠 손상과 회전근개 연구",
+   "hospital_short": "세종스포츠정형외과",
+   "km": 26.2,
+   "address": "서울 광진구 능동로 209 대양AI센터 1·2층",
+   "hospital": "세종스포츠정형외과",
+   "title": "병원장",
+   "dept": "정형외과",
+   "specialty": [
+    "팔꿈치, 어깨 등 상지"
+   ],
+   "education": [
+    "건국대학교 의학대학원 박사수료",
+    "건국대학교 의학대학원 석사",
+    "건국대학교 의과대학 졸업"
+   ],
+   "career": [
+    "현) 세종스포츠정형외과 정형외과 원장",
+    "현) 한국리틀야구연맹 의무위원장",
+    "현) 프로야구 LG 트윈스 필드닥터",
+    "현) 프로야구 한화 이글스 의료자문의",
+    "현) 2026 World Baseball Classic 국가대표 야구 팀닥터",
+    "현) 대한장애인체육회 이천선수촌 촉탁의",
+    "전) 제일정형외과병원 관절센터장",
+    "전) 건국대학교병원정형외과 어깨 및 스포츠손상센터 임상교수",
+    "전) 건국대학교 의학전문대학원 외래부교수",
+    "전) 국군수도병원 과장",
+    "2021 The Kerlan-Jobe Orthopaedic Clinic 연수",
+    "2017 International Shoulder Advanced Course, Annecy, France",
+    "2015 AAOS(미국정형외과학회; American Academy of Orthopaedic Surgeons) 연수",
+    "2007 APOA(Asia Pacific Orthopedic Association) Seoul award 수상"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한스포츠의학회 대의원",
+    "대한정형외과스포츠의학회 정회원",
+    "대한견주관절학회 정회원",
+    "대한관절경학회 정회원"
+   ],
+   "sources": [
+    "https://www.sjsclinic.com/profile-md-keum-jung-sup/",
+    "https://www.sjsclinic.com/staff_medical_doctors/"
+   ],
+   "photo": "img/A27.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A28",
+   "rank": 19,
+   "tie": true,
+   "name": "최윤종",
+   "career_note": "서울원병원 의료진. 연세대학교 의과대학, 세브란스병원 정형외과 수련 및 이대서울병원 견주관절 전임의·지도전문의 경력.",
+   "fields": "어깨와 무릎·고관절, 관절경 및 외상.",
+   "consult": "화곡역에서 매우 가까워 초기 진찰과 영상 검토를 받기 편리한 후보. 이두건·관절와순 증상과 진찰 소견의 일치 여부를 먼저 물어볼 수 있다.",
+   "paper_status": "본인과의 저자 연결이 충분히 확인된 SLAP·이두건 관련 원저를 이번 조사에서 확정하지 못했다. 진료 역량이나 실제 논문 유무를 부정하는 뜻은 아니다.",
+   "limits": "병원 전체 논문 수를 개인 실적으로 계산하지 않았다. 현재 확인 범위에서 본인과 연결되는 SLAP·이두건 대표 원저는 확정하지 못했다.",
+   "papers": [],
+   "evidence": "매우 가까운 진료 · 직접 논문 확인 제한",
+   "hospital_short": "서울원병원",
+   "km": 0.2,
+   "address": "서울 강서구 강서로 179",
+   "hospital": "서울원병원",
+   "title": "원장",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨관절(오십견, 회전근개 질환, 석회성 건염, 탈구) 및 상지 관절",
+    "무릎관절(휜다리교정술, 십자인대재건술, 반월상연골판손상, 줄기세포 연골 재생술)",
+    "고관절, 견관절, 슬관절 인공관절 치환술",
+    "상하지 외상 및 골절, 스포츠 손상, 비수술 관절치료 및 재활"
+   ],
+   "education": [
+    "연세대학교 의과대학 졸업"
+   ],
+   "career": [
+    "연세대학교 세브란스병원 인턴",
+    "연세대학교 세브란스병원 정형외과 전공의",
+    "이대서울병원 정형외과 견주관절 전임의",
+    "이대서울병원 정형외과 지도전문의",
+    "국군칠성병원 정형외과 과장",
+    "대한스포츠의학회 팀주치의 심화과정 수료",
+    "대한정형통증의학회 근막동통유발점 주사자극치료(TPI) 교육 이수",
+    "AO trauma course - Basic Principles of Fracture 수료",
+    "Zimmer Z*Bike Shoulder and Elbow 2025 수료",
+    "프로야구 KT wiz 필드닥터, 2026-현재"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한정형외상학회 평생회원",
+    "대한견주관절학회 평생회원",
+    "대한관절경학회 정회원",
+    "대한스포츠의학회 정회원"
+   ],
+   "sources": [
+    "https://www.seoul1hospital.com/sub/s1/s3.php#doc13"
+   ],
+   "photo": "img/A28.webp",
+   "societies_total": 5
+  },
+  {
+   "id": "A29",
+   "rank": 19,
+   "tie": true,
+   "name": "정대학",
+   "career_note": "대찬병원 의료진. 공식 소개에 서울대학교 의과대학 및 스포츠 현장·국제대회 의료 경력.",
+   "fields": "스포츠 손상과 어깨 관절경, 회전근개 등 관절 질환.",
+   "consult": "인천 지역에서 스포츠 활동과 재활·회복 계획을 묶어서 상담하고 싶은 경우 후보.",
+   "paper_status": "본인과의 저자 연결이 충분히 확인된 SLAP·이두건 관련 원저를 이번 조사에서 확정하지 못했다. 진료 역량이나 실제 논문 유무를 부정하는 뜻은 아니다.",
+   "limits": "병원 의료진 전체 논문을 개인 논문으로 합치지 않았다. 이번 조사에서는 단독 SLAP·이두건 원저의 개인 저자 연결을 확정하지 못했다.",
+   "papers": [],
+   "evidence": "스포츠 현장 경력 · 직접 논문 확인 제한",
+   "hospital_short": "대찬병원",
+   "km": 20.0,
+   "address": "인천 남동구 인주대로 590",
+   "hospital": "대찬병원",
+   "title": "대표원장",
+   "dept": "정형외과",
+   "specialty": [
+    "어깨 관절 내시경 수술, 오십견 : 비수술적 치료",
+    "인공관절 수술, 무릎 관절 내시경 수술",
+    "무지외반증 수술, 발목 불안정성 수술",
+    "손목터널증후군 수술"
+   ],
+   "education": [
+    "서울대학교 의과대학 졸업"
+   ],
+   "career": [
+    "미국 뉴욕 컬럼비아 대학병원 정형외과센터",
+    "미국 웨일-코넬 의과대학 정형외과센터",
+    "미국뉴욕대학, Langone Medical Center",
+    "국제올림픽 위원회(IOC) 팀닥터",
+    "2014 인천 아시안게임 주치의",
+    "2018 평창 동계올림픽 슬라이딩 센터 전담 주치의",
+    "2024 강원 동계청소년 올림픽 주치의",
+    "봅슬레이, 카누, 컬링 국가대표 주치의",
+    "인천 유나이티드 FC 팀닥터"
+   ],
+   "societies": [
+    "대한정형외과학회 정회원",
+    "대한스포츠의학회 정회원",
+    "대한관절경학회 정회원",
+    "대한견주관절학회 정회원",
+    "대한슬관절학회 정회원"
+   ],
+   "sources": [
+    "https://m.daechanhospital.com/view/sub0104.php"
+   ],
+   "photo": "img/A29.webp",
+   "societies_total": 5
+  }
+ ],
+ "guide": {
+  "meaning": "수술 실력이나 성공률을 비교한 순위가 아니라, 공개 자료에서 확인되는 연구 주제와 SLAP·이두건 질환의 연결성을 평가한 잠정 상담 순서다. 1~9위 사이의 차이는 정량적으로 검증되지 않았다. 환자의 나이·활동 수준·진찰과 MRI 결과에 따라 적합한 의사는 달라질 수 있다. 아래 순위에는 의사의 나이, 병원 규모, 이동거리를 점수로 반영하지 않았다.",
+  "near": "화곡역 가까운 후보: 최윤종 약 0.2 km, 신상진·이상현 약 2.1 km, 김대하 약 2.4 km, 최준하 약 4.9 km, 권지은·박인 약 5.8 km. 거리는 진료 편의 정보이며 연구 관련성 순위와 별도로 판단한다.",
+  "tie_note": "상위 9명에 이어지는 후보도 모두 포함했다. 비슷한 수준의 근거만으로 억지로 서열화하지 않도록 공동 순위를 사용했다. 공동19위는 진료 역량이 낮다는 뜻이 아니라, SLAP·이두건 질환과 직접 연결되는 공개 근거가 상대적으로 제한되거나 개인 저자 확인에 한계가 있었다는 뜻이다.",
+  "method": [
+   {
+    "title": "판단 순서",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "첫째, 병원과 대학의 공식 소개에서 현재 소속과 진료 범위를 확인했다. 둘째, 영문 저자 성명과 과거 소속을 대조해 대표 논문을 연결했다. 셋째, 단독 SLAP·증상성 이두건 질환 연구를 우선하고 회전근개 파열 동반 이두건 치료와 전방 불안정성 연구는 별도로 해석했다. 마지막으로 SLAP·이두건 질환과의 연결성을 바탕으로 상담 우선순위를 판단했다."
+     },
+     {
+      "t": "table",
+      "head": [
+       "구분",
+       "어떻게 읽어야 하는가"
+      ],
+      "rows": [
+       [
+        "SLAP·이두건 직접 연구",
+        "SLAP·이두건 증상과 연결성이 높다. 다만 대상 연령·운동 수준·동반 파열 여부가 다르면 결과가 그대로 적용되지 않는다."
+       ],
+       [
+        "회전근개 파열 동반 이두건 연구",
+        "이두건 처리 방법을 비교하는 데 유용하지만 회전근개 파열이 없는 사람에게 생긴 단독 이두건염의 치료 근거와는 구별한다."
+       ],
+       [
+        "이두건을 재료로 쓰는 재건 연구",
+        "큰 회전근개 파열을 보강하는 연구다. 이두건 자체의 염증을 진단·치료하는 연구와는 목적이 다르다."
+       ],
+       [
+        "Bankart·탈구 연구",
+        "전방 또는 전하방 관절와순과 불안정성을 다루는 분야다. 상부 관절와순인 SLAP와 같은 병변은 아니다."
+       ],
+       [
+        "공동저자와 제1저자",
+        "저자 순서만으로 실제 진료 경험과 수술 기여를 확정할 수 없다. 교신저자 여부는 별도로 검증해야 하므로, 이 가이드에서는 제1저자 또는 공동저자로만 표시했다."
+       ],
+       [
+        "자료 확인 제한",
+        "논문이 없다는 의미가 아니다. 병원의 전체 실적, 이름만 같은 다른 연구자, 아직 저자와 연결되지 않은 논문은 개인 실적에 포함하지 않았다."
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "title": "연구 형태의 차이",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "무작위 비교시험은 치료군 배정을 이용해 편향을 줄이지만 배정 방식과 비교 대상이 무엇인지가 중요하다. 코호트·환자대조군·증례군은 실제 진료 결과를 보여 주지만 환자 선택 차이의 영향을 받을 수 있다. 사체 실험은 구조와 힘을 설명하고 수술 술기 보고는 방법을 소개한다. 종설은 기존 문헌을 정리한다. 이러한 연구 형태들을 같은 수준의 치료 성공 근거로 계산하지 않았다."
+     }
+    ]
+   },
+   {
+    "title": "나이와 공개 정보",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "이번 조사에서는 29명 모두 신뢰할 수 있는 공개 생년월일을 확인하지 못해 나이를 기재하지 않았다. 학사·석사·박사 또는 수련 연도는 경력 정보이며 나이를 추정하는 데 사용하지 않았다. 의사의 나이는 상담 우선순위 평가 항목에서도 제외했다."
+     }
+    ]
+   }
+  ],
+  "clinic": [
+   {
+    "title": "의심 진단을 먼저 정리하기",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "SLAP는 상부 관절와순의 손상이고 이두건 장두는 이 부위와 연결된다. 이두건염·건초염, 이두건 지지구조 손상, 견갑하근 부분파열 또는 불안정성도 비슷한 앞쪽 어깨 통증을 일으킬 수 있다. MRI에 적힌 병변 이름만으로 통증의 원인과 수술 필요성이 확정되지는 않는다. 진찰과 증상 위치, 영상이 서로 일치하는지부터 확인하는 것이 좋다."
+     },
+     {
+      "t": "table",
+      "head": [
+       "진료 질문",
+       "답변에서 확인할 내용"
+      ],
+      "rows": [
+       [
+        "통증의 가장 가능성 높은 원인은 무엇인가",
+        "SLAP, 이두건 자체, 견갑하근, 회전근개, 불안정성 중 어느 소견이 증상과 맞는지 설명을 듣는다."
+       ],
+       [
+        "현재 영상으로 충분한가",
+        "기존 MRI 원본을 재검토하고 진단이 불명확하고 치료 방침이 달라질 수 있을 때 초음파나 MR 관절조영 등 추가 검사가 필요한지 묻는다."
+       ],
+       [
+        "비수술 치료는 어떻게 진행하는가",
+        "활동 조절, 운동 범위와 견갑대·회전근개 재활, 경과 확인 시점, 필요한 경우 약물·주사를 선택하는 이유를 확인한다."
+       ],
+       [
+        "수술을 고려하는 기준은 무엇인가",
+        "증상 지속, 충분한 재활 여부, 활동 목표와 진찰·영상 일치 여부를 포함해 수술 적응증을 구체적으로 듣는다."
+       ],
+       [
+        "봉합과 이두건 고정 또는 절단 중 무엇을 택하는가",
+        "환자 나이와 활동 목표, 이두건 상태와 동반 병변에 따른 선택 이유, 강직·통증·외형 변형·힘 변화 가능성을 설명받는다."
+       ],
+       [
+        "회복 목표와 제한은 무엇인가",
+        "일상·운전·업무·웨이트·투구 등 본인 목표별 복귀 기준과 재활 계획을 확인한다."
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "title": "보존 치료와 추가 검사에 대한 근거",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "AAOS의 환자 안내는 많은 SLAP 병변에서 비수술 치료를 먼저 시행하는 접근을 설명한다. ACR의 만성 어깨 통증 영상 기준은 관절와순 병변이 의심될 때 기존 검사와 임상 상황에 따라 MRI 또는 MR 관절조영을 선택하도록 안내한다. 모든 사람이 조영 MRI나 수술을 받아야 한다는 뜻은 아니다. 개인별 계획은 진료 과정에서 정한다."
+     },
+     {
+      "t": "p",
+      "text": "AAOS SLAP 안내 https://www.orthoinfo.org/diseases--conditions/slap-tears · ACR 만성 어깨 통증 영상 기준 https://acsearch.acr.org/list/TopicNarrativePdf?topicId=241"
+     }
+    ]
+   },
+   {
+    "title": "준비 자료",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "MRI 원본과 판독지, 이전 초음파·주사·재활 기록, 다친 시점과 통증 위치, 유발 동작, 빠지는 느낌 여부, 업무와 운동 목표를 정리해서 가져간다. 병원마다 의견이 다르면 병변 이름보다 진단 근거와 치료를 선택한 이유를 비교한다."
+     }
+    ]
+   }
+  ],
+  "distance": "출발점은 화곡역 교차로이고 도착점은 병원 주소에 대응하는 지도 위치다. OpenStreetMap 좌표와 OSRM 자동차 도로 경로로 산출해 소수 첫째 자리까지 반올림했다. 실시간 내비게이션 추천 경로나 주차장 입구 기준 거리와는 차이가 날 수 있다. 예상 소요시간은 계산하지 않았다.",
+  "sources": [
+   {
+    "title": "학술지 약어와 서지 확인",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "AJSM은 The American Journal of Sports Medicine, JSES는 Journal of Shoulder and Elbow Surgery, KSSTA는 Knee Surgery Sports Traumatology Arthroscopy, CiOS는 Clinics in Orthopedic Surgery, OJSM은 Orthopaedic Journal of Sports Medicine을 뜻한다. 서지와 저자 정보는 PubMed·Europe PMC와 해당 학술지 원문을 대조해 확인했다. 저자 역할은 제1저자 여부를 중심으로 확인했고 연구별 교신저자는 따로 단정하지 않았다."
+     }
+    ]
+   },
+   {
+    "title": "자료의 범위",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "이 가이드는 병원 선택을 돕기 위한 공개 자료 비교다. 개인의 진단이나 특정 수술의 필요성을 판정하는 문서는 아니다. 나이 비공개, 논문 저자 연결 제한, 진료 대기기간·개인 수술량·실제 합병증률 미확인 항목은 그대로 표시했으며 확인되지 않은 수치로 순위를 보완하지 않았다."
+     }
+    ]
+   }
+  ]
+ }
+}

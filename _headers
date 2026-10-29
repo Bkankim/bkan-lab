@@ -7,3 +7,6 @@
 
 /frontend/top-cross/sw.js
   Cache-Control: no-cache
+
+/frontend/shoulder-slap-2610/*
+  X-Robots-Tag: noindex

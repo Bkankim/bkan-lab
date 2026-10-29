@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>어깨 노트 · SLAP 병변·이두건염 어깨 전문의 29명</title>
+<meta name="description" content="SLAP 병변·이두건염이 의심될 때 볼 어깨 전문의 29명. 공식 약력, 대표 논문 48편, 화곡역 기준 거리를 한곳에 모았어요.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3efe9">
+<meta property="og:type" content="website">
+<meta property="og:title" content="어깨 노트 · 어깨, 누구에게 먼저 물을까">
+<meta property="og:description" content="SLAP 병변·이두건염이 의심될 때 볼 어깨 전문의 29명. 공식 약력과 대표 논문, 거리까지.">
+<meta property="og:image" content="https://lab.bkan.dev/frontend/shoulder-slap-2610/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://lab.bkan.dev/frontend/shoulder-slap-2610/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --canvas: #ece6de;
+  --paper: #f8f5f1;
+  --card: #fdfcfa;
+  --ink: #1f1b17;
+  --soft: #6f6861;
+  --faint: #81796f;
+  --taupe: #a8978a;
+  --taupe-2: #cdbfb3;
+  --plate: #ebe3d9;
+  --line: #e4ddd3;
+  --warn: #a5583f;
+  --warn-bg: #f4e4dc;
+  --info: #5d6f78;
+  --info-bg: #e3e8ea;
+  --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", serif;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --raise: 0 14px 34px -14px rgba(70, 52, 36, .28), 0 2px 6px rgba(70, 52, 36, .06);
+  --raise-s: 0 6px 18px -10px rgba(70, 52, 36, .35);
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --nav-h: 4.25rem;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; min-height: 100dvh; background: var(--canvas); color: var(--ink);
+  font: 400 15px/1.65 var(--sans); letter-spacing: -.005em; word-break: keep-all; overflow-wrap: anywhere;
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+img { max-width: 100%; display: block; }
+.app {
+  position: relative; width: 100%; max-width: 30rem; min-height: 100dvh; margin: 0 auto;
+  background: var(--paper); padding-bottom: calc(var(--nav-h) + 2rem + env(safe-area-inset-bottom, 0px)); overflow-x: clip;
+}
+@media (min-width: 40rem) {
+  body { padding-block: 2.5rem; }
+  .app { min-height: calc(100dvh - 5rem); border-radius: 36px; box-shadow: 0 40px 90px -40px rgba(70, 52, 36, .35); }
+}
+.view { display: none; }
+.view.on { display: block; animation: settle .5s var(--ease); }
+@keyframes settle { from { opacity: 0; transform: translateY(8px); } }
+.pad { padding-inline: 1.5rem; }
+.k { font: 500 .7rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--faint); }
+
+/* 첫 화면 */
+.bar { display: flex; justify-content: space-between; align-items: center; padding: calc(1.6rem + env(safe-area-inset-top, 0px)) 1.5rem 0; }
+.mark { font: 500 1.35rem/1 var(--display); letter-spacing: -.01em; text-decoration: none; }
+.menu { text-decoration: none; display: inline-flex; align-items: center; gap: .55rem; border: 0; background: none; padding: .4rem 0; font-size: .92rem; cursor: pointer; }
+.menu i { display: grid; gap: 4px; width: 18px; }
+.menu i::before, .menu i::after, .menu i b { content: ""; display: block; height: 1.4px; background: var(--ink); border-radius: 2px; }
+h1 { margin: 2.6rem 0 0; font: 300 clamp(2.45rem, 10.6vw, 3.15rem)/1.14 var(--display); letter-spacing: -.035em; }
+.sub { margin: 1rem 0 0; color: var(--faint); font-size: 1rem; line-height: 1.6; }
+.pill {
+  display: inline-flex; align-items: center; gap: 2.2rem; margin-top: 1.7rem; padding: .95rem 1.35rem .95rem 1.6rem;
+  border: 0; border-radius: 999px; background: var(--card); box-shadow: var(--raise); font-size: .95rem; cursor: pointer;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.pill:active { transform: scale(.97); }
+@media (hover: hover) { .pill:hover { transform: translateY(-2px); } }
+.pill svg { width: 20px; height: 20px; }
+.hero { position: relative; margin: -2.2rem 0 0 1.5rem; height: clamp(22rem, 108vw, 31rem); border-top-left-radius: 100% 62%; overflow: hidden; background: var(--plate); z-index: -0; }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; animation: dawn 1.6s var(--ease) both; }
+@keyframes dawn { from { opacity: 0; transform: scale(1.08); filter: blur(6px); } }
+.hero-cap { position: absolute; right: 1.25rem; top: 44%; color: rgba(255, 255, 255, .92); font: 400 .66rem/1.9 var(--display); letter-spacing: .14em; text-shadow: 0 1px 8px rgba(60, 40, 25, .25); }
+.hero-cap::after { content: ""; display: block; width: 1px; height: 2.6rem; margin-top: .55rem; background: rgba(255, 255, 255, .8); }
+.hero-wrap { position: relative; }
+.hero-wrap .pad { position: relative; z-index: 1; }
+.lede { margin: 1.6rem 1.5rem 0; padding: 1rem 1.1rem; border-radius: 18px; background: var(--card); box-shadow: var(--raise-s); font-size: .9rem; color: var(--soft); }
+.lede b { color: var(--ink); font-weight: 500; }
+.facts { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: 1rem 1.5rem 0; }
+.facts span { font-size: .78rem; color: var(--faint); letter-spacing: .02em; }
+.facts b { font: 500 .95rem var(--display); color: var(--ink); margin-right: .25rem; }
+
+/* 절 제목 */
+.sec { margin-top: 3rem; }
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.sec-h h2 { margin: .55rem 0 0; font: 400 1.7rem/1.25 var(--display); letter-spacing: -.02em; }
+.sec-p { margin: .7rem 0 0; color: var(--soft); font-size: .9rem; }
+
+/* 카드 */
+.list { display: grid; gap: .85rem; margin-top: 1.3rem; padding: 0; list-style: none; }
+.card {
+  width: 100%; display: grid; grid-template-columns: 5.4rem minmax(0, 1fr); gap: 1rem; align-items: start; text-align: left;
+  padding: .9rem; border: 0; border-radius: 22px; background: var(--card); box-shadow: var(--raise-s); cursor: pointer;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.card:active { transform: scale(.985); }
+@media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: var(--raise); } }
+.arch { position: relative; aspect-ratio: 3 / 4; border-radius: 999px 999px 14px 14px; overflow: hidden; background: var(--plate); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+@supports not (aspect-ratio: 1) { .arch { height: 0; padding-top: 133%; } .arch img { position: absolute; inset: 0; } }
+.c-rank { display: flex; align-items: center; gap: .5rem; }
+.c-name { margin: .45rem 0 0; font: 500 1.2rem/1.3 var(--display); letter-spacing: -.01em; }
+.c-name small { font: 300 .92rem var(--display); color: var(--soft); margin-left: .3rem; }
+.c-where { margin: .15rem 0 0; font-size: .82rem; color: var(--soft); }
+.c-where .km { color: var(--ink); font-weight: 500; }
+.c-ev { margin: .45rem 0 0; font-size: .86rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
+.chip { display: inline-block; padding: .2rem .6rem; border-radius: 999px; font-size: .72rem; font-weight: 500; line-height: 1.5; }
+.chip.warn { color: var(--warn); background: var(--warn-bg); }
+.chip.info { color: var(--info); background: var(--info-bg); }
+.group { margin: 2.2rem 0 0; }
+.group-h { display: flex; align-items: baseline; gap: .7rem; }
+.group-h h3 { margin: 0; font: 400 1.15rem var(--display); }
+.group-p { margin: .45rem 0 0; font-size: .82rem; color: var(--faint); }
+
+/* 정렬 */
+.seg { display: inline-flex; padding: .25rem; border-radius: 999px; background: var(--plate); margin-top: 1.2rem; }
+.seg button { border: 0; background: none; padding: .45rem 1rem; border-radius: 999px; font-size: .85rem; color: var(--soft); cursor: pointer; transition: background .3s, color .3s; }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--raise-s); }
+
+/* 거리 */
+.near { margin-top: 1.4rem; display: grid; }
+.n-row { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: .9rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+.n-row:last-child { border-bottom: 1px solid var(--line); }
+.n-km { font: 300 1.75rem/1 var(--display); letter-spacing: -.03em; white-space: nowrap; }
+.n-km small { font: 400 .72rem var(--sans); color: var(--faint); margin-left: .15rem; letter-spacing: 0; }
+.n-h { margin: 0; font-weight: 500; font-size: .95rem; }
+.n-a { margin: .1rem 0 0; font-size: .8rem; color: var(--faint); }
+.n-docs { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+.n-docs button { border: 0; padding: .3rem .75rem; border-radius: 999px; background: var(--card); box-shadow: var(--raise-s); font-size: .82rem; cursor: pointer; }
+
+/* 읽는 법 */
+.prose h3 { margin: 2.2rem 0 0; font: 400 1.2rem/1.35 var(--display); }
+.prose p { margin: .7rem 0 0; color: var(--soft); font-size: .92rem; }
+.prose dl { margin: .9rem 0 0; display: grid; gap: .6rem; }
+.prose dl div { padding: .85rem 1rem; border-radius: 16px; background: var(--card); box-shadow: var(--raise-s); }
+.prose dt { font-weight: 500; font-size: .9rem; }
+.prose dd { margin: .3rem 0 0; color: var(--soft); font-size: .86rem; }
+.prose a { color: var(--ink); text-decoration-color: var(--taupe-2); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.foot { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: .78rem; color: var(--faint); }
+
+/* 하단 탭 */
+.nav {
+  position: fixed; left: 50%; bottom: 0; z-index: 10; transform: translateX(-50%); width: min(30rem, 100%);
+  display: grid; grid-template-columns: repeat(4, 1fr); padding: .35rem .6rem calc(.35rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(248, 245, 241, .9); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border-top: 1px solid rgba(228, 221, 211, .8);
+}
+@media (min-width: 40rem) { .nav { bottom: 1.25rem; width: 26rem; border: 0; border-radius: 999px; box-shadow: var(--raise); } }
+.nav a { display: grid; place-items: center; height: calc(var(--nav-h) - .7rem); text-decoration: none; font-size: .9rem; color: var(--faint); transition: color .3s; }
+.nav a[aria-current="page"] { color: var(--ink); font-weight: 500; }
+
+/* 상세 창 */
+.sheet {
+  width: min(30rem, 100%); max-width: none; max-height: min(92dvh, 52rem); margin: auto auto 0; padding: 0; border: 0;
+  border-radius: 30px 30px 0 0; background: var(--paper); color: var(--ink); box-shadow: 0 -20px 60px -30px rgba(40, 28, 18, .5);
+  overflow: hidden;
+}
+.sheet[open] { display: flex; flex-direction: column; animation: sheet-up .5s var(--ease); }
+@keyframes sheet-up { from { transform: translateY(30%); opacity: 0; } }
+.sheet::backdrop { background: rgba(40, 30, 22, .38); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+@media (min-width: 40rem) { .sheet { margin: auto; border-radius: 30px; } }
+.s-top { position: relative; flex: none; height: 1.6rem; }
+.s-top::before { content: ""; position: absolute; left: 50%; top: .6rem; width: 2.6rem; height: 4px; transform: translateX(-50%); border-radius: 4px; background: var(--line); }
+.s-x { position: absolute; right: .8rem; top: .7rem; width: 2.4rem; height: 2.4rem; border: 0; border-radius: 50%; background: var(--card); box-shadow: var(--raise-s); cursor: pointer; display: grid; place-items: center; z-index: 2; }
+.s-x svg { width: 16px; height: 16px; }
+.s-body { overscroll-behavior: contain; overflow-y: auto; padding: .6rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); }
+.s-head { display: grid; grid-template-columns: 7.6rem minmax(0, 1fr); gap: 1.2rem; align-items: end; margin-bottom: 1.4rem; }
+.note { margin: 0 0 1.4rem !important; }
+:focus:not(:focus-visible) { outline: none; }
+.s-body:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--taupe); outline-offset: 3px; }
+.s-name { margin: .5rem 0 0; font: 600 1.85rem/1.2 var(--display); letter-spacing: -.02em; }
+.s-name small { font: 300 1.3rem var(--display); margin-left: .35rem; }
+.s-meta { margin: .4rem 0 0; font-size: .85rem; color: var(--soft); }
+.note { margin: 1.2rem 0 0; padding: .8rem 1rem; border-radius: 16px; background: var(--plate); font-size: .86rem; color: var(--soft); }
+.note .k { display: block; margin-bottom: .4rem; letter-spacing: .14em; }
+.row { display: grid; grid-template-columns: 5.2rem minmax(0, 1fr); gap: 1rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+.lab { align-self: start; justify-self: start; padding: .28rem .7rem; border-radius: 999px; background: var(--taupe); color: #fff; font-size: .76rem; font-weight: 500; white-space: nowrap; }
+.row ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .28rem; }
+.row li { position: relative; padding-left: .8rem; font-size: .9rem; }
+.row li::before { content: "·"; position: absolute; left: 0; color: var(--faint); }
+.row p { margin: 0; font-size: .9rem; }
+.row .sub-h { margin: .9rem 0 .35rem; font-size: .74rem; color: var(--faint); letter-spacing: .12em; }
+.row .sub-h:first-child { margin-top: 0; }
+details summary { cursor: pointer; font-size: .86rem; color: var(--soft); list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: " +"; color: var(--faint); }
+details[open] summary::after { content: " −"; }
+details[open] ul { margin-top: .5rem; }
+.paper { padding: 0 0 1rem; }
+.paper + .paper { padding-top: 1rem; border-top: 1px dashed var(--line); }
+.p-k { font-size: .74rem; color: var(--faint); letter-spacing: .04em; }
+.p-t { margin: .3rem 0 0; font: 500 1rem/1.45 var(--display); }
+.p-s { margin: .25rem 0 0 !important; font-size: .8rem !important; color: var(--soft); }
+.p-i { margin: .5rem 0 0 !important; font-size: .86rem !important; color: var(--soft); }
+.p-l { display: inline-block; margin-top: .45rem; font-size: .8rem; color: var(--ink); text-decoration-color: var(--taupe-2); text-underline-offset: 3px; }
+.p-en { display: block; margin-top: .2rem; font-size: .74rem; color: var(--faint); font-style: italic; }
+.links { display: grid; gap: .35rem; }
+.links a { font-size: .84rem; text-underline-offset: 3px; text-decoration-color: var(--taupe-2); overflow-wrap: anywhere; }
+@media (max-width: 22rem) {
+  .row { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .s-head { grid-template-columns: 6rem minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+.load { padding: 6rem 1.5rem; text-align: center; color: var(--faint); }
+</style>
+</head>
+<body>
+<div class="app">
+  <main id="main"><p class="load">불러오는 중</p></main>
+</div>
+<nav class="nav" aria-label="화면">
+  <a href="#top" data-v="top">추천</a>
+  <a href="#all" data-v="all">전체</a>
+  <a href="#near" data-v="near">거리</a>
+  <a href="#guide" data-v="guide">읽는 법</a>
+</nav>
+<dialog class="sheet" id="sheet" aria-label="의사 상세">
+  <div class="s-top"><button class="s-x" type="button" id="sx" aria-label="닫기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="s-body" id="sbody" tabindex="-1" autofocus></div>
+</dialog>
+<script>
+(function () {
+  "use strict";
+  var VIEWS = ["top", "all", "near", "guide"];
+  var D = null, sortMode = "rank", pushed = false;
+  var main = document.getElementById("main"), sheet = document.getElementById("sheet"), sbody = document.getElementById("sbody");
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function linkify(s) {
+    return esc(s).replace(/https?:\/\/[^\s<·]+/g, function (u) { return '<a href="' + u + '" target="_blank" rel="noopener">' + u.replace(/^https?:\/\//, "").replace(/\/$/, "") + "</a>"; });
+  }
+  function pad2(n) { return n < 10 ? "0" + n : "" + n; }
+  function rankLabel(d) { return d.tie ? "공동 " + d.rank : pad2(d.rank); }
+  function km(v) { return v.toFixed(1); }
+  function byId(id) { for (var i = 0; i < D.doctors.length; i++) if (D.doctors[i].id === id) return D.doctors[i]; return null; }
+  var arrow = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10h13M11.5 5l5 5-5 5"/></svg>';
+
+  function chips(d) {
+    if (!d.chips || !d.chips.length) return "";
+    return '<span class="chips">' + d.chips.map(function (c) { return '<span class="chip ' + esc(c.tone) + '">' + esc(c.text) + "</span>"; }).join("") + "</span>";
+  }
+  function card(d) {
+    return '<li><button class="card" type="button" data-id="' + d.id + '">' +
+      '<span class="arch"><img src="' + esc(d.photo) + '" alt="" loading="lazy" decoding="async"></span>' +
+      '<span class="c-body"><span class="c-rank k">' + rankLabel(d) + " / 29</span>" +
+      '<span class="c-name" style="display:block">' + esc(d.name) + (d.title ? "<small>" + esc(d.title) + "</small>" : "") + "</span>" +
+      '<span class="c-where" style="display:block">' + esc(d.hospital_short) + ' · <span class="km">' + km(d.km) + " km</span></span>" +
+      '<span class="c-ev">' + esc(d.evidence) + "</span>" + chips(d) + "</span></button></li>";
+  }
+
+  function viewTop() {
+    var top = D.doctors.filter(function (d) { return d.rank <= 9; });
+    var away = D.doctors.filter(function (d) { return d.id === "A05"; })[0];
+    return '<section class="view" id="v-top"><div class="hero-wrap">' +
+      '<header class="bar"><a class="mark" href="#top">어깨 노트</a><a class="menu" href="#guide">읽는 법 <i><b></b></i></a></header>' +
+      '<div class="pad"><h1>어깨, 누구에게<br>먼저 물을까</h1>' +
+      '<p class="sub">SLAP 병변·이두건염이 의심될 때 볼<br>어깨 전문의 29명</p>' +
+      '<button class="pill" type="button" id="go9">추천 9명 보기' + arrow + "</button></div>" +
+      '<figure class="hero" style="margin-block-end:0"><img src="hero.webp" alt="창가 빛이 드는 석고상의 어깨"><figcaption class="hero-cap" aria-hidden="true">SLAP<br>BICEPS<br>2026.10</figcaption></figure></div>' +
+      '<p class="lede"><b>논문 연관도로 정한 상담 순서예요.</b> 수술 실력이나 성공률 순위가 아닙니다. 나이, 활동 수준, 진찰과 MRI 결과에 따라 맞는 의사는 달라질 수 있어요.</p>' +
+      '<p class="facts"><span><b>29</b>명 공식 약력</span><span><b>' + D.papers_unique + '</b>편 대표 논문 원문 대조</span><span><b>10.29</b>확인</span></p>' +
+      '<section class="sec pad" id="nine"><div class="sec-h"><div><span class="k">01 / 09</span><h2>먼저 볼 9명</h2></div></div>' +
+      '<p class="sec-p">SLAP나 이두건을 직접 다룬 연구가 확인된 순서예요. 카드를 누르면 약력과 논문이 열려요.' +
+      (away ? " 5번 " + esc(away.name) + " 교수는 2027년 7월까지 해외연수 중이라 지금은 진료가 어려울 수 있어요." : "") + "</p>" +
+      '<ul class="list">' + top.map(card).join("") + "</ul>" +
+      '<p class="sec-p" style="margin-top:1.4rem"><a href="#all">나머지 20명 보기</a> · <a href="#near">가까운 병원 보기</a></p></section></section>';
+  }
+
+  function viewAll() {
+    var list = D.doctors.slice();
+    var body = "";
+    if (sortMode === "near") {
+      list.sort(function (a, b) { return a.km - b.km || a.rank - b.rank; });
+      body = '<ul class="list">' + list.map(card).join("") + "</ul>";
+    } else {
+      var groups = [
+        { r: function (d) { return d.rank <= 9; }, k: "01 / 09", h: "직접 연구가 확인된 9명", p: "" },
+        { r: function (d) { return d.rank === 10; }, k: "공동 10", h: "관련 연구가 있는 9명", p: "이두건 지지구조, 불안정성, 회전근개 재건처럼 가까운 주제를 연구했어요." },
+        { r: function (d) { return d.rank === 19; }, k: "공동 19", h: "공개 근거 확인이 제한된 11명", p: D.guide.tie_note }
+      ];
+      body = groups.map(function (g) {
+        return '<div class="group"><div class="group-h"><span class="k">' + g.k + "</span><h3>" + g.h + "</h3></div>" +
+          (g.p ? '<p class="group-p">' + esc(g.p) + "</p>" : "") + '<ul class="list">' + list.filter(g.r).map(card).join("") + "</ul></div>";
+      }).join("");
+    }
+    return '<section class="view" id="v-all"><div class="pad" style="padding-top:calc(2.2rem + env(safe-area-inset-top, 0px))">' +
+      '<span class="k">논문 연관도 기준 상담 순서</span><h2 class="sec-h" style="margin:.55rem 0 0;font:400 1.9rem/1.25 var(--display);letter-spacing:-.02em">29명 전체</h2>' +
+      '<p class="sec-p">' + esc(D.guide.meaning) + "</p>" +
+      '<div class="seg" role="group" aria-label="정렬"><button type="button" data-sort="rank" aria-pressed="' + (sortMode === "rank") + '">순서대로</button><button type="button" data-sort="near" aria-pressed="' + (sortMode === "near") + '">가까운 순</button></div>' +
+      body + "</div></section>";
+  }
+
+  function viewNear() {
+    var map = {}, rows = [];
+    D.doctors.forEach(function (d) {
+      var key = d.hospital_short + "|" + d.address;
+      if (!map[key]) { map[key] = { h: d.hospital_short, a: d.address, km: d.km, docs: [] }; rows.push(map[key]); }
+      map[key].docs.push(d);
+    });
+    rows.sort(function (a, b) { return a.km - b.km; });
+    return '<section class="view" id="v-near"><div class="pad" style="padding-top:calc(2.2rem + env(safe-area-inset-top, 0px))">' +
+      '<span class="k">from hwagok stn.</span><h2 style="margin:.55rem 0 0;font:400 1.9rem/1.25 var(--display);letter-spacing:-.02em">' + esc(D.origin) + "에서<br>가까운 병원</h2>" +
+      '<p class="sec-p">자동차 도로거리예요. 거리는 진료 편의를 위한 정보이고, 상담 순서와는 따로 봐요.</p>' +
+      '<div class="near">' + rows.map(function (r) {
+        return '<div class="n-row"><div class="n-km">' + km(r.km) + "<small>km</small></div><div>" +
+          '<p class="n-h">' + esc(r.h) + '</p><p class="n-a">' + esc(r.a) + "</p>" +
+          '<div class="n-docs">' + r.docs.map(function (d) { return '<button type="button" data-id="' + d.id + '">' + esc(d.name) + " · " + rankLabel(d) + "</button>"; }).join("") + "</div></div></div>";
+      }).join("") + "</div>" +
+      '<div class="prose"><p>' + linkify(D.guide.distance) + "</p></div></div></section>";
+  }
+
+  function blocks(bs) {
+    return bs.map(function (b) {
+      if (b.t === "p") return "<p>" + linkify(b.text) + "</p>";
+      if (b.head.length === 2) return "<dl>" + b.rows.map(function (r) { return "<div><dt>" + esc(r[0]) + "</dt><dd>" + linkify(r[1]) + "</dd></div>"; }).join("") + "</dl>";
+      return "";
+    }).join("");
+  }
+  function viewGuide() {
+    var g = D.guide;
+    var sec = function (k, h, arr) { return '<section class="sec"><span class="k">' + k + '</span><h2 style="margin:.55rem 0 0;font:400 1.55rem/1.3 var(--display)">' + h + "</h2>" + arr.map(function (s) { return "<h3>" + esc(s.title) + "</h3>" + blocks(s.blocks); }).join("") + "</section>"; };
+    return '<section class="view" id="v-guide"><div class="pad prose" style="padding-top:calc(2.2rem + env(safe-area-inset-top, 0px))">' +
+      '<span class="k">how to read</span><h2 style="margin:.55rem 0 0;font:400 1.9rem/1.25 var(--display);letter-spacing:-.02em">이 가이드를<br>읽는 법</h2>' +
+      "<p>" + esc(g.meaning) + "</p>" +
+      sec("method", "순서를 정한 기준", g.method) +
+      sec("before visit", "진료 전에 확인할 것", g.clinic) +
+      sec("sources", "자료와 범위", [{ title: "거리 계산", blocks: [{ t: "p", text: g.distance }] }].concat(g.sources).concat([{ title: "사진과 약력", blocks: [{ t: "p", text: "의사 사진과 학력·약력은 각 병원 공식 의료진 소개에서 옮겼어요. 원문 링크는 의사마다 상세 창 맨 아래에 있어요. 인사와 진료 일정은 바뀔 수 있으니 예약할 때 다시 확인해 주세요." }] }])) +
+      '<p class="foot">확인 기준일 ' + esc(D.checked) + " · 진단이나 수술 필요성을 판정하는 문서가 아니에요.</p></div></section>";
+  }
+
+  function list(items) { return "<ul>" + items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
+  function row(label, html) { return '<div class="row"><span class="lab">' + label + "</span><div>" + html + "</div></div>"; }
+  function detail(d) {
+    var h = '<div class="s-head"><span class="arch"><img src="' + esc(d.photo) + '" alt="' + esc(d.name) + ' 사진"></span><div>' +
+      '<span class="k">' + rankLabel(d) + " / 29</span>" +
+      '<p class="s-name">' + esc(d.name) + (d.title ? "<small>" + esc(d.title) + "</small>" : "") + "</p>" +
+      '<p class="s-meta">' + esc([d.dept, d.hospital].filter(Boolean).join(" · ")) + "<br>" + km(d.km) + " km · " + esc(d.address) + "</p>" + chips(d) + "</div></div>";
+    if (d.note) h += '<p class="note"><span class="k">2026.10.29 확인</span>' + esc(d.note) + "</p>";
+    if (d.specialty.length) h += row("진료분야", list(d.specialty));
+    var bio = "";
+    if (d.education.length) bio += '<p class="sub-h">학력</p>' + list(d.education);
+    if (d.career.length) bio += '<p class="sub-h">경력</p>' + list(d.career);
+    if (d.societies.length) bio += '<details style="margin-top:.9rem"><summary>' + (d.societies_total > d.societies.length ? "주요 학회 활동 " + d.societies.length + "개 (전체 " + d.societies_total + "개)" : "학회 활동 " + d.societies.length + "개") + "</summary>" + list(d.societies) + "</details>";
+    if (bio) h += row("약력", bio);
+    if (d.consult) h += row("상담 포인트", "<p>" + esc(d.consult) + "</p>");
+    if (d.fields) h += row("연구 분야", "<p>" + esc(d.fields) + "</p>");
+    if (d.papers.length) {
+      h += row("대표 논문", d.papers.map(function (p) {
+        return '<div class="paper"><span class="p-k">' + esc(p.year) + " · " + esc(p.journal) + '</span><p class="p-t">' + esc(p.topic) + "</p>" +
+          '<p class="p-s">' + esc(p.study) + " · " + esc(p.role) + '</p><p class="p-i">' + esc(p.interp) + "</p>" +
+          '<a class="p-l" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + (p.pmid ? "PubMed " + esc(p.pmid) : "DOI 원문") + " ↗</a>" +
+          (p.title_en ? '<span class="p-en">' + esc(p.title_en) + "</span>" : "") + "</div>";
+      }).join(""));
+    } else if (d.paper_status) {
+      h += row("대표 논문", "<p>" + esc(d.paper_status) + "</p>");
+    }
+    if (d.limits) h += row("평가의 한계", "<p>" + esc(d.limits) + "</p>");
+    h += row("출처", '<div class="links">' + d.sources.map(function (u, i) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener">병원 공식 프로필' + (d.sources.length > 1 ? " " + (i + 1) : "") + " ↗</a>"; }).join("") + "</div>");
+    return h;
+  }
+
+  function render() {
+    main.innerHTML = viewTop() + viewAll() + viewNear() + viewGuide();
+  }
+  function current() {
+    var h = location.hash.slice(1);
+    if (/^A\d\d$/.test(h) && byId(h)) return { doc: h };
+    return { view: VIEWS.indexOf(h) >= 0 ? h : "top" };
+  }
+  var lastView = "top";
+  function showView(v, keepScroll) {
+    lastView = v;
+    VIEWS.forEach(function (x) { var el = document.getElementById("v-" + x); if (el) el.classList.toggle("on", x === v); });
+    document.querySelectorAll(".nav a").forEach(function (a) { if (a.dataset.v === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    if (!keepScroll) window.scrollTo(0, 0);
+  }
+  function route() {
+    var c = current();
+    if (c.doc) {
+      if (!document.querySelector(".view.on")) showView("top");
+      sbody.innerHTML = detail(byId(c.doc)); sbody.scrollTop = 0;
+      if (!sheet.open) { if (sheet.showModal) sheet.showModal(); else sheet.setAttribute("open", ""); }
+    } else {
+      var wasOpen = sheet.open;
+      if (wasOpen) closeSheet();
+      showView(c.view, wasOpen && c.view === lastView);
+    }
+  }
+  function closeSheet() { if (sheet.close) sheet.close(); else sheet.removeAttribute("open"); }
+  function openDoc(id) { pushed = true; location.hash = id; }
+  function closeDoc() {
+    if (pushed) { pushed = false; history.back(); }
+    else { history.replaceState(null, "", "#" + lastView); route(); }
+  }
+
+  document.addEventListener("click", function (e) {
+    var c = e.target.closest("[data-id]");
+    if (c) { e.preventDefault(); openDoc(c.dataset.id); return; }
+    var a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute("href") === location.hash) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+    var s = e.target.closest("[data-sort]");
+    if (s) {
+      sortMode = s.dataset.sort;
+      var y = window.scrollY; var el = document.getElementById("v-all");
+      el.outerHTML = viewAll(); showView("all", true); window.scrollTo(0, y); return;
+    }
+    if (e.target.closest("#go9")) { document.getElementById("nine").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+  document.getElementById("sx").addEventListener("click", closeDoc);
+  sheet.addEventListener("click", function (e) { if (e.target === sheet) closeDoc(); });
+  sheet.addEventListener("cancel", function (e) { e.preventDefault(); closeDoc(); });
+  window.addEventListener("hashchange", route);
+
+  fetch("data.json?v=1").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (data) {
+    D = data; render(); route();
+  }).catch(function () {
+    main.innerHTML = '<p class="load">자료를 불러오지 못했어요. 새로고침해 주세요.</p>';
+  });
+})();
+</script>
+</body>
+</html>
