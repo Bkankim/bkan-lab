@@ -11,29 +11,32 @@
 <meta property="og:description" content="1일부터 365일까지, 그리고 선물 하나.">
 <meta property="og:image" content="https://lab.bkan.dev/motion/one-year/og.jpg?v=1">
 <meta property="og:url" content="https://lab.bkan.dev/motion/one-year/">
-<meta name="theme-color" content="#120e0f">
+<meta name="theme-color" content="#FFEFF2">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="one.css?v=1">
+<link rel="stylesheet" href="one.css?v=2">
 </head>
 <body>
 
 <div class="stage" id="stage">
 
-  <!-- 화면 위 일수 카운터 -->
-  <div class="counter" id="counter" aria-live="off">
-    <i class="dot" id="dot"></i>
-    <b class="num" id="num">1</b><span class="unit" id="unit">일</span>
+  <!-- 바탕색 면과 띠 와이프 -->
+  <div class="field" id="field" aria-hidden="true"></div>
+  <div class="strips" id="strips" aria-hidden="true"></div>
+
+  <!-- 오프닝: 하트 -> 선 -> 세 줄 -->
+  <div class="lines" id="lines" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <!-- 화면 위 일수 카운터(오도미터) -->
+  <div class="counter" id="counter" aria-hidden="true">
+    <span class="odo" id="odo"></span><span class="unit">일</span>
     <small class="date" id="date">2025.10.31</small>
   </div>
 
-  <!-- 처음부터 끝까지 이어지는 하트 -->
-  <svg class="heart" id="heart" viewBox="0 0 100 90" aria-hidden="true"><path d="M50 86 C20 64 4 48 4 28 C4 13 15 3 28 3 C38 3 45 9 50 17 C55 9 62 3 72 3 C85 3 96 13 96 28 C96 48 80 64 50 86Z"/></svg>
-
-  <!-- 1일: 전화 -->
+  <!-- 1일: 막대가 전화기가 된다 -->
   <div class="phone" id="phone" aria-hidden="true">
     <div class="ring-waves"><i></i><i></i><i></i></div>
     <svg class="handset" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
@@ -42,63 +45,56 @@
 
   <div class="stack" id="stack"></div>
   <div class="stamps" id="stamps"></div>
+
+  <!-- 1주년: 우리 1년 데이터(달마다 사진 수) -->
+  <svg class="chart" id="chart" aria-hidden="true"></svg>
   <div class="wall" id="wall" aria-hidden="true"></div>
-  <div class="anniv" id="anniv"><b>1주년</b><small>2026.10.31</small></div>
 
   <!-- 거리 -->
   <div class="dist" id="dist">
-    <p class="d-title" id="dTitle">우리의 물리적 거리</p>
-    <p class="d-num" id="dNum"><b id="dVal">0</b>km</p>
     <div class="d-map" id="dMap">
-      <i class="d-line" id="dLine"></i>
+      <div class="d-line" id="dLine"></div>
       <i class="d-dot" id="dA"><span>한국</span></i>
       <i class="d-dot" id="dB"><span>미국</span></i>
     </div>
-    <p class="d-but" id="dBut">하지만?</p>
-    <div class="d-soul" id="dSoul"><p>영혼의 거리</p><b>1nm</b></div>
   </div>
 
   <div class="says" id="says"></div>
 
-  <!-- 반지 -->
+  <!-- 처음부터 끝까지 이어지는 하트 -->
+  <svg class="heart" id="heart" viewBox="0 0 100 90" aria-hidden="true"><path d="M50 86 C20 64 4 48 4 28 C4 13 15 3 28 3 C38 3 45 9 50 17 C55 9 62 3 72 3 C85 3 96 13 96 28 C96 48 80 64 50 86Z"/></svg>
+
+  <!-- 반지: 평면 원이 기울어 입체가 된다 -->
   <div class="ring" id="ring" aria-hidden="true">
-    <i class="rays"></i>
     <svg viewBox="0 0 200 220">
-      <defs>
-        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#fff1c2"/><stop offset=".45" stop-color="#f2c45a"/><stop offset="1" stop-color="#b9842a"/>
-        </linearGradient>
-        <clipPath id="gem"><path d="M64 52 L82 30 L118 30 L136 52 L100 96Z"/></clipPath>
-      </defs>
-      <ellipse cx="100" cy="148" rx="62" ry="58" fill="none" stroke="url(#gold)" stroke-width="13"/>
-      <path d="M84 92 L100 104 L116 92 L112 84 L88 84Z" fill="url(#gold)"/>
+      <ellipse class="band-back" cx="100" cy="150" rx="66" ry="66" fill="none" stroke="#d9a441" stroke-width="12"/>
+      <ellipse class="band" cx="100" cy="150" rx="66" ry="66" fill="none" stroke="#f2c45a" stroke-width="12" stroke-dasharray="0 1000"/>
       <g class="gem">
-        <path d="M64 52 L82 30 L118 30 L136 52 L100 96Z" fill="#dff3ff"/>
-        <path d="M64 52 L82 30 L92 52Z" fill="#bfe6ff"/>
-        <path d="M92 52 L100 30 L108 52Z" fill="#ffffff"/>
-        <path d="M108 52 L118 30 L136 52Z" fill="#a8dcff"/>
-        <path d="M64 52 L100 96 L92 52Z" fill="#9fd2f5"/>
-        <path d="M92 52 L100 96 L108 52Z" fill="#e9f8ff"/>
-        <path d="M108 52 L100 96 L136 52Z" fill="#86c4ee"/>
-        <rect class="glint" x="40" y="10" width="18" height="110" fill="#fff" opacity=".9" clip-path="url(#gem)" transform="rotate(20 100 60)"/>
+        <path d="M84 88 L100 100 L116 88 L112 80 L88 80Z" fill="#f2c45a"/>
+        <path d="M64 50 L82 28 L118 28 L136 50 L100 94Z" fill="#e6f6ff"/>
+        <path d="M64 50 L82 28 L92 50Z" fill="#c4e8ff"/>
+        <path d="M92 50 L100 28 L108 50Z" fill="#ffffff"/>
+        <path d="M108 50 L118 28 L136 50Z" fill="#b3e0ff"/>
+        <path d="M64 50 L100 94 L92 50Z" fill="#a8d6f5"/>
+        <path d="M92 50 L100 94 L108 50Z" fill="#f2fbff"/>
+        <path d="M108 50 L100 94 L136 50Z" fill="#8fc8ee"/>
       </g>
     </svg>
-    <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
+    <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
   </div>
 
   <!-- 선물상자 -->
   <button class="gift" id="gift" type="button" aria-label="선물상자 열기" disabled>
-    <i class="burst"></i>
     <svg viewBox="0 0 200 200" aria-hidden="true">
-      <rect x="34" y="88" width="132" height="98" rx="8" fill="#e9506f"/>
-      <rect x="34" y="88" width="132" height="14" fill="#c93d5c"/>
-      <rect x="91" y="88" width="18" height="98" fill="#ffe2a8"/>
+      <rect x="44" y="98" width="132" height="98" rx="10" fill="#2B0F1E"/>
+      <rect x="34" y="88" width="132" height="98" rx="10" fill="#8F7BFF"/>
+      <rect x="91" y="88" width="18" height="98" fill="#FF4D7E"/>
       <g id="lid">
-        <rect x="26" y="66" width="148" height="28" rx="6" fill="#ff6b8b"/>
-        <rect x="91" y="66" width="18" height="28" fill="#ffe2a8"/>
-        <path d="M100 66 C80 40 58 44 64 58 C68 66 84 66 100 66Z" fill="#ffd27a"/>
-        <path d="M100 66 C120 40 142 44 136 58 C132 66 116 66 100 66Z" fill="#ffd27a"/>
-        <circle cx="100" cy="64" r="7" fill="#f2b84b"/>
+        <rect x="26" y="64" width="148" height="30" rx="8" fill="#a594ff"/>
+        <rect x="91" y="64" width="18" height="30" fill="#FF4D7E"/>
+        <path d="M100 64 C80 36 56 42 63 57 C67 65 84 64 100 64Z" fill="#FF4D7E"/>
+        <path d="M100 64 C120 36 144 42 137 57 C133 65 116 64 100 64Z" fill="#FF4D7E"/>
+        <circle cx="100" cy="62" r="7" fill="#d93a66"/>
       </g>
     </svg>
     <span class="bubble">눌러봐</span>
@@ -139,6 +135,6 @@
 
 <script src="data.js?v=1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script src="one.js?v=1"></script>
+<script src="one.js?v=2"></script>
 </body>
 </html>
