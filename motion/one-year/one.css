@@ -61,7 +61,7 @@ button { font: inherit; color: inherit; }
 .mute.off .wave { opacity: 0; }
 
 /* 하트 */
-.heart { left: 0; top: 0; width: 100px; height: 90px; fill: var(--acc); z-index: 15; transform-origin: 50% 50%; }
+.heart { left: 0; top: 0; width: 100px; height: 90px; fill: var(--acc); z-index: 15; transform-origin: 50% 50%; overflow: visible; }  /* 박자 펄스로 커진 하트가 틀에 잘리지 않게 */
 .heart path { transform-box: fill-box; }
 
 /* 오프닝 선 */
@@ -73,8 +73,9 @@ button { font: inherit; color: inherit; }
   left: 0; right: 0; top: calc(4.5vh + env(safe-area-inset-top, 0px));
   display: flex; align-items: baseline; justify-content: center; z-index: 12; visibility: hidden;
 }
-.odo { display: inline-flex; font-size: clamp(60px, 18vw, 88px); font-weight: 900; letter-spacing: -.05em; line-height: 1; height: 1em; overflow: hidden; }
-.odo .col { display: block; width: .6em; height: 1em; overflow: hidden; }
+/* 숫자가 굴러가는 위아래만 자르고 좌우는 자르지 않는다. 칸 너비는 Pretendard 900 숫자 잉크 폭 최대 .617em(0)보다 넓게 */
+.odo { display: inline-flex; font-size: clamp(60px, 18vw, 88px); font-weight: 900; letter-spacing: -.05em; line-height: 1; height: 1em; clip-path: inset(0 -20% 0 -20%); }
+.odo .col { display: block; width: .66em; height: 1em; clip-path: inset(0 -20% 0 -20%); }
 .odo .col b { display: block; font-weight: 900; text-align: center; }
 .odo .col b span { display: block; height: 1em; }
 .counter .unit { font-size: clamp(22px, 6vw, 30px); font-weight: 900; margin: 0 12px 0 2px; }
