@@ -198,13 +198,28 @@
   let W = 0, H = 0;
   const cy = (f) => H * f;
 
+  // 그 시각의 바탕 팔레트(띠 와이프가 끝난 뒤 기준)
+  function palAt(t) {
+    let c = 'blush';
+    for (const k of FK) if (k.t <= t) c = k.c;
+    return PAL[c];
+  }
+  // 띠 i의 보이는 영역. g(%)만큼 위아래를 비워 띠 사이에 바탕색 이음매를 남긴다(쇼릴 f120~131)
+  const band = (i, n, g) => `inset(${(i * 100 / n + g).toFixed(2)}% -20% ${(100 - (i + 1) * 100 / n + g).toFixed(2)}% -20%)`;
   function sliceIn(el, t, dir = 1, dur = SNAP) {
+    const n = el._sl.length, P = palAt(t + .45);
     tl.set(el, { autoAlpha: 1 }, t);
-    tl.fromTo(el._sl, { x: (i) => dir * W * (.6 + (i % 4) * .09), filter: 'blur(5px)' },
-      { x: 0, filter: 'blur(0px)', ease: 'reel', duration: dur, stagger: (i) => lag(i), immediateRender: false }, t);
+    // 출발 상태를 한꺼번에 먼저 둔다. 늦게 출발하는 띠가 도착 자리에 미리 보이면 점멸처럼 보인다
+    tl.set(el._sl, { x: (i) => dir * W * (.6 + (i % 4) * .09), color: P.acc, clipPath: (i) => band(i, n, .9) }, t);
+    tl.to(el._sl, { x: 0, ease: 'reel', duration: dur, stagger: (i) => lag(i) }, t);
+    // 강조색으로 들어와 본래 글자색으로, 이음매는 자리에 맞은 뒤 닫힌다
+    tl.to(el._sl, { color: P.ink, clipPath: (i) => band(i, n, 0), ease: 'power2.out', duration: .22 }, t + dur * .7 + .08);
+    tl.set(el._sl, { clearProps: 'color' }, t + dur + .3);
   }
   function sliceOut(el, t, dir = 1) {
-    tl.to(el._sl, { x: (i) => -dir * W * (.55 + (i % 3) * .1), filter: 'blur(5px)', ease: EXIT, duration: .22, stagger: (i) => lag(i) * .5 }, t);
+    const n = el._sl.length;
+    tl.to(el._sl, { clipPath: (i) => band(i, n, .9), duration: .06, ease: 'none' }, t);
+    tl.to(el._sl, { x: (i) => -dir * W * (.55 + (i % 3) * .1), ease: EXIT, duration: .22, stagger: (i) => lag(i) * .5 }, t);
     tl.set(el, { autoAlpha: 0 }, t + .3);
   }
   const place = (el, y) => gsap.set(el, { top: y, yPercent: -50 });
@@ -222,10 +237,14 @@
   function cardIn(el, t, dir) {
     tl.set(el, { autoAlpha: 1 }, t);
     tl.set(el._blk, { scale: 0 }, t);
-    tl.fromTo(el._bands, { x: (i) => dir * el.offsetWidth * (1.05 + (i % 3) * .12) }, { x: 0, ease: 'reel', duration: SNAP, stagger: (i) => lag(i), immediateRender: false }, t);
+    // 띠 출발 상태를 먼저 한꺼번에 둔다(점멸 방지). 납작하게 들어와 맞물리며 이음매가 닫힌다
+    tl.set(el._bands, { x: (i) => dir * el.offsetWidth * (1.05 + (i % 3) * .12), scaleY: .82 }, t);
+    tl.to(el._bands, { x: 0, ease: 'reel', duration: SNAP, stagger: (i) => lag(i) }, t);
+    tl.to(el._bands, { scaleY: 1, ease: 'power2.out', duration: .2 }, t + SNAP * .7 + .08);
     tl.fromTo(el._blk, { scale: 0 }, { scale: 1, ease: 'reel', duration: SNAP, immediateRender: false }, t + .14);
   }
   function cardOut(el, t, dir) {
+    tl.to(el._bands, { scaleY: .82, duration: .06, ease: 'none' }, t);
     tl.to(el._bands, { x: (i) => -dir * el.offsetWidth * (1.1 + (i % 3) * .1), ease: EXIT, duration: .22, stagger: (i) => lag(i) * .5 }, t);
     tl.to(el._blk, { scale: 0, ease: EXIT, duration: .18 }, t);
     tl.set(el, { autoAlpha: 0 }, t + .3);
@@ -477,6 +496,9 @@
     tl.fromTo('#ring .band', { attr: { ry: 66 } }, { attr: { ry: 22 }, ease: 'reel', duration: SNAP, immediateRender: false }, C.ring + SNAP);
     tl.fromTo('#ring .band-back', { attr: { ry: 66, cy: 150 } }, { attr: { ry: 22, cy: 157 }, ease: 'reel', duration: SNAP, immediateRender: false }, C.ring + SNAP);
     gsap.set('#ring .gem', { transformOrigin: '50% 100%' });
+    // 보석은 뽕 하기 전까지 숨긴다. 링이 기울면 윗변이 84 -> 128로 내려가므로 보석도 44만큼 같이 내려와 받침이 링에 붙어 있게 한다
+    tl.set('#ring .gem', { scaleX: 0, scaleY: 0, y: 0 }, C.ring);
+    tl.to('#ring .gem', { y: 44, ease: 'reel', duration: SNAP }, C.ring + SNAP);
     tl.fromTo('#ring .gem', { scaleX: 0, scaleY: 0 }, { scaleX: 1.03, scaleY: 1.03, ease: 'power2.out', duration: .16, immediateRender: false }, C.ring + .45);
     tl.to('#ring .gem', { scaleX: 1, scaleY: 1, ease: 'power2.out', duration: .14 }, C.ring + .61);
     tl.fromTo('#ring .spark', { scale: 0, rotation: 0 }, { scale: 1, rotation: 90, ease: 'reel', duration: SNAP, stagger: { each: B * .5, repeat: 1, yoyo: true }, immediateRender: false }, C.ring + .6);
