@@ -3,3 +3,4 @@
 _workspace/
 .fablize/
 __pycache__/
+.playwright-mcp/
