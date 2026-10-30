@@ -56,7 +56,9 @@
         var tags = (p.tags || []).map(function (g) { return '<span>' + esc(g) + '</span>'; }).join('');
         var links = (p.links || []).map(function (lk) {
             var label = lk.label && typeof lk.label === 'object' ? (lk.label.ko || lk.label.en) : (lk.label || '보기');
-            return '<a href="' + esc(lk.href) + '" target="_blank" rel="noopener noreferrer"><i class="' + (LINK_ICON[lk.kind] || 'fas fa-link') + '"></i>' + esc(label) + '</a>';
+            // 스냅샷의 상대 경로(for-teams/·assets/)는 원본 포트폴리오에만 있으므로 그 주소 기준으로 푼다
+            var href = new URL(lk.href, 'https://portfolio.bkan.dev/').href;
+            return '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer"><i class="' + (LINK_ICON[lk.kind] || 'fas fa-link') + '"></i>' + esc(label) + '</a>';
         }).join('');
         dlg.querySelector('.dlg-body').innerHTML =
             '<p class="eyebrow mono"><span>' + (STATUS[p.status] || p.status) + '</span><span>' + esc(t.subtitle) + '</span></p>' +
@@ -82,7 +84,12 @@
         if (chip) { e.preventDefault(); openProject(chip.getAttribute('href').slice(3)); }
     });
     dlg.querySelector('.close').addEventListener('click', function () { dlg.close(); });
-    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    // 창의 안쪽 여백도 target 이 dlg 라서, 창 사각형 바깥(배경)을 누른 경우에만 닫는다
+    dlg.addEventListener('click', function (e) {
+        if (e.target !== dlg) return;
+        var r = dlg.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+    });
     if (/^#p-/.test(location.hash)) openProject(location.hash.slice(3));
 
     /* 메뉴 앵커는 고정 장면의 여백까지 포함한 실제 위치로 부드럽게 보낸다 */
@@ -184,10 +191,12 @@
         var projects = document.querySelector('.projects');
         var blog = document.querySelector('.blog');
         var track = document.getElementById('track');
-        var unskew = null;
+        var unskew = null, pinEl = null, onPinScroll = null, onCardFocus = null;
 
         /* --- 소개 --- */
-        if (wide) {
+        // 고정 시작점(위 12%) 아래로 내용이 다 들어갈 때만 고정한다 - 넘치면 타임라인 끝이 화면 밖에서 재생된다
+        var aboutFits = document.querySelector('.about-pin').offsetHeight <= window.innerHeight * .86;
+        if (wide && aboutFits) {
             /* 제목 단어가 차례로 켜지고, 제목이 올라가며 본문·터미널이 이어서 켜진다 */
             gsap.set(kineticWords, { opacity: .14 });
             gsap.set(aboutPs, { opacity: .18 });
@@ -230,7 +239,8 @@
                 }
             });
             track.querySelectorAll('.pcard').forEach(function (c) {
-                gsap.from(c, { y: 90, rotate: 4, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: slide, start: 'left 100%', end: 'left 72%', scrub: true } });
+                // autoAlpha(visibility) 대신 opacity - 화면 밖 카드도 키보드 Tab 으로 닿아야 한다
+                gsap.from(c, { y: 90, rotate: 4, opacity: 0, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: slide, start: 'left 100%', end: 'left 72%', scrub: true } });
             });
             // 스크롤이 멈추면 기울기를 푼다
             unskew = function () { gsap.to(track, { skewX: 0, duration: .6, ease: 'power3.out', overwrite: 'auto' }); };
@@ -247,6 +257,23 @@
                     onLeaveBack: function () { setChapter(i ? divs[i - 1].dataset.cat : 'agent'); }
                 });
             });
+            // 잘린 컨테이너(.proj-pin)는 포커스·#p- 주소 이동 때 브라우저가 옆으로 스크롤해 트랙이 어긋나므로 늘 0으로 되돌리고,
+            // 화면 밖 카드에 키보드 포커스가 오면 그 카드가 보이는 위치까지 페이지를 스크롤한다
+            pinEl = document.querySelector('.proj-pin');
+            onPinScroll = function () { if (pinEl.scrollLeft) pinEl.scrollLeft = 0; };
+            pinEl.addEventListener('scroll', onPinScroll);
+            onCardFocus = function (e) {
+                var c = e.target.closest('.pcard');
+                // Chrome 은 마우스로 버튼을 눌러도 포커스를 준다 - 키보드 포커스(:focus-visible)일 때만 옮겨야 클릭이 빗나가지 않는다
+                if (!c || !c.matches(':focus-visible')) return;
+                pinEl.scrollLeft = 0; // 브라우저가 focusin 전에 이미 옆으로 밀어 둔 것을 먼저 되돌리고 잰다
+                var r = c.getBoundingClientRect();
+                if (r.right > 0 && r.left < window.innerWidth) return; // 조금이라도 보이면 그대로 둔다 (Esc로 창을 닫아 포커스가 돌아올 때 점프 방지)
+                var st = slide.scrollTrigger;
+                var p = gsap.utils.clamp(0, 1, (r.left - track.getBoundingClientRect().left - window.innerWidth * .3) / dist());
+                window.scrollTo({ top: st.start + p * (st.end - st.start) });
+            };
+            track.addEventListener('focusin', onCardFocus);
         } else {
             gsap.set(track.querySelectorAll('.pcard, .divider'), { y: 40, autoAlpha: 0 });
             ST.batch(track.querySelectorAll('.pcard, .divider'), {
@@ -296,6 +323,8 @@
 
         return function () {
             if (unskew) ST.removeEventListener('scrollEnd', unskew);
+            if (onPinScroll) pinEl.removeEventListener('scroll', onPinScroll);
+            if (onCardFocus) track.removeEventListener('focusin', onCardFocus);
             projects.classList.remove('is-h');
             blog.classList.remove('is-stack');
             gsap.set(track, { clearProps: 'all' });
@@ -379,6 +408,7 @@
         var cv = document.getElementById('graph');
         var ctx = cv.getContext('2d');
         var W = 0, H = 0, DPR = 1, nodes = [], edges = [], pulses = [];
+        var raf = 0; // 예약된 프레임 id - 0일 때만 새로 예약해 루프가 겹치지 않게 한다
         var mouse = { x: -9999, y: -9999 };
         var sceneF = 0;
         var ALPHA = [1, .55, .4, .5, .45, .45, .8];
@@ -434,11 +464,13 @@
         }
 
         function resize() {
+            var prevW = W;
             DPR = Math.min(2, window.devicePixelRatio || 1);
             W = window.innerWidth; H = window.innerHeight;
             cv.width = W * DPR; cv.height = H * DPR;
             ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-            build();
+            // 모바일 주소창이 접히고 펴질 때는 높이만 바뀐다 - 그때 점을 새로 만들면 그래프가 첫 장면 모양으로 튄다
+            if (W !== prevW) build();
         }
 
         function readScene() {
@@ -457,6 +489,7 @@
         function ease(x) { return x * x * (3 - 2 * x); }
 
         function frame(now) {
+            raf = 0;
             var t = now / 1000;
             var target = readScene();
             sceneF += (target - sceneF) * .08;
@@ -514,7 +547,7 @@
                 return true;
             });
 
-            if (!reduce && !document.hidden) requestAnimationFrame(frame);
+            if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
         }
 
         resize();
@@ -522,7 +555,7 @@
         if (reduce) { frame(0); return; }
         window.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') { mouse.x = e.clientX; mouse.y = e.clientY; } });
         document.addEventListener('pointerleave', function () { mouse.x = mouse.y = -9999; });
-        document.addEventListener('visibilitychange', function () { if (!document.hidden) requestAnimationFrame(frame); });
-        requestAnimationFrame(frame);
+        document.addEventListener('visibilitychange', function () { if (!document.hidden && !raf) raf = requestAnimationFrame(frame); });
+        raf = requestAnimationFrame(frame);
     }
 })();

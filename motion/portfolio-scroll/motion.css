@@ -294,7 +294,7 @@ dialog#dlg .close:hover { color: var(--primary); border-color: var(--primary-bor
 .skills { padding-block: 120px; }
 .skill-table { margin-top: 48px; }
 .sr { position: relative; display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 22px 0; }
-.sr::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--border); transform-origin: 0 50%; }
+.sr::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--border); transform-origin: 0 50%; transform: scaleX(var(--l, 1)); } /* --l 은 motion.js 가 0→1 로 민다 */
 .sr .th { color: var(--primary); font-size: 14px; }
 .sr .td { font-size: clamp(15px, 1.5vw, 18px); }
 .sr .td .it { display: inline-block; }
@@ -315,8 +315,8 @@ dialog#dlg .close:hover { color: var(--primary); border-color: var(--primary-bor
 .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-block: 32px calc(32px + env(safe-area-inset-bottom, 0px)); font-size: 12px; color: var(--text-mute); border-top: 1px solid var(--border); }
 .foot a { color: var(--text-dim); border-bottom: 1px solid var(--border); }
 
-/* ===== 좁은 화면 ===== */
-@media (max-width: 900px) {
+/* ===== 좁은 화면 ===== (motion.js 의 넓은 화면 조건 min-width: 900px 과 겹치지 않게 899px) */
+@media (max-width: 899px) {
   .menu { display: none; }
   html.motion .scene-tag { display: none; }
   .orig { margin-left: auto; }
