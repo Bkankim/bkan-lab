@@ -170,10 +170,18 @@ button { font: inherit; color: inherit; }
 .fx { inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 18; }
 
 /* 선물 영상 */
-.reveal { left: 5%; right: 5%; top: 26%; visibility: hidden; z-index: 17; }
+.reveal {
+  left: 0; right: 0; top: 0; bottom: 0; visibility: hidden; z-index: 17;
+  /* 화면이 낮으면(가로 모드 등) 저장 버튼까지 스크롤로 닿게. 남는 높이는 위아래 빈칸이 나눠 가운데 정렬 */
+  display: flex; flex-direction: column; overflow-y: auto;
+  /* 오른쪽·아래 그림자 10px가 스크롤 영역 안에 들어오게 그만큼 더 비운다 */
+  padding: 16px calc(5% + 10px) 26px 5%;
+}
+.reveal::before, .reveal::after { content: ""; flex: 1 0 0; }
 .reveal .screen { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 10px 10px 0 var(--plum); }
 .reveal video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
 .tap-play { position: absolute; inset: 0; margin: auto; width: 160px; height: 52px; border-radius: 999px; border: 0; background: var(--rose); color: #fff; font-weight: 800; }
-.after { margin-top: 32px; text-align: center; }
+.reveal .screen, .after { flex-shrink: 0; }
+.after { margin-top: 32px; text-align: center; visibility: hidden; }
 .after .hint { margin: 14px auto 18px; max-width: 30em; font-size: 12.5px; line-height: 1.55; opacity: .7; }
 .after .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
