@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>김병현 포트폴리오 · 스크롤 모션판</title>
+<meta name="description" content="정적인 포트폴리오 페이지를 같은 내용 그대로 스크롤 구동 모션그래픽으로 다시 만든 실험입니다.">
+<link rel="canonical" href="https://lab.bkan.dev/motion/portfolio-scroll/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="김병현 포트폴리오 · 스크롤 모션판">
+<meta property="og:description" content="정적인 포트폴리오를 스크롤로 움직이는 모션그래픽 웹으로 다시 만들었습니다.">
+<meta property="og:image" content="https://lab.bkan.dev/motion/portfolio-scroll/og.jpg?v=1">
+<meta property="og:url" content="https://lab.bkan.dev/motion/portfolio-scroll/">
+<meta name="theme-color" content="#0a1426">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="motion.css?v=2">
+</head>
+<body>
+
+<canvas id="graph" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<nav class="top">
+  <a class="logo" href="#home">Bkan<span>.</span></a>
+  <ul class="menu">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#experience">경력</a></li>
+    <li><a href="#projects">작업</a></li>
+    <li><a href="#blog">판단 기록</a></li>
+    <li><a href="#skills">기술</a></li>
+    <li><a href="#contact">연락처</a></li>
+  </ul>
+  <a class="orig" href="https://portfolio.bkan.dev/" target="_blank" rel="noopener">정적 원본 <i class="fas fa-arrow-up-right-from-square"></i></a>
+</nav>
+
+<div class="scene-tag mono" aria-hidden="true"><b>00</b><span>시작</span></div>
+
+<main>
+
+<!-- 히어로 -->
+<header id="home" class="hero" data-scene="시작">
+  <div class="hero-inner wrap">
+    <div class="badges">
+      <span class="badge"><i class="dot"></i>정규직 포지션 구직 중</span>
+      <span class="badge alt"><i class="dot"></i>계약직 포지션 구직 중</span>
+    </div>
+    <h1 class="name" aria-label="김병현"><span class="ch">김</span><span class="ch">병</span><span class="ch">현</span></h1>
+    <p class="handle mono"><span>@Bkankim</span><span class="sep">·</span><span>경기도 고양시</span></p>
+    <p class="role"><b>AX 엔지니어</b></p>
+    <p class="lead">
+      <span class="ln"><span>에이전트 메모리를 중심으로 기업 실무에 AX를 적용합니다.</span></span>
+      <span class="ln"><span>개인용부터 팀용 에이전트 메모리까지, AX의 큰 기반이 되는 장기기억 시스템에 강점이 있습니다.</span></span>
+    </p>
+    <div class="cta">
+      <a href="#projects" class="btn primary"><span>작업 보기</span> <i class="fas fa-arrow-right"></i></a>
+      <a href="https://blog.bkan.dev" class="btn" target="_blank" rel="noopener">블로그</a>
+      <span class="socials">
+        <a href="https://github.com/Bkankim" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.threads.com/@sweet_bkan" target="_blank" rel="noopener" aria-label="Threads"><i class="fab fa-threads"></i></a>
+        <a href="mailto:bk@bkan.dev" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </span>
+    </div>
+  </div>
+  <a href="#about" class="cue mono" aria-label="아래로"><span>scroll</span><i></i></a>
+</header>
+
+<!-- 소개 -->
+<section id="about" class="about" data-scene="소개">
+  <div class="about-pin wrap">
+    <span class="label mono">01 · 소개</span>
+    <h2 class="kinetic">에이전트 메모리로 사내 업무 자동화를 만들어 왔습니다</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>보안관제 업무를 하던 2년 4개월 동안 반복되는 보고서 작업을 스크립트로 줄여 왔고 지금은 같은 일을 에이전트로 합니다.</p>
+        <p>최근 6주는 제조사 AI 전환 조직에서 3인 기술팀을 이끌었습니다. 대표님이 팀마다 업무 에이전트를 두자고 하셔서, 개인용으로 쓰던 에이전트 메모리를 팀 메모리로 넓혀 일일 업무보고 자동화부터 붙였습니다.</p>
+        <p>개인적으로는 셀프 호스팅 에이전트 메모리 서버를 운영합니다. 개인 용도에 맞춘 메모리 하네스와 규칙 게이트웨이 서버도 별도로 운영하며 에이전트 메모리를 고도화했습니다.</p>
+        <p>에이전트 메모리를 중심으로 하되 필요한 곳에는 <strong>RAG</strong>까지 선별해 적용하면서 사내 업무 자동화를 운영하는 <strong>AX 직무</strong>를 맡고 싶습니다.</p>
+        <div class="focus">
+          <span class="mono k">요즘 몰입하는 영역</span>
+          <span class="tag">에이전트 메모리</span><span class="tag">사내 업무 자동화</span><span class="tag">에이전트 보고 검증</span><span class="tag">검색·보고 품질 측정</span><span class="tag">RAG</span><span class="tag">MCP · 게이트웨이</span>
+        </div>
+      </div>
+      <div class="terminal mono" aria-label="터미널: whoami byeonghyeon_kim, role ax engineer, focus agent memory · work automation · rag, rule measured before claimed">
+        <div class="bar"><i></i><i></i><i></i><span>bkan@portfolio: ~</span></div>
+        <div class="body">
+          <div class="tl"><span class="c">$</span> <span class="t" data-text="whoami">whoami</span></div>
+          <div class="tl o"><span class="t" data-text="&gt; byeonghyeon_kim">&gt; byeonghyeon_kim</span></div>
+          <div class="tl"><span class="c">$</span> <span class="t" data-text="cat role.txt">cat role.txt</span></div>
+          <div class="tl o"><span class="t" data-text="&gt; ax engineer">&gt; ax engineer</span></div>
+          <div class="tl"><span class="c">$</span> <span class="t" data-text="echo $FOCUS">echo $FOCUS</span></div>
+          <div class="tl o"><span class="t" data-text="&gt; agent memory · work automation · rag">&gt; agent memory · work automation · rag</span></div>
+          <div class="tl"><span class="c">$</span> <span class="t" data-text="echo $RULE">echo $RULE</span></div>
+          <div class="tl o"><span class="t" data-text="&gt; measured before claimed">&gt; measured before claimed</span><span class="cursor">▋</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 경력 -->
+<section id="experience" class="experience" data-scene="경력">
+  <div class="wrap">
+    <span class="label mono">02 · 경력</span>
+    <h2 class="title split-up">걸어온 길</h2>
+    <p class="sub">보안관제 → 가맹점 운영 → AI 부트캠프 → 기업 AI.<br>자세한 내용은 <a href="https://portfolio.bkan.dev/career.html" target="_blank" rel="noopener">경력기술서</a>에 있습니다.</p>
+
+    <div class="exp-grid">
+      <div class="year-col" aria-hidden="true">
+        <div class="year mono"><span class="digits">2026</span></div>
+        <div class="year-cap mono">← 시간을 거슬러</div>
+      </div>
+
+      <div class="timeline">
+        <div class="spine" aria-hidden="true"><i></i></div>
+
+        <article class="item" data-year="2026">
+          <div class="marker"><i class="fas fa-server"></i></div>
+          <div class="content">
+            <span class="period mono">2026.05 - 2026.06 · 6주 · 프리랜서</span>
+            <h3>기업 AI 시스템 구축</h3>
+            <p class="role-line">3인 기술팀 리드 · 공통 인프라와 고객·통화 데이터 트랙</p>
+            <p>팀마다 업무 에이전트를 두자는 대표님의 요청에, 개인용으로 쓰던 에이전트 메모리를 팀 메모리로 확장해 대응했습니다.</p>
+            <ul class="bullets">
+              <li>팀원에게 배포하기 전에 누구나 전체 기록을 볼 수 있다는 문제를 발견해 각자 자기 기록만 보이도록 바꾼 뒤 팀원 4명에게 배포</li>
+              <li>자동 보고서를 직접 채점해 재현율 0.45가 나오자 빠진 22건을 모두 열어 봤고 실제 누락은 1건임을 확인 <a href="https://blog.bkan.dev/denominator-not-the-search" target="_blank" rel="noopener">채점 기록</a></li>
+              <li>일일 보고 작성을 자동화해 약 30분에서 5분 이내로 줄임</li>
+            </ul>
+            <div class="chips"><span class="mono k">관련 작업</span><a class="chip" href="#p-ent-team-memory">팀 메모리와 일일보고</a><a class="chip" href="#p-ent-team-ops">팀 운영과 인계</a><a class="chip" href="#p-ent-crm">고객·통화 데이터</a><a class="chip" href="#p-ent-onprem-llm">로컬 LLM 장비</a><a class="chip" href="#p-ent-doc-pipeline">문서 파이프라인</a></div>
+            <div class="evidence">
+              <span class="mono k">현장 사진</span>
+              <figure><a href="img/onprem-cluster.jpg" target="_blank" rel="noopener"><img src="img/onprem-cluster.jpg" alt="사내 맥 서버 독립망" loading="lazy" width="1200" height="900"></a><figcaption>사내 맥 서버 독립망 (역할 배정)</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="item" data-year="2026">
+          <div class="marker"><i class="fas fa-brain"></i></div>
+          <div class="content">
+            <span class="period mono">2026.02 - 현재 · 개인</span>
+            <h3>에이전트 하네스 운영</h3>
+            <p class="role-line">지침·훅·스킬·메모리 구조 설계와 운영 규칙 결정</p>
+            <p>에이전트에게 일을 맡기는 환경을 직접 구성하고 깨지면 갈아엎으며 운영해 왔습니다. 그 중심에는 처음부터 기억이 있었습니다. 직접 만든 메모리를 오픈소스 Hindsight로 교체했고 지금은 여러 에이전트가 같은 기억과 규칙을 공유하며 일합니다.</p>
+            <ul class="bullets">
+              <li>2026.02 - 06 · 에이전트 14명을 4개 팀 조직도로 묶은 1인 회사 체계를 운영했지만, 일을 받은 역할은 일부뿐이고 계층을 유지하는 비용이 커져서 접음 <a href="https://blog.bkan.dev/bk-hq" target="_blank" rel="noopener">BK-HQ 개발일지</a></li>
+              <li>2026.02 - 05 · 지침 파일에 기억을 몰아넣다가 243줄까지 늘어나자 77줄로 줄이고 문서 규칙만으로는 되풀이되는 실수를 훅으로 막음 <a href="https://blog.bkan.dev/instructions-are-not-memory" target="_blank" rel="noopener">지침 축소 기록</a></li>
+              <li>2026.06 - 현재 · 업데이트할 때마다 깨지던 자작 메모리를 Hindsight로 교체하고, 2026.07부터 여러 에이전트가 같은 기억을 쓰되 규칙을 어긴 기록은 서버가 거절하도록 함 <a href="https://blog.bkan.dev/hindsight-crew" target="_blank" rel="noopener">개발일지</a></li>
+              <li>2026.07 - 현재 · Claude Code·Codex 등 다섯 런타임이 지침 파일 하나를 읽도록 묶어서 한 곳만 고치면 모두에 적용됨 <a href="https://blog.bkan.dev/agent-ops" target="_blank" rel="noopener">설정 정본 개발일지</a></li>
+              <li>2026.09 - 현재 · 이슈를 넘기면 계획 리뷰와 결과 검수를 거쳐 머지까지 진행하는 스킬 세트. 계획 리뷰 판정 50건 중 그대로 통과한 계획은 0건 <a href="https://blog.bkan.dev/review-skills" target="_blank" rel="noopener">검수·지휘 스킬</a></li>
+            </ul>
+            <div class="chips"><span class="mono k">관련 작업</span><a class="chip" href="#p-hindsight-crew">Hindsight-Crew</a><a class="chip" href="#p-agent-ops">작업 운영 체계</a><a class="chip" href="#p-smartthink">SmartThink</a><a class="chip" href="#p-cct">cct</a><a class="chip" href="#p-ashd">ASHD</a><a class="chip" href="#p-ourfolio">OurFolio</a><a class="chip" href="#p-bluepy">BluePy</a><a class="chip" href="#p-smb-edu">소상공인 AI 교육</a><a class="chip" href="#p-bkan-blog">기술 블로그</a></div>
+            <div class="evidence two">
+              <span class="mono k">라이브 제품</span>
+              <figure><a href="https://ourfolio.bkan.dev/" target="_blank" rel="noopener"><img src="img/ourfolio.jpg" alt="OurFolio 랜딩" loading="lazy" width="1200" height="750"></a><figcaption>OurFolio · 근거 기반 포트폴리오 빌더 ↗</figcaption></figure>
+              <figure><a href="https://ashd.bkan.dev" target="_blank" rel="noopener"><img src="img/ashd.jpg" alt="ASHD 랜딩" loading="lazy" width="1200" height="750"></a><figcaption>ASHD · 영수증 OCR + LLM, 환불·보증 알림 ↗</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="item" data-year="2025">
+          <div class="marker"><i class="fas fa-graduation-cap"></i></div>
+          <div class="content">
+            <span class="period mono">2025.05 - 2026.01</span>
+            <h3>AI 부트캠프 (w. Upstage) 14기 수료</h3>
+            <p class="role-line">1,120시간 · 머신러닝부터 LLM·RAG까지 이론과 팀 경진대회 실습</p>
+            <p>RAG 검색 대회 팀 1위 · 문서 분류 CV 대회 팀 2등 · 토스 NEXT ML Challenge 팀 상위 10%</p>
+            <div class="chips"><span class="mono k">관련 작업</span><a class="chip" href="#p-c-rag">RAG 검색 대회</a><a class="chip" href="#p-c-cv">문서 분류 CV 대회</a><a class="chip" href="#p-c-toss">토스 NEXT ML Challenge</a></div>
+          </div>
+        </article>
+
+        <article class="item minor" data-year="2020">
+          <div class="marker"><i class="fas fa-store"></i></div>
+          <div class="content">
+            <span class="period mono">2020.07 - 2025.03</span>
+            <h3>김밥 프랜차이즈 가맹점 대표</h3>
+          </div>
+        </article>
+
+        <article class="item" data-year="2018">
+          <div class="marker"><i class="fas fa-shield-halved"></i></div>
+          <div class="content">
+            <span class="period mono">2018.02 - 2020.05 · CMT EYES</span>
+            <h3>보안관제</h3>
+            <p class="role-line">보안관제 분석가 · 보안 장비 20종 이상, 고객사 50곳 이상</p>
+            <ul class="bullets">
+              <li>하루 100건 넘게 울리던 경보를, IP 차단 목록을 비교하는 파이썬 스크립트로 50건 이하로 줄임. 오탐·미탐·정탐률도 함께 측정</li>
+              <li>고객사 접근 허용 요청(ACL·터널) 매일 처리, 신입 면접·교육과 온보딩 진행</li>
+              <li>관제 보고서 작성을 매크로와 파이썬으로 자동화해 장당 약 30분에서 5분으로 줄임</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="edu mono">// 학력·자격 · 정보보호학 공학사 (학점은행제, 2018) · 정보처리산업기사 · 네트워크관리사 2급 · 정보기기운용기능사 · 스마트홈관리사</p>
+  </div>
+</section>
+
+<!-- 작업 -->
+<section id="projects" class="projects" data-scene="작업">
+  <div class="proj-pin">
+    <div class="proj-head wrap">
+      <div>
+        <span class="label mono">03 · 작업</span>
+        <h2 class="title split-up">작업 카드</h2>
+        <p class="sub">AI 전환 이후 진행한 프로젝트와 프로덕트 작업물입니다. 카드를 누르면 자세히 볼 수 있습니다.</p>
+      </div>
+      <ol class="chapters mono" aria-hidden="true">
+        <li data-cat="agent">에이전트 운영</li>
+        <li data-cat="work">기업 AI</li>
+        <li data-cat="project">개인 프로젝트</li>
+        <li data-cat="edu">부트캠프</li>
+      </ol>
+    </div>
+    <div class="track-wrap">
+      <div class="track" id="track"></div>
+    </div>
+    <div class="proj-bar" aria-hidden="true"><i></i></div>
+  </div>
+  <dialog id="dlg" aria-labelledby="dlg-title">
+    <button class="close" type="button" aria-label="닫기"><i class="fas fa-xmark"></i></button>
+    <div class="dlg-body"></div>
+  </dialog>
+</section>
+
+<!-- 판단 기록 -->
+<section id="blog" class="blog" data-scene="판단 기록">
+  <div class="blog-pin wrap">
+    <div class="blog-head">
+      <span class="label mono">04 · 판단 기록</span>
+      <h2 class="title split-up">기술 블로그</h2>
+      <p class="sub">기술 블로그를 운영하고 있습니다. 인생 서사부터 실패 기록까지, 제가 해 온 모든 것을 담았습니다.</p>
+    </div>
+    <div class="reel">
+      <a class="verdict" href="https://blog.bkan.dev/denominator-not-the-search" target="_blank" rel="noopener">
+        <span class="big mono">0.45</span><span class="kind mono">판정문</span>
+        <span class="vt">검색 재현율 0.45, 빠진 22건을 열어봤다</span><span class="vs">빠진 22건 중 실제 누락 1건</span>
+      </a>
+      <a class="verdict" href="https://blog.bkan.dev/silent-failure-is-not-success" target="_blank" rel="noopener">
+        <span class="big mono">18→0</span><span class="kind mono">판정문</span>
+        <span class="vt">저장 18건 보고 실제 0건</span><span class="vs">성공처럼 보이는 실패</span>
+      </a>
+      <a class="verdict" href="https://blog.bkan.dev/canary-reverted-the-bench-win" target="_blank" rel="noopener">
+        <span class="big mono">7일</span><span class="kind mono">판정문</span>
+        <span class="vt">벤치에서 빨랐던 설정을 7일 카나리가 되돌렸다</span><span class="vs">롤백 기준을 배포 전에 코드로</span>
+      </a>
+      <a class="verdict" href="https://blog.bkan.dev/rows-are-not-calls" target="_blank" rel="noopener">
+        <span class="big mono">40%</span><span class="kind mono">판정문</span>
+        <span class="vt">통화 기록의 40%가 중복이었다</span><span class="vs">중복 제거를 적재 규칙으로</span>
+      </a>
+      <a class="verdict" href="https://blog.bkan.dev/more-reviewers-same-verdict" target="_blank" rel="noopener">
+        <span class="big mono">=</span><span class="kind mono">아티클</span>
+        <span class="vt">리뷰어를 늘려도 판정은 그대로였다</span><span class="vs">판정을 스크립트로 꺼냄</span>
+      </a>
+      <a class="verdict" href="https://blog.bkan.dev/undersampled-is-not-a-result" target="_blank" rel="noopener">
+        <span class="big mono">17건</span><span class="kind mono">판정문</span>
+        <span class="vt">표본 17건, 승자 없음</span><span class="vs">Δ +0.021, 미리 정한 최소 표본 미달</span>
+      </a>
+      <span class="reel-count mono" aria-hidden="true"><b>01</b> / 06</span>
+    </div>
+  </div>
+  <div class="wrap rows">
+    <div class="row"><span class="mono k">개발일지</span><span><a href="https://blog.bkan.dev/hindsight-crew" target="_blank" rel="noopener">Hindsight-Crew</a> · <a href="https://blog.bkan.dev/agent-ops" target="_blank" rel="noopener">에이전트 운영 체계</a> · <a href="https://blog.bkan.dev/devlog/" target="_blank" rel="noopener">전체 ↗</a></span></div>
+    <div class="row"><span class="mono k">아티클</span><span><a href="https://blog.bkan.dev/instructions-are-not-memory" target="_blank" rel="noopener">CLAUDE.md 243줄 → 77줄</a> · <a href="https://blog.bkan.dev/four-rules-for-reporting-ai-output" target="_blank" rel="noopener">보고서 AI 표기 규칙 넷</a> · <a href="https://blog.bkan.dev/agents-wrote-done" target="_blank" rel="noopener">에이전트가 '완료'라고 적은 것들</a></span></div>
+    <div class="row"><span class="mono k">집필 방식</span><span>초안은 에이전트가 쓰고 교정과 판정은 제가 합니다. 근거가 없는 판정문은 빌드가 실패합니다. <a href="https://blog.bkan.dev/verdicts/" target="_blank" rel="noopener">판정문 전체 ↗</a></span></div>
+  </div>
+</section>
+
+<!-- 기술 -->
+<section id="skills" class="skills" data-scene="기술">
+  <div class="wrap">
+    <span class="label mono">05 · 기술</span>
+    <h2 class="title split-up">쓰는 기술</h2>
+    <div class="skill-table">
+      <div class="sr"><span class="th mono" data-text="Agent">Agent</span><span class="td">에이전트 하네스(Claude Code · Codex) · MCP · 에이전트 메모리(Hindsight) · 지침·훅·스킬 설계 · 멀티에이전트 작업 운영</span></div>
+      <div class="sr"><span class="th mono" data-text="Search / Eval">Search / Eval</span><span class="td">RAG · LLM·에이전트 평가 · 재현율·지연 실측 · 미리 정한 판정 기준 · 운영 카나리</span></div>
+      <div class="sr"><span class="th mono" data-text="Data">Data</span><span class="td">PostgreSQL · pgvector · 정규화 스키마 설계 · ETL</span></div>
+      <div class="sr"><span class="th mono" data-text="Ops">Ops</span><span class="td">Python · Docker · Tailscale · launchd · GitHub Actions</span></div>
+      <div class="sr"><span class="th mono" data-text="AI / ML">AI / ML</span><span class="td">PyTorch · LangGraph · LightGBM (부트캠프 팀 대회)</span></div>
+      <div class="sr"><span class="th mono" data-text="SOC">SOC</span><span class="td">보안관제 2년 4개월 · SIEM · 방화벽/UTM · WAF/IPS</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 연락처 -->
+<section id="contact" class="contact" data-scene="연락처">
+  <div class="wrap">
+    <span class="label mono">06 · 연락처</span>
+    <h2 class="title big split-up">좋은 인연을 기다리고 있습니다.</h2>
+    <p class="sub">사내에 AI를 도입해 일하는 방식을 바꾸는 AX 직무라면, 정규직과 외주 의뢰 모두 환영합니다.<br>편하게 연락 주세요.</p>
+    <a href="mailto:bk@bkan.dev" class="email mono" aria-label="bk@bkan.dev">bk@bkan.dev</a>
+    <div class="cards">
+      <a href="https://github.com/Bkankim" class="card" target="_blank" rel="noopener"><i class="fab fa-github"></i><span><b>GitHub</b><small>github.com/Bkankim</small></span></a>
+      <a href="https://blog.bkan.dev" class="card" target="_blank" rel="noopener"><i class="fas fa-pen-nib"></i><span><b>Blog</b><small>blog.bkan.dev</small></span></a>
+      <a href="https://www.threads.com/@sweet_bkan" class="card" target="_blank" rel="noopener"><i class="fab fa-threads"></i><span><b>Threads</b><small>@sweet_bkan</small></span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot wrap mono">
+  <span>© 2026 Byeonghyeon Kim</span>
+  <span>정적 원본은 <a href="https://portfolio.bkan.dev/" target="_blank" rel="noopener">portfolio.bkan.dev</a> · <a href="/motion/">bkan lab 모션 실험 목록</a></span>
+</footer>
+
+<script src="data.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="motion.js?v=2"></script>
+</body>
+</html>
