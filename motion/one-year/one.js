@@ -170,12 +170,12 @@
     soulN: say('<p class="xxl acc">1nm</p>'),
     m1a: say('<p>미국 생활 하느라</p>'), m1b: say('<p class="acc">너무너무 고생이 많지?</p>'),
     m2a: say('<p class="xl">절대로 또</p>'), m2b: say('<p class="xl acc">아프지 말고!</p>'),
-    m3: say('<p class="hand acc">바부리 똥뿌리야.</p>', 6),
-    m4: say('<p class="xxl">사랑해.</p>'),
-    m5a: say('<p class="xl">1년.</p>'), m5b: say('<p class="xl acc"><span class="n y100">1</span>년</p>'),
-    m5c: say('<p><span class="n y10000">100</span>년동안 사랑할게.</p>'),
-    m6: say('<p class="xl">1주년<br>축하해.</p>'),
-    m7a: say('<p class="xl">우리 평생</p>'), m7b: say('<p class="xl acc">함께하자.</p>'),
+    m3: say('<p class="hand acc">바부리 똥뿌리야</p>', 6),
+    m4: say('<p class="xxl">사랑해</p>'),
+    m5a: say('<p class="xl">1년</p>'), m5b: say('<p class="xl acc"><span class="n y100">1</span>년</p>'),
+    m5c: say('<p><span class="n y10000">100</span>년동안 사랑할게</p>'),
+    m6: say('<p class="xl">1주년<br>축하해</p>'),
+    m7a: say('<p class="xl">우리 평생</p>'), m7b: say('<p class="xl acc">함께하자</p>'),
   };
   // 1주년 알약
   S.year.querySelectorAll('p').forEach((p) => Object.assign(p.style, { display: 'inline-block', background: '#2B0F1E', color: '#FFEFF2', padding: '.06em .22em .1em', borderRadius: '.18em' }));
@@ -400,6 +400,7 @@
       tl.fromTo(lbls[k], { autoAlpha: 0 }, { autoAlpha: 1, duration: .15, immediateRender: false }, t);
     });
     tl.set(lbls, { autoAlpha: 0 }, 0);
+    tl.set(chart.querySelectorAll('.coreT, .coreS'), { autoAlpha: 0 }, 0);
     // 가운데 원이 박마다 뛴다
     for (let b = C.anniv + B; b < C.anniv + 9 * B; b += B) {
       tl.to(chart.querySelector('.core'), { attr: { r: r0c * 1.06 }, duration: .07, ease: 'power2.out' }, b).to(chart.querySelector('.core'), { attr: { r: r0c }, duration: .4, ease: 'power3.out' }, b + .07);
@@ -427,6 +428,8 @@
 
     // ===== 거리: 쌓이고 -> 한 점으로 빨려 들고 -> 1박 정적 -> 히트 =====
     field(C.distance - .1, 'lav');
+    tl.set('#dLine', { scaleX: 0 }, C.distance);
+    tl.set(['#dA', '#dB'], { scale: 0 }, C.distance);
     tl.set('#dist', { autoAlpha: 1 }, C.distance);
     place(S.dTitle, cy(.2)); place(S.dNum, cy(.28)); place(S.dBut, cy(.7));
     sliceIn(S.dTitle, C.distance);
@@ -487,9 +490,12 @@
 
     // ===== 반지: 하트가 보석이 되고, 평면 원이 기울어 입체 반지가 된다 =====
     field(C.ring - .1, 'blush');
-    const gemY = cy(.44) - (W * .58 * 220 / 200) / 2 + (W * .58) * (60 / 200);
+    // 보석 중심(viewBox y 60)에 기울기 뒤 내려가는 44를 더한 자리
+    const gemY = cy(.44) - (W * .58 * 220 / 200) / 2 + (W * .58) * ((60 + 44) / 200);
     tl.to('#heart', { y: gemY - 45, scaleX: .3, scaleY: .3, ease: 'reel', duration: SNAP }, C.ring - .3);
     tl.to('#heart', { scaleX: 0, scaleY: 0, ease: EXIT, duration: .15 }, C.ring + .45);
+    tl.set('#ring .band-back', { autoAlpha: 0 }, C.ring);
+    tl.set('#ring .spark', { scale: 0 }, C.ring);
     tl.set('#ring', { autoAlpha: 1 }, C.ring);
     tl.fromTo('#ring .band', { attr: { 'stroke-dasharray': '0 1000' } }, { attr: { 'stroke-dasharray': '415 1000' }, ease: 'reel', duration: SNAP, immediateRender: false }, C.ring);
     tl.fromTo('#ring .band-back', { autoAlpha: 0 }, { autoAlpha: 1, duration: .05, immediateRender: false }, C.ring + SNAP);
@@ -502,7 +508,7 @@
     tl.fromTo('#ring .gem', { scaleX: 0, scaleY: 0 }, { scaleX: 1.03, scaleY: 1.03, ease: 'power2.out', duration: .16, immediateRender: false }, C.ring + .45);
     tl.to('#ring .gem', { scaleX: 1, scaleY: 1, ease: 'power2.out', duration: .14 }, C.ring + .61);
     tl.fromTo('#ring .spark', { scale: 0, rotation: 0 }, { scale: 1, rotation: 90, ease: 'reel', duration: SNAP, stagger: { each: B * .5, repeat: 1, yoyo: true }, immediateRender: false }, C.ring + .6);
-    tl.to('#ring', { scaleX: 1.08, scaleY: .88, ease: 'power2.out', duration: .1 }, C.ringOut);
+    tl.to('#ring', { scaleX: 1.03, scaleY: .97, ease: 'power2.out', duration: .1 }, C.ringOut);   // 승인한 튕김 3% 이내
     tl.to('#ring', { scaleX: 0, scaleY: 0, ease: EXIT, duration: .2 }, C.ringOut + .1);
     tl.set('#ring', { autoAlpha: 0 }, C.ringOut + .3);
 
@@ -516,7 +522,7 @@
   // ---------- 효과음 (Web Audio로 합성) ----------
   let ac = null;
   function tone(f0, f1, dur, type, vol, when = 0) {
-    if (!ac) return;
+    if (!ac || music.muted) return;   // 소리 끄기는 효과음에도 적용
     const t0 = ac.currentTime + when;
     const o = ac.createOscillator(), g = ac.createGain();
     o.type = type; o.frequency.setValueAtTime(f0, t0);
@@ -535,8 +541,25 @@
   const SFX = [[C.ring + .45, pop], [C.ringOut + .1, pop], [C.gift, pop]];
 
   // ---------- 시계: 음원 재생 위치가 정본, 프레임 사이는 벽시계로 메운다 ----------
-  let running = false, clock0 = 0, lastT = TRIM;
+  let running = false, started = false, clock0 = 0, lastT = TRIM;
+  // 시계는 음악이 실제로 나오기 시작할 때 출발한다. 끝내 안 나오면 3초 뒤 소리 없이 출발
+  const startClock = (at = 0) => { if (started) return; started = true; clock0 = performance.now() - at * 1000; };
+  // 음악이 중간에 멈추면(전화·잠금 화면·버퍼링) 화면도 그 자리에 세우고, 다시 나오면 그 위치에서 잇는다
+  let holding = false, heldT = TRIM;
+  const hold = () => { if (running && started && !opened && !music.ended && !holding) { holding = true; heldT = lastT; } };
+  music.addEventListener('pause', hold);
+  music.addEventListener('waiting', hold);
+  music.addEventListener('playing', () => {
+    startClock(music.currentTime);
+    if (holding) { holding = false; clock0 = performance.now() - music.currentTime * 1000; }
+  });
+  // 멈춘 채 돌아오면 화면을 한 번 누르거나 다시 보일 때 음악을 다시 튼다
+  const resume = () => { if (holding && music.paused && !opened) music.play().catch(() => {}); };
+  stage.addEventListener('pointerdown', resume);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) resume(); });
   function songNow() {
+    if (!started) return TRIM;
+    if (holding) return heldT;
     const c = TRIM + (performance.now() - clock0) / 1000;
     if (!music.paused && !music.ended && music.readyState >= 2) {
       const a = TRIM + music.currentTime;
@@ -584,8 +607,8 @@
     else video.muted = false;
 
     music.currentTime = 0;
-    music.play().catch(() => {});
-    clock0 = performance.now();
+    music.play().catch(() => startClock());
+    setTimeout(() => startClock(), 3000);
     lastT = TRIM;
     running = true;
     gsap.to('#start', { autoAlpha: 0, y: -20, duration: .3, ease: EXIT });
@@ -594,7 +617,9 @@
 
   $('mute').addEventListener('click', () => {
     music.muted = !music.muted;
+    video.muted = music.muted;
     $('mute').classList.toggle('off', music.muted);
+    $('mute').setAttribute('aria-label', music.muted ? '소리 켜기' : '소리 끄기');
   });
 
   let resizeT = 0;
@@ -610,7 +635,7 @@
 
   // ---------- 선물 ----------
   const gift = $('gift');
-  let idle = null, opened = false;
+  let idle = null, bob = null, opened = false;
   function giftReady() {
     gift.disabled = false;
     if (idle) idle.kill();
@@ -618,7 +643,9 @@
       .to(gift, { rotation: -6, duration: .1, ease: 'power2.out' })
       .to(gift, { rotation: 5, duration: .12, ease: 'power2.inOut' })
       .to(gift, { rotation: 0, duration: .3, ease: 'reel' });
-    gsap.to('#gift .bubble', { y: -6, duration: B, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    // 화면 크기 변경으로 다시 불려도 말풍선 반복 트윈이 겹치지 않게 앞의 것만 끈다(타임라인 안 등장 트윈은 두고)
+    if (bob) bob.kill();
+    bob = gsap.to('#gift .bubble', { y: -6, duration: B, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   }
 
   gift.addEventListener('click', () => {
@@ -639,22 +666,41 @@
       .to('#gift .bubble', { opacity: 0, duration: .12 }, 0)
       .to(gift, { scaleX: .02, ease: EXIT, duration: .2 }, .7)
       .set(gift, { autoAlpha: 0 }, .9)
-      .fromTo('#reveal', { autoAlpha: 1, scaleX: .02, scaleY: .4 }, { scaleX: 1, scaleY: 1, duration: .45, ease: 'reel' }, .85)
-      .call(() => {
-        video.currentTime = 0;
-        video.controls = true;
-        const p = video.play();
-        if (p) p.catch(() => { $('tapPlay').hidden = false; });
-      }, null, 1);
+      .fromTo('#reveal', { autoAlpha: 1, scaleX: .02, scaleY: .4 }, { scaleX: 1, scaleY: 1, duration: .45, ease: 'reel' }, .85);
+    // 전체화면은 사용자가 누른 직후에만 허용된다. 아이폰(WebKit)은 1초 안의 setTimeout까지만 누른 것으로 쳐서
+    // GSAP 콜백(rAF)이 아니라 setTimeout으로 0.8초 뒤에 재생과 전체화면을 함께 요청한다
+    setTimeout(() => {
+      video.currentTime = 0;
+      video.muted = music.muted;
+      video.controls = true;
+      const p = video.play();
+      if (p) p.catch(() => { $('tapPlay').hidden = false; });
+      enterFull();
+    }, 800);
   });
 
-  $('tapPlay').addEventListener('click', () => { $('tapPlay').hidden = true; video.play(); });
+  // 전체화면: 아이폰은 영상 전용 전체화면(기본 플레이어), 그 밖은 Fullscreen API. 막히면 작은 화면에서 그대로 재생
+  function enterFull() {
+    try {
+      if (video.requestFullscreen) {
+        video.requestFullscreen().then(() => { try { screen.orientation.lock('landscape').catch(() => {}); } catch (e) {} }).catch(() => {});
+      } else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    } catch (e) { /* 작은 화면 재생 유지 */ }
+  }
+  function exitFull() {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      else if (video.webkitDisplayingFullscreen) video.webkitExitFullscreen();
+    } catch (e) {}
+  }
+
+  $('tapPlay').addEventListener('click', () => { $('tapPlay').hidden = true; video.play(); enterFull(); });
   video.addEventListener('ended', () => {
-    const a = $('after');
-    a.hidden = false;
-    gsap.fromTo(a, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: SNAP, ease: 'reel' });
+    exitFull();
+    // 저장 버튼 자리는 처음부터 잡혀 있어(visibility만 숨김) 나타날 때 영상이 튀지 않는다
+    gsap.fromTo('#after', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: SNAP, ease: 'reel' });
   });
-  $('again').addEventListener('click', () => { video.currentTime = 0; video.play(); });
+  $('again').addEventListener('click', () => { video.currentTime = 0; video.play(); enterFull(); });
   $('restart').addEventListener('click', () => location.reload());
 
   // ---------- 리본 띠(촤라란) ----------
