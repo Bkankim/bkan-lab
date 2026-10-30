@@ -177,8 +177,6 @@
     m6: say('<p class="xl">1주년<br>축하해</p>'),
     m7a: say('<p class="xl">우리 평생</p>'), m7b: say('<p class="xl acc">함께하자</p>'),
   };
-  // 1주년 알약
-  S.year.querySelectorAll('p').forEach((p) => Object.assign(p.style, { display: 'inline-block', background: '#2B0F1E', color: '#FFEFF2', padding: '.06em .22em .1em', borderRadius: '.18em' }));
 
   // 달마다 사진 수(진짜 데이터)
   const months = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -420,8 +418,12 @@
     tl.set(wall, { autoAlpha: 1 }, wt);
     tl.fromTo(wallImgs, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, ease: 'reel', duration: SNAP, stagger: (i) => (i % 5) * B * .5 + Math.floor(i / 5) * .03, immediateRender: false }, wt);
     tl.fromTo(wall, { scale: 1.12 }, { scale: 1, ease: 'none', duration: C.distance - wt, immediateRender: false }, wt);
-    place(S.year, cy(.5));
-    sliceIn(S.year, wt + 5 * B * .5 + B);
+    // 벽이 가운데에서 위아래로 갈라져 로즈 틈이 열리고, 그 틈에 '1주년'이 들어앉는다(쇼릴 f720: 선이 갈라지며 패널이 열림)
+    const split = wt + 5 * B * .5 + B, gap = H * .2;
+    tl.to(wallImgs.slice(0, 25), { y: -gap / 2, ease: 'reel', duration: SNAP }, split);
+    tl.to(wallImgs.slice(25), { y: gap / 2, ease: 'reel', duration: SNAP }, split);
+    place(S.year, cy(.52));
+    sliceIn(S.year, split + .12);
     sliceOut(S.year, C.distance - .3);
     tl.to(wallImgs, { scale: 0, ease: EXIT, duration: .2, stagger: (i) => (4 - i % 5) * .03 }, C.distance - .3);
     tl.set(wall, { autoAlpha: 0 }, C.distance);
