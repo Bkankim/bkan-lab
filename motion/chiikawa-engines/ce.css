@@ -221,6 +221,7 @@ h1::after {
 }
 .full svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
 .tile:hover .full, .tile:focus-within .full { opacity: 1; }
+@media (hover: none) { .full { opacity: 1; } }
 .hint { margin: 12px 2px 0; font-size: 14px; color: var(--ink-soft); }
 
 /* 본문 */

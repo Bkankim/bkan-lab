@@ -77,10 +77,12 @@
     });
     fig.querySelector('.full').addEventListener('click', (ev) => {
       ev.stopPropagation();
+      // 전체 화면으로 띄우는 편이 소리를 내도록 먼저 고른다
+      select(i, false);
       if (v.requestFullscreen) v.requestFullscreen().catch(() => {});
       else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
     });
-    v.addEventListener('ended', () => { if (i === active) loopAll(); });
+    v.addEventListener('ended', () => { if (i === active && !scrubbing) loopAll(); });
     grid.appendChild(fig);
 
     const tab = document.createElement('button');
@@ -128,19 +130,39 @@
     modeBtns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
   }
 
-  const safePlay = (v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  // 판을 바꾸는 중에는 새 영상의 currentTime이 0이라, 바꾸기 전 시각을 따로 들고 있는다
+  let pendingT = null;
+  let modeGen = 0;
+  const clock = () => (pendingT !== null ? pendingT : master().currentTime);
+  const clampT = (v, t) => Math.max(0, Math.min(t, (v.duration || 30) - 0.05));
+
+  function stopAll() {
+    playing = false;
+    tiles.forEach((x) => x.v.pause());
+    paint();
+  }
+
+  // 브라우저가 소리 있는 재생을 막으면(제스처 밖) 시계가 멈춘 채 도는 상태를 남기지 않는다
+  const safePlay = (v) => {
+    const p = v.play();
+    if (p && p.catch) {
+      p.catch((err) => {
+        if (err && err.name === 'NotAllowedError' && v === master() && playing) stopAll();
+      });
+    }
+  };
 
   function runAll() {
-    const t = master().currentTime;
+    const t = clock();
     tiles.forEach((x, i) => {
       if (narrow() && i !== active) { x.v.pause(); return; }
-      if (i !== active && Math.abs(x.v.currentTime - t) > 0.05) x.v.currentTime = t;
+      if (i !== active && pendingT === null && Math.abs(x.v.currentTime - t) > 0.05) x.v.currentTime = clampT(x.v, t);
       if (playing) safePlay(x.v); else x.v.pause();
     });
   }
 
   function seekAll(t) {
-    tiles.forEach((x) => { x.v.currentTime = t; });
+    tiles.forEach((x) => { x.v.currentTime = clampT(x.v, t); });
   }
 
   function loopAll() {
@@ -149,10 +171,14 @@
   }
 
   function select(i, fromTile) {
-    if (i === active && fromTile && !playing) { playing = true; paint(); runAll(); return; }
-    const t = master().currentTime;
+    if (i === active) {
+      // 소리 나는 칸을 다시 누르면 재생·정지를 오간다
+      if (fromTile) { playing = !playing; paint(); runAll(); }
+      return;
+    }
+    const t = clock();
     active = i;
-    if (Math.abs(master().currentTime - t) > 0.05) master().currentTime = t;
+    if (pendingT === null && Math.abs(master().currentTime - t) > 0.05) master().currentTime = clampT(master(), t);
     if (fromTile && !playing) playing = true;
     paint();
     runAll();
@@ -160,16 +186,21 @@
 
   function setMode(m) {
     if (m === mode) return;
-    const t = master().currentTime;
+    const t = clock();
+    const gen = ++modeGen;
+    pendingT = t;
     mode = m;
     tiles.forEach((x) => {
-      x.v.src = src(x.e);
       x.v.addEventListener('loadedmetadata', () => {
-        x.v.currentTime = Math.min(t, (x.v.duration || 30) - 0.05);
+        if (gen !== modeGen) return; // 그사이 또 바꿨으면 이 리스너는 버린다
+        x.v.currentTime = clampT(x.v, t);
+        if (x === tiles[active]) pendingT = null;
         if (playing && (!narrow() || x === tiles[active])) safePlay(x.v);
       }, { once: true });
-      x.v.load();
+      x.v.src = src(x.e); // src 대입만으로 다시 읽는다(load() 중복 호출 없음)
     });
+    // 소리 나는 편은 누른 제스처 안에서 재생을 걸어 둔다(iOS 자동재생 정책)
+    if (playing) safePlay(master());
     paint();
   }
 
@@ -179,12 +210,24 @@
     runAll();
   });
 
+  // 끄는 동안은 네 편을 멈추고 소리 나는 편만 따라가게 하고, 손을 떼면 한 번에 맞춘다
   scrub.addEventListener('input', () => {
-    scrubbing = true;
-    seekAll(Number(scrub.value));
-    timeEl.textContent = fmt(Number(scrub.value));
+    if (!scrubbing) {
+      scrubbing = true;
+      tiles.forEach((x) => x.v.pause());
+    }
+    const t = Number(scrub.value);
+    master().currentTime = clampT(master(), t);
+    timeEl.textContent = fmt(t);
   });
-  scrub.addEventListener('change', () => { scrubbing = false; runAll(); });
+  function endScrub() {
+    if (!scrubbing) return;
+    scrubbing = false;
+    seekAll(Number(scrub.value));
+    runAll();
+  }
+  ['change', 'pointerup', 'pointercancel', 'touchend', 'touchcancel', 'blur']
+    .forEach((ev) => scrub.addEventListener(ev, endScrub));
 
   modeBtns.forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
 
@@ -194,15 +237,19 @@
   function tick() {
     const m = master();
     if (!scrubbing) {
-      scrub.value = String(m.currentTime);
-      timeEl.textContent = fmt(m.currentTime);
+      const t = clock();
+      scrub.value = String(t);
+      timeEl.textContent = fmt(t);
     }
-    if (playing && !narrow() && !scrubbing && !m.seeking) {
+    if (playing && !narrow() && !scrubbing && pendingT === null) {
+      // 소리 나는 편이 버퍼링 중이면 나머지도 같이 기다린다
+      const stalled = m.seeking || m.readyState < 3 || m.paused;
       tiles.forEach((x, i) => {
-        if (i === active || x.v.seeking) return;
-        if (x.v.ended || x.v.readyState < 2) return;
-        if (Math.abs(x.v.currentTime - m.currentTime) > 0.15) x.v.currentTime = m.currentTime;
-        if (x.v.paused && !m.paused) safePlay(x.v);
+        if (i === active || x.v.seeking || x.v.ended) return;
+        if (stalled) { if (!x.v.paused) x.v.pause(); return; }
+        if (x.v.readyState < 2) return;
+        if (Math.abs(x.v.currentTime - m.currentTime) > 0.15) x.v.currentTime = clampT(x.v, m.currentTime);
+        if (x.v.paused) safePlay(x.v);
       });
     }
     requestAnimationFrame(tick);
