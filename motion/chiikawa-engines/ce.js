@@ -7,25 +7,25 @@
   const ENGINES = [
     {
       id: 'seek', name: 'seek', color: '#FFA5B1',
-      how: '엔진 없이, 시간 t를 받아 화면을 그리는 HTML을 직접 짜고 브라우저로 한 장씩 찍음',
+      how: '엔진 없이, 시간 t를 받아 화면을 그리는 HTML을 직접 작성하고 브라우저로 한 장씩 캡처함',
       first: '15:19', total: '32:36', cost: '$3.95', turns: 64,
       sound: '있음', rev: '7:22 · $2.61', blind: '1위',
     },
     {
       id: 'brag', name: 'brag', color: '#7CD7FF',
-      how: '런칭 영상 플러그인 brag. 가벼운 판으로 바뀌어 HTML 장면을 크롬으로 캡처',
+      how: '런칭 영상 플러그인 brag. 가벼운 판으로 바뀌면서 HTML 장면을 크롬으로 캡처함',
       first: '8:49', total: '9:53', cost: '$2.38', turns: 44,
       sound: '있음', rev: '4:45 · $1.92', blind: '상위 묶음',
     },
     {
       id: 'remotion', name: 'Remotion', color: '#FFD272',
-      how: 'React 컴포넌트로 영상을 짜는 Remotion과 공식 스킬',
+      how: 'React 컴포넌트로 영상을 작성하는 Remotion과 공식 스킬',
       first: '6:16', total: '14:31', cost: '$2.14', turns: 54,
       sound: '있음 (작게)', rev: '4:57 · $1.95', blind: '상위 묶음',
     },
     {
       id: 'hf', name: 'HyperFrames', short: 'HF', color: '#BC8BE2',
-      how: 'HTML을 영상으로 굽는 HyperFrames와 공식 스킬',
+      how: 'HTML을 영상으로 렌더링하는 HyperFrames와 공식 스킬',
       first: '12:38', total: '14:14', cost: '$3.89', turns: 76,
       sound: '없음', rev: '11:10 · $4.34', blind: '하위 묶음, 이름 공개 뒤 상위로',
       silentOrig: true,
@@ -134,7 +134,7 @@
   function paint() {
     tiles.forEach((x, i) => {
       const on = i === active;
-      const silent = x.e.silentOrig && mode === 'orig';
+      const silent = Boolean(x.e.silentOrig) && mode === 'orig';
       const audible = on && soundOn;
       MODES.forEach((m) => {
         const v = x.vids[m];
@@ -150,8 +150,8 @@
       x.tab.setAttribute('aria-selected', String(on));
     });
     $('#hint').textContent = narrow()
-      ? '엔진을 바꿔도 같은 시각에서 이어집니다.'
-      : '영상을 누르면 재생과 정지, 소리 버튼으로 그 영상 소리를 켜고 끕니다.';
+      ? '엔진을 바꿔도 재생은 같은 시각에서 이어집니다.'
+      : '영상을 누르면 재생하거나 정지하고, 소리 버튼으로 그 영상의 소리를 켜고 끕니다.';
     playBtn.classList.toggle('on', playing);
     playBtn.setAttribute('aria-label', playing ? '일시정지' : '재생');
     modeBtns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
