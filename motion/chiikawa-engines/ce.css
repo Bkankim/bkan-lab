@@ -1,4 +1,4 @@
-/* 한 브리프, 네 엔진 - 먼작귀 공식 색(이름 카드 배경)과 외곽선색으로 */
+/* 모션 엔진 4개 비교 - 먼작귀 공식 색(이름 카드 배경)과 외곽선색으로 */
 :root {
   --ink: #412521;
   --ink-soft: #6d4c47;
@@ -160,6 +160,7 @@ h1::after {
 }
 .tile:hover { transform: translateY(-2px); }
 .tile.active { box-shadow: 0 0 0 4px var(--c), 6px 6px 0 4px var(--ink); }
+.screen { position: relative; }
 .tile video {
   display: block;
   width: 100%;
@@ -189,6 +190,9 @@ h1::after {
 .cap .how { margin: 2px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
 .sound {
   flex: none;
+  font: inherit;
+  cursor: pointer;
+  background: transparent;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -201,8 +205,9 @@ h1::after {
   color: var(--ink-soft);
   white-space: nowrap;
 }
-.tile.active .sound { background: var(--ink); border-color: var(--ink); color: #fff; }
-.tile.mute .sound { background: transparent; color: var(--ink-soft); border-style: dashed; }
+.sound:hover { border-color: var(--ink); }
+.sound.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.sound.mute { background: transparent; color: var(--ink-soft); border-style: dashed; }
 .full {
   position: absolute;
   top: 10px;
@@ -373,3 +378,4 @@ h2 { font-size: 30px; line-height: 1.25; margin: 0 0 12px; }
 @media (prefers-reduced-motion: reduce) {
   .tile, .play { transition: none; }
 }
+.tile video[hidden] { display: none; }
