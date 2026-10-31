@@ -1,4 +1,4 @@
-// 한 브리프, 네 엔진 - 네 편을 한 시계로 돌린다.
+// 모션 엔진 4개 비교 - 네 편을 한 시계로 돌린다.
 // 기준 시계는 "소리를 내는 편(active)"의 currentTime이고, 나머지는 어긋나면 그 시각으로 당긴다.
 (() => {
   'use strict';
@@ -40,49 +40,67 @@
   const timeEl = $('#time');
   const modeBtns = [...document.querySelectorAll('.mode button')];
   const narrowMq = window.matchMedia('(max-width: 720px)');
+  const MODES = ['orig', 'rev'];
 
   let mode = 'rev';
   let active = 0;
   let playing = false;
   let scrubbing = false;
+  let soundOn = true;
+  let warmed = false;
 
-  const src = (e) => `v/${e.id}-${mode}.mp4`;
   const fmt = (t) => {
     const s = Math.max(0, Math.floor(t));
     return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
   };
+  const clampT = (v, t) => Math.max(0, Math.min(t, (v.duration || 30) - 0.05));
+  const narrow = () => narrowMq.matches;
 
-  // 칸과 탭 만들기
+  // 칸마다 두 판(처음 만든 것·수정 뒤)의 영상을 따로 두고, 보이는 쪽만 바꾼다.
+  // src를 갈아 끼우지 않으니 판을 바꿀 때 다시 받지 않고, 안 보이는 판은 확실히 멈춘다.
   const tiles = ENGINES.map((e, i) => {
     const fig = document.createElement('figure');
     fig.className = 'tile';
     fig.style.setProperty('--c', e.color);
     fig.tabIndex = 0;
-    fig.setAttribute('aria-label', `${e.name} 영상, 누르면 이 영상 소리만 켭니다`);
+    fig.setAttribute('aria-label', `${e.name} 영상`);
     fig.innerHTML = `
-      <video playsinline muted preload="metadata" poster="v/${e.id}.jpg"></video>
+      <div class="screen">
+        ${MODES.map((m) => `<video data-mode="${m}" playsinline muted preload="metadata" poster="v/${e.id}.jpg" src="v/${e.id}-${m}.mp4"></video>`).join('')}
+      </div>
       <button class="full" type="button" aria-label="${e.name} 전체 화면">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
       </button>
       <figcaption class="cap">
         <i class="dot" aria-hidden="true"></i>
         <span class="who"><span class="name">${e.name}</span><span class="how">${e.how}</span></span>
-        <span class="sound"></span>
+        <button class="sound" type="button"></button>
       </figcaption>`;
-    const v = fig.querySelector('video');
-    v.src = src(e);
+    const vids = {};
+    fig.querySelectorAll('video').forEach((v) => {
+      vids[v.dataset.mode] = v;
+      v.addEventListener('ended', () => { if (v === master() && !scrubbing) loopAll(); });
+    });
     fig.addEventListener('click', () => select(i, true));
     fig.addEventListener('keydown', (ev) => {
+      if (ev.target !== fig) return;
       if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(i, true); }
     });
     fig.querySelector('.full').addEventListener('click', (ev) => {
       ev.stopPropagation();
       // 전체 화면으로 띄우는 편이 소리를 내도록 먼저 고른다
       select(i, false);
+      const v = vids[mode];
       if (v.requestFullscreen) v.requestFullscreen().catch(() => {});
       else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
     });
-    v.addEventListener('ended', () => { if (i === active && !scrubbing) loopAll(); });
+    // 소리 버튼: 소리 나는 칸이면 켜고 끄고, 다른 칸이면 소리를 그 칸으로 옮긴다
+    fig.querySelector('.sound').addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (i === active) soundOn = !soundOn;
+      else { soundOn = true; select(i, false); }
+      paint();
+    });
     grid.appendChild(fig);
 
     const tab = document.createElement('button');
@@ -94,7 +112,7 @@
     tab.addEventListener('click', () => select(i, false));
     tabs.appendChild(tab);
 
-    return { e, fig, v, tab };
+    return { e, fig, vids, tab, btn: fig.querySelector('.sound') };
   });
 
   // 표 채우기
@@ -109,36 +127,39 @@
       <td>${e.blind}</td>
     </tr>`).join('');
 
-  const narrow = () => narrowMq.matches;
-  const master = () => tiles[active].v;
+  const cur = (x) => x.vids[mode];
+  const master = () => cur(tiles[active]);
+  const allVids = () => tiles.flatMap((x) => MODES.map((m) => x.vids[m]));
 
   function paint() {
-    tiles.forEach((t, i) => {
+    tiles.forEach((x, i) => {
       const on = i === active;
-      const silent = t.e.silentOrig && mode === 'orig';
-      t.fig.classList.toggle('active', on);
-      t.fig.classList.toggle('mute', silent);
-      t.v.muted = !on;
-      t.fig.querySelector('.sound').textContent = silent ? '원래 무음' : on ? '소리 켜짐' : '소리 끔';
-      t.tab.setAttribute('aria-selected', String(on));
+      const silent = x.e.silentOrig && mode === 'orig';
+      const audible = on && soundOn;
+      MODES.forEach((m) => {
+        const v = x.vids[m];
+        v.hidden = m !== mode;
+        v.muted = !(audible && m === mode);
+      });
+      x.fig.classList.toggle('active', on);
+      x.btn.classList.toggle('on', audible && !silent);
+      x.btn.classList.toggle('mute', silent);
+      x.btn.textContent = silent ? '원래 무음' : audible ? '소리 켜짐' : '소리 끔';
+      x.btn.setAttribute('aria-pressed', String(audible));
+      x.btn.setAttribute('aria-label', `${x.e.name} 소리 ${audible ? '끄기' : '켜기'}`);
+      x.tab.setAttribute('aria-selected', String(on));
     });
     $('#hint').textContent = narrow()
       ? '엔진을 바꿔도 같은 시각에서 이어집니다.'
-      : '영상을 누르면 그 영상 소리만 들립니다.';
+      : '영상을 누르면 재생과 정지, 소리 버튼으로 그 영상 소리를 켜고 끕니다.';
     playBtn.classList.toggle('on', playing);
     playBtn.setAttribute('aria-label', playing ? '일시정지' : '재생');
     modeBtns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
   }
 
-  // 판을 바꾸는 중에는 새 영상의 currentTime이 0이라, 바꾸기 전 시각을 따로 들고 있는다
-  let pendingT = null;
-  let modeGen = 0;
-  const clock = () => (pendingT !== null ? pendingT : master().currentTime);
-  const clampT = (v, t) => Math.max(0, Math.min(t, (v.duration || 30) - 0.05));
-
   function stopAll() {
     playing = false;
-    tiles.forEach((x) => x.v.pause());
+    allVids().forEach((v) => v.pause());
     paint();
   }
 
@@ -152,17 +173,25 @@
     }
   };
 
+  // 지금 보이는 판만 돌리고, 안 보이는 판은 항상 멈춘다
   function runAll() {
-    const t = clock();
+    const t = master().currentTime;
     tiles.forEach((x, i) => {
-      if (narrow() && i !== active) { x.v.pause(); return; }
-      if (i !== active && pendingT === null && Math.abs(x.v.currentTime - t) > 0.05) x.v.currentTime = clampT(x.v, t);
-      if (playing) safePlay(x.v); else x.v.pause();
+      MODES.forEach((m) => { if (m !== mode) x.vids[m].pause(); });
+      const v = cur(x);
+      if (narrow() && i !== active) { v.pause(); return; }
+      if (i !== active && Math.abs(v.currentTime - t) > 0.05) v.currentTime = clampT(v, t);
+      if (playing) safePlay(v); else v.pause();
     });
+    // 한 번 재생을 시작한 넓은 화면에서는 다른 판도 미리 받아 둬 전환을 매끄럽게
+    if (playing && !warmed && !narrow()) {
+      warmed = true;
+      allVids().forEach((v) => { v.preload = 'auto'; });
+    }
   }
 
   function seekAll(t) {
-    tiles.forEach((x) => { x.v.currentTime = clampT(x.v, t); });
+    tiles.forEach((x) => { const v = cur(x); v.currentTime = clampT(v, t); });
   }
 
   function loopAll() {
@@ -172,13 +201,13 @@
 
   function select(i, fromTile) {
     if (i === active) {
-      // 소리 나는 칸을 다시 누르면 재생·정지를 오간다
+      // 칸을 다시 누르면 재생·정지를 오간다
       if (fromTile) { playing = !playing; paint(); runAll(); }
       return;
     }
-    const t = clock();
+    const t = master().currentTime;
     active = i;
-    if (pendingT === null && Math.abs(master().currentTime - t) > 0.05) master().currentTime = clampT(master(), t);
+    if (Math.abs(master().currentTime - t) > 0.05) master().currentTime = clampT(master(), t);
     if (fromTile && !playing) playing = true;
     paint();
     runAll();
@@ -186,22 +215,17 @@
 
   function setMode(m) {
     if (m === mode) return;
-    const t = clock();
-    const gen = ++modeGen;
-    pendingT = t;
+    const t = master().currentTime;
+    tiles.forEach((x) => x.vids[mode].pause());
     mode = m;
     tiles.forEach((x) => {
-      x.v.addEventListener('loadedmetadata', () => {
-        if (gen !== modeGen) return; // 그사이 또 바꿨으면 이 리스너는 버린다
-        x.v.currentTime = clampT(x.v, t);
-        if (x === tiles[active]) pendingT = null;
-        if (playing && (!narrow() || x === tiles[active])) safePlay(x.v);
-      }, { once: true });
-      x.v.src = src(x.e); // src 대입만으로 다시 읽는다(load() 중복 호출 없음)
+      const v = cur(x);
+      if (v.readyState >= 1) v.currentTime = clampT(v, t);
+      else v.addEventListener('loadedmetadata', () => { if (cur(x) === v) v.currentTime = clampT(v, master().currentTime || t); }, { once: true });
     });
-    // 소리 나는 편은 누른 제스처 안에서 재생을 걸어 둔다(iOS 자동재생 정책)
-    if (playing) safePlay(master());
+    if (master().readyState < 1) master().currentTime = t; // 메타데이터 전이면 시작 위치로 잡힌다
     paint();
+    runAll();
   }
 
   playBtn.addEventListener('click', () => {
@@ -214,7 +238,7 @@
   scrub.addEventListener('input', () => {
     if (!scrubbing) {
       scrubbing = true;
-      tiles.forEach((x) => x.v.pause());
+      allVids().forEach((v) => v.pause());
     }
     const t = Number(scrub.value);
     master().currentTime = clampT(master(), t);
@@ -237,19 +261,19 @@
   function tick() {
     const m = master();
     if (!scrubbing) {
-      const t = clock();
-      scrub.value = String(t);
-      timeEl.textContent = fmt(t);
+      scrub.value = String(m.currentTime);
+      timeEl.textContent = fmt(m.currentTime);
     }
-    if (playing && !narrow() && !scrubbing && pendingT === null) {
+    if (playing && !narrow() && !scrubbing) {
       // 소리 나는 편이 버퍼링 중이면 나머지도 같이 기다린다
       const stalled = m.seeking || m.readyState < 3 || m.paused;
       tiles.forEach((x, i) => {
-        if (i === active || x.v.seeking || x.v.ended) return;
-        if (stalled) { if (!x.v.paused) x.v.pause(); return; }
-        if (x.v.readyState < 2) return;
-        if (Math.abs(x.v.currentTime - m.currentTime) > 0.15) x.v.currentTime = clampT(x.v, m.currentTime);
-        if (x.v.paused) safePlay(x.v);
+        const v = cur(x);
+        if (i === active || v.seeking || v.ended) return;
+        if (stalled) { if (!v.paused) v.pause(); return; }
+        if (v.readyState < 2) return;
+        if (Math.abs(v.currentTime - m.currentTime) > 0.15) v.currentTime = clampT(v, m.currentTime);
+        if (v.paused) safePlay(v);
       });
     }
     requestAnimationFrame(tick);
