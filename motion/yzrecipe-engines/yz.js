@@ -75,6 +75,13 @@
       </figcaption>`;
     const v = fig.querySelector('video');
     v.addEventListener('ended', () => { if (v === master() && !scrubbing) loopAll(); });
+    // 전체 화면의 네이티브 컨트롤로 재생·정지해도 전역 상태를 따라가게 한다(끝나서 멈춘 것은 loopAll이 처리)
+    v.addEventListener('play', () => {
+      if (v === master() && !scrubbing && !playing && !v.paused) { playing = true; paint(); runAll(); }
+    });
+    v.addEventListener('pause', () => {
+      if (v === master() && !scrubbing && playing && v.paused && !v.ended && !v.seeking) { playing = false; paint(); runAll(); }
+    });
     fig.addEventListener('click', () => select(i, true));
     fig.addEventListener('keydown', (ev) => {
       if (ev.target !== fig) return;
