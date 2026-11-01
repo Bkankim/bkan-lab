@@ -136,6 +136,7 @@ h1::after {
 
 /* 장면 버튼: 주문서 장면표 */
 .scenes {
+  position: relative; /* 버튼 offsetLeft의 기준 */
   display: flex;
   gap: 6px;
   overflow-x: auto;
@@ -145,6 +146,8 @@ h1::after {
   padding-bottom: 2px;
 }
 .scenes::-webkit-scrollbar { display: none; }
+/* 넓은 화면(2x2 배치)에서는 넘치면 줄을 바꿔 뒤쪽 장면 버튼이 잘리지 않게 */
+@media (min-width: 721px) { .scenes { flex-wrap: wrap; overflow-x: visible; } }
 .scenes button {
   flex: none;
   display: inline-flex;

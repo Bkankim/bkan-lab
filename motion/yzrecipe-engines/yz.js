@@ -158,10 +158,19 @@
     playBtn.setAttribute('aria-label', playing ? '일시정지' : '재생');
   }
 
+  let sceneNow = -1;
   function paintScene(t) {
     let k = 0;
     SCENES.forEach(([s], i) => { if (t >= s - 0.01) k = i; });
+    if (k === sceneNow) return;
+    sceneNow = k;
     sceneBtns.forEach((b, i) => b.classList.toggle('now', i === k));
+    // 버튼 줄이 옆으로 넘칠 때(좁은 화면) 지금 장면 버튼이 보이게 줄만 옆으로 민다. 페이지는 움직이지 않는다
+    if (scenesEl.scrollWidth > scenesEl.clientWidth) {
+      const btn = sceneBtns[k];
+      const left = btn.offsetLeft - (scenesEl.clientWidth - btn.offsetWidth) / 2;
+      scenesEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    }
   }
 
   function stopAll() {
