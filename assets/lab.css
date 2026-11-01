@@ -208,7 +208,15 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
   border-radius: 6px;
   font-size: .9rem;
 }
-.tools .k { margin: 0 0 .5rem; font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
+.tools .k {
+  margin: 0 0 .7rem;
+  padding-bottom: .55rem;
+  border-bottom: 1px dashed var(--rule);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.tools .k::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .45rem; border-radius: 2px; background: var(--signal); vertical-align: .08em; }
 .tools dl { margin: 0; display: grid; gap: .45rem; }
 .tools dl > div { display: grid; grid-template-columns: 6.5rem 1fr; gap: .2rem 1rem; align-items: baseline; }
 .tools dt { color: var(--ink-soft); font-size: .82rem; }
