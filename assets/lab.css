@@ -179,6 +179,22 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
   .facts:has(.used) .fact:not(.made):not(.used):last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
+/* Motion 카드: 실험에서 알아낸 것(결론)과 이어서 할 것(다음) */
+.verdict {
+  display: grid;
+  gap: .6rem;
+  margin-top: 1.1rem;
+  max-width: 40rem;
+  padding: .85rem 1.1rem .9rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ground) 94%, var(--cyan));
+  color: var(--ink);
+}
+.verdict .row { display: flex; flex-direction: column; min-width: 0; }
+.verdict .k { font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
+.verdict b { font-weight: 600; box-shadow: inset 0 -.3em 0 var(--mark); }
+
 /* 측정 방법 */
 .method { margin-top: clamp(3rem, 8vw, 5rem); max-width: 46rem; }
 .method h2 { margin: 0 0 1rem; font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 4vw, 2rem); }
