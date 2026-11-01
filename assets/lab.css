@@ -195,10 +195,14 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
 .verdict .k { font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
 .verdict b { font-weight: 600; box-shadow: inset 0 -.3em 0 var(--mark); }
 
+/* 제목 오른쪽에 날짜 (Motion 목록) */
+.entry .title-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; }
+.entry .title-row .when { margin-top: 0; white-space: nowrap; }
+
 /* 쓴 도구: 카드 링크(<a>) 밖에 두어 링크가 겹치지 않게 하고, 글 칼럼에 맞춘다 */
 .entry .tools {
   max-width: 40rem;
-  margin: -.6rem 0 1.6rem calc(15rem + 2rem);
+  margin: -.4rem 0 1.6rem calc(15rem + 2rem);
   padding: .8rem 1.1rem .9rem;
   border: 1px dashed var(--rule);
   border-radius: 6px;
