@@ -338,7 +338,9 @@ h2::before {
 .path b { display: block; }
 
 .seen { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.seen li { padding: 14px 16px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 10px; }
+.seen li { position: relative; padding: 14px 16px 14px 36px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 10px; }
+/* 제목 첫 줄 가운데에 맞춘 사각 불릿, 본문은 제목 시작선에 맞춰 들여 씀 */
+.seen li::before { content: ""; position: absolute; left: 17px; top: calc(14px + 0.85em - 4px); width: 8px; height: 8px; background: var(--up); }
 .seen b { display: block; margin-bottom: 2px; }
 
 /* 엔진별 장단점: 영상 2x2 배치와 같은 순서·색 */
