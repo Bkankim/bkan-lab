@@ -195,6 +195,43 @@ a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; border-
 .verdict .k { font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
 .verdict b { font-weight: 600; box-shadow: inset 0 -.3em 0 var(--mark); }
 
+/* 쓴 도구: 카드 링크(<a>) 밖에 두어 링크가 겹치지 않게 하고, 글 칼럼에 맞춘다 */
+.entry .tools {
+  max-width: 40rem;
+  margin: -.6rem 0 1.6rem calc(15rem + 2rem);
+  padding: .8rem 1.1rem .9rem;
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  font-size: .9rem;
+}
+.tools .k { margin: 0 0 .5rem; font-size: .74rem; letter-spacing: .02em; color: var(--ink-soft); }
+.tools dl { margin: 0; display: grid; gap: .45rem; }
+.tools dl > div { display: grid; grid-template-columns: 6.5rem 1fr; gap: .2rem 1rem; align-items: baseline; }
+.tools dt { color: var(--ink-soft); font-size: .82rem; }
+.tools dd { margin: 0; min-width: 0; }
+.shelf .tools li { border: 0; }
+.tools ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem .4rem; }
+.tools li a {
+  display: inline-block;
+  padding: .05rem .6rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  text-decoration: none;
+  line-height: 1.6;
+  background: color-mix(in srgb, var(--ground) 94%, var(--cyan));
+}
+.tools li a::after { content: " ↗"; font-size: .8em; color: var(--ink-soft); }
+.tools li a:hover { border-color: var(--ink-soft); }
+.tools .note { display: block; margin-top: .2rem; font-size: .8rem; color: var(--ink-soft); }
+.tools .own { margin: 0; line-height: 1.55; color: var(--ink-soft); }
+.tools .own + .own { margin-top: .35rem; }
+.tools .own b { font-weight: 600; color: var(--ink); }
+@media (max-width: 40rem) {
+  .entry .tools { margin-left: 0; }
+  .tools dl > div { grid-template-columns: 1fr; }
+  .tools dl { gap: .8rem; }
+}
+
 /* 측정 방법 */
 .method { margin-top: clamp(3rem, 8vw, 5rem); max-width: 46rem; }
 .method h2 { margin: 0 0 1rem; font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 4vw, 2rem); }
