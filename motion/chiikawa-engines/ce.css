@@ -379,3 +379,15 @@ h2 { font-size: 30px; line-height: 1.25; margin: 0 0 12px; }
   .tile, .play { transition: none; }
 }
 .tile video[hidden] { display: none; }
+
+/* 엔진별 장단점: 영상 2x2 배치와 같은 순서·색 */
+.pros { list-style: none; padding: 0; margin: 16px 0 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pros li { padding: 14px 16px 12px; background: var(--card); border-top: 6px solid var(--c); border-radius: 4px 4px 14px 14px; }
+.pros p { margin: 0 0 8px; line-height: 1.6; }
+.pros p:last-child { margin-bottom: 0; }
+.pros .who { font-family: "Jua", sans-serif; font-size: 22px; line-height: 1.3; margin-bottom: 10px; }
+.pros .who i { display: inline-block; width: 12px; height: 12px; margin-right: 8px; border-radius: 50%; background: var(--c); border: 1.5px solid var(--ink); vertical-align: 1px; }
+.pros .main { margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--ink); color: #fff; font-family: "Pretendard Variable", sans-serif; font-size: 12px; font-weight: 700; vertical-align: 3px; }
+.pros .tag { display: block; width: max-content; margin-bottom: 4px; padding: 0 7px; border-radius: 6px; background: #e6f6dd; font-size: 12px; font-weight: 700; vertical-align: 1px; }
+.pros .tag.bad { background: #fbe7e2; }
+@media (max-width: 720px) { .pros { grid-template-columns: 1fr; } }
