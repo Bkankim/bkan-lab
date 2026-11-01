@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500&display=swap">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
-<link rel="stylesheet" href="/assets/lab.css?v=5">
+<link rel="stylesheet" href="/assets/lab.css?v=6">
 </head>
 <body>
 <header class="print strip">
@@ -57,6 +57,17 @@
           <span class="verdict"><span class="row"><span class="k">결론</span><span><b>누르는 순간이 있는 선물은 영상이 아니라 웹으로 짜야 했습니다.</b><br>탭에 반응해야 하고 올릴 수 있는 파일 크기(25MB)에도 한도가 있어서,<br>포장지는 웹 애니메이션(GSAP)으로 만들고 영상 엔진(HyperFrames)은 상자 안의 40초 영상에만 썼습니다.</span></span></span>
         </span>
       </a>
+      <div class="tools" aria-label="활용 도구">
+        <p class="k">활용 도구</p>
+        <dl>
+          <div><dt>모델</dt><dd><p class="own"><b>Opus 5.5</b> (effort high)</p></dd></div>
+          <div><dt>웹 모션</dt><dd><ul><li><a href="https://gsap.com" target="_blank" rel="noopener">GSAP</a></li></ul></dd></div>
+          <div><dt>선물 영상</dt><dd><ul><li><a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">HyperFrames</a></li></ul><span class="note">상자 안의 40초 영상</span></dd></div>
+          <div><dt>음악</dt><dd><ul><li><a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener">yt-dlp</a></li><li><a href="https://pypi.org/project/mlx-whisper/" target="_blank" rel="noopener">mlx-whisper</a></li><li><a href="https://ffmpeg.org" target="_blank" rel="noopener">FFmpeg</a></li></ul><span class="note">가사 시각을 단어 단위로 뽑아 장면 박자에 맞춤</span></dd></div>
+          <div><dt>기타 도구</dt><dd><ul><li><a href="https://playwright.dev" target="_blank" rel="noopener">Playwright</a></li></ul></dd></div>
+          <div><dt>자작 도구</dt><dd><p class="own"><b>motion-lab</b> (에이전트를 빈 환경에 격리해 돌리고 시간·비용을 재는 실행·측정 도구, 선물 영상을 만듦)</p><p class="own"><b>final-review</b> (작업이 끝난 뒤 결함을 찾는 검수&nbsp;스킬, 결함 10건 수정)</p></dd></div>
+        </dl>
+      </div>
     </li>
     <li class="entry">
       <a href="/motion/portfolio-scroll/">
@@ -67,6 +78,15 @@
           <span class="verdict"><span class="row"><span class="k">결론</span><span><b>웹 모션에는 영상 엔진이 필요 없었습니다.</b><br>브라우저가 재생기가 되고 스크롤이 시간축이&nbsp;되어서,<br>영상 엔진 없이 웹 애니메이션(GSAP ScrollTrigger)만으로 장면 7개를 움직였습니다.</span></span></span>
         </span>
       </a>
+      <div class="tools" aria-label="활용 도구">
+        <p class="k">활용 도구</p>
+        <dl>
+          <div><dt>모델</dt><dd><p class="own"><b>Opus 5.5</b> (effort high)</p></dd></div>
+          <div><dt>웹 모션</dt><dd><ul><li><a href="https://gsap.com" target="_blank" rel="noopener">GSAP</a></li><li><a href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/" target="_blank" rel="noopener">ScrollTrigger</a></li></ul></dd></div>
+          <div><dt>기타 도구</dt><dd><ul><li><a href="https://playwright.dev" target="_blank" rel="noopener">Playwright</a></li></ul></dd></div>
+          <div><dt>자작 도구</dt><dd><p class="own"><b>final-review</b> (작업이 끝난 뒤 결함을 찾는 검수&nbsp;스킬, 결함 8건 수정)</p></dd></div>
+        </dl>
+      </div>
     </li>
   </ul>
 </main>
