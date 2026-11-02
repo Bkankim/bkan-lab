@@ -17,13 +17,19 @@
   "hospitals": 5,
   "male_only": 7,
   "other_types": 5,
-  "general": 7
+  "general": 7,
+  "second_surveyed": 35,
+  "second_psy": 12,
+  "second_male_only": 2,
+  "second_shown": 10,
+  "second_checked_label": "2026년 11월 2일"
  },
  "regions": [
   "파주 북부",
   "금촌·문산",
   "운정",
-  "일산"
+  "일산",
+  "덕양"
  ],
  "clinics": [
   {
@@ -1434,7 +1440,7 @@
    "checked_at": "2026-10-27"
   }
  ],
- "summary": "여성 전문의와 원내 인지행동치료가 모두 확인된 의원은 없었습니다. 그래서 추천 대신 여성 원장이 확인된 의원 4곳을 후보로 묶었습니다. 인지행동치료를 꼭 받고 싶다면 아래에 정리한 대학병원 비교도 함께 보시고 후보 의원에는 인지행동치료를 하는지 전화로 먼저 물어보세요.",
+ "summary": "여성 전문의와 원내 인지행동치료가 모두 확인된 의원은 없었습니다. 그래서 추천 대신 여성 원장이 확인된 의원 4곳을 후보로 묶었습니다. 대학병원 대기가 부담스럽다면 위에서 '2차 병원'을 눌러 정신병원까지 함께 보시고, 어느 곳이든 인지행동치료를 하는지 전화로 먼저 물어보세요.",
  "hospitals": [
   {
    "id": "h-cha",
@@ -1481,7 +1487,9 @@
      "label": "진료과 소개",
      "url": "https://ilsan.chamc.co.kr/medical/list/department/psychiatry/introduction.cha"
     }
-   ]
+   ],
+   "group": "univ",
+   "level": "종합병원"
   },
   {
    "id": "h-nhimc",
@@ -1522,14 +1530,17 @@
      "label": "의료진 소개",
      "url": "https://www.nhimc.or.kr/doctor/profViewPop.do?deptNo=11&profNo=303&deptYn=Y"
     }
-   ]
+   ],
+   "group": "univ",
+   "level": "종합병원",
+   "wait_short": "성인도 몇 달 뒤라는 후기(2023·2025)"
   },
   {
    "id": "h-mj",
    "kind": "hospital",
    "tier": "hospital",
    "name": "명지병원",
-   "region": "고양 덕양구",
+   "region": "덕양",
    "area": "고양 덕양구 화정동",
    "reason": "불안·공황을 진료하는 여성 전문의(류진선)가 우울·불안 클리닉에서 진료하며 클리닉 소개에 인지행동치료가 포함되어 있습니다. 토요일에는 매월 4주차 오전에만 진료합니다.",
    "female": {
@@ -1563,7 +1574,10 @@
      "label": "울불클리닉",
      "url": "https://mjh.or.kr/main/clinic/view.do?mc_idx=63"
     }
-   ]
+   ],
+   "group": "univ",
+   "level": "종합병원",
+   "wait_short": "성인 언급 없음, 소아는 4개월 안팎"
   },
   {
    "id": "h-dg",
@@ -1605,7 +1619,10 @@
      "label": "진료과 소개",
      "url": "https://www.dumc.or.kr/is/deptMenu/conts.do?deptNo=36"
     }
-   ]
+   ],
+   "group": "univ",
+   "level": "종합병원",
+   "wait_short": "초진 예약이 힘들다는 후기(2026-08)"
   },
   {
    "id": "h-paik",
@@ -1644,6 +1661,318 @@
     {
      "label": "진료과 소개",
      "url": "https://www.paik.ac.kr/ilsan/user/department/view.do?menuNo=900020&deptId=255"
+    }
+   ],
+   "group": "univ",
+   "level": "종합병원"
+  },
+  {
+   "kind": "hospital",
+   "group": "general",
+   "level": "정신병원",
+   "short": null,
+   "checked_at": "2026-11-02",
+   "night": false,
+   "night_note": null,
+   "id": "h-karf",
+   "tier": "candidate",
+   "name": "카프성모병원",
+   "region": "일산",
+   "area": "일산동구 백석동",
+   "reason": "알코올 중독 전문병원이지만 우울·불안·수면장애 클리닉을 따로 두고 외래를 봅니다. 외래를 맡은 정신과 전문의 3명이 모두 여성이고, 그중 박우리 병원장과 민정원 과장은 진료 분야에 불안장애를 적었습니다. 초진은 전화로 예약해야 합니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "박우리 병원장(불안·수면)",
+     "민정원(기분·불안)",
+     "홍형숙(기분장애)"
+    ],
+    "selectable": "가능(요일별 담당의 표)",
+    "evidence": "공식 프로필 사진으로 확인. 외래 시간표에 오른 정신과 의사 3명이 모두 여성"
+   },
+   "sat": false,
+   "sat_note": null,
+   "hours": "평일 09:00-17:00(점심 12:00-13:00, 접수 16:30까지), 토·일 휴진. 박우리: 월 오후·화 오후·목 오전, 민정원: 월 오전·화 오후·금 오전·오후, 홍형숙: 화 오전·수 오전·오후·목 오후",
+   "cbt": {
+    "form": "불안장애 클리닉 소개의 질환 설명에만 언급",
+    "note": "원내에서 누가 진행하는지는 밝히지 않음. 외래 검사에 심리 진단 있음",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "의사가 친절하고 약 조절을 잘해 준다(소수)",
+     "tone": "good"
+    },
+    {
+     "t": "주차가 좁고 주차비가 든다(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 126(병원 안 가게 후기 섞임), 카카오 5.0점(1)",
+   "wait": "초진은 전화 예약 필수(평일 9-17시). 2026년 후기의 진료 당일 대기는 대부분 30분 이내이고, 초진까지 며칠 걸리는지는 언급이 없습니다",
+   "wait_short": "몇 주씩 밀린다는 언급 없음(초진 전화 예약)",
+   "address": "경기 고양시 일산동구 일산로 86 (백석동)",
+   "phone": "031-810-9100",
+   "map": "https://place.map.kakao.com/8137687",
+   "naver": "https://m.place.naver.com/hospital/13517975",
+   "homepage": "http://www.karf.co.kr/",
+   "sources": [
+    {
+     "label": "의료진",
+     "url": "http://karf.co.kr/page/s1/s_4.php"
+    },
+    {
+     "label": "외래 시간표",
+     "url": "http://karf.co.kr/page/s2/s_2.php"
+    },
+    {
+     "label": "불안장애 클리닉",
+     "url": "http://karf.co.kr/page/s6/s_2.php"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/13517975"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/8137687"
+    }
+   ]
+  },
+  {
+   "kind": "hospital",
+   "group": "general",
+   "level": "정신병원",
+   "short": null,
+   "checked_at": "2026-11-02",
+   "night": false,
+   "night_note": null,
+   "id": "h-rael",
+   "tier": "check",
+   "name": "라엘마음병원",
+   "region": "덕양",
+   "area": "덕양구 화정동",
+   "reason": "입원 위주 정신병원이지만 외래도 봅니다. 의사 성별을 공개 정보로 확인하지 못했습니다. 토요일 오전에도 진료하고 초진은 전화로 예약해야 합니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": "09:30-12:00, 출처마다 마감 시각이 달라 전화 확인",
+   "hours": "월~금 09:30-17:00(접수 16:00까지), 토 09:30-12:00(접수 11:00까지), 일 휴진",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "잘 들어주고 편하다(다수)",
+     "tone": "good"
+    },
+    {
+     "t": "입원 전문이라 상담·검사 목적이면 맞지 않았다(1건)",
+     "tone": "bad"
+    },
+    {
+     "t": "데스크 응대·주차 정산 불만(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 174, 카카오 2.2점(13)",
+   "wait": "초진은 전화 예약 필수. 예약 후 바로 진료받았다는 후기 2건(2024), 몇 주 대기 언급 없음",
+   "wait_short": "몇 주씩 밀린다는 언급 없음(초진 전화 예약)",
+   "address": "경기 고양시 덕양구 중앙로 628 예일프라자 6~7층 (화정동)",
+   "phone": "031-978-5454",
+   "map": "https://place.map.kakao.com/27595314",
+   "naver": "https://m.place.naver.com/hospital/21824525",
+   "homepage": null,
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/21824525"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/27595314"
+    }
+   ]
+  },
+  {
+   "kind": "hospital",
+   "group": "general",
+   "level": "정신병원",
+   "short": null,
+   "checked_at": "2026-11-02",
+   "night": false,
+   "night_note": null,
+   "id": "h-hwajung",
+   "tier": "check",
+   "name": "화정병원",
+   "region": "일산",
+   "area": "일산동구 중산동",
+   "reason": "입원 중심 정신병원이고 불안·기분장애 클리닉 소개와 요일별 담당의 표가 있습니다. 의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": "가능(요일별 담당의 표)",
+    "evidence": null
+   },
+   "sat": false,
+   "sat_note": null,
+   "hours": "월~금 09:00-18:00(점심 12:00-13:00), 주말·공휴일 휴진",
+   "cbt": {
+    "form": null,
+    "note": "불안·기분장애 클리닉 소개는 약물치료·정신치료 설명뿐",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "친절하다(소수)",
+     "tone": "good"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 36, 카카오 2.6점(5)",
+   "wait": "'바로 입장' 후기 2건(2024) 외에 초진 대기 언급 없음",
+   "wait_short": "대기 언급 거의 없음",
+   "address": "경기 고양시 일산동구 중산로157번길 49 대산타운 (중산동)",
+   "phone": "031-979-7572",
+   "map": "https://place.map.kakao.com/20284057",
+   "naver": "https://m.place.naver.com/hospital/1273554971",
+   "homepage": "https://www.hwajung-hp.co.kr/",
+   "sources": [
+    {
+     "label": "진료 시간표",
+     "url": "https://www.hwajung-hp.co.kr/?module=Html&action=SiteComp&sSubNo=7"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1273554971"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/20284057"
+    }
+   ]
+  },
+  {
+   "kind": "hospital",
+   "group": "general",
+   "level": "정신병원",
+   "short": null,
+   "checked_at": "2026-11-02",
+   "night": false,
+   "night_note": null,
+   "id": "h-kymh",
+   "tier": "check",
+   "name": "서울특별시 고양정신병원",
+   "region": "덕양",
+   "area": "덕양구 내유동",
+   "reason": "서울시가 운영하는 공립 정신병원으로 입원·재활 중심이지만, 초진신청서를 내고 외래 진료를 받을 수 있습니다. 의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": "가능(요일별 담당의 표)",
+    "evidence": null
+   },
+   "sat": false,
+   "sat_note": null,
+   "hours": "평일 09:00-11:30, 13:30-17:00(월 오후·수 오전은 대체진료), 토·일·공휴일 휴진",
+   "cbt": {
+    "form": null,
+    "note": "치료 프로그램은 입원·재활 환자 대상",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "친절하다(다수, 짧은 후기 위주)",
+     "tone": "good"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 26, 카카오 1.8점(5)",
+   "wait": "진료 당일 초진신청서를 접수하는 절차. 사전 예약이 필요한지는 공개되지 않았고 초진 대기 언급 없음",
+   "wait_short": "대기 언급 없음(당일 초진신청서 접수)",
+   "address": "경기 고양시 덕양구 통일로1102번길 46 (내유동)",
+   "phone": "031-969-0885",
+   "map": "https://place.map.kakao.com/11294348",
+   "naver": "https://m.place.naver.com/hospital/11558808",
+   "homepage": "https://kymhosp.com/",
+   "sources": [
+    {
+     "label": "진료 시간표",
+     "url": "https://kymhosp.com/sub/sub02_02.php"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/11558808"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/11294348"
+    }
+   ]
+  },
+  {
+   "kind": "hospital",
+   "group": "general",
+   "level": "정신병원",
+   "short": null,
+   "checked_at": "2026-11-02",
+   "night": false,
+   "night_note": null,
+   "id": "h-mindlle",
+   "tier": "check",
+   "name": "민들레병원",
+   "region": "운정",
+   "area": "파주 탄현면",
+   "reason": "조현병·중독·치매 입원 중심 정신병원이고 외래는 평일 낮에만 봅니다. 의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": false,
+   "sat_note": null,
+   "hours": "평일 10:30-17:00(점심 12:00-13:00), 토·일·공휴일 휴진",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "속 시원히 털어놓았다 등 긍정(소수, 2022)",
+     "tone": "good"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 14, 카카오 후기 없음",
+   "wait": "'바로 입장' 후기 1건(2024-03) 외에 언급 없음",
+   "wait_short": "대기 언급 거의 없음",
+   "address": "경기 파주시 탄현면 소리개길 74-17 (법흥리)",
+   "phone": "031-947-6400",
+   "map": "https://place.map.kakao.com/7880313",
+   "naver": "https://m.place.naver.com/hospital/11537983",
+   "homepage": "https://www.mindllehp.com/",
+   "sources": [
+    {
+     "label": "의료진",
+     "url": "https://www.mindllehp.com/bbs/board.php?bo_table=table64"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/11537983"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/7880313"
     }
    ]
   }
@@ -1721,8 +2050,8 @@
   }
  ],
  "fine": [
-  "조사 방법: 2026년 10월 27일에 카카오 장소 검색으로 고양시 일산동구·일산서구와 파주시의 정신건강의학과를 모은 뒤, 네이버 지도·모두닥·심평원 기반 목록으로 빠진 곳을 보강해 45곳을 확인했습니다. 병원 홈페이지, 네이버 플레이스, 카카오맵, 병원 블로그와 후기는 직접 열어 봤습니다.",
-  "의사의 성별은 이름으로 추정하지 않았습니다. 공식 소개 문구나 사진이 있거나, 같은 의사를 여성으로 지칭한 후기가 두 건 이상 있을 때만 여성 전문의로 표시했습니다. 남성 원장만 확인된 의원, 입원 위주의 정신병원, 중독 전문병원, 한의원은 목록에서 제외했고 여성 전문의가 있는 종합병원 5곳은 비교 섹션에 따로 정리했습니다. 근거가 이보다 약한 한 곳은 카드에 그 사실을 따로 적었습니다.",
+  "조사 방법: 2026년 10월 27일에 카카오 장소 검색으로 고양시 일산동구·일산서구와 파주시의 정신건강의학과를 모은 뒤, 네이버 지도·모두닥·심평원 기반 목록으로 빠진 곳을 보강해 45곳을 확인했습니다. 병원 홈페이지, 네이버 플레이스, 카카오맵, 병원 블로그와 후기는 직접 열어 봤습니다. 2차 병원은 2026년 11월 2일에 같은 방법과 심평원 병원 찾기(종별·진료과목)로 고양시(덕양구 포함)·파주시의 종합병원·병원·정신병원 35곳을 살폈습니다. 국립암센터 정신건강클리닉은 암 환자와 가족 대상이라 목록에 넣지 않았습니다.",
+  "의사의 성별은 이름으로 추정하지 않았습니다. 공식 소개 문구나 사진이 있거나, 같은 의사를 여성으로 지칭한 후기가 두 건 이상 있을 때만 여성 전문의로 표시했습니다. 의원 목록에서는 남성 원장만 확인된 곳과 정신병원·중독 전문병원·한의원을 뺐습니다. 정신병원은 2차 병원 조사에서 외래를 보는지 다시 확인해 넣었고, 의사가 모두 남성으로 확인된 2곳(연세서울병원, 고양휴메디병원)은 뺐습니다. 근거가 이보다 약한 한 곳은 카드에 그 사실을 따로 적었습니다.",
   "야간 진료는 평일 중 하루라도 19시 이후까지(19시 마감 포함) 진료하는 경우를 가리킵니다. 후기는 원문을 옮기지 않고 경향만 요약했습니다.",
   "이 페이지는 공개 정보를 정리한 것으로, 의학적 조언이 아닙니다. 진단과 치료는 진료하는 의사와 상의하세요. 의료진과 진료 시간은 바뀔 수 있으니 방문하기 전에 전화로 확인하세요."
  ]

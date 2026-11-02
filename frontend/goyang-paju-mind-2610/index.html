@@ -67,7 +67,7 @@ svg.i { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none;
   padding: max(28px, env(safe-area-inset-top)) 18px calc(96px + env(safe-area-inset-bottom));
 }
 .side { padding: 8px 4px 28px; }
-.panel { display: grid; gap: 22px; }
+.panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
 @media (min-width: 1000px) {
   .frame { display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 72px; padding: 56px 40px 80px; }
   .side { position: sticky; top: 48px; align-self: start; padding: 24px 0 0; }
@@ -148,6 +148,13 @@ h3 { margin: 0; font: 500 17px/1.45 var(--display); letter-spacing: -.02em; }
   position: absolute; bottom: -1px; left: 0; height: 2px; width: 60px; background: var(--ink); border-radius: 2px;
   transition: transform .42s var(--ease), width .42s var(--ease);
 }
+/* 병원 종류: 눌린 칸이 떠오르는 세그먼트 */
+.kinds { display: flex; gap: 4px; padding: 5px; border-radius: 999px; box-shadow: var(--sink); margin: 0 2px 16px; }
+.kinds button {
+  flex: 1; border: 0; cursor: pointer; padding: 8px 6px; border-radius: 999px; font-size: 14px; background: none; color: var(--soft);
+  transition: background .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.kinds button[aria-pressed="true"] { background: var(--paper); color: var(--ink); font-weight: 500; box-shadow: var(--lift-sm); }
 .chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; margin: 0 -2px; scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }
 .chips button {
@@ -166,6 +173,7 @@ h3 { margin: 0; font: 500 17px/1.45 var(--display); letter-spacing: -.02em; }
 .group-h .mark { width: 8px; height: 8px; border-radius: 50%; background: var(--mocha); }
 .group-h.cand .mark { background: transparent; border: 1.5px solid var(--mocha); }
 .group-h small { color: var(--faint); font-weight: 400; font-size: 13px; }
+.group-h.univ .mark { background: var(--faint); }
 .group-desc { margin: -6px 2px 12px; color: var(--soft); font-size: 13.5px; }
 .list { display: grid; gap: 14px; }
 .empty { padding: 18px; text-align: center; color: var(--soft); font-size: 14px; border-radius: 22px; box-shadow: var(--sink); }
@@ -198,6 +206,8 @@ h3 { margin: 0; font: 500 17px/1.45 var(--display); letter-spacing: -.02em; }
 .plus svg { width: 18px; height: 18px; stroke-width: 2; }
 .card-head:active .plus { transform: scale(.9); }
 .card.open .plus { transform: rotate(135deg); background: var(--ink); color: var(--paper); }
+.waitline { padding: 0 18px 16px 82px; margin-top: -8px; font-size: 13.5px; line-height: 1.6; }
+.waitline b { font-weight: 500; color: var(--caution); margin-right: 6px; }
 .reason { padding: 0 18px 16px 82px; margin-top: -6px; color: var(--soft); font-size: 13.5px; line-height: 1.6; }
 .body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
 .card.open .body { grid-template-rows: 1fr; }
@@ -411,6 +421,11 @@ details.fold .list { margin-top: 14px; }
 
     <section class="sec" id="clinics" aria-labelledby="clinics-h">
       <div class="sec-h"><h2 id="clinics-h">병원</h2></div>
+      <div class="kinds" id="kinds" role="group" aria-label="병원 종류로 거르기">
+        <button type="button" data-kind="all" aria-pressed="true">전체</button>
+        <button type="button" data-kind="clinic" aria-pressed="false">의원</button>
+        <button type="button" data-kind="second" aria-pressed="false">2차 병원</button>
+      </div>
       <div class="tabs" role="tablist" aria-label="진료 시간으로 거르기">
         <button role="tab" aria-selected="true" data-tab="all">전체</button>
         <button role="tab" aria-selected="false" data-tab="sat">토요일</button>
@@ -427,10 +442,6 @@ details.fold .list { margin-top: 14px; }
         <div class="list" id="unk-list"></div>
       </details>
 
-      <details class="fold" id="hosp-fold">
-        <summary><span>대학병원과 비교해 보기<small>진료 체계는 갖췄지만 초진까지 오래 기다리는 편입니다</small></span><span class="plus" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary>
-        <div class="list" id="hosp-list"></div>
-      </details>
     </section>
 
     <div class="breath" aria-hidden="true">
@@ -480,7 +491,8 @@ details.fold .list { margin-top: 14px; }
 (function () {
   "use strict";
   var KEY = "lab:goyang-paju-mind-2610";
-  var state = { tab: "all", region: "all", data: null, pick: null };
+  var state = { kind: "all", tab: "all", region: "all", data: null, pick: null };
+  var KIND_HASH = "#2차";
   var store = loadStore();
 
   function loadStore() {
@@ -521,9 +533,36 @@ details.fold .list { margin-top: 14px; }
     return true;
   }
   function passRegion(c) { return state.region === "all" || c.region === state.region; }
+  function isHosp(c) { return c.kind === "hospital"; }
+  function passKind(c) {
+    if (state.kind === "clinic") return !isHosp(c);
+    if (state.kind === "second") return isHosp(c);
+    return true;
+  }
+  function allItems() { return state.data.clinics.concat(state.data.hospitals || []); }
+
+  // 병원 종류 세그먼트. 2차를 고르면 주소 끝에 #2차를 달아 그대로 공유할 수 있게 한다
+  function setKind(k, push) {
+    state.kind = k;
+    document.querySelectorAll("#kinds button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.kind === k)); });
+    if (push && history.replaceState) {
+      var base = location.pathname + location.search;
+      history.replaceState(null, "", k === "second" ? base + KIND_HASH : base);
+    }
+    if (state.data) { renderChips(); renderClinics(); }
+  }
+  document.querySelectorAll("#kinds button").forEach(function (b) {
+    b.addEventListener("click", function () { setKind(b.dataset.kind, true); });
+  });
+  function kindFromHash() {
+    var h = "";
+    try { h = decodeURIComponent(location.hash); } catch (e) { h = location.hash; }
+    return h === KIND_HASH ? "second" : null;
+  }
 
   function badges(c) {
     var b = [];
+    if (isHosp(c) && c.level) b.push('<span class="badge off">' + esc(c.level) + "</span>");
     if (c.female && c.female.kind === "원장") b.push('<span class="badge">' + icon("person") + "여성 원장</span>");
     else if (c.female && c.female.kind === "재직") b.push('<span class="badge">' + icon("person") + "여성 전문의 재직</span>");
     if (c.sat === true) b.push('<span class="badge">' + icon("sun") + "토요일</span>");
@@ -548,7 +587,7 @@ details.fold .list { margin-top: 14px; }
     acts.push('<a class="act" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + icon("pin") + "카카오맵</a>");
     if (c.naver) acts.push('<a class="act" href="' + esc(c.naver) + '" target="_blank" rel="noopener">' + icon("pin") + "네이버 지도</a>");
     if (c.homepage) acts.push('<a class="act" href="' + esc(c.homepage) + '" target="_blank" rel="noopener">' + icon("link") + "홈페이지</a>");
-    if (c.kind !== "hospital") acts.push('<button type="button" class="act" data-ask="' + esc(c.id) + '">' + icon("list") + '질문 체크하기<span class="qprog">' + checkedCount(c.id) + "/" + state.data.questions.length + "</span></button>");
+    acts.push('<button type="button" class="act" data-ask="' + esc(c.id) + '">' + icon("list") + '질문 체크하기<span class="qprog">' + checkedCount(c.id) + "/" + state.data.questions.length + "</span></button>");
     var srcs = (c.sources || []).map(function (s) {
       return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + "</a>";
     }).join(", ");
@@ -561,6 +600,7 @@ details.fold .list { margin-top: 14px; }
         '<span class="plus" aria-hidden="true">' + icon("plus") + "</span>" +
       "</button>" +
       (c.reason ? '<p class="reason">' + esc(c.reason) + "</p>" : "") +
+      (isHosp(c) && c.wait_short ? '<p class="waitline"><b>초진 대기</b>' + esc(c.wait_short) + "</p>" : "") +
       '<div class="body" id="' + id + '-b" role="region" aria-label="' + esc(c.name) + ' 자세히" inert><div><div class="inner">' +
         '<dl class="facts">' +
           "<dt>여성 전문의</dt><dd>" + doctors + (f.evidence ? '<br><span class="muted">' + esc(f.evidence) + "</span>" : "") + "</dd>" +
@@ -600,8 +640,8 @@ details.fold .list { margin-top: 14px; }
   function renderChips() {
     var d = state.data;
     var counts = {};
-    d.clinics.forEach(function (c) {
-      if (passTab(c)) counts[c.region] = (counts[c.region] || 0) + 1;
+    allItems().forEach(function (c) {
+      if (passKind(c) && passTab(c)) counts[c.region] = (counts[c.region] || 0) + 1;
     });
     var html = '<button type="button" data-region="all" aria-pressed="' + (state.region === "all") + '">전체 지역</button>';
     d.regions.forEach(function (r) {
@@ -617,38 +657,34 @@ details.fold .list { margin-top: 14px; }
     });
   }
 
+  function group(cls, title, desc, list) {
+    return '<div class="group-h' + (cls ? " " + cls : "") + '"><span class="mark"></span>' + title + "<small>" + list.length + "곳</small></div>" +
+      '<p class="group-desc">' + desc + "</p>" +
+      '<div class="list">' + list.map(card).join("") + "</div>";
+  }
+
   function renderClinics() {
-    var d = state.data;
-    var shown = d.clinics.filter(function (c) { return passTab(c) && passRegion(c); });
-    var picks = shown.filter(function (c) { return c.tier === "pick"; });
-    var cands = shown.filter(function (c) { return c.tier === "candidate"; });
+    var shown = allItems().filter(function (c) { return passKind(c) && passTab(c) && passRegion(c); });
+    var clin = shown.filter(function (c) { return !isHosp(c); });
+    var hosp = shown.filter(isHosp);
+    var picks = clin.filter(function (c) { return c.tier === "pick"; });
+    var cands = clin.filter(function (c) { return c.tier === "candidate"; });
+    var gen = hosp.filter(function (c) { return c.group === "general" && c.tier !== "check"; });
+    var univ = hosp.filter(function (c) { return c.group === "univ" && c.tier !== "check"; });
     var unk = shown.filter(function (c) { return c.tier === "check"; });
     var html = "";
-    if (picks.length) {
-      html += '<div class="group-h"><span class="mark"></span>추천<small>' + picks.length + "곳</small></div>" +
-        '<p class="group-desc">여성 전문의, 원내 인지행동치료, 좋은 후기 신호, 토요일이나 야간 진료가 모두 확인된 곳</p>' +
-        '<div class="list">' + picks.map(card).join("") + "</div>";
-    }
-    if (cands.length) {
-      html += '<div class="group-h cand"><span class="mark"></span>후보<small>' + cands.length + "곳</small></div>" +
-        '<p class="group-desc">여성 전문의는 확인됐고, 추천 기준 중 일부가 빠졌거나 확인되지 않은 곳</p>' +
-        '<div class="list">' + cands.map(card).join("") + "</div>";
-    }
-    if (!picks.length && !cands.length) {
-      html = '<p class="empty">이 조건에 맞는 곳이 없습니다. 위에서 탭이나 지역을 바꿔 보세요.</p>';
-    }
+    if (picks.length) html += group("", "추천 의원", "여성 전문의, 원내 인지행동치료, 좋은 후기 신호, 토요일이나 야간 진료가 모두 확인된 의원", picks);
+    if (cands.length) html += group("cand", "후보 의원", "여성 전문의는 확인됐고, 추천 기준 중 일부가 빠졌거나 확인되지 않은 의원", cands);
+    if (gen.length) html += group("cand", "2차 병원", "대형 종합병원이 아닌 2차 병원(정신병원 포함) 가운데 여성 전문의가 확인된 곳입니다. 진료의뢰서 없이 초진을 받을 수 있습니다", gen);
+    if (univ.length) html += group("univ", "대형 종합병원", "대학병원과 국민건강보험 일산병원입니다. 상급종합병원(3차) 명단에 없어 의료급여 환자가 아니면 진료의뢰서 없이 갈 수 있지만, 초진까지 몇 달 걸렸다는 후기가 있는 곳도 있습니다", univ);
+    var n = picks.length + cands.length + gen.length + univ.length;
+    if (!n) html = '<p class="empty">이 조건에 맞는 곳이 없습니다. 위에서 종류나 탭, 지역을 바꿔 보세요.</p>';
     $("groups").innerHTML = html;
     bindCards($("groups"));
     $("unk-list").innerHTML = unk.length ? unk.map(card).join("") : '<p class="empty">이 조건에서는 없습니다.</p>';
     $("unk-sub").textContent = unk.length + "곳, 전화로 여성 전문의가 있는지 먼저 물어보세요";
     bindCards($("unk-list"));
-    $("tally").textContent = "지금 조건에서 " + (picks.length + cands.length) + "곳이 보입니다.";
-  }
-
-  function renderHospitals() {
-    var d = state.data;
-    $("hosp-list").innerHTML = (d.hospitals || []).map(card).join("");
-    bindCards($("hosp-list"));
+    $("tally").textContent = "지금 조건에서 " + n + "곳이 보입니다.";
   }
 
   function renderTicks() {
@@ -656,9 +692,9 @@ details.fold .list { margin-top: 14px; }
     var items = [
       "정신건강의학과 <b>" + n.surveyed + "곳</b>을 빠짐없이 훑었습니다",
       "여성 원장이 확인된 의원 <b>" + n.female + "곳</b>, 성별을 확인하지 못한 의원 <b>" + n.unknown + "곳</b>",
-      "남성 원장만 확인된 <b>" + n.male_only + "곳</b>, 입원·중독 전문병원과 한의원 <b>" + n.other_types + "곳</b>, 종합병원 등 <b>" + n.general + "곳</b>은 목록에서 뺐습니다",
-      "여성 전문의가 있는 종합병원 <b>" + n.hospitals + "곳</b>은 따로 비교했습니다",
-      "<b>" + esc(n.checked_label) + "</b>에 확인한 정보입니다"
+      "남성 원장만 확인된 <b>" + n.male_only + "곳</b>, 입원·중독 전문병원과 한의원 <b>" + n.other_types + "곳</b>, 종합병원 등 <b>" + n.general + "곳</b>은 의원 목록에서 뺐습니다",
+      "2차 병원 <b>" + n.second_surveyed + "곳</b>을 따로 살폈습니다(덕양구 포함). 일반 외래가 확인된 " + n.second_psy + "곳 가운데 의사가 모두 남성인 " + n.second_male_only + "곳을 빼고 <b>" + n.second_shown + "곳</b>을 올렸습니다",
+      "의원은 <b>" + esc(n.checked_label) + "</b>, 2차 병원은 <b>" + esc(n.second_checked_label) + "</b>에 확인한 정보입니다"
     ];
     $("ticks").innerHTML = items.map(function (t) {
       return '<li><span class="tick">' + icon("check") + "</span><span>" + t + "</span></li>";
@@ -672,7 +708,8 @@ details.fold .list { margin-top: 14px; }
   }
   function renderPicker() {
     var d = state.data;
-    var opts = d.clinics.filter(function (c) { return c.tier !== "check"; }).concat(d.clinics.filter(function (c) { return c.tier === "check"; }));
+    var all = allItems();
+    var opts = all.filter(function (c) { return c.tier !== "check"; }).concat(all.filter(function (c) { return c.tier === "check"; }));
     $("pick").innerHTML = opts.map(function (c) {
       return '<option value="' + esc(c.id) + '">' + esc(c.name) + "</option>";
     }).join("");
@@ -749,8 +786,11 @@ details.fold .list { margin-top: 14px; }
   }).then(function (d) {
     state.data = d;
     $("summary").textContent = d.summary || "";
-    renderTicks(); renderChips(); renderClinics(); renderHospitals(); renderPicker(); renderQs(); renderHelp();
+    var hk = kindFromHash();
+    if (hk) setKind(hk, false);
+    renderTicks(); renderChips(); renderClinics(); renderPicker(); renderQs(); renderHelp();
     moveBar(); spy();
+    if (hk) $("clinics").scrollIntoView();
   }).catch(function () {
     $("groups").innerHTML = '<p class="empty">목록을 불러오지 못했습니다. 새로고침해 보세요.</p>';
   });
