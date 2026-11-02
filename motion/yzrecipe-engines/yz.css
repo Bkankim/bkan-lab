@@ -339,6 +339,12 @@ h2::before {
 .path li:last-child::after { display: none; }
 .path li:last-child::before { background: var(--up); border-color: var(--up); color: #fff; }
 .path b { display: block; }
+.path li > p { margin: 6px 0 0; }
+.path li { padding-bottom: 30px; }
+.strip { margin: 12px 0 0; }
+.strip img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 10px; }
+.strip figcaption { margin: 6px 2px 0; font-size: 13px; color: var(--ink-soft); }
+.cmp { --cmp-line: var(--line-strong); }
 
 .seen { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
 .seen li { position: relative; padding: 14px 16px 14px 36px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 10px; }

@@ -4,18 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>요즘레시피 소개영상 - 모션 엔진 4개 비교</title>
-<meta name="description" content="음식 유행 순위 사이트 요즘레시피의 40초 소개영상 주문서 1장을 영상 엔진이 다른 AI 에이전트 넷에게 맡기고, 결과 네 편을 한 화면에서 같이 돌려 봅니다.">
+<meta name="description" content="음식 유행 순위 사이트 요즘레시피의 40초 소개영상 시나리오 1장을 영상 엔진이 다른 AI 에이전트 넷에게 맡기고, 결과 네 편을 한 화면에서 같이 돌려 봅니다.">
 <link rel="canonical" href="https://lab.bkan.dev/motion/yzrecipe-engines/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="요즘레시피 소개영상 - 모션 엔진 4개 비교">
-<meta property="og:description" content="주문서 1장으로 AI 에이전트 넷이 만든 요즘레시피 40초 소개영상.">
+<meta property="og:description" content="시나리오 1장으로 AI 에이전트 넷이 만든 요즘레시피 40초 소개영상.">
 <meta property="og:image" content="https://lab.bkan.dev/motion/yzrecipe-engines/og.jpg?v=1">
 <meta property="og:url" content="https://lab.bkan.dev/motion/yzrecipe-engines/">
 <meta name="theme-color" content="#131722">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="yz.css?v=4">
+<link rel="stylesheet" href="/assets/compare.css?v=1">
+<link rel="stylesheet" href="yz.css?v=5">
 </head>
 <body>
 
@@ -23,7 +24,7 @@
   <a class="crumb" href="/motion/">Motion 목록으로</a>
   <p class="kicker">모션 엔진 4개 비교 · 두 번째 과제</p>
   <h1>요즘레시피 소개영상</h1>
-  <p class="lede">음식 유행 순위 사이트의 40초 소개영상 주문서 1장을 AI 에이전트 넷에게 나눠 줬습니다.<br>에이전트마다 사용하는 영상 엔진만 다르고 작업은 100% Agentic flow로 진행했습니다.</p>
+  <p class="lede">음식 유행 순위 사이트의 40초 소개영상 시나리오 1장을 AI 에이전트 넷에게 나눠 줬습니다.<br>에이전트마다 사용하는 영상 엔진만 다르고 작업은 100% Agentic flow로 진행했습니다.</p>
 </header>
 
 <section class="player" aria-label="네 편 동시 재생">
@@ -45,6 +46,30 @@
 </section>
 
 <main class="body">
+
+  <section class="block">
+    <h2>여기까지 온 길</h2>
+    <ol class="path">
+      <li><b>첫 기획은 버렸습니다.</b>
+        <p>처음에는 세로 30초 분량의 "오늘의 음식 시황" 쇼츠를 엔진별로 다섯 편 만들었는데,<br>다섯 편 모두 같은 순위 화면을 비슷하게 쌓는 데 그쳐서 방향을 처음부터 다시&nbsp;잡았습니다.</p>
+        <figure class="strip"><img src="v/r2-shorts.jpg" alt="세로 쇼츠 다섯 편의 같은 시각 화면. 다섯 편 모두 매일 아침 9시 발표 제목 아래 오늘의 TOP 3 카드를 쌓은 비슷한 구성" width="1350" height="480" loading="lazy"><figcaption>버린 첫 기획: 세로 쇼츠 다섯 편의 12초 화면 (seek · brag 두 판 · Remotion · HyperFrames)</figcaption></figure>
+      </li>
+      <li><b>레퍼런스 영상 2편을 프레임 단위로 분해했습니다.</b>
+        <p>하나의 앵커가 모든 장면을 잇는 런칭 영상과,<br>한 획에서 모든 것이 나오는 쇼릴에서 연출 규칙만&nbsp;가져왔습니다.</p>
+      </li>
+      <li><b>brag 하나로 20초 시험작을 먼저 만들었습니다.</b>
+        <p>유행이 지난 음식을 묘비로 보여 주는 장면에서 묘비와 글자가 어긋나 있어서<br>"도형 안 글자는 정중앙으로"라는 피드백을 한 번&nbsp;줬습니다.<br>같은 세션에서 이어서 7분 만에 수정했고 이 규칙을 시나리오에&nbsp;반영했습니다.</p>
+        <div class="cmp" data-a="v/c-tomb-a" data-b="v/c-tomb-b" data-label="20초 시험작 12.8~15.4초 유행 묘지"></div>
+      </li>
+      <li><b>메시지를 바로잡았습니다.</b>
+        <p>주식 차트는 보여 주는 방식일 뿐이고, 영상이 전해야 할 내용은 "요즘 어떤 음식이 뜨는지"입니다.<br>시험작에 있던 "오를까 내릴까" 같은 사고팔기 문구를 빼고<br>길이를 40초로 늘리고 음식 사진을 원본 그대로&nbsp;넣었습니다.</p>
+      </li>
+      <li><b>brag 40초판을 "이대로 픽스"로 확정했습니다.</b>
+        <p>이어서 같은 시나리오로 나머지 세 엔진을 동시에&nbsp;돌렸고<br>네 편 모두 만족스러워서 사이트에 쓸 판을 고를 수 있도록 함께&nbsp;전달했습니다.</p>
+      </li>
+    </ol>
+    <p class="note">비교 영상의 가운데 선을 끌면 왼쪽에는 수정 전, 오른쪽에는 수정 후가 보입니다.</p>
+  </section>
 
   <section class="block">
     <h2>엔진별 장단점</h2>
@@ -75,8 +100,8 @@
   </section>
 
   <section class="block">
-    <h2>무엇을 주문했나</h2>
-    <p>네 에이전트가 받은 주문서는 한 장입니다.<br>먼작귀 때는 문구와 규격만 정하고 룩과 모션은 자유롭게 두었지만,<br>이번에는 장면 순서, 시간, 색, 서체, 장면을 잇는 방식까지 정했습니다.</p>
+    <h2>시나리오에 담은 것</h2>
+    <p>네 에이전트가 받은 시나리오는 한 장입니다.<br>먼작귀 때는 문구와 규격만 정하고 룩과 모션은 자유롭게&nbsp;두었지만,<br>이번에는 장면 순서, 시간, 색, 서체, 장면을 잇는 방식까지&nbsp;정했습니다.</p>
     <p>컨셉은 "食 한 글자가 오늘의 시세가 된다"입니다.<br>사이트 머리글 "요즘 주食식"의 빨간 食에서 한 획이 떨어져 시세선이 되고,<br>그 선이 시세 띠, 사진, 시세판, 차트, 레시피를 차례로 만든 뒤 사이트 로고 YZ의 여섯 획으로 다시 모입니다.</p>
     <div class="scroll">
       <table class="cue">
@@ -106,17 +131,6 @@
   </section>
 
   <section class="block">
-    <h2>여기까지 온 길</h2>
-    <ol class="path">
-      <li><b>첫 기획은 버렸습니다.</b> 처음에는 세로 30초 "오늘의 음식 시황" 쇼츠를 다섯 편 만들었는데,<br>결과를 보고 방향을 처음부터 다시 잡았습니다.</li>
-      <li><b>레퍼런스 영상 2편을 프레임 단위로 분해했습니다.</b> 하나의 앵커가 모든 장면을 잇는 런칭 영상과,<br>한 획에서 모든 것이 나오는 쇼릴에서 연출 규칙만 가져왔습니다.</li>
-      <li><b>brag 하나로 20초 시험작을 먼저 만들었습니다.</b> "묘비와 글자가 어긋났으니 정중앙으로"라는 피드백을 한 번 줬고<br>같은 세션을 이어서 7분 만에 수정한 뒤 이 규칙을 주문서에 넣었습니다.</li>
-      <li><b>메시지를 바로잡았습니다.</b> 주식 차트는 보여 주는 방식일 뿐이고, 영상이 전해야 할 내용은 "요즘 어떤 음식이 뜨는지"입니다.<br>사고팔기 문구를 빼고, 길이를 40초로 늘리고, 음식 사진을 원본 그대로 넣었습니다.</li>
-      <li><b>brag 40초판을 "이대로 픽스"로 확정했습니다.</b> 이어서 같은 주문서로 나머지 세 엔진을 동시에 돌렸고<br>네 편 모두 만족스러워서 사이트에 쓸 판을 고를 수 있게 함께 넘겼습니다.</li>
-    </ol>
-  </section>
-
-  <section class="block">
     <h2>만든 과정</h2>
     <div class="scroll">
       <table class="facts">
@@ -126,15 +140,15 @@
         <tbody id="facts"></tbody>
       </table>
     </div>
-    <p class="note">비용은 API 정가로 환산한 값이고, 네 편 합계는 $32.47입니다.<br>brag 하나를 먼저 돌려 결과를 확정한 뒤, 나머지 셋을 같은 주문서로 동시에 돌렸습니다.</p>
+    <p class="note">비용은 API 정가로 환산한 값이고, 네 편 합계는 $32.47입니다.<br>brag 하나를 먼저 돌려 결과를 확정한 뒤, 나머지 셋을 같은 시나리오로 동시에 돌렸습니다.</p>
   </section>
 
   <section class="block">
     <h2>해 보니</h2>
     <ul class="seen">
-      <li><b>주문서를 촘촘히 쓰니 네 엔진이 거의 같은 영상을 만들었습니다.</b> 룩과 모션이 자유였던 먼작귀 때는 네 편이 전혀 달랐습니다.<br>이번에는 같은 사진이 같은 시각에 거의 같은 자리로 나왔고<br>엔진에 따른 차이는 전환 솜씨와 세부 정보에서만 드러났습니다.</li>
-      <li><b>한 엔진으로 먼저 다듬고 나머지 엔진으로 넓히는 순서가 효과적이었습니다.</b> 시험작에서 받은 "도형 안 글자는 정중앙에" 피드백을 주문서 규칙으로 옮겼더니,<br>나중에 만든 세 편은 처음부터 묘비 글자를 가운데에 맞췄습니다.</li>
-      <li><b>화면이 비는 구멍은 네 엔진이 똑같이 냈습니다.</b> 네 편 모두 14초와 25~26초 근처에서 화면이 0.3~0.9초씩 거의 비었습니다.<br>장면이 끝나면 다음 장면을 작은 점에서 다시 키우는 바람에,<br>주문서의 "앞 장면이 다음 장면이 된다"는 규칙이 같은 자리에서 끊겼습니다.<br>엔진 문제가 아니라 주문서 규칙이 숫자로 묶여 있지 않았던 탓으로 보고,<br>다음 주문서에는 "빈 화면 0.3초 이상 금지"를 숫자로 넣기로 했습니다.</li>
+      <li><b>시나리오를 촘촘히 쓰니 네 엔진이 거의 같은 영상을 만들었습니다.</b> 룩과 모션이 자유였던 먼작귀 때는 네 편이 전혀 달랐습니다.<br>이번에는 같은 사진이 같은 시각에 거의 같은 자리로 나왔고<br>엔진에 따른 차이는 전환 솜씨와 세부 정보에서만 드러났습니다.</li>
+      <li><b>한 엔진으로 먼저 다듬고 나머지 엔진으로 넓히는 순서가 효과적이었습니다.</b> 시험작에서 받은 "도형 안 글자는 정중앙에" 피드백을 시나리오 규칙으로 옮겼더니,<br>나중에 만든 세 편은 처음부터 묘비 글자를 가운데에 맞췄습니다.</li>
+      <li><b>화면이 비는 구멍은 네 엔진이 똑같이 냈습니다.</b> 네 편 모두 14초와 25~26초 근처에서 화면이 0.3~0.9초씩 거의 비었습니다.<br>장면이 끝나면 다음 장면을 작은 점에서 다시 키우는 바람에,<br>시나리오의 "앞 장면이 다음 장면이 된다"는 규칙이 같은 자리에서 끊겼습니다.<br>엔진 문제가 아니라 시나리오 규칙이 숫자로 묶여 있지 않았던 탓으로 보고,<br>다음 시나리오에는 "빈 화면 0.3초 이상 금지"를 숫자로 넣기로 했습니다.</li>
       <li><b>제작이 오래 걸린 원인은 컴퓨터가 아니라 모델의 사고 시간이었습니다.</b> 한 편에 30~40분이 걸렸지만 CPU가 바빴던 시간은 전체의 1~7%뿐이었습니다.<br>그래픽카드가 있는 PC로 옮겨도 거의 빨라지지 않으므로,<br>시간을 줄이려면 effort, 검수 단계, 병렬 실행을 조정해야 합니다.</li>
     </ul>
   </section>
@@ -146,6 +160,7 @@
   <p>만든 사람 김병현. 포트폴리오와 블로그는 <a href="https://bkan.dev">bkan.dev</a>에 있습니다.</p>
 </footer>
 
-<script src="yz.js?v=3"></script>
+<script src="yz.js?v=4"></script>
+<script src="/assets/compare.js?v=1"></script>
 </body>
 </html>

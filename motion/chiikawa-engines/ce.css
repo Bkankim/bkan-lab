@@ -324,11 +324,26 @@ h2 { font-size: 30px; line-height: 1.25; margin: 0 0 12px; }
 }
 
 .seen { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.seen li { padding: 14px 16px; background: var(--card); border-left: 6px solid var(--pink); border-radius: 4px 14px 14px 4px; }
-.seen li:nth-child(2) { border-color: var(--blue); }
-.seen li:nth-child(3) { border-color: var(--yellow); }
-.seen li:nth-child(4) { border-color: var(--purple); }
+.seen li { position: relative; padding: 14px 16px 14px 36px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+/* 제목 첫 줄 가운데에 맞춘 사각 불릿, 본문은 제목 시작선에 맞춰 들여 씀 */
+.seen li::before { content: ""; position: absolute; left: 17px; top: calc(14px + 0.85em - 4px); width: 8px; height: 8px; background: var(--pink); }
+.seen li:nth-child(2)::before { background: var(--blue); }
+.seen li:nth-child(3)::before { background: var(--yellow); }
+.seen li:nth-child(4)::before { background: var(--purple); }
 .seen b { display: block; margin-bottom: 2px; }
+
+/* 여기까지 온 길 */
+.path { list-style: none; counter-reset: s; padding: 0; margin: 16px 0 0; }
+.path li { counter-increment: s; position: relative; padding: 0 0 30px 44px; }
+.path li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--card); font-weight: 800; font-size: 13px; color: var(--ink); }
+.path li::after { content: ""; position: absolute; left: 14px; top: 30px; bottom: 2px; width: 1px; background: var(--line); }
+.path li:last-child { padding-bottom: 0; }
+.path li:last-child::after { display: none; }
+.path li:last-child::before { background: var(--blue); border-color: var(--blue); }
+.path b { display: block; }
+.path li > p { margin: 6px 0 0; }
+.path .meta { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.cmp { --cmp-line: var(--line); }
 
 .foot {
   max-width: 820px;
