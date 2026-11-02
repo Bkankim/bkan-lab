@@ -80,6 +80,9 @@
         <button class="sound" type="button"></button>
       </figcaption>`;
     const v = fig.querySelector('video');
+    const offControls = () => { if (document.fullscreenElement !== v && !v.webkitDisplayingFullscreen) v.controls = false; };
+    document.addEventListener('fullscreenchange', offControls);
+    v.addEventListener('webkitendfullscreen', () => { v.controls = false; });
     v.addEventListener('ended', () => { if (v === master() && !scrubbing) loopAll(); });
     // 전체 화면의 네이티브 컨트롤로 재생·정지해도 전역 상태를 따라가게 한다(끝나서 멈춘 것은 loopAll이 처리)
     v.addEventListener('play', () => {
@@ -97,7 +100,9 @@
       ev.stopPropagation();
       // 전체 화면으로 띄우는 편이 소리를 내도록 먼저 고른다
       select(i, false);
-      if (v.requestFullscreen) v.requestFullscreen().catch(() => {});
+      // 전체 화면 안에서도 재생·탐색할 수 있게 네이티브 컨트롤을 켜고, 나오면 끈다
+      v.controls = true;
+      if (v.requestFullscreen) v.requestFullscreen().catch(() => { v.controls = false; });
       else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
     });
     // 소리 버튼: 소리 나는 칸이면 켜고 끄고, 다른 칸이면 소리를 그 칸으로 옮긴다
