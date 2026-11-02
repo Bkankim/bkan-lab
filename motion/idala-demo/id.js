@@ -91,7 +91,8 @@
     v.addEventListener('pause', () => {
       if (v === master() && !scrubbing && playing && v.paused && !v.ended && !v.seeking) { playing = false; paint(); runAll(); }
     });
-    fig.addEventListener('click', () => select(i, true));
+    // 전체 화면에서 켠 네이티브 컨트롤(탐색·음량) 클릭이 칸 재생·정지로 번지지 않게
+    fig.addEventListener('click', () => { if (v.controls || document.fullscreenElement) return; select(i, true); });
     fig.addEventListener('keydown', (ev) => {
       if (ev.target !== fig) return;
       if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(i, true); }
@@ -207,7 +208,12 @@
     }
   };
 
+  // 맨 위 제출본 영상과 소리가 겹치지 않게: 동시 재생을 시작하면 제출본을 멈춘다
+  const finalV = document.querySelector('.final video');
+  if (finalV) finalV.addEventListener('play', () => { if (playing) stopAll(); });
+
   function runAll() {
+    if (playing && finalV && !finalV.paused) finalV.pause();
     const t = master().currentTime;
     tiles.forEach((x, i) => {
       const v = x.v;
