@@ -363,7 +363,7 @@ details.fold .list { margin-top: 14px; }
 
 <div class="frame">
   <aside class="side">
-    <div class="mhead"><p class="where">고양 일산동구, 일산서구와 파주</p><div class="orb orb-m" aria-hidden="true"><svg class="i"><use href="#i-sun"/></svg></div></div>
+    <div class="mhead"><p class="where">고양시(일산·덕양)와 파주시</p><div class="orb orb-m" aria-hidden="true"><svg class="i"><use href="#i-sun"/></svg></div></div>
     <h1><span class="thin">여성 전문의가 진료하는</span>일산·파주 정신건강의학과</h1>
     <p class="lede">공개된 정보로 이 지역의 정신건강의학과를 빠짐없이 살펴본 뒤, 여성 전문의가 있는 곳을 골라 토요일·야간 진료와 인지행동치료 여부를 확인했습니다.</p>
     <ul class="ticks" id="ticks">
@@ -693,10 +693,10 @@ details.fold .list { margin-top: 14px; }
     var n = state.data.counts;
     var items = [
       "정신건강의학과 <b>" + n.surveyed + "곳</b>을 빠짐없이 훑었습니다",
-      "여성 원장이 확인된 의원 <b>" + n.female + "곳</b>, 성별을 확인하지 못한 의원 <b>" + n.unknown + "곳</b>",
+      "여성 전문의가 확인된 의원 <b>" + n.female + "곳</b>, 성별을 확인하지 못한 의원 <b>" + n.unknown + "곳</b>",
       "남성 원장만 확인된 <b>" + n.male_only + "곳</b>, 입원·중독 전문병원과 한의원 <b>" + n.other_types + "곳</b>, 종합병원 등 <b>" + n.general + "곳</b>은 의원 목록에서 뺐습니다",
-      "2차 병원 <b>" + n.second_surveyed + "곳</b>을 따로 살폈습니다(덕양구 포함). 일반 외래가 확인된 " + n.second_psy + "곳 가운데 의사가 모두 남성인 " + n.second_male_only + "곳을 빼고 <b>" + n.second_shown + "곳</b>을 올렸습니다",
-      "의원은 <b>" + esc(n.checked_label) + "</b>, 2차 병원은 <b>" + esc(n.second_checked_label) + "</b>에 확인한 정보입니다"
+      "2차 병원 <b>" + n.second_surveyed + "곳</b>을 따로 살폈습니다. 일반 외래가 확인된 " + n.second_psy + "곳 가운데 의사가 모두 남성인 " + n.second_male_only + "곳을 빼고 <b>" + n.second_shown + "곳</b>을 올렸습니다",
+      "일산·파주 의원은 <b>" + esc(n.checked_label) + "</b>, 덕양 의원과 2차 병원은 <b>" + esc(n.second_checked_label) + "</b>에 확인한 정보입니다"
     ];
     $("ticks").innerHTML = items.map(function (t) {
       return '<li><span class="tick">' + icon("check") + "</span><span>" + t + "</span></li>";

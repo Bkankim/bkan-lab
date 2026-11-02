@@ -1,11 +1,11 @@
 {
  "checked_at": "2026-10-27",
  "counts": {
-  "surveyed": 45,
-  "female": 4,
+  "surveyed": 57,
+  "female": 6,
   "sat": 4,
   "night": 1,
-  "unknown": 22,
+  "unknown": 26,
   "excluded": {
    "남성 전문의만": 7,
    "정신병원": 3,
@@ -15,7 +15,7 @@
   },
   "checked_label": "2026년 10월 27일",
   "hospitals": 5,
-  "male_only": 7,
+  "male_only": 13,
   "other_types": 5,
   "general": 7,
   "second_surveyed": 35,
@@ -324,6 +324,172 @@
     }
    ],
    "checked_at": "2026-10-27"
+  },
+  {
+   "id": "1840770258",
+   "name": "지혜의숲 정신건강의학과의원",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 화정동",
+   "tier": "candidate",
+   "reason": "여성 전문의가 진료한다는 후기가 여러 건 있지만, 어느 선생님인지와 지정 예약이 되는지는 공개되지 않았습니다. 토요일은 14시까지 진료합니다. 초진 예약까지 3주에서 한 달 걸렸다는 후기가 있습니다.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "이름이 공개되지 않은 여성 전문의"
+    ],
+    "selectable": "미확인(의사별 진료표 없음)",
+    "evidence": "같은 병원의 여성 의사를 가리킨 후기 4건으로 확인(이름은 공개되지 않음)"
+   },
+   "sat": true,
+   "sat_note": "09:00-14:00",
+   "night": false,
+   "night_note": null,
+   "hours": "월~금 09:30-18:30(점심 13:00-14:00), 토 09:00-14:00, 일 휴진",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": "원내 상담사와 심리검사실이 있다는 후기만 있음",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "친절하다(다수)",
+     "tone": "good"
+    },
+    {
+     "t": "이야기를 잘 들어준다(여러 건)",
+     "tone": "good"
+    },
+    {
+     "t": "공황·불안 진료 언급(일부)",
+     "tone": "good"
+    },
+    {
+     "t": "진료가 짧고 약 위주다(소수)",
+     "tone": "bad"
+    },
+    {
+     "t": "데스크 응대가 불친절하다(소수)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 215, 카카오 3.9점(37)",
+   "wait": "초진은 전화 예약. 초진까지 한 달(2026-03), 3주 전 예약(2024-08)이라는 후기가 있고, 예약 없이 가면 오래 기다린다는 후기가 많습니다",
+   "address": "경기 고양시 덕양구 화신로272번길 67 장군빌딩 5층 (화정동)",
+   "phone": "031-994-5375",
+   "map": "https://place.map.kakao.com/1840770258",
+   "naver": "https://m.place.naver.com/hospital/1927216318/home",
+   "homepage": "",
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1927216318/home"
+    },
+    {
+     "label": "카카오맵 1",
+     "url": "https://place.map.kakao.com/1840770258"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1927216318/review/visitor"
+    },
+    {
+     "label": "카카오맵 2",
+     "url": "https://place.map.kakao.com/1840770258#review"
+    },
+    {
+     "label": "네이버 3",
+     "url": "https://m.place.naver.com/hospital/1927216318/information"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
+  },
+  {
+   "id": "2009678511",
+   "name": "삼성공감정신건강의학과의원 고양삼송점",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 삼송동",
+   "tier": "candidate",
+   "reason": "유혜진 원장이 여성 전문의로 소개돼 있고 화·수·목은 21시, 토요일은 14시까지 진료합니다. 다만 의료진 명단이 2025년 3월 기준이고 담당의가 자주 바뀐다는 후기가 있어, 지금도 진료하는지 전화로 먼저 확인하세요.",
+   "female": {
+    "kind": "재직",
+    "doctors": [
+     "유혜진 원장"
+    ],
+    "selectable": "미확인(요일별 진료표 없음)",
+    "evidence": "병원 공식 블로그의 원장 소개 사진으로 확인(의료진 명단은 2025년 3월 기준)"
+   },
+   "sat": true,
+   "sat_note": "10:00-14:00",
+   "night": true,
+   "night_note": "화·수·목 21:00까지",
+   "hours": "월·금 09:00-18:30, 화·수·목 09:00-21:00(점심 13:00-14:00), 토 10:00-14:00, 일 휴진",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": "TMS와 종합심리검사 안내. 초진 때 뇌파 등 검사를 권했다는 후기",
+    "gender": null,
+    "badge": false
+   },
+   "signals": [
+    {
+     "t": "충분히 들어주고 자세히 상담한다(여러 건)",
+     "tone": "good"
+    },
+    {
+     "t": "공황·불안 진료 언급(일부)",
+     "tone": "good"
+    },
+    {
+     "t": "담당의가 자주 바뀐다(2026년 여러 건)",
+     "tone": "bad"
+    },
+    {
+     "t": "초진 때 검사를 권하고 검사비가 부담됐다(여러 건)",
+     "tone": "bad"
+    },
+    {
+     "t": "예약해도 진료 당일 대기가 길다(여러 건, 주로 예전 후기)",
+     "tone": "bad"
+    }
+   ],
+   "reviews": "네이버 방문자 리뷰 289, 카카오 3.0점(22)",
+   "wait": "초진까지 몇 주씩 걸린다는 언급은 없음. 예약해도 당일 30분~2시간 기다렸다는 후기(주로 2021~2024)",
+   "address": "경기 고양시 덕양구 삼송로 189-7 희성프라자 202·203·301호 (삼송동)",
+   "phone": "02-371-1544",
+   "map": "http://place.map.kakao.com/2009678511",
+   "naver": "https://m.place.naver.com/hospital/1345799610/home",
+   "homepage": "https://blog.naver.com/samsonggonggam",
+   "sources": [
+    {
+     "label": "홈페이지 1",
+     "url": "http://www.samgonggam.com/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1345799610/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/2009678511"
+    },
+    {
+     "label": "네이버 블로그 1",
+     "url": "https://blog.naver.com/samsonggonggam/223375003072"
+    },
+    {
+     "label": "홈페이지 2",
+     "url": "https://web.archive.org/web/20250321003128/http://samgonggam.com/sub/sub_01_03_c.php"
+    },
+    {
+     "label": "네이버 블로그 2",
+     "url": "https://blog.naver.com/samsonggonggam/223840602140"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
   },
   {
    "id": "2043670322",
@@ -1438,9 +1604,213 @@
     }
    ],
    "checked_at": "2026-10-27"
+  },
+  {
+   "id": "589304835",
+   "name": "올리브정신건강의학과의원",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 성사동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 09:30-18:00(점심 13:00-14:00, 접수마감 17:30) / 목 09:30-13:00 / 토 09:30-13:00 / 일 휴무",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 98",
+   "wait": "블로그 안내 '처음 내원하시는 경우 예약을 위해 전화'(222577153601). 후기: 예약하고 가라(2025-11), 대기시간 길지 않음(2022-09). 초진 대기 기간 언급 없음 (2025-11)",
+   "address": "경기 고양시 덕양구 호국로 798 삼성홈타워오피스텔 3층 303, 304호 (성사동)",
+   "phone": "031-963-8134",
+   "map": "https://place.map.kakao.com/589304835",
+   "naver": "https://m.place.naver.com/hospital/1303116028/home",
+   "homepage": "https://blog.naver.com/alllivepsychiatry",
+   "sources": [
+    {
+     "label": "네이버 블로그",
+     "url": "https://blog.naver.com/alllivepsychiatry"
+    },
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/1303116028/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/589304835"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/1303116028/information"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
+  },
+  {
+   "id": "16447712",
+   "name": "조중근정신과의원",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 성사동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:30-17:00 / 수 휴무 / 토 09:30-13:00 / 일 휴무 (네이버). 카카오: 월~금 09:30-18:00, 토 09:30-15:00",
+   "cbt": {
+    "form": null,
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 43, 카카오 1.0점(1)",
+   "wait": null,
+   "address": "경기 고양시 덕양구 호국로 792 천일빌딩 (성사동)",
+   "phone": "031-966-9500",
+   "map": "https://place.map.kakao.com/16447712",
+   "naver": "https://m.place.naver.com/hospital/13237700/home",
+   "homepage": "",
+   "sources": [
+    {
+     "label": "네이버 1",
+     "url": "https://m.place.naver.com/hospital/13237700/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "https://place.map.kakao.com/16447712"
+    },
+    {
+     "label": "네이버 2",
+     "url": "https://m.place.naver.com/hospital/13237700/information"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
+  },
+  {
+   "id": "699350614",
+   "name": "지니정신건강의학과의원",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 지축동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·수·금 10:00-18:30 (점심 13:00-14:00, 접수마감 18:00) / 목 정기휴진(매월 첫째 주 목 14:00-18:00 심리센터 진료) / 토 09:00-13:00(접수마감 12:30, 홈페이지 13:30) / 매월 첫째 주 토요일 휴진, 토 휴진은 월마다 변동 / 일·공휴일 휴진",
+   "cbt": {
+    "form": "원내 심리 전문가",
+    "note": null,
+    "gender": null,
+    "badge": true
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 131, 카카오 2.3점(6)",
+   "wait": "병원 공지: 초진은 3개월 후 예약됩니다(2026-04, 박은진 전문의 단독진료). 카카오 후기 2023-04: 가장 빠른 초진이 한 달 넘게 (2026-04)",
+   "address": "경기 고양시 덕양구 지축로 56 성산타워 7층 705·706호 (지축동)",
+   "phone": "02-371-0975",
+   "map": "http://place.map.kakao.com/699350614",
+   "naver": "https://m.place.naver.com/hospital/1184120835/home",
+   "homepage": "https://jinnymental.com/",
+   "sources": [
+    {
+     "label": "홈페이지",
+     "url": "https://jinnymental.com/"
+    },
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1184120835/home"
+    },
+    {
+     "label": "카카오맵",
+     "url": "http://place.map.kakao.com/699350614"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
+  },
+  {
+   "id": "107852163",
+   "name": "연세인정신건강의학과의원",
+   "short": null,
+   "region": "덕양",
+   "area": "덕양구 향동동",
+   "tier": "check",
+   "reason": "의사 성별을 공개 정보로 확인하지 못했습니다.",
+   "female": {
+    "kind": "미확인",
+    "doctors": [],
+    "selectable": null,
+    "evidence": null
+   },
+   "sat": true,
+   "sat_note": null,
+   "night": false,
+   "night_note": null,
+   "hours": "월·화·목·금 09:30-18:00 (점심 13:00-14:00, 접수마감 17:30) / 수 09:30-13:00 (접수마감 12:30) / 토 09:00-13:00 (카카오 기준, 네이버는 11/7·11/21 임시휴무만 표시) / 일 휴무",
+   "cbt": {
+    "form": "심리상담은 있으나 인지행동치료라고 밝히지 않음",
+    "note": null,
+    "gender": null,
+    "badge": false
+   },
+   "signals": [],
+   "reviews": "네이버 방문자 리뷰 36, 카카오 3.7점(3)",
+   "wait": "초진 대기 언급 없음 ()",
+   "address": "경기 고양시 덕양구 꽃마을로 4 고양향동 퍼스트타워 4층 405호 (향동동)",
+   "phone": "02-3158-2255",
+   "map": "http://place.map.kakao.com/107852163",
+   "naver": "https://m.place.naver.com/hospital/1802421992/home",
+   "homepage": "",
+   "sources": [
+    {
+     "label": "네이버",
+     "url": "https://m.place.naver.com/hospital/1802421992/home"
+    },
+    {
+     "label": "카카오맵 1",
+     "url": "http://place.map.kakao.com/107852163"
+    },
+    {
+     "label": "카카오맵 2",
+     "url": "https://place.map.kakao.com/107852163"
+    }
+   ],
+   "checked_at": "2026-11-02",
+   "added": "2026-11-02"
   }
  ],
- "summary": "여성 전문의와 원내 인지행동치료가 모두 확인된 의원은 없었습니다. 그래서 추천 대신 여성 원장이 확인된 의원 4곳을 후보로 묶었습니다. 대학병원 대기가 부담스럽다면 위에서 '2차 병원'을 눌러 정신병원까지 함께 보시고, 어느 곳이든 인지행동치료를 하는지 전화로 먼저 물어보세요.",
+ "summary": "여성 전문의와 원내 인지행동치료가 모두 확인된 의원은 없었습니다. 그래서 추천 대신 여성 전문의가 확인된 의원 6곳을 후보로 묶었습니다. 대학병원 대기가 부담스럽다면 위에서 '2차 병원'을 눌러 정신병원까지 함께 보시고, 어느 곳이든 인지행동치료를 하는지 전화로 먼저 물어보세요.",
  "hospitals": [
   {
    "id": "h-cha",
@@ -2055,7 +2425,7 @@
   }
  ],
  "fine": [
-  "조사 방법: 2026년 10월 27일에 카카오 장소 검색으로 고양시 일산동구·일산서구와 파주시의 정신건강의학과를 모은 뒤, 네이버 지도·모두닥·심평원 기반 목록으로 빠진 곳을 보강해 45곳을 확인했습니다. 병원 홈페이지, 네이버 플레이스, 카카오맵, 병원 블로그와 후기는 직접 열어 봤습니다. 2차 병원은 2026년 11월 2일에 같은 방법과 심평원 병원 찾기(종별·진료과목)로 고양시(덕양구 포함)·파주시의 종합병원·병원·정신병원 35곳을 살폈습니다. 국립암센터 정신건강클리닉은 암 환자와 가족 대상이라 목록에 넣지 않았습니다.",
+  "조사 방법: 2026년 10월 27일에 카카오 장소 검색으로 고양시 일산동구·일산서구와 파주시의 정신건강의학과를 모은 뒤, 네이버 지도·모두닥·심평원 기반 목록으로 빠진 곳을 보강해 45곳을 확인했습니다. 병원 홈페이지, 네이버 플레이스, 카카오맵, 병원 블로그와 후기는 직접 열어 봤습니다. 덕양구 의원 12곳은 2026년 11월 2일에 같은 방법으로 추가했습니다. 2차 병원은 같은 날 같은 방법과 심평원 병원 찾기(종별·진료과목)로 고양시(덕양구 포함)·파주시의 종합병원·병원·정신병원 35곳을 살폈습니다. 국립암센터 정신건강클리닉은 암 환자와 가족 대상이라 목록에 넣지 않았습니다.",
   "의사의 성별은 이름으로 추정하지 않았습니다. 공식 소개 문구나 사진이 있거나, 같은 의사를 여성으로 지칭한 후기가 두 건 이상 있을 때만 여성 전문의로 표시했습니다. 의원 목록에서는 남성 원장만 확인된 곳과 정신병원·중독 전문병원·한의원을 뺐습니다. 정신병원은 2차 병원 조사에서 외래를 보는지 다시 확인해 넣었고, 의사가 모두 남성으로 확인된 2곳(연세서울병원, 고양휴메디병원)은 뺐습니다. 근거가 이보다 약한 한 곳은 카드에 그 사실을 따로 적었습니다.",
   "야간 진료는 평일 중 하루라도 19시 이후까지(19시 마감 포함) 진료하는 경우를 가리킵니다. 후기는 원문을 옮기지 않고 경향만 요약했습니다.",
   "이 페이지는 공개 정보를 정리한 것으로, 의학적 조언이 아닙니다. 진단과 치료는 진료하는 의사와 상의하세요. 의료진과 진료 시간은 바뀔 수 있으니 방문하기 전에 전화로 확인하세요."
