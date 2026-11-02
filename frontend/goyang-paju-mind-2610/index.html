@@ -197,6 +197,7 @@ h3 { margin: 0; font: 500 17px/1.45 var(--display); letter-spacing: -.02em; }
   font-size: 12.5px; line-height: 1.6; background: var(--tint); color: var(--ink);
 }
 .badge svg.i { width: 14px; height: 14px; }
+.badge.new { background: var(--glow); color: var(--ink); font-weight: 600; letter-spacing: .04em; padding: 2px 9px; }
 .badge.off { background: none; color: var(--faint); box-shadow: inset 0 0 0 1px var(--line); }
 .plus {
   width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; justify-self: end;
@@ -562,6 +563,7 @@ details.fold .list { margin-top: 14px; }
 
   function badges(c) {
     var b = [];
+    if (c.added) b.push('<span class="badge new" title="' + esc(c.added) + ' 추가">NEW</span>');
     if (isHosp(c) && c.level) b.push('<span class="badge off">' + esc(c.level) + "</span>");
     if (c.female && c.female.kind === "원장") b.push('<span class="badge">' + icon("person") + "여성 원장</span>");
     else if (c.female && c.female.kind === "재직") b.push('<span class="badge">' + icon("person") + "여성 전문의 재직</span>");

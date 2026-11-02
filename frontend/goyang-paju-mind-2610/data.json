@@ -1738,7 +1738,8 @@
      "label": "카카오맵",
      "url": "https://place.map.kakao.com/8137687"
     }
-   ]
+   ],
+   "added": "2026-11-02"
   },
   {
    "kind": "hospital",
@@ -1800,7 +1801,8 @@
      "label": "카카오맵",
      "url": "https://place.map.kakao.com/27595314"
     }
-   ]
+   ],
+   "added": "2026-11-02"
   },
   {
    "kind": "hospital",
@@ -1858,7 +1860,8 @@
      "label": "카카오맵",
      "url": "https://place.map.kakao.com/20284057"
     }
-   ]
+   ],
+   "added": "2026-11-02"
   },
   {
    "kind": "hospital",
@@ -1916,7 +1919,8 @@
      "label": "카카오맵",
      "url": "https://place.map.kakao.com/11294348"
     }
-   ]
+   ],
+   "added": "2026-11-02"
   },
   {
    "kind": "hospital",
@@ -1974,7 +1978,8 @@
      "label": "카카오맵",
      "url": "https://place.map.kakao.com/7880313"
     }
-   ]
+   ],
+   "added": "2026-11-02"
   }
  ],
  "questions": [
