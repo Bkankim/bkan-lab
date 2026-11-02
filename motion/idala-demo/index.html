@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>idala 해커톤 데모영상 - 초안에서 제출본까지</title>
+<meta name="description" content="해커톤에 낼 2분 데모영상을 주문서 한 장으로 세 엔진에게 맡기고, 사람 피드백으로 다섯 번 고쳐 제출본을 만든 기록입니다.">
+<link rel="canonical" href="https://lab.bkan.dev/motion/idala-demo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="idala 해커톤 데모영상 - 초안에서 제출본까지">
+<meta property="og:description" content="파일럿, 엔진 셋, 수정 다섯 번. 2분 데모영상이 제출본이 되기까지.">
+<meta property="og:image" content="https://lab.bkan.dev/motion/idala-demo/og.jpg?v=1">
+<meta property="og:url" content="https://lab.bkan.dev/motion/idala-demo/">
+<meta name="theme-color" content="#f6f5f2">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="id.css?v=2">
+</head>
+<body>
+<header class="head">
+  <a class="crumb" href="/motion/">Motion 목록으로</a>
+  <p class="kicker">모션 엔진 비교 · 실전 제출</p>
+  <h1>idala 해커톤 데모영상</h1>
+  <p class="lede">해커톤 참가작 idala의 2분 데모영상을 마감 하루 전에 만들어 제출했습니다.<br>주문서 한 장으로 엔진 셋에게 초안을 받고,<br>사람이 보고 고칠 점을 짚어 다섯 번 고친 뒤 그중 4차 수정본을 냈습니다.</p>
+</header>
+
+<section class="final" aria-label="제출한 영상">
+  <figure class="final-fig">
+    <video controls playsinline preload="metadata" poster="v/final.jpg" src="v/final.mp4"></video>
+    <figcaption>제출한 4차 수정본 (HyperFrames, 2분, 60fps)</figcaption>
+  </figure>
+</section>
+
+<main class="body">
+  <section class="block">
+    <h2>여기까지 온 길</h2>
+    <p>idala는 좋아하는 사진 세 장으로 손톱 열 개짜리 네일 세트를 디자인하고,<br>YouCam 가상 착용으로 내 손 사진 위에서 손톱만 바꿔 보여 주는 서비스입니다.<br>영상이 전해야 할 말은 "좋아하는 사진이 내 손 위의 네일이 된다"였습니다.</p>
+    <ol class="path">
+      <li>
+        <b>파일럿: 엔진 하나로 먼저 만들어 봤습니다.</b>
+        <p>brag로 만든 첫 판은 장면이 바뀔 때마다 앞 요소가 사라진 뒤에야 새 요소가 따로 나타났고,<br>손은 선으로 그려 허접했으며, 0.6초 넘게 멈추는 곳이 20군데였습니다.</p>
+        <p class="meta">72분 · $12.34</p>
+      </li>
+      <li>
+        <b>레퍼런스를 1프레임 단위로 뜯어 주문서를 다시 썼습니다.</b>
+        <p>부드럽기로 소문난 레퍼런스 영상과 파일럿을 같은 측정기로 쟀더니,<br>한 동작이 이어지는 길이가 0.19초 대 0.03초로 크게 달랐습니다.<br>첫 주문서는 "어떻게 움직일지"를 엔진에 맡겼고, 엔진은 기본값인 페이드와 슬라이드를 골랐습니다.<br>그래서 움직임을 숫자로 정한 주문서 v2를 만들고, 손은 사이트의 실제 손 사진으로 바꿨습니다.</p>
+      </li>
+      <li>
+        <b>v2: 같은 주문서로 엔진 셋을 동시에 돌렸습니다.</b>
+        <p>brag, HyperFrames, Remotion 세 편 모두 파일럿의 문제는 사라졌습니다.<br>세 편을 나란히 보고 "이번엔 HyperFrames 퀄리티가 제일 좋다"는 판단으로 HyperFrames 판을 골랐습니다.</p>
+        <p class="meta">83분 · 148분 · 139분 (brag · HyperFrames · Remotion)</p>
+      </li>
+      <li>
+        <b>1차 수정: 고칠 점 열두 개를 한 번에 짚었습니다.</b>
+        <p>첫 장면 전후 슬라이더가 렉 걸린 듯 끊기고, 사진 카드가 흐리고, 로딩 원이 너무 빨리 돌고,<br>맨손에 씌우는 보라 임시 손톱이 실제 손톱과 어긋난다는 지적 등입니다.<br>슬라이더가 끊긴 원인은 엔진이 아니라 원본 녹화였습니다(222프레임 중 69장이 앞 프레임과 거의 같음).<br>그래서 녹화에서 수정 전·후 사진을 한 장씩 뽑아 슬라이더를 다시 만들었습니다.</p>
+        <div class="cmp" data-a="v/c1a" data-b="v/c1b" data-label="0~4초 첫 장면 슬라이더"></div>
+        <p class="meta">36분 · $14.17 · 렌더 5분</p>
+      </li>
+      <li>
+        <b>2차 수정: 임시 손톱 경계가 톱니처럼 들쭉날쭉했습니다.</b>
+        <p>두 손 사진의 차이로 손톱 모양을 뽑았더니 가장자리에 잡티가 남아, 경계를 다듬었습니다.</p>
+        <div class="cmp nail" data-a="v/c2a" data-b="v/c2b" data-label="15.5~18.5초 손 부분 확대"></div>
+        <p class="meta">10분 · $2.93</p>
+      </li>
+      <li>
+        <b>3차 수정: 연출을 다른 엔진에서 가져왔습니다.</b>
+        <p>사진과 손톱을 잇는 곡선은 brag 판처럼 사진 가장자리에서 팁 가장자리로 가는 물결선 하나로 바꾸고,<br>녹화 글자를 가리던 모서리 로더를 없애고, 한 번 쓸고 끝나던 슬라이더를 좌우로 왕복하게 했습니다.</p>
+        <div class="cmp" data-a="v/c3a" data-b="v/c3b" data-label="44~48초 사진이 손톱이 되는 장면"></div>
+        <p class="meta">15분 · $2.05</p>
+      </li>
+      <li>
+        <b>4차 수정: 손톱은 사람이 직접 깎았습니다.</b>
+        <p>다듬은 뒤에도 어색해서 2배로 확대해 보니, 보라 손톱이 큐티클까지 내려오지 않아 맨손톱이 드러나 있었습니다.<br>자동으로 다시 뽑아 봐도 엄지와 새끼손가락은 손가락 쪽으로 번졌습니다.<br>그래서 완성된 손 사진을 3배로 키우고 좌표 격자를 그려 손톱 다섯 개의 윤곽을 한 점씩 땄습니다.</p>
+        <div class="cmp nail" data-a="v/c4a" data-b="v/c4b" data-label="15.5~18.5초 손 부분 확대"></div>
+        <p class="meta">8분 · $5.11</p>
+      </li>
+      <li>
+        <b>5차 수정: 더 고쳐 봤지만 4차로 돌아갔습니다.</b>
+        <p>44~52초를 brag 판 장면으로 갈아 끼우고,<br>76~92초는 손톱 그림을 붙이는 대신 실제 손 사진에서 손톱마다 실제 가상 착용 결과로 바뀌게 했습니다.<br>완성본을 본 뒤에는 4차가 더 낫다고 판단해 4차 수정본을 제출했습니다.</p>
+        <div class="cmp" data-a="v/c5a" data-b="v/c5b" data-la="4차" data-lb="5차" data-label="79~88초 손가락마다 착용하는 장면"></div>
+        <p class="meta">16분 · $6.28 · 제출본은 4차</p>
+      </li>
+    </ol>
+    <p class="note">비교 영상의 가운데 선을 끌면 왼쪽은 수정 전, 오른쪽은 수정 후가 보입니다.<br>수정은 매번 HyperFrames 판을 만든 에이전트의 세션을 이어서 맡겼습니다.</p>
+  </section>
+</main>
+
+<section class="player" aria-label="파일럿과 v2 세 편 동시 재생">
+  <h2 class="ph">파일럿과 v2 세 편</h2>
+  <p class="psub">네 편을 한 시계로 같이 돌립니다.<br>파일럿은 첫 주문서로 만들어서 장면 시각이 조금 다릅니다.</p>
+  <div class="bar" id="bar">
+    <button class="play" id="play" type="button" aria-label="재생">
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+    </button>
+    <input class="scrub" id="scrub" type="range" min="0" max="120" step="0.01" value="0" aria-label="재생 위치">
+    <span class="time" id="time">0:00</span>
+  </div>
+  <div class="scenes" id="scenes" aria-label="장면으로 건너뛰기"></div>
+  <div class="tabs" id="tabs" role="tablist" aria-label="판 고르기"></div>
+  <div class="grid" id="grid"></div>
+  <p class="hint" id="hint">영상을 누르면 재생하거나 정지하고, 소리 버튼으로 그 영상의 소리를 켜고 끕니다.</p>
+</section>
+
+<div class="body">
+  <section class="block">
+    <h2>v2 엔진별 장단점</h2>
+    <p>세 편을 0.25초마다 한 장씩, 장면이 바뀌는 곳은 1프레임씩 뽑아 직접 비교했습니다.</p>
+    <ul class="pros">
+      <li style="--c: var(--blue)">
+        <p class="who"><i></i>brag</p>
+        <p><span class="tag">장점</span>0.6초 넘게 멈추는 곳이 한 군데도 없고,<br>세 편 가운데 가장 빨리(83분) 끝났습니다.</p>
+        <p><span class="tag bad">단점</span>76~92초에 손톱마다 찍는 호출 표시가 번호가 안 읽히는 검은 점으로 남고,<br>일부는 손톱에서 떨어져 떠 있어 스티커처럼 보입니다.</p>
+      </li>
+      <li style="--c: var(--purple)">
+        <p class="who"><i></i>HyperFrames<span class="main">제출본</span></p>
+        <p><span class="tag">장점</span>14~18초 맨손 위에 팁이 하나씩 착지하는 장면처럼,<br>화질과 연출이 셋 가운데 가장 좋았습니다.</p>
+        <p><span class="tag bad">단점</span>13.3~14.0초에 빈 흰 카드가 0.7초 남고,<br>26초에는 패널이 먼저 사라져 버튼만 구석에 남는 등 0.6초대 정지가 다섯 곳 있었습니다.</p>
+      </li>
+      <li style="--c: var(--yellow)">
+        <p class="who"><i></i>Remotion</p>
+        <p><span class="tag">장점</span>0.25초 간격 480장을 다 봐도 금지 위반과 빈 화면이 없었고,<br>4~10초 사진 카드가 부채처럼 겹치는 연출은 HyperFrames 판에 그대로 옮겼습니다.</p>
+        <p><span class="tag bad">단점</span>26~36초 생성 대기 장면에서 진행 패널이 화면 폭의 45% 정도로 작아,<br>단계 이름과 경과 시간이 잘 안 읽힙니다.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>무엇을 주문했나</h2>
+    <p>주문서 v2는 "무엇을 보여 줄지"와 함께 "어떻게 움직일지"를 숫자로 정했습니다.<br>숫자는 레퍼런스 영상을 1프레임 단위로 재서 가져왔습니다.</p>
+    <div class="scroll">
+      <table class="facts measure">
+        <thead><tr><th>같은 측정기로 잰 값</th><th>레퍼런스</th><th>파일럿</th></tr></thead>
+        <tbody>
+          <tr><td>한 동작이 이어지는 길이(가운데값)</td><td class="num">0.19초</td><td class="num">0.03초</td></tr>
+          <tr><td>모션 블러가 걸린 프레임</td><td class="num">13.1%</td><td class="num">4.9%</td></tr>
+          <tr><td>가장 길게 멈춘 시간</td><td class="num">0.57초</td><td class="num">1.5초</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="rules">
+      <li>그릇 하나: 화면의 주인공은 늘 하나이고, 크기·모서리·색만 바뀌며 다음 화면이 된다.</li>
+      <li>내용 교체: 나가는 내용은 3~4프레임 블러로 사라지고, 들어오는 내용은 그다음에 4~6프레임 블러로 나타난다(겹치는 프레임 없음).</li>
+      <li>스프링: 커지는 전환은 목표를 4~8% 넘었다가 0.1~0.15초에 자리 잡는다.</li>
+      <li>전환 길이 0.15~0.3초, 120 BPM 한 박(0.5초) 안에 끝낸다.</li>
+      <li>0.6초 넘게 멈추는 화면, 0.2초 넘게 비는 화면, 크로스페이드, 선으로 그린 손은 금지.</li>
+      <li>모션 블러는 필터로 흉내 내지 않고, 한 프레임에 서브프레임 4장을 렌더해 평균 낸다.</li>
+    </ul>
+    <p>장면은 2초 마디 60개에 16개를 놓았습니다.<br>결과부터 보여 주는 훅, 남의 손 네일 사진뿐이라는 문제, 실제 사용 녹화 세 단계,<br>내 손에서 손톱만 바뀌는 장면, 동작 원리, 9월 29일 이후 바뀐 점, 엔드카드 순서입니다.</p>
+    <p class="note">녹화 클립은 색과 화면을 바꾸지 않고 확대·자르기·빨리 감기만 했고, 빨리 감은 구간에는 배속을 표시했습니다.<br>문제 장면의 남의 손 네일 사진 세 장만 이미지 생성 모델로 만들었습니다.</p>
+  </section>
+
+  <section class="block">
+    <h2>만든 과정</h2>
+    <div class="scroll">
+      <table class="facts">
+        <thead><tr><th>판</th><th>시간</th><th>비용</th><th>0.6초 넘는 정지</th><th>음량</th></tr></thead>
+        <tbody id="facts"></tbody>
+      </table>
+    </div>
+    <p class="note">비용은 API 정가로 환산한 값입니다.<br>수정 다섯 번은 합쳐서 85분, $30.54가 들었고 매번 렌더는 5분 남짓이었습니다.</p>
+  </section>
+
+  <section class="block">
+    <h2>해 보니</h2>
+    <ul class="seen">
+      <li><b>움직임을 숫자로 정하자 파일럿의 문제가 v2 세 편 모두에서 사라졌습니다.</b> 첫 주문서는 "어떻게"를 엔진에 맡겼고, 파일럿은 기본값인 페이드와 슬라이드로 갔습니다.<br>레퍼런스에서 잰 숫자를 주문서에 넣자 0.6초 넘는 정지가 20곳에서 0~5곳으로 줄었습니다.</li>
+      <li><b>엔진을 고르는 일보다 사람이 짚는 수정이 제출본을 만들었습니다.</b> 엔진 셋의 초안은 모두 쓸 만했지만 바로 낼 수준은 아니었습니다.<br>같은 세션을 이어서 고치니 수정 한 번에 8~35분이면 충분해서, 마감 전날 밤에도 다섯 번을 돌릴 수 있었습니다.</li>
+      <li><b>엔진이 고칠 수 없는 문제는 재료에 있었습니다.</b> 슬라이더가 끊긴 것은 원본 녹화 때문이었고,<br>녹화를 다시 재생하는 대신 녹화에서 뽑은 실제 사진 두 장으로 슬라이더를 새로 만들어 풀었습니다.</li>
+      <li><b>손톱처럼 눈이 예민한 곳은 자동 처리로 끝나지 않았습니다.</b> 사진 차이로 뽑은 마스크는 두 번 모두 어색했고,<br>사람이 확대 격자에서 윤곽을 직접 따고 나서야 자연스러워졌습니다.</li>
+      <li><b>더 고친다고 더 좋아지지는 않았습니다.</b> 5차에서 다른 엔진 장면을 이어 붙이고 실제 착용 결과를 넣었지만,<br>완성본을 보고는 4차가 더 낫다고 판단했습니다.<br>수정마다 이전 판을 그대로 남겨 둔 덕분에 바로 되돌릴 수 있었습니다.</li>
+    </ul>
+  </section>
+</div>
+
+<footer class="foot">
+  <p>idala는 YouCam API 해커톤 참가작입니다(<a href="https://idala-youcam.vercel.app/" target="_blank" rel="noopener">idala-youcam.vercel.app</a>).<br>영상 속 녹화는 그 사이트의 실제 작동 화면이고, 음악과 효과음은 코드로 합성했습니다.</p>
+  <p>만든 사람 김병현. 포트폴리오와 블로그는 <a href="https://bkan.dev">bkan.dev</a>에 있습니다.</p>
+</footer>
+<script src="id.js?v=2"></script>
+</body>
+</html>
