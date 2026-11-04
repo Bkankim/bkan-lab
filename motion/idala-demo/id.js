@@ -52,7 +52,6 @@
   let playing = false;
   let scrubbing = false;
   let soundOn = true;
-  let warmed = false;
 
   const fmt = (t) => {
     const s = Math.max(0, Math.floor(t));
@@ -69,7 +68,7 @@
     fig.setAttribute('aria-label', `${e.name} 영상`);
     fig.innerHTML = `
       <div class="screen">
-        <video playsinline muted preload="metadata" poster="v/${e.id}.jpg" src="v/${e.id}.mp4"></video>
+        <video playsinline muted preload="none" poster="v/${e.id}.jpg" data-src="v/${e.id}.mp4"></video>
       </div>
       <button class="full" type="button" aria-label="${e.name} 전체 화면">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
@@ -157,6 +156,17 @@
 
   const master = () => tiles[active].v;
   const allVids = () => tiles.map((x) => x.v);
+  const loadVideo = (v) => {
+    if (!v.hasAttribute('src')) { v.preload = 'metadata'; v.src = v.dataset.src; }
+  };
+  const loadNeeded = () => tiles.forEach((x, i) => {
+    if (!narrow() || i === active) loadVideo(x.v);
+  });
+  // 비교 영역에 가까워졌을 때만 준비한다. 처음 화면의 제출본과 경쟁하지 않는다.
+  const playerObserver = new IntersectionObserver((entries, observer) => {
+    if (entries.some((entry) => entry.isIntersecting)) { loadNeeded(); observer.disconnect(); }
+  }, { rootMargin: '400px 0px' });
+  playerObserver.observe(document.querySelector('.player'));
 
   function paint() {
     tiles.forEach((x, i) => {
@@ -211,21 +221,25 @@
   // 맨 위 제출본 영상과 소리가 겹치지 않게: 동시 재생을 시작하면 제출본을 멈춘다
   const finalV = document.querySelector('.final video');
   if (finalV) finalV.addEventListener('play', () => { if (playing) stopAll(); });
+  // 제출본이 재생 준비를 마치면 쉬는 틈에 네 편의 앞부분(metadata)만 받아 둔다.
+  // 페이지를 열자마자 비교 영역으로 가 재생을 눌러도 기존(처음부터 metadata)만큼 빨리 시작하게 한다.
+  const prefetchGrid = () => {
+    if (window.requestIdleCallback) requestIdleCallback(loadNeeded, { timeout: 1000 });
+    else setTimeout(loadNeeded, 200);
+  };
+  if (!finalV || finalV.readyState >= 3) prefetchGrid();
+  else finalV.addEventListener('canplay', prefetchGrid, { once: true });
 
   function runAll() {
     if (playing && finalV && !finalV.paused) finalV.pause();
+    if (playing) loadNeeded();
     const t = master().currentTime;
     tiles.forEach((x, i) => {
       const v = x.v;
       if (narrow() && i !== active) { v.pause(); return; }
-      if (i !== active && Math.abs(v.currentTime - t) > 0.05) v.currentTime = clampT(v, t);
+      if (v.hasAttribute('src') && i !== active && Math.abs(v.currentTime - t) > 0.05) v.currentTime = clampT(v, t);
       if (playing) safePlay(v); else v.pause();
     });
-    // 한 번 재생을 시작한 넓은 화면에서는 네 편을 끝까지 미리 받아 둔다
-    if (playing && !warmed && !narrow()) {
-      warmed = true;
-      allVids().forEach((v) => { v.preload = 'auto'; });
-    }
   }
 
   function seekAll(t) {
@@ -238,6 +252,7 @@
   }
 
   function jump(t) {
+    loadNeeded();
     seekAll(t);
     scrub.value = String(t);
     timeEl.textContent = fmt(t);
@@ -255,6 +270,7 @@
     }
     const t = master().currentTime;
     active = i;
+    loadVideo(master());
     if (Math.abs(master().currentTime - t) > 0.05) master().currentTime = clampT(master(), t);
     if (fromTile && !playing) playing = true;
     paint();
