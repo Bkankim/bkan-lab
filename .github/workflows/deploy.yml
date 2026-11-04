@@ -38,13 +38,17 @@ jobs:
           rsync -a --delete \
             --exclude '.git' --exclude '.github' --exclude '.gitignore' \
             --exclude 'README.md' --exclude 'CLAUDE.md' --exclude '_workspace' --exclude '.wrangler' --exclude '.fablize' \
-            --exclude '/tools' \
+            --exclude '/tools' --exclude '/functions' \
             ./ /tmp/dist/
           test -f /tmp/dist/index.html
           test -f /tmp/dist/404.html
           test ! -e /tmp/dist/README.md
           test ! -e /tmp/dist/CLAUDE.md
           echo "dist files: $(find /tmp/dist -type f | wc -l)"
+
+      # functions/_middleware.js 가 mp4 Range(206)를 만들 때 쓰는 크기 목록. 실제로 올릴 파일에서 잰다
+      - name: Build video size list (Range용)
+        run: python3 tools/video_sizes.py /tmp/dist
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3.15.0
@@ -72,6 +76,7 @@ jobs:
             gp_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/goyang-paju-mind-2610/data.json")
             missing=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/no-such-page-$(date +%s)/")
             custom_css=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$CUSTOM/assets/lab.css")
+            custom_range=$(curl -s -r 1000-1999 -o /dev/null -w '%{http_code} %{size_download}' "$CUSTOM/motion/idala-demo/v/hf.mp4")
             fail=0
             check() { if [ "$2" = "1" ]; then echo "PASS  $1"; else echo "FAIL  $1"; fail=1; fi; }
             check "home renders landing (bkan lab + /frontend/ link)" \
@@ -101,6 +106,9 @@ jobs:
             check "unknown path returns 404" "$([ "$missing" = "404" ] && echo 1 || echo 0)"
             check "custom domain reachable (lab.bkan.dev/assets/lab.css)" \
                   "$(printf '%s' "$custom_css" | grep -q '^200 text/css' && echo 1 || echo 0)"
+            # Range가 없으면 Chrome에서 영상 장면 점프·재생 막대가 동작하지 않는다(functions/_middleware.js)
+            check "custom domain video Range 206 (idala hf.mp4)" \
+                  "$([ "$custom_range" = "206 1000" ] && echo 1 || echo 0)"
             return $fail
           }
           for attempt in 1 2 3; do
