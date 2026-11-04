@@ -66,7 +66,7 @@
     fig.setAttribute('aria-label', `${e.name} 영상`);
     fig.innerHTML = `
       <div class="screen">
-        ${MODES.map((m) => `<video data-mode="${m}" playsinline muted preload="metadata" poster="v/${e.id}.jpg" src="v/${e.id}-${m}.mp4"></video>`).join('')}
+        ${MODES.map((m) => `<video data-mode="${m}" playsinline muted ${m === mode ? `preload="metadata" src` : `preload="none" data-src`}="v/${e.id}-${m}.mp4" poster="v/${e.id}.jpg"></video>`).join('')}
       </div>
       <button class="full" type="button" aria-label="${e.name} 전체 화면">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
@@ -130,6 +130,24 @@
   const cur = (x) => x.vids[mode];
   const master = () => cur(tiles[active]);
   const allVids = () => tiles.flatMap((x) => MODES.map((m) => x.vids[m]));
+  // 처음엔 보이는 판만 받는다. 다른 판은 보이는 네 편이 재생 준비를 마친 뒤 쉬는 틈에 앞부분(metadata)만 받는다.
+  const loadVideo = (v) => {
+    if (!v.hasAttribute('src')) { v.preload = 'metadata'; v.src = v.dataset.src; }
+  };
+  const loadAll = () => allVids().forEach(loadVideo);
+  const shown = tiles.map((x) => x.vids[mode]);
+  let waiting = shown.filter((v) => v.readyState < 3).length;
+  const prefetch = () => {
+    if (window.requestIdleCallback) requestIdleCallback(loadAll, { timeout: 1000 });
+    else setTimeout(loadAll, 200);
+  };
+  if (!waiting) prefetch();
+  else {
+    shown.forEach((v) => {
+      if (v.readyState < 3) v.addEventListener('canplay', () => { if (--waiting === 0) prefetch(); }, { once: true });
+    });
+    setTimeout(prefetch, 8000); // canplay가 안 오는 브라우저(데이터 절약 모드 등)에서도 결국 받는다
+  }
 
   function paint() {
     tiles.forEach((x, i) => {
@@ -183,10 +201,12 @@
       if (i !== active && Math.abs(v.currentTime - t) > 0.05) v.currentTime = clampT(v, t);
       if (playing) safePlay(v); else v.pause();
     });
-    // 한 번 재생을 시작한 넓은 화면에서는 다른 판도 미리 받아 둬 전환을 매끄럽게
-    if (playing && !warmed && !narrow()) {
-      warmed = true;
-      allVids().forEach((v) => { v.preload = 'auto'; });
+    // 한 번 재생을 시작한 넓은 화면에서는 보이는 판 네 편을 끝까지 받아 둔다.
+    // 네 편이 고르게 받아져야 느린 회선에서도 함께 멈추고 함께 간다(소리 나는 편만 앞서지 않게).
+    // 안 보이는 판까지 받으면 보이는 판과 대역을 나눠 느려지므로 판을 바꿀 때 그 판만 예열한다.
+    if (playing && !narrow() && warmed !== mode) {
+      warmed = mode;
+      tiles.forEach((x) => { cur(x).preload = 'auto'; });
     }
   }
 
@@ -218,6 +238,7 @@
     const t = master().currentTime;
     tiles.forEach((x) => x.vids[mode].pause());
     mode = m;
+    tiles.forEach((x) => loadVideo(x.vids[mode]));
     tiles.forEach((x) => {
       const v = cur(x);
       if (v.readyState >= 1) v.currentTime = clampT(v, t);

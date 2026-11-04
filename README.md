@@ -21,7 +21,8 @@
 - 대신 Pages 정적 응답은 Range(중간부터 받기)를 무시해서 Chrome에서 영상 넘기기가 깨진다.<br>그래서 `functions/_middleware.js`가 mp4 요청만 받아 Workers Cache API로 206을 만든다. 호출 범위는 `_routes.json`(`/motion/*/v/*`, `/motion/one-year/*`)이다.<br>새 영상 폴더를 다른 경로에 만들면 `_routes.json`에 추가한다.
 - 크기 목록 `functions/video-sizes.json`은 배포 때 `tools/video_sizes.py`가 산출물에서 만든다(커밋하지 않음). 배포 검증에 "커스텀 도메인 영상 Range 206" 검사가 있다.
 - 시험: `PAGE_URL=https://lab.bkan.dev/motion/idala-demo/ VIDEO_ENGINE=chromium|webkit uv run --no-project --python 3.14 --with pytest --with playwright pytest tools/video-origin -q`(Chrome 계열은 설치된 Google Chrome을 쓴다).
-- 플레이어 성능 시험 `tools/video-origin/test_idala_player_perf.py`는 후보(`PAGE_URL`, 예: preview 배포)를 공개판(`BASELINE_URL`)과 같은 실행에서 비교한다(첫 화면 요청, 바로 재생 시작 시간, 400px, 3Mbps 느린 회선). idala 비교 네 편은 히어로 준비 뒤 metadata만 미리 받고, 전후 클립은 가까이 갈 때 받는다(`data-lazy`).
+- 플레이어 성능 시험 `tools/video-origin/test_idala_player_perf.py`는 엔진 비교 글(idala·먼작귀·요즘레시피) 공용이다. 후보(`PAGE_URL`, 예: preview 배포)를 같은 경로의 공개판(`BASELINE_URL`로 바꿀 수 있음)과 같은 실행에서 비교한다(첫 화면 요청, 바로 재생 시작 시간, 400px, 3Mbps 느린 회선, 판 바꾸기). `VIDEO_ENGINE=webkit`이면 기능 시험만 돈다.
+- 전후 클립은 세 글 모두 가까이 갈 때 받는다(`data-lazy`). idala 비교 네 편은 히어로 준비 뒤 metadata만 미리 받는다. 먼작귀는 안 보이는 판 네 편을 보이는 판 준비 뒤에 받는다.<br>재생을 시작하면 보이는 네 편을 끝까지 받는 예열(`preload=auto`)은 먼작귀·요즘레시피에 남긴다. 없애면 느린 회선에서 소리 나는 편만 앞서 네 편이 1~3초 벌어진다(2026-11-04 실측). 먼작귀는 예열을 보이는 판으로 좁혔다.
 
 ## 생산 지표 (`tools/lab-metrics/`, 배포 제외)
 실험마다 만드는 데 든 딸깍·AI 작업 시간·모델·API 환산 비용을 에이전트 세션 기록에서 뽑아 `frontend/<슬러그>/metrics.json`에 쓴다.
