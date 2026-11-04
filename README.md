@@ -16,6 +16,12 @@
    - 의뢰인이 있는 실험은 계기를 개인 사정 대신 일반적인 상황으로 쓴다(누가 부탁했는지, 증상·거주지 단서를 넣지 않는다).
 3. main에 push하면 Actions가 Cloudflare Pages(`bkan-lab`)로 배포하고 라이브를 검증한다.
 
+## 영상 전달 (2026-11-04~)
+- `lab.bkan.dev` DNS 레코드는 **DNS only(회색 구름)**로 둔다. 프록시(주황)로 켜면 무료 플랜 IP가 KT 회선에서 LA로 우회해 영상이 0.4~1.4Mbps로 떨어지고 재생이 멈춘다(Pages IP 직결은 서울, 수백 Mbps).
+- 대신 Pages 정적 응답은 Range(중간부터 받기)를 무시해서 Chrome에서 영상 넘기기가 깨진다.<br>그래서 `functions/_middleware.js`가 mp4 요청만 받아 Workers Cache API로 206을 만든다. 호출 범위는 `_routes.json`(`/motion/*/v/*`, `/motion/one-year/*`)이다.<br>새 영상 폴더를 다른 경로에 만들면 `_routes.json`에 추가한다.
+- 크기 목록 `functions/video-sizes.json`은 배포 때 `tools/video_sizes.py`가 산출물에서 만든다(커밋하지 않음). 배포 검증에 "커스텀 도메인 영상 Range 206" 검사가 있다.
+- 시험: `PAGE_URL=https://lab.bkan.dev/motion/idala-demo/ VIDEO_ENGINE=chromium|webkit uv run --no-project --python 3.14 --with pytest --with playwright pytest tools/video-origin -q`(Chrome 계열은 설치된 Google Chrome을 쓴다).
+
 ## 생산 지표 (`tools/lab-metrics/`, 배포 제외)
 실험마다 만드는 데 든 딸깍·AI 작업 시간·모델·API 환산 비용을 에이전트 세션 기록에서 뽑아 `frontend/<슬러그>/metrics.json`에 쓴다.
 1. `uv run --script tools/lab-metrics/lab_metrics.py find <키워드>...`로 키워드(슬러그·주제어)가 나오는 후보 세션을 찾는다(Claude Code·Codex, 딸깍 수는 근사치).
