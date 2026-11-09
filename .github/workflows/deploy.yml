@@ -46,6 +46,10 @@ jobs:
           test ! -e /tmp/dist/CLAUDE.md
           echo "dist files: $(find /tmp/dist -type f | wc -l)"
 
+      # lab.bkan.dev는 DNS only라 Cloudflare가 Web Analytics beacon을 자동으로 넣지 못한다. 올릴 페이지마다 한 개씩 있는지 본다
+      - name: Check web analytics beacon
+        run: python3 tools/beacon_check.py /tmp/dist
+
       # functions/_middleware.js 가 mp4 Range(206)를 만들 때 쓰는 크기 목록. 실제로 올릴 파일에서 잰다
       - name: Build video size list (Range용)
         run: python3 tools/video_sizes.py /tmp/dist
@@ -76,6 +80,7 @@ jobs:
             gp_data=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$SITE/frontend/goyang-paju-mind-2610/data.json")
             missing=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/no-such-page-$(date +%s)/")
             custom_css=$(curl -s -L -o /dev/null -w '%{http_code} %{content_type}' "$CUSTOM/assets/lab.css")
+            beacon=$(printf '%s' "$home" | grep -cF "data-cf-beacon='{\"token\": \"ae655c6ae08e401ea37ed39f25af4d6e\"}'")
             custom_range=$(curl -s -r 1000-1999 -o /dev/null -w '%{http_code} %{size_download}' "$CUSTOM/motion/idala-demo/v/hf.mp4")
             fail=0
             check() { if [ "$2" = "1" ]; then echo "PASS  $1"; else echo "FAIL  $1"; fail=1; fi; }
@@ -103,6 +108,8 @@ jobs:
                   "$(printf '%s' "$gp_og" | grep -qF 'og:image" content="https://lab.bkan.dev/frontend/goyang-paju-mind-2610/og.jpg' && echo 1 || echo 0)"
             check "goyang-paju-mind data.json served as json" \
                   "$(printf '%s' "$gp_data" | grep -q '^200 application/json' && echo 1 || echo 0)"
+            # 대시보드 Web Analytics의 lab.bkan.dev 사이트 토큰. 바뀌면 HTML 14곳과 같이 고친다
+            check "home has web analytics beacon (lab.bkan.dev token)" "$([ "$beacon" = "1" ] && echo 1 || echo 0)"
             check "unknown path returns 404" "$([ "$missing" = "404" ] && echo 1 || echo 0)"
             check "custom domain reachable (lab.bkan.dev/assets/lab.css)" \
                   "$(printf '%s' "$custom_css" | grep -q '^200 text/css' && echo 1 || echo 0)"

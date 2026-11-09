@@ -9,6 +9,7 @@
 
 ## 새 실험 추가
 1. `<분야>/<슬러그>/index.html`을 만든다. `<head>`에 og 태그(title, description, image, url)를 넣는다. og:image는 파일 URL이어야 한다(data URI 불가).
+   `</body>` 바로 앞에 Web Analytics beacon 한 줄을 다른 페이지에서 그대로 복사해 넣는다(아래 "방문자 통계"). 빠뜨리면 배포가 멈춘다.
 2. 분야 페이지 목록과 `sitemap.xml`에 한 줄 추가한다. 랜딩의 실험 개수도 갱신한다.
    - 목록 카드 소개글(`desc`)은 두 문장이다. 첫 문장은 왜 만들었는지(계기), 둘째 문장은 무엇을 하려는지(목적)를 쓴다. 모은 내용을 나열만 하지 않는다. 판을 올려 내용이 바뀌어도 이 형식을 유지한다.
    - 분야마다 카드가 결과를 보여 주는 방식이 다르다. frontend는 실제로 쓰는 도구라서 "만든 것"·"쓰임" 줄(아래 생산 지표)이 결과다. motion은 연구 실험이라서 소개글 아래 `.verdict` 상자에 "결론"(무엇을 알아냈고 그래서 무엇을 쓰기로 했나, 첫 구절은 `<b>`로 한 문장 판정)을 쓰고, 이어서 할 일이 있으면 "다음" 줄을 단다. 과정·수치 나열은 결론이 아니다.
@@ -23,6 +24,15 @@
 - 시험: `PAGE_URL=https://lab.bkan.dev/motion/idala-demo/ VIDEO_ENGINE=chromium|webkit uv run --no-project --python 3.14 --with pytest --with playwright pytest tools/video-origin -q`(Chrome 계열은 설치된 Google Chrome을 쓴다).
 - 플레이어 성능 시험 `tools/video-origin/test_idala_player_perf.py`는 엔진 비교 글(idala·먼작귀·요즘레시피) 공용이다. 후보(`PAGE_URL`, 예: preview 배포)를 같은 경로의 공개판(`BASELINE_URL`로 바꿀 수 있음)과 같은 실행에서 비교한다(첫 화면 요청, 바로 재생 시작 시간, 400px, 3Mbps 느린 회선, 판 바꾸기). `VIDEO_ENGINE=webkit`이면 기능 시험만 돈다.
 - 전후 클립은 세 글 모두 가까이 갈 때 받는다(`data-lazy`). idala 비교 네 편은 히어로 준비 뒤 metadata만 미리 받는다. 먼작귀는 안 보이는 판 네 편을 보이는 판 준비 뒤에 받는다.<br>재생을 시작하면 보이는 네 편을 끝까지 받는 예열(`preload=auto`)은 먼작귀·요즘레시피에 남긴다. 없애면 느린 회선에서 소리 나는 편만 앞서 네 편이 1~3초 벌어진다(2026-11-04 실측). 먼작귀는 예열을 보이는 판으로 좁혔다.
+
+## 방문자 통계 (2026-11-10~)
+- Cloudflare 대시보드 → Web Analytics에서 본다. 사이트는 둘이다.
+  - `bkan.dev`: 존 자동 설정. bkan.dev·portfolio·blog 페이지에 Cloudflare가 beacon을 알아서 넣는다(코드 없음). Host 필터로 사이트별로 본다.
+  - `lab.bkan.dev`: DNS only라 자동으로 안 들어간다.<br>그래서 페이지마다 대시보드 snippet(토큰 `ae655c6a…`)을 직접 넣었다.
+- 방문자·페이지뷰·유입 경로·국가·기기·경로별로 볼 수 있다. IP는 안 보이고 쿠키도 안 쓴다. 광고 차단기를 쓰는 방문은 빠진다.
+- `tools/beacon_check.py <dist>`가 배포 전에 모든 페이지에 beacon이 하나씩, 같은 토큰으로 `</body>` 앞에 있는지 본다(리포 루트가 아니라 산출물에 돌린다). 시험: `uv run --no-project --python 3.14 --with pytest pytest tools/test_beacon_check.py -q`.
+- 토큰을 바꾸면 HTML 전부와 `deploy.yml` 라이브 검사의 토큰을 같이 고친다.
+- 응답에 `Cache-Control: no-transform`을 넣으면 프록시 사이트의 자동 주입이 조용히 끊긴다.
 
 ## 생산 지표 (`tools/lab-metrics/`, 배포 제외)
 실험마다 만드는 데 든 딸깍·AI 작업 시간·모델·API 환산 비용을 에이전트 세션 기록에서 뽑아 `frontend/<슬러그>/metrics.json`에 쓴다.
