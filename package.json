@@ -1,0 +1,21 @@
+{
+  "name": "bkan-lab",
+  "private": true,
+  "packageManager": "pnpm@12.9.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && rm -rf out/404 out/_not-found",
+    "preview": "pnpm build && pnpm dlx serve out"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

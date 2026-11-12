@@ -5,3 +5,8 @@ _workspace/
 __pycache__/
 .playwright-mcp/
 functions/video-sizes.json
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo

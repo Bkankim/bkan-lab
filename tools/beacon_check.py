@@ -8,10 +8,12 @@ lab.bkan.dev는 DNS only라 Cloudflare가 beacon을 자동으로 넣지 못한�
 """
 import re
 import sys
+from html import unescape
 from pathlib import Path
 
 BEACON = re.compile(r'<script[^>]*static\.cloudflareinsights\.com/beacon\.min\.js[^>]*>')
-TOKEN = re.compile(r'data-cf-beacon=\'\{"token": "([^"]*)"\}\'')
+# 손으로 쓴 페이지는 '{"token": "…"}', Next.js가 만든 페이지는 "{&quot;token&quot;: …}" 꼴이다(unescape 뒤 비교)
+TOKEN = re.compile(r'''data-cf-beacon=(['"])\{"token": "([^"]*)"\}\1''')
 
 
 def main():
@@ -36,11 +38,11 @@ def main():
         if body_end == -1 or html.find(tags[0]) > body_end:
             errors.append(f'{rel}: beacon script가 </body> 앞에 있어야 합니다')
             continue
-        m = TOKEN.search(tags[0])
-        if not m or not m.group(1):
+        m = TOKEN.search(unescape(tags[0]))
+        if not m or not m.group(2):
             errors.append(f'{rel}: data-cf-beacon token이 비었거나 형식이 다릅니다')
             continue
-        tokens.setdefault(m.group(1), []).append(str(rel))
+        tokens.setdefault(m.group(2), []).append(str(rel))
     if len(tokens) > 1:
         detail = ', '.join(f'{t[:8]}…({len(files)}개, 예: {files[0]})' for t, files in tokens.items())
         errors.append(f'페이지마다 token이 다릅니다: {detail}')

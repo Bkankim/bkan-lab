@@ -3,23 +3,29 @@
 `https://lab.bkan.dev` 소스. 만들어 보고 싶은 화면을 실험하는 공개 실험실이다.
 
 ## 구조
-- `/` 랜딩: 분야 목록
-- `/frontend/` 분야 페이지: 실험 목록
-- `/frontend/<슬러그>/` 실험 한 개. `index.html` + 카톡·SNS 미리보기용 `og.jpg`
+Next.js 정적 내보내기(`output: 'export'`)다. 서버 없이 HTML 파일로만 나가고, 폴더가 두 종류다(2026-11-13~).
+- `app/`: Next.js가 페이지를 만드는 폴더. 랜딩(`/`), 분야 목록(`/frontend/`, `/motion/`), 404. 앞으로 Next.js로 만드는 실험과 글도 여기 들어간다.
+- `public/`: 손대지 않고 그대로 복사하는 폴더. 손으로 쓴 실험 본체(`public/<분야>/<슬러그>/index.html` + 미리보기용 `og.jpg`), 공용 자산(`public/assets/`), `_headers`, `_routes.json`.
+- `data/<분야>.json`: 목록 카드 내용. 랜딩의 실험 개수, 목록 카드, sitemap이 여기서 같이 나온다.
+- `components/`: 목록 카드(`SectionPage.tsx`)와 지표 상자(`Ledger.tsx`). 화면 스타일은 손으로 쓴 `public/assets/lab.css`를 그대로 쓴다.
+
+기존 실험을 React로 다시 짜고 싶으면 그 하나만 `public/<분야>/<슬러그>/index.html`을 지우고 `app/<분야>/<슬러그>/page.tsx`를 만든다(주소 그대로, 사진·영상은 `public/`에 남김). 같은 주소에 둘이 있으면 빌드가 실패한다.
+
+확인: `pnpm build`로 `out/`을 만들고 `pnpm dlx serve out`으로 띄워 본다. `pnpm dev`에서는 `public/`의 실험 주소가 `/frontend/<슬러그>/index.html`로만 열린다(슬래시로 끝나면 404, 2026-11-13 실측).
 
 ## 새 실험 추가
-1. `<분야>/<슬러그>/index.html`을 만든다. `<head>`에 og 태그(title, description, image, url)를 넣는다. og:image는 파일 URL이어야 한다(data URI 불가).
-   `</body>` 바로 앞에 Web Analytics beacon 한 줄을 다른 페이지에서 그대로 복사해 넣는다(아래 "방문자 통계"). 빠뜨리면 배포가 멈춘다.
-2. 분야 페이지 목록과 `sitemap.xml`에 한 줄 추가한다. 랜딩의 실험 개수도 갱신한다.
+1. 실험 본체를 만든다. 한 장짜리 도구는 `public/<분야>/<슬러그>/index.html`(손으로 쓴 HTML), React 라이브러리를 쓰는 실험은 `app/<분야>/<슬러그>/page.tsx`다. og 태그(title, description, image, url)를 넣는다. og:image는 파일 URL이어야 한다(data URI 불가).
+   손으로 쓴 HTML은 `</body>` 바로 앞에 Web Analytics beacon 한 줄을 다른 페이지에서 그대로 복사해 넣는다(아래 "방문자 통계"). 빠뜨리면 배포가 멈춘다. `app/` 페이지는 공용 틀(`app/layout.tsx`)이 넣는다.
+2. `data/<분야>.json`의 `cards` 맨 앞에 카드 한 묶음을 추가한다. 랜딩의 실험 개수와 sitemap은 여기서 따라 나온다(noindex 페이지는 `"sitemap": false`).
    - 목록 카드 소개글(`desc`)은 두 문장이다. 첫 문장은 왜 만들었는지(계기), 둘째 문장은 무엇을 하려는지(목적)를 쓴다. 모은 내용을 나열만 하지 않는다. 판을 올려 내용이 바뀌어도 이 형식을 유지한다.
    - 분야마다 카드가 결과를 보여 주는 방식이 다르다. frontend는 실제로 쓰는 도구라서 "만든 것"·"쓰임" 줄(아래 생산 지표)이 결과다. motion은 연구 실험이라서 소개글 아래 `.verdict` 상자에 "결론"(무엇을 알아냈고 그래서 무엇을 쓰기로 했나, 첫 구절은 `<b>`로 한 문장 판정)을 쓰고, 이어서 할 일이 있으면 "다음" 줄을 단다. 과정·수치 나열은 결론이 아니다.
    - 모든 카드는 제목 오른쪽에 날짜(`.title-row`)를 두고(날짜는 그 실험 폴더를 처음 커밋한 날, 한국 시간, "2026년 10월 31일" 형식), 카드 링크(`<a>`) 바로 뒤에 "활용 도구" 칸(`.tools`)을 둔다. 링크가 겹치지 않게 `<a>` 밖에 둔다. 줄은 쓰임새별로 나눈다: 맨 위 "모델"(모델명과 effort, 여러 개면 한 줄씩, 맡은 일을 괄호에), 가운데는 실험에 맞는 분류(영상 엔진·조사·지도·웹 모션 등), 그다음 "기타 도구", 맨 아래 "자작 도구". 알려진 도구는 이름 칩에 공식 링크만 걸고(링크는 열리는지 확인), 직접 만든 것은 이름과 괄호 설명만 쓴다. 넣는 기준은 그 실험 세션 기록(스킬·MCP·서브에이전트·명령·모델/effort)에서 실제로 쓴 것이고, 메모리(Hindsight)·언어 런타임·OS 유틸·Claude Code 내장 도구는 뺀다.
    - 의뢰인이 있는 실험은 계기를 개인 사정 대신 일반적인 상황으로 쓴다(누가 부탁했는지, 증상·거주지 단서를 넣지 않는다).
-3. main에 push하면 Actions가 Cloudflare Pages(`bkan-lab`)로 배포하고 라이브를 검증한다.
+3. main에 push하면 Actions가 `pnpm build` 산출물(`out/`)을 Cloudflare Pages(`bkan-lab`)로 배포하고 라이브를 검증한다.
 
 ## 영상 전달 (2026-11-04~)
 - `lab.bkan.dev` DNS 레코드는 **DNS only(회색 구름)**로 둔다. 프록시(주황)로 켜면 무료 플랜 IP가 KT 회선에서 LA로 우회해 영상이 0.4~1.4Mbps로 떨어지고 재생이 멈춘다(Pages IP 직결은 서울, 수백 Mbps).
-- 대신 Pages 정적 응답은 Range(중간부터 받기)를 무시해서 Chrome에서 영상 넘기기가 깨진다.<br>그래서 `functions/_middleware.js`가 mp4 요청만 받아 Workers Cache API로 206을 만든다. 호출 범위는 `_routes.json`(`/motion/*/v/*`, `/motion/one-year/*`)이다.<br>새 영상 폴더를 다른 경로에 만들면 `_routes.json`에 추가한다.
+- 대신 Pages 정적 응답은 Range(중간부터 받기)를 무시해서 Chrome에서 영상 넘기기가 깨진다.<br>그래서 `functions/_middleware.js`가 mp4 요청만 받아 Workers Cache API로 206을 만든다. 호출 범위는 `public/_routes.json`(`/motion/*/v/*`, `/motion/one-year/*`)이다.<br>새 영상 폴더를 다른 경로에 만들면 `public/_routes.json`에 추가한다.
 - 크기 목록 `functions/video-sizes.json`은 배포 때 `tools/video_sizes.py`가 산출물에서 만든다(커밋하지 않음). 배포 검증에 "커스텀 도메인 영상 Range 206" 검사가 있다.
 - 시험: `PAGE_URL=https://lab.bkan.dev/motion/idala-demo/ VIDEO_ENGINE=chromium|webkit uv run --no-project --python 3.14 --with pytest --with playwright pytest tools/video-origin -q`(Chrome 계열은 설치된 Google Chrome을 쓴다).
 - 플레이어 성능 시험 `tools/video-origin/test_idala_player_perf.py`는 엔진 비교 글(idala·먼작귀·요즘레시피) 공용이다. 후보(`PAGE_URL`, 예: preview 배포)를 같은 경로의 공개판(`BASELINE_URL`로 바꿀 수 있음)과 같은 실행에서 비교한다(첫 화면 요청, 바로 재생 시작 시간, 400px, 3Mbps 느린 회선, 판 바꾸기). `VIDEO_ENGINE=webkit`이면 기능 시험만 돈다.
@@ -28,14 +34,14 @@
 ## 방문자 통계 (2026-11-10~)
 - Cloudflare 대시보드 → Web Analytics에서 본다. 사이트는 둘이다.
   - `bkan.dev`: 존 자동 설정. bkan.dev·portfolio·blog 페이지에 Cloudflare가 beacon을 알아서 넣는다(코드 없음). Host 필터로 사이트별로 본다.
-  - `lab.bkan.dev`: DNS only라 자동으로 안 들어간다.<br>그래서 페이지마다 대시보드 snippet(토큰 `ae655c6a…`)을 직접 넣었다.
+  - `lab.bkan.dev`: DNS only라 자동으로 안 들어간다.<br>그래서 대시보드 snippet(토큰 `ae655c6a…`)을 직접 넣었다. `public/`의 손으로 쓴 페이지는 페이지마다, `app/` 페이지는 `app/layout.tsx` 한 곳이다.
 - 방문자·페이지뷰·유입 경로·국가·기기·경로별로 볼 수 있다. IP는 안 보이고 쿠키도 안 쓴다. 광고 차단기를 쓰는 방문은 빠진다.
 - `tools/beacon_check.py <dist>`가 배포 전에 모든 페이지에 beacon이 하나씩, 같은 토큰으로 `</body>` 앞에 있는지 본다(리포 루트가 아니라 산출물에 돌린다). 시험: `uv run --no-project --python 3.14 --with pytest pytest tools/test_beacon_check.py -q`.
-- 토큰을 바꾸면 HTML 전부와 `deploy.yml` 라이브 검사의 토큰을 같이 고친다.
+- 토큰을 바꾸면 `public/`의 HTML 전부, `app/layout.tsx`, `deploy.yml` 라이브 검사의 토큰을 같이 고친다.
 - 응답에 `Cache-Control: no-transform`을 넣으면 프록시 사이트의 자동 주입이 조용히 끊긴다.
 
 ## 생산 지표 (`tools/lab-metrics/`, 배포 제외)
-실험마다 만드는 데 든 딸깍·AI 작업 시간·모델·API 환산 비용을 에이전트 세션 기록에서 뽑아 `frontend/<슬러그>/metrics.json`에 쓴다.
+실험마다 만드는 데 든 딸깍·AI 작업 시간·모델·API 환산 비용을 에이전트 세션 기록에서 뽑아 `public/frontend/<슬러그>/metrics.json`에 쓴다. 목록 카드의 지표 상자는 빌드 때 이 파일을 읽어 그린다(`components/Ledger.tsx`).
 1. `uv run --script tools/lab-metrics/lab_metrics.py find <키워드>...`로 키워드(슬러그·주제어)가 나오는 후보 세션을 찾는다(Claude Code·Codex, 딸깍 수는 근사치).
 2. `... prompts <세션> [--runtime codex]`로 사람 입력을 보고 `items.json`에 구간(`from`/`to`), 주제 밖 입력(`exclude`), 교정(`corrections`), 첫 배포 시각(`first_release_to`)을 적는다.
 3. `... build [슬러그]`로 집계한다. `--dry-run`은 파일을 쓰지 않는다.

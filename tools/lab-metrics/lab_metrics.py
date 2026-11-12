@@ -11,7 +11,7 @@
 
   find <키워드>...      키워드가 나오는 세션 후보 나열
   prompts <세션>        세션의 사람 입력 목록(구간·교정 표시를 고를 때 씀, 로컬 출력 전용)
-  build [슬러그...]     items.json 기준으로 집계해 frontend/<슬러그>/metrics.json 기록
+  build [슬러그...]     items.json 기준으로 집계해 public/frontend/<슬러그>/metrics.json 기록
 """
 
 import argparse
@@ -488,95 +488,17 @@ def fmt_ms(ms):
     return f"{m // 60}시간 {m % 60}분" if m >= 60 else f"{m}분"
 
 
-# ---------- 목록 페이지 반영 ----------
-# 분야 목록 HTML의 <!-- metrics:슬러그 --> ... <!-- /metrics:슬러그 --> 사이를 다시 쓴다.
-
-def model_name(m):
-    parts = m.removeprefix("claude-").split("-")
-    return f"{parts[0].capitalize()} {'.'.join(parts[1:])}".strip()
-
-
-def unit_small(text):
-    return re.sub(r"(\d+)(시간|분)", r"\1<small>\2</small>", text)
-
-
-def percent_shares(models):
-    """화면용 정수 %: 합은 100, 0보다 큰 비율은 최소 1%(반올림으로 0%가 보이지 않게)."""
-    raw = [m["output_share"] * 100 for m in models]
-    out = [max(1, int(v)) if v > 0 else 0 for v in raw]
-    order = sorted(range(len(raw)), key=lambda i: raw[i] - int(raw[i]), reverse=True)
-    i = 0
-    while sum(out) < 100 and order:
-        out[order[i % len(order)]] += 1
-        i += 1
-    while sum(out) > 100:
-        j = max((k for k in range(len(out)) if out[k] > 1), key=lambda k: out[k])
-        out[j] -= 1
-    return out
-
-
-def render_entry(r):
-    usd = r["cost_usd_api_equiv"]
-    # 첫 배포 기록이 있으면 딸깍 칸을 "첫 배포 -> 지금"으로 보여 준다(가장 센 숫자를 큰 칸에)
-    if "first_release" in r:
-        clicks = (f'{r["first_release"]["clicks"]}<small class="to">→</small>{r["clicks"]}',
-                  "딸깍 (첫 배포 → 지금)")
-    else:
-        clicks = (str(r["clicks"]), "딸깍")
-    stats = [
-        clicks,
-        # 큰 숫자 칸에서는 단위 글자를 작게 둬 숫자만 읽히게 한다
-        (unit_small(fmt_ms(r["ai_work_ms"])), "소요 시간"),
-        (f"${usd:,.0f}" if usd >= 10 else f"${usd:,.2f}", "API 정가 환산"),
-        (str(r["subagents"]), "서브에이전트"),
-    ]
-    # 큰 숫자 네 칸 아래는 이름표-값 칸으로 나눠 한 줄로 늘어지지 않게 한다
-    facts = []
-    if r["corrections"] is not None:
-        facts.append(("교정", f"{r['corrections']}번"))
-    facts.append(("입력", f"{r['input_chars']:,}자"))
-    facts.append(("딸깍당 소요", fmt_ms(r["ai_ms_per_click"])))
-    # 소요 시간(AI가 일한 시간)과 헷갈리지 않게 시작부터 끝까지 걸린 시간도 둔다
-    facts.append(("경과", fmt_ms(r["elapsed_ms"])))
-    models = r["models"]
-    facts.append(("모델", model_name(models[0]["model"]) if len(models) == 1 else
-                  "<br>".join(f"{model_name(m['model'])} {p}%" for m, p in zip(models, percent_shares(models)))))
-    cells = "".join(f'<span class="stat"><b>{v}</b>{k}</span>' for v, k in stats)
-    made = (f'<span class="fact made"><span class="k">만든 것</span>{r["made"]}</span>'
-            if r.get("made") else "")
-    # 만든 것이 실제로 어디에 쓰였는지를 바로 아래 줄에 짝으로 둔다
-    used = (f'<span class="fact used"><span class="k">쓰임</span>{r["used"]}</span>'
-            if r.get("used") else "")
-    rest = "".join(f'<span class="fact"><span class="k">{k}</span>{v}</span>' for k, v in facts)
-    return (f'<span class="ledger"><span class="stats">{cells}</span>'
-            f'<span class="facts">{made}{used}{rest}</span></span>')
-
-
-def render_page(page, results):
-    path = os.path.join(REPO, page)
-    html = open(path, encoding="utf-8").read()
-    for slug, r in results.items():
-        pat = re.compile(rf"(<!-- metrics:{re.escape(slug)} -->).*?(<!-- /metrics:{re.escape(slug)} -->)", re.S)
-        if not pat.search(html):
-            print(f"  ({page}에 metrics:{slug} 표식이 없어 건너뜀)")
-            continue
-        html = pat.sub(lambda m: m.group(1) + render_entry(r) + m.group(2), html)
-    measured = max(r["measured_at"] for r in results.values())[:10]
-    html = re.sub(r"(<!-- metrics:asof -->).*?(<!-- /metrics:asof -->)",
-                  lambda m: m.group(1) + measured + m.group(2), html, flags=re.S)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(html)
+# 목록 페이지의 지표 상자는 빌드 때 components/Ledger.tsx가 metrics.json을 읽어 그린다.
+# 여기서는 metrics.json만 쓴다.
 
 
 def cmd_build(args):
     pricing = json.load(open(PRICING))
     manifest = json.load(open(MANIFEST))
-    by_page = defaultdict(dict)
     for slug in args.slugs or list(manifest["items"]):
         item = manifest["items"][slug]
         r = build_item(slug, item, pricing)
-        dest = os.path.join(REPO, item.get("dir", f"frontend/{slug}"), "metrics.json")
-        by_page[item.get("page", "frontend/index.html")][slug] = r
+        dest = os.path.join(REPO, item.get("dir", f"public/frontend/{slug}"), "metrics.json")
         if not args.dry_run:
             with open(dest, "w", encoding="utf-8") as f:
                 json.dump(r, f, ensure_ascii=False, indent=2)
@@ -598,9 +520,7 @@ def cmd_build(args):
             print(f"  첫 배포까지: 딸깍 {fr['clicks']} · AI 작업 {fmt_ms(fr['ai_work_ms'])}"
                   f" · ${fr['cost_usd_api_equiv']:,}")
     if not args.dry_run:
-        for page, results in by_page.items():
-            render_page(page, results)
-            print(f"-> {page} 갱신")
+        print("-> 목록 페이지에는 pnpm build 때 반영된다")
 
 
 def main():

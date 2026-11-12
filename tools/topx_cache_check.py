@@ -1,4 +1,4 @@
-"""놓치지 않는 판타지아(frontend/top-cross) 배포 전 캐시 검사.
+"""놓치지 않는 판타지아(public/frontend/top-cross) 배포 전 캐시 검사.
 
 라이브는 앱 파일·사진을 오래 캐시하고 서비스 워커는 캐시를 먼저 쓰므로, 아래를 어기면 고친 파일이 사용자에게 안 간다.
 - app.js·app.css를 바꾸면 index.html과 sw.js의 ?v= 숫자를 올리고, 두 파일의 숫자를 같게 둔다.
@@ -11,7 +11,9 @@ import re
 import subprocess
 import sys
 
-APP = 'frontend/top-cross/'
+APP = 'public/frontend/top-cross/'
+# 2026-11-13 public/으로 옮기기 전 위치. 기준 커밋이 그 전이면 옛 위치의 파일과 비교한다
+LEGACY_APP = 'frontend/top-cross/'
 PRECACHED = ('app.js', 'app.css', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png')
 
 
@@ -26,15 +28,29 @@ def show(rev, path):
         return ''
 
 
+def blobs(rev, prefix):
+    """그 커밋의 앱 폴더 파일 -> 내용 해시."""
+    out = {}
+    for entry in git('ls-tree', '-r', '-z', rev, '--', prefix).split('\0'):
+        if entry:
+            meta, path = entry.split('\t', 1)
+            out[path[len(prefix):]] = meta.split()[2]
+    return out
+
+
 def main():
     base = sys.argv[1]
     head = sys.argv[2] if len(sys.argv) > 2 else 'HEAD'
-    changes = [line.split('\t') for line in git('diff', '--name-status', '--no-renames', base, head, '--', APP).splitlines()]
-    changed = {p[len(APP):]: s for s, p in changes}
+    # 폴더를 옮긴 커밋을 사이에 두면 경로가 달라 git diff로는 전부 새 파일로 보인다. 그래서 앱 폴더 안 상대 경로와 내용 해시로 비교한다
+    prefix = {rev: APP if blobs(rev, APP) else LEGACY_APP for rev in (base, head)}
+    before, after = blobs(base, prefix[base]), blobs(head, prefix[head])
+    changed = {p: 'A' for p in after if p not in before}
+    changed.update({p: 'M' for p in after if p in before and before[p] != after[p]})
+    changed.update({p: 'D' for p in before if p not in after})
     errors = []
 
     def ver(rev, path, pattern):
-        m = re.search(pattern, show(rev, APP + path))
+        m = re.search(pattern, show(rev, prefix[rev] + path))
         return m.group(1) if m else None
 
     if {'app.js', 'app.css'} & changed.keys():

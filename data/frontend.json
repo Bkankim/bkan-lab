@@ -1,0 +1,324 @@
+{
+  "slug": "frontend",
+  "title": "Frontend",
+  "shelfDesc": "화면을 짜는 법과 움직임을 이것저것 시도해 봅니다.",
+  "description": "UI / UX 를 기반으로 한 가벼운 실험 모음. 전부 AI 드라이빙으로 만들고, 얼마나 간단하게 만들었는지와 얼마가 들었는지를 표기합니다.",
+  "lede": "UI / UX 를 기반으로 가벼운 실험들을 합니다.<br/>전부 AI 드라이빙.<br/>얼마나 간단하게 만들었는지와 얼마가 들었는지를 표기합니다.",
+  "cards": [
+    {
+      "slug": "shoulder-slap-2610",
+      "name": "어깨 노트 · SLAP·이두건 어깨 전문의",
+      "when": "2026년 10월 29일",
+      "image": "/frontend/shoulder-slap-2610/og.jpg?v=2",
+      "alt": "창가 빛이 드는 석고상의 어깨 옆에 어깨 노트 제목이 있는 첫 화면",
+      "desc": "SLAP 병변·이두건염이 의심될 때 어느 어깨 전문의에게 먼저 물어야 할지 공개 자료만으로 가늠해 보려고 만들었습니다.<br/>서울·부천·인천·일산 어깨 전문의 73명을 논문 근거 등급과 출발지별 거리로 나란히 놓고,<br/>상담할 의사를 고르는 것이 목적입니다.",
+      "metrics": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (effort medium)",
+            "<b>Sonnet 5.5</b> (effort medium, 병원별 의사 수집)",
+            "<b>gpt-image-2</b> (히어로·미리보기 이미지)"
+          ]
+        },
+        {
+          "label": "자료 변환",
+          "chips": [
+            {
+              "name": "kordoc",
+              "href": "https://github.com/chrisryugj/kordoc"
+            }
+          ],
+          "note": "HWP 보고서를 마크다운으로"
+        },
+        {
+          "label": "조사",
+          "chips": [
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            },
+            {
+              "name": "PubMed E-utilities",
+              "href": "https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+            },
+            {
+              "name": "OSRM",
+              "href": "https://project-osrm.org"
+            }
+          ],
+          "note": "공식 프로필 수집, 논문 대조, 출발지별 도로 거리"
+        },
+        {
+          "label": "이미지",
+          "chips": [
+            {
+              "name": "Codex CLI",
+              "href": "https://github.com/openai/codex"
+            },
+            {
+              "name": "image-prompt",
+              "href": "https://github.com/gongnyang/gongnyang-prompt-kit"
+            }
+          ]
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "grilling",
+              "href": "https://github.com/mattpocock/skills"
+            },
+            {
+              "name": "Playwright",
+              "href": "https://playwright.dev"
+            }
+          ]
+        },
+        {
+          "label": "자작 도구",
+          "own": [
+            "<b>final-review</b> (작업이 끝난 뒤 결함을 찾는 검수 스킬)",
+            "<b>/korean</b> (2단 한국어 윤문)"
+          ]
+        }
+      ],
+      "sitemap": false
+    },
+    {
+      "slug": "goyang-paju-mind-2610",
+      "name": "일산·파주 여성 전문의 정신건강의학과",
+      "when": "2026년 10월 27일",
+      "image": "/frontend/goyang-paju-mind-2610/og.jpg",
+      "alt": "모래빛 바탕에 일산·파주 정신건강의학과 제목과 햇빛 구슬이 있는 첫 화면",
+      "desc": "일산·파주에서 여성 전문의에게 정신건강의학과 진료를 받고 싶을 때 어디부터 알아봐야 할지 한눈에 볼 자료가 없어 만들었습니다.<br/>공개 정보로 병원을 빠짐없이 모아 토요일·야간 진료와 인지행동치료 여부를 비교하고,<br/>전화로 확인할 질문까지 챙겨 예약할 곳을 고르는 것이 목적입니다.",
+      "metrics": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (effort xhigh·medium)"
+          ]
+        },
+        {
+          "label": "조사",
+          "chips": [
+            {
+              "name": "k-skill (kakao-map)",
+              "href": "https://github.com/NomaDamas/k-skill"
+            },
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            }
+          ],
+          "note": "카카오 장소 검색으로 병원을 빠짐없이 열거"
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "frontend-design",
+              "href": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design"
+            },
+            {
+              "name": "Playwright",
+              "href": "https://playwright.dev"
+            }
+          ]
+        },
+        {
+          "label": "자작 도구",
+          "own": [
+            "<b>final-review</b> (작업이 끝난 뒤 결함을 찾는 검수 스킬, 2회)",
+            "<b>/korean</b> (2단 한국어 윤문, 문구 58단락)"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "top-cross",
+      "name": "놓치지 않는 판타지아",
+      "when": "2026년 10월 22일",
+      "image": "/frontend/top-cross/og.jpg",
+      "alt": "다음 관문을 보여 주는 하늘빛 구슬과 놓치지 않는 판타지아 글자",
+      "desc": "아이폰으로 테일즈 오브 판타지아 크로스 에디션을 시작하면서,<br/>한 번 지나가면 다시 얻을 수 없는 숨은 아이템과 오의를 놓치기 싫어 만들었습니다.<br/>지금 위치를 고르면 다음 관문 전에 챙길 것만 보여 주는,<br/>게임 옆에 켜 두는 폰 앱이 목표입니다.",
+      "metrics": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (effort medium·high)",
+            "<b>Sonnet 5.5</b> (effort high, 병렬 개발 워커)",
+            "<b>GPT 6.1 sol</b> (effort high, 공략 블라인드 교차 검증)"
+          ]
+        },
+        {
+          "label": "조사·수집",
+          "chips": [
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            },
+            {
+              "name": "yt-dlp",
+              "href": "https://github.com/yt-dlp/yt-dlp"
+            },
+            {
+              "name": "FFmpeg",
+              "href": "https://ffmpeg.org"
+            }
+          ],
+          "note": "실기 영상에서 위치 프레임을 뽑음"
+        },
+        {
+          "label": "교차 검증",
+          "chips": [
+            {
+              "name": "Codex CLI",
+              "href": "https://github.com/openai/codex"
+            }
+          ],
+          "note": "공략 단계를 Opus와 GPT가 따로 확인"
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "grilling",
+              "href": "https://github.com/mattpocock/skills"
+            },
+            {
+              "name": "frontend-design",
+              "href": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design"
+            },
+            {
+              "name": "Playwright",
+              "href": "https://playwright.dev"
+            }
+          ]
+        },
+        {
+          "label": "자작 도구",
+          "own": [
+            "<b>super-auto</b> (이슈를 워커들에게 나눠 병렬로 끝내는 스킬)",
+            "<b>plan-review</b> (구현 전에 계획을 두 모델이 따로 검토하는 스킬)"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hwajeong-2612",
+      "name": "화정 임시 거처 찾기",
+      "when": "2026년 10월 21일",
+      "image": "/frontend/hwajeong-2612/og.jpg",
+      "alt": "달빛마을 2단지를 가운데 둔 매물 지도 그림",
+      "desc": "12월에 이사를 나가는데 다음 집을 정하기 전까지 6개월 넘게 머물 곳이 필요해 만들었습니다.<br/>여러 플랫폼의 월세·중단기 매물을 두 AI가 따로 모아 합치고,<br/>기준 단지에서 가까운 순으로 값과 거리, 계약 전 확인할 점을 한눈에 비교하는 것이 목적입니다.",
+      "metrics": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (effort high, 조사 서브에이전트는 medium)",
+            "<b>GPT 6.1 sol</b> (effort high, 독립 교차 조사)"
+          ]
+        },
+        {
+          "label": "조사",
+          "chips": [
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            },
+            {
+              "name": "Codex CLI",
+              "href": "https://github.com/openai/codex"
+            }
+          ],
+          "note": "두 AI가 따로 모은 매물을 합침"
+        },
+        {
+          "label": "지도",
+          "chips": [
+            {
+              "name": "Leaflet",
+              "href": "https://leafletjs.com"
+            },
+            {
+              "name": "OpenStreetMap",
+              "href": "https://www.openstreetmap.org"
+            }
+          ]
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "grilling",
+              "href": "https://github.com/mattpocock/skills"
+            },
+            {
+              "name": "Playwright",
+              "href": "https://playwright.dev"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ganghwa-2610",
+      "name": "강화도 가족 숙소 비교",
+      "when": "2026년 9월 30일",
+      "image": "/frontend/ganghwa-2610/og.jpg",
+      "alt": "강화도 펜션 사진",
+      "desc": "아기가 있는 6인 가족의 강화도 1박 여행을 앞두고 방 2개 이상인 숙소를 찾다가 만들었습니다.<br/>정리한 결과를 가족에게 파일 대신 링크 하나로 보여 주려고 이 실험실을 열었고,<br/>예약 사이트 네 곳의 값·평점·방 구성을 날짜별로 나란히 비교합니다.",
+      "metrics": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (effort medium)"
+          ]
+        },
+        {
+          "label": "조사",
+          "chips": [
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            }
+          ],
+          "note": "예약 사이트 네 곳 조회"
+        },
+        {
+          "label": "배포",
+          "chips": [
+            {
+              "name": "Cloudflare Pages",
+              "href": "https://pages.cloudflare.com"
+            },
+            {
+              "name": "GitHub Actions",
+              "href": "https://github.com/features/actions"
+            }
+          ],
+          "note": "이 실험실의 첫 골격"
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "frontend-design",
+              "href": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design"
+            },
+            {
+              "name": "Playwright",
+              "href": "https://playwright.dev"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

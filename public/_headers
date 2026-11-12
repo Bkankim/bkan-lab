@@ -10,3 +10,6 @@
 
 /frontend/shoulder-slap-2610/*
   X-Robots-Tag: noindex
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

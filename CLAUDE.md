@@ -12,6 +12,8 @@
 - 목록 카드 소개글은 "왜 만들었나(계기) + 무엇을 하려나(목적)" 두 문장으로 쓴다(README "새 실험 추가" 2번).
 - motion 카드에는 소개글 아래 "결론"(알아낸 것과 그래서 무엇을 쓰기로 했나)을 단다(README "새 실험 추가" 2번).
 - 공유한 주소는 바꾸지 않고, 미리보기를 바꾸면 og 이미지에 `?v=N`을 올린다.
+- `app/`·`components/`를 고치기 전에 `node_modules/next/dist/docs/`에서 해당 가이드를 읽는다. 이 Next.js(16)는 기억 속 버전과 API·규약이 다를 수 있다.
+- 화면 확인은 `pnpm build` 뒤 `out/`을 띄워서 한다. `pnpm dev`에서는 `public/`의 실험 주소가 `/frontend/<슬러그>/index.html`로만 열린다(슬래시로 끝나면 404).
 
 ## 셸은 zsh
 Bash 도구와 `/Users/Shared/motion-lab/bin` 스크립트는 zsh로 돈다. 여러 단계 셸 스크립트(대기열·반복·변수에 명령 담기)를 쓸 때는 zsh 문법으로 쓴다.

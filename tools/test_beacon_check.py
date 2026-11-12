@@ -6,9 +6,6 @@ from pathlib import Path
 
 CHECK = Path(__file__).with_name('beacon_check.py')
 REPO = Path(__file__).resolve().parent.parent
-# .github/workflows/deploy.yml Build dist의 rsync 제외와 같게 둔다(어느 깊이든 / 루트에서만)
-EXCLUDE_ANY = {'.git', '.github', '_workspace', '.wrangler', '.fablize'}
-EXCLUDE_ROOT = {'tools', 'functions'}
 TOKEN = '0123456789abcdef0123456789abcdef'
 
 
@@ -63,6 +60,15 @@ def test_page_with_empty_token_fails(tmp_path):
     assert 'FAIL' in r.stdout and 'index.html' in r.stdout
 
 
+def test_escaped_double_quote_beacon_passes(tmp_path):
+    # Next.js(React)는 속성을 큰따옴표로 감싸고 안쪽 따옴표를 &quot;로 내보낸다
+    tag = ('<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" '
+           f'data-cf-beacon="{{&quot;token&quot;: &quot;{TOKEN}&quot;}}"></script>')
+    (tmp_path / 'index.html').write_text(page(tag))
+    r = run(tmp_path)
+    assert r.returncode == 0, r.stdout
+
+
 def test_beacon_after_body_end_fails(tmp_path):
     (tmp_path / 'index.html').write_text(page() + snippet())
     r = run(tmp_path)
@@ -83,13 +89,12 @@ def test_missing_directory_fails(tmp_path):
 
 
 def deployed_html():
-    tracked = subprocess.run(['git', '-C', str(REPO), 'ls-files', '*.html'],
-                             capture_output=True, text=True, check=True).stdout.split()
-    return [p for p in tracked
-            if not EXCLUDE_ANY & set(Path(p).parts[:-1]) and Path(p).parts[0] not in EXCLUDE_ROOT]
+    # 손으로 쓴 페이지는 public/ 아래에만 있다. Next.js가 만드는 페이지는 CI가 산출물(out/)에서 본다
+    return subprocess.run(['git', '-C', str(REPO), 'ls-files', 'public/*.html'],
+                          capture_output=True, text=True, check=True).stdout.split()
 
 
-def test_every_deployed_page_in_repo_has_beacon(tmp_path):
+def test_every_static_page_in_repo_has_beacon(tmp_path):
     files = deployed_html()
     for rel in files:
         (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)

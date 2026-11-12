@@ -122,7 +122,7 @@ REPO = __import__("pathlib").Path(__file__).resolve().parents[2]
 def test_video_range_returns_exact_bytes(name, start, end):
     import urllib.request
     url = PAGE_URL.split("#")[0].rstrip("/") + f"/v/{name}"
-    data = (REPO / "motion/idala-demo/v" / name).read_bytes()
+    data = (REPO / "public/motion/idala-demo/v" / name).read_bytes()
     last = len(data) - 1 if end is None else end
     req = urllib.request.Request(url, headers={
         "Range": f"bytes={start}-{'' if end is None else end}", "User-Agent": "bkan-lab-range-test"})
