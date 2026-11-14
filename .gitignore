@@ -10,3 +10,8 @@ node_modules/
 out/
 next-env.d.ts
 *.tsbuildinfo
+
+# 로컬 환경 파일
+.env
+.env.*
+!.env.example
