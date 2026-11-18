@@ -12,6 +12,11 @@ import { computeCost } from './cost';
 import { SRC_LABEL, type Grade, type JachwiData, type Listing } from './types';
 
 const won = (n: number) => `${Math.round(n).toLocaleString('ko-KR')}`;
+const median = (xs: number[]) => {
+  const v = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(v.length / 2);
+  return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+};
 
 export function Section({ no, title, figure, children, id }: { no: number; title: string; figure?: ReactNode; children: ReactNode; id: string }) {
   return (
@@ -45,7 +50,7 @@ const Big = ({ children }: { children: ReactNode }) => (
 export function Hero({ d }: { d: JachwiData }) {
   const ok = d.grades.find((g) => g.key === '○')?.count ?? 0;
   const okRows = d.listings.filter((l) => l.grade === '○');
-  const med = okRows.map((l) => l.real).sort((a, b) => a - b)[Math.floor(okRows.length / 2)];
+  const med = Math.round(median(okRows.map((l) => l.real)));
   return (
     <Box component="header" sx={{ pt: { xs: 6, md: 10 }, pb: { xs: 5, md: 8 } }}>
       <Typography variant="overline" color="text.secondary" component="p">
@@ -91,6 +96,11 @@ export function MarketSection({ d }: { d: JachwiData }) {
   const ticks = [0, 1, 2, 3, 4].map((i) => Math.round((max / 4) * i));
   const kinds = ['다가구', '빌라', '오피스텔'] as const;
   const color = { 다가구: 'use.home', 빌라: 'text.secondary', 오피스텔: 'use.shop' } as const;
+  // T1 호가와 비교: 실거래(다가구·빌라 동별 중앙값의 중앙)와 매물 호가(원룸·빌라 거리대별)를 같은 환산 기준으로 놓는다
+  const realRoom = median(d.market.flatMap((m) => m.kinds.filter((k) => k.kind !== '오피스텔').map((k) => k.median)));
+  const realOt = median(d.market.flatMap((m) => m.kinds.filter((k) => k.kind === '오피스텔').map((k) => k.median)));
+  const askRoom = median(d.asking.map((a) => a.villa));
+  const askOt = median(d.asking.map((a) => a.officetel));
   return (
     <Section
       no={1}
@@ -100,7 +110,7 @@ export function MarketSection({ d }: { d: JachwiData }) {
         <>
           국토부 전월세 실거래 2026년 8~10월, 전용 15~35㎡, 보증금 1,000만원 기준 환산.
           <br />
-          매물 호가는 실거래보다 <b>10~15만원</b> 높다.
+          지금 나온 매물 호가는 원룸 기준 실거래보다 <b>{won(askRoom - realRoom)}만원</b> 높다(아래 표).
         </>
       }
     >
@@ -146,6 +156,34 @@ export function MarketSection({ d }: { d: JachwiData }) {
             ))}
           </Box>
         </Box>
+      </Box>
+      <Box component="table" sx={{ mt: 4, width: '100%', borderCollapse: 'collapse', '& th, & td': { py: 1, px: 1, borderBottom: 1, borderColor: 'divider', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }, '& th:first-of-type, & td:first-of-type': { textAlign: 'left' } }}>
+        <caption style={{ captionSide: 'top', textAlign: 'left', paddingBottom: 8 }}>
+          <Typography variant="overline" color="text.secondary">
+            호가와 실거래 비교, 월세 중앙값(만원, 보증금 1,000만원 기준 환산). 호가: 직방·다방·피터팬 월세 매물 1,679건(2026-11-18 수집), 회사에서 거리대별
+          </Typography>
+        </caption>
+        <thead>
+          <tr>
+            <Typography component="th" variant="overline" color="text.secondary">구분</Typography>
+            <Typography component="th" variant="overline" color="text.secondary">원룸·빌라</Typography>
+            <Typography component="th" variant="overline" color="text.secondary">오피스텔</Typography>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <Typography component="td" variant="body2">실거래(위 동들의 중앙값)</Typography>
+            <Typography component="td" variant="num">{won(realRoom)}</Typography>
+            <Typography component="td" variant="num">{won(realOt)}</Typography>
+          </tr>
+          {d.asking.map((a) => (
+            <tr key={a.band}>
+              <Typography component="td" variant="body2">호가 · {a.band}</Typography>
+              <Typography component="td" variant="num">{a.villa}</Typography>
+              <Typography component="td" variant="num">{a.officetel}</Typography>
+            </tr>
+          ))}
+        </tbody>
       </Box>
     </Section>
   );

@@ -4,7 +4,7 @@
 
 ## 상태
 2026-11-13 기준 운영 중이다. 분야는 Frontend와 Motion 둘이고, main에 push하면 배포된다.<br>
-개인용 noindex 리포트: `/frontend/jachwi-2612/`(매봉역 30분 자취방, 목록 카드·sitemap에 넣지 않음). 데이터는 `_workspace/jachwi-2612/build_data.py`가 만든다.<br>
+개인용 noindex 리포트: `/frontend/jachwi-2612/`(매봉역 30분 자취방, 목록 카드·sitemap에 넣지 않음). 데이터는 `_workspace/jachwi-2612/build_data.py`가 만든다(`_workspace/`는 git 밖이라 BK 로컬에만 있다. 입력은 `~/workspace/budongsan-data`).<br>
 진행 중: Harness 분야(BK가 만들어 쓰는 하네스를 도식과 실측으로 소개). 첫 글 초안은 아직 공개 전이라 랜딩과 sitemap에 연결하지 않았다.
 
 ## 구조
