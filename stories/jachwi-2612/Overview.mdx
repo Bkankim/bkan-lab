@@ -1,0 +1,21 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import summary from './docs/01-project-summary.md?raw';
+import ux from './docs/02-ux-flow.md?raw';
+import visual from './docs/03-visual-direction.md?raw';
+
+<Meta title="jachwi-2612/OVERVIEW" />
+
+# jachwi-2612 작업대
+
+글 세 개가 정본이다. 조립 지시는 이 문서와 `data/jachwi-2612.json`의 이름을 가리킨다.
+
+| 문서 | 어디서 쓰이나 |
+|---|---|
+| 01 기획서 | 태그라인(Hero), 과업 T1~T6 → 섹션 |
+| 02 UX 설계 | 섹션 순서, 데이터 모델(`components/jachwi/types.ts`), 컴포넌트 목록 |
+| 03 비주얼 디렉션 | `components/jachwi/theme.ts` |
+| data/jachwi-2612.json | 모든 섹션. 생성: `_workspace/jachwi-2612/build_data.py` |
+
+<Markdown>{summary}</Markdown>
+<Markdown>{ux}</Markdown>
+<Markdown>{visual}</Markdown>

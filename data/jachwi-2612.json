@@ -1,0 +1,7229 @@
+{
+ "asof": "2026-11-19",
+ "tagline": "3,463개에서 20개로.",
+ "origin": {
+  "address": "서울 강남구 논현로30길 51",
+  "station": "3호선 매봉역",
+  "walk": "도보 약 5분",
+  "lat": 37.48518,
+  "lon": 127.04574
+ },
+ "funnel": [
+  {
+   "label": "4개 플랫폼에서 모은 월세·전세 매물",
+   "n": 3463,
+   "why": "네이버·직방·다방·피터팬, 매봉역 반경 약 3km. 네이버 중개사 중복 등록은 대표 매물만"
+  },
+  {
+   "label": "보증금 3,000만원 이하, 월세 25~60만원",
+   "n": 304,
+   "why": "청년월세 지원 조건(월세 60 이하)과 자취 예산"
+  },
+  {
+   "label": "반지하 제외",
+   "n": 241,
+   "why": "층 값 -1·B1·반, 피터팬 반지하 표시, 제목의 '반지하'"
+  },
+  {
+   "label": "전입 불가 제외",
+   "n": 228,
+   "why": "매물 문구의 '전입 불가'와 14㎡ 미만 방"
+  },
+  {
+   "label": "플랫폼 간 같은 방 합치기",
+   "n": 153,
+   "why": "동·보증금·월세·면적이 같으면 한 방"
+  },
+  {
+   "label": "건축물대장상 정상 주택",
+   "n": 20,
+   "why": "그 층이 주택·다가구로 등록된 방. 고시원·사무실·대장에 없는 층·옥탑 제외"
+  }
+ ],
+ "market": [
+  {
+   "dong": "도곡동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 22,
+     "p25": 55,
+     "median": 59,
+     "p75": 77
+    },
+    {
+     "kind": "빌라",
+     "n": 12,
+     "p25": 55,
+     "median": 66,
+     "p75": 104
+    }
+   ]
+  },
+  {
+   "dong": "개포동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 29,
+     "p25": 41,
+     "median": 53,
+     "p75": 70
+    },
+    {
+     "kind": "빌라",
+     "n": 23,
+     "p25": 60,
+     "median": 70,
+     "p75": 105
+    },
+    {
+     "kind": "오피스텔",
+     "n": 25,
+     "p25": 85,
+     "median": 90,
+     "p75": 97
+    }
+   ]
+  },
+  {
+   "dong": "양재동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 91,
+     "p25": 52,
+     "median": 60,
+     "p75": 72
+    },
+    {
+     "kind": "빌라",
+     "n": 71,
+     "p25": 60,
+     "median": 72,
+     "p75": 87
+    },
+    {
+     "kind": "오피스텔",
+     "n": 23,
+     "p25": 52,
+     "median": 58,
+     "p75": 70
+    }
+   ]
+  },
+  {
+   "dong": "일원동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 44,
+     "p25": 42,
+     "median": 54,
+     "p75": 62
+    },
+    {
+     "kind": "빌라",
+     "n": 11,
+     "p25": 66,
+     "median": 107,
+     "p75": 125
+    }
+   ]
+  },
+  {
+   "dong": "서초동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 59,
+     "p25": 54,
+     "median": 62,
+     "p75": 74
+    },
+    {
+     "kind": "빌라",
+     "n": 82,
+     "p25": 60,
+     "median": 70,
+     "p75": 92
+    },
+    {
+     "kind": "오피스텔",
+     "n": 196,
+     "p25": 86,
+     "median": 95,
+     "p75": 114
+    }
+   ]
+  },
+  {
+   "dong": "대치동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 57,
+     "p25": 58,
+     "median": 70,
+     "p75": 82
+    },
+    {
+     "kind": "빌라",
+     "n": 46,
+     "p25": 70,
+     "median": 78,
+     "p75": 122
+    },
+    {
+     "kind": "오피스텔",
+     "n": 28,
+     "p25": 96,
+     "median": 122,
+     "p75": 171
+    }
+   ]
+  },
+  {
+   "dong": "역삼동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 146,
+     "p25": 65,
+     "median": 77,
+     "p75": 92
+    },
+    {
+     "kind": "빌라",
+     "n": 138,
+     "p25": 70,
+     "median": 88,
+     "p75": 114
+    },
+    {
+     "kind": "오피스텔",
+     "n": 191,
+     "p25": 94,
+     "median": 105,
+     "p75": 115
+    }
+   ]
+  },
+  {
+   "dong": "삼성동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 14,
+     "p25": 62,
+     "median": 68,
+     "p75": 86
+    },
+    {
+     "kind": "빌라",
+     "n": 30,
+     "p25": 78,
+     "median": 90,
+     "p75": 112
+    },
+    {
+     "kind": "오피스텔",
+     "n": 25,
+     "p25": 100,
+     "median": 130,
+     "p75": 149
+    }
+   ]
+  },
+  {
+   "dong": "우면동",
+   "kinds": [
+    {
+     "kind": "빌라",
+     "n": 6,
+     "p25": 31,
+     "median": 46,
+     "p75": 74
+    },
+    {
+     "kind": "오피스텔",
+     "n": 22,
+     "p25": 65,
+     "median": 68,
+     "p75": 80
+    }
+   ]
+  },
+  {
+   "dong": "논현동",
+   "kinds": [
+    {
+     "kind": "다가구",
+     "n": 159,
+     "p25": 60,
+     "median": 70,
+     "p75": 90
+    },
+    {
+     "kind": "빌라",
+     "n": 92,
+     "p25": 77,
+     "median": 95,
+     "p75": 139
+    },
+    {
+     "kind": "오피스텔",
+     "n": 14,
+     "p25": 128,
+     "median": 150,
+     "p75": 172
+    }
+   ]
+  }
+ ],
+ "asking": [
+  {
+   "band": "1km 안",
+   "villa": 75,
+   "officetel": 105
+  },
+  {
+   "band": "1~2km",
+   "villa": 80,
+   "officetel": 111
+  },
+  {
+   "band": "2~3.5km",
+   "villa": 85,
+   "officetel": 106
+  }
+ ],
+ "fee": {
+  "villa": {
+   "median": 10,
+   "p25": 8,
+   "p75": 10
+  },
+  "officetel": {
+   "median": 12,
+   "p25": 10,
+   "p75": 15
+  },
+  "utilities": {
+   "summer": [
+    5,
+    10
+   ],
+   "winter": [
+    10,
+    18
+   ]
+  }
+ },
+ "traps": [
+  {
+   "key": "basement",
+   "title": "1000/50, 사진은 멀쩡한데",
+   "price": "1000/50 + 관리비 10",
+   "looks": "양재역 도보권 분리형 원룸, 화면에는 '저층'",
+   "real": "지하 1층(반지하). 상세 설명에 '샘플용 사진이니 구도만 참고'",
+   "evidence": "피터팬 원본 is_half_underground=1, 층 -1 · 건축물대장 지하 1층 다가구 4가구",
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 14,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   },
+   "at": -1,
+   "url": "https://www.peterpanz.com/house/20157468"
+  },
+  {
+   "key": "goshi",
+   "title": "원룸이라더니 고시원",
+   "price": "1000/60 + 관리비 0",
+   "looks": "수리 완료, 공실, 3/5층 일반원룸",
+   "real": "대장상 3층은 제2종근린생활시설(고시원)",
+   "evidence": "건축물대장 층별 개요 양재동 360-13",
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(부동산중개업"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "at": 3,
+   "url": "https://fin.land.naver.com/articles/2660483957"
+  },
+  {
+   "key": "office",
+   "title": "사무실을 쪼갠 방",
+   "price": "2000/50 + 관리비 6",
+   "looks": "소형 원룸 풀옵션, 전입 가능",
+   "real": "대장상 2층은 사무소(근린생활시설)",
+   "evidence": "건축물대장 층별 개요 양재동 337-7",
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "at": 2,
+   "url": "https://www.zigbang.com/home/oneroom/items/50664913"
+  },
+  {
+   "key": "phantom",
+   "title": "대장에 없는 층",
+   "price": "500/60 + 관리비 5",
+   "looks": "양재역 깨끗한 풀옵션, 고/4층",
+   "real": "대장상 지상 3층 건물. 4층은 기록에 없다(옥탑·증축 의심)",
+   "evidence": "건축물대장 표제부 양재동 3-6, 지상 3층",
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 3,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(교습소) · 제2종근린생활시설(사"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   },
+   "at": 4,
+   "url": "https://fin.land.naver.com/articles/2660746976"
+  }
+ ],
+ "grades": [
+  {
+   "key": "○",
+   "count": 20,
+   "label": "정상 주택, 그 층이 주거"
+  },
+  {
+   "key": "△",
+   "count": 29,
+   "label": "주택이나 층 모호·지하 주거"
+  },
+  {
+   "key": "?",
+   "count": 64,
+   "label": "지번 없음"
+  },
+  {
+   "key": "⚠",
+   "count": 16,
+   "label": "고시원"
+  },
+  {
+   "key": "✕",
+   "count": 24,
+   "label": "비주거 층·대장에 없는 층·옥탑"
+  }
+ ],
+ "listings": [
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51238166",
+   "dong": "개포동",
+   "jibun": "1234-11",
+   "deposit": 500,
+   "rent": 36,
+   "fee": 4.5,
+   "real": 38,
+   "m2": null,
+   "floor": "3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1996, 3층 다가구주택(다가구주택(3가구))",
+   "text": "지상층 최저가 원룸",
+   "built": "1996",
+   "commute": 11,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662641231",
+   "dong": "개포동",
+   "jibun": "1234-11",
+   "deposit": 500,
+   "rent": 36,
+   "fee": 9,
+   "real": 42,
+   "m2": 19.83,
+   "floor": "3/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1996, 3층 다가구주택(다가구주택(3가구))",
+   "text": "일반원룸 조용한주택가.이사협의.관리비450000원",
+   "built": "1997",
+   "commute": 11,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50613770",
+   "dong": "역삼동",
+   "jibun": "601-28",
+   "deposit": 100,
+   "rent": 55,
+   "fee": 8.0,
+   "real": 58,
+   "m2": null,
+   "floor": "2",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1997, 2층 다가구주택(다가구주택(4가구))",
+   "text": "꒰꒰신논현 초역세권꒱꒱초가성비 풀옵션 원룸",
+   "built": "1997",
+   "commute": 21,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "계단실통로,주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51110998",
+   "dong": "역삼동",
+   "jibun": "834-59",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 60,
+   "m2": null,
+   "floor": "3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구11·세대0, 승인1993, 3층 다가구주택(다가구주택(1가구))",
+   "text": "지상층 에이스집 가격대비 최고",
+   "built": "1993",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 11,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51166910",
+   "dong": "역삼동",
+   "jibun": "601-28",
+   "deposit": 100,
+   "rent": 58,
+   "fee": 7.0,
+   "real": 60,
+   "m2": null,
+   "floor": "2",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1997, 2층 다가구주택(다가구주택(4가구))",
+   "text": "ꯁꯁ원룸 맛집ꯁꯁ신논현역 2분 가성비 초대박 매물",
+   "built": "1997",
+   "commute": 21,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "계단실통로,주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657206853",
+   "dong": "대치동",
+   "jibun": "932-15",
+   "deposit": 1000,
+   "rent": 58,
+   "fee": 6,
+   "real": 64,
+   "m2": 31.85,
+   "floor": "1/4",
+   "grade": "○",
+   "note": "공동주택, 지상4층, 가구0·세대12, 승인2001, 1층 다세대주택(다세대주택(3세대))",
+   "text": "빌라 월세 및 단기 가능",
+   "built": "2001",
+   "commute": 21,
+   "building": {
+    "main": "공동주택",
+    "ground": 4,
+    "under": 1,
+    "households": 12,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다세대주택(1세대) · 주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다세대주택(3세대)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다세대주택(3세대)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다세대주택(3세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다세대주택(2세대)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51122904",
+   "dong": "양재동",
+   "jibun": "340-5",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 65,
+   "m2": null,
+   "floor": "3",
+   "grade": "○",
+   "note": "단독주택, 지상5층, 가구1·세대0, 승인1988, 3층 단독주택(주택)",
+   "text": "풀옵션 원룸 양재시민의숲역 7분",
+   "built": "1988",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661197208",
+   "dong": "도곡동",
+   "jibun": "944-10",
+   "deposit": 1000,
+   "rent": 58,
+   "fee": 7,
+   "real": 65,
+   "m2": 27,
+   "floor": "1/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1993, 1층 다가구주택(다가구주택(4가구))",
+   "text": "다가구 엄청 저렴한 원룸 , 양재역, 강남역  도보거리, 즉시입주",
+   "built": "1993",
+   "commute": 16,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설 · 다가구주택(2가구) · 주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660920384",
+   "dong": "역삼동",
+   "jibun": "792-55",
+   "deposit": 3000,
+   "rent": 43,
+   "fee": 12,
+   "real": 65,
+   "m2": 26.45,
+   "floor": "1/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구6·세대0, 승인1998, 1층 다가구주택(다가구주택(2가구))",
+   "text": "다가구 구역삼세무서사거리 이면 가성비 좋은 월세.보증금조절가능",
+   "built": "1998",
+   "commute": 19,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 6,
+    "approved": "1998",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51121855",
+   "dong": "역삼동",
+   "jibun": "742-7",
+   "deposit": 80,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": null,
+   "floor": "3",
+   "grade": "○",
+   "note": "단독주택, 지상4층, 가구9·세대0, 승인2003, 3층 다가구주택(다가구주택 (4가구))",
+   "text": "HOT 강남 가성비 BEST 풀옵션 착한월세 단기임",
+   "built": "2003",
+   "commute": 24,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 2,
+    "households": 9,
+    "approved": "2003",
+    "floors": [
+     {
+      "n": -2,
+      "use": "under",
+      "label": "계단실 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "기타사무소"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "기타사무소"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택 (4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택 (4가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택 (1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51155489",
+   "dong": "삼성동",
+   "jibun": "140-15",
+   "deposit": 100,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 66,
+   "m2": null,
+   "floor": "2",
+   "grade": "○",
+   "note": "공동주택, 지상5층, 가구0·세대11, 승인2012, 2층 다세대주택(도시형생활주택(원룸형4)",
+   "text": "ㅁ휴일 정상 오픈ㅁ선릉 1등 가성비 이 가격에 풀옵",
+   "built": "2012",
+   "commute": 19,
+   "building": {
+    "main": "공동주택",
+    "ground": 5,
+    "under": 0,
+    "households": 11,
+    "approved": "2012",
+    "floors": [
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단실"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "도시형생활주택(원룸형4세대)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "도시형생활주택(원룸형4세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "도시형생활주택(원룸형2세대)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "도시형생활주택(원룸형1세대)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51090314",
+   "dong": "역삼동",
+   "jibun": "697-27",
+   "deposit": 3000,
+   "rent": 50,
+   "fee": 6.0,
+   "real": 66,
+   "m2": null,
+   "floor": "1",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구9·세대0, 승인1997, 1층 다가구주택(다가구주택(3가구))",
+   "text": "분리형 깔끔 풀옵션",
+   "built": "1997",
+   "commute": 22,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 9,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660903108",
+   "dong": "양재동",
+   "jibun": "388-1",
+   "deposit": 1000,
+   "rent": 59,
+   "fee": 10,
+   "real": 69,
+   "m2": 23.14,
+   "floor": "1/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구14·세대0, 승인1996, 1층 다가구주택(다가구주택(3가구))",
+   "text": "다가구 가성비갑  올라가는1층  무료주차  바로소진되는꿀매물",
+   "built": "1996",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 14,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51015187",
+   "dong": "양재동",
+   "jibun": "337-8",
+   "deposit": 2000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 70,
+   "m2": null,
+   "floor": "2",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구1·세대0, 승인1990, 2층 단독주택(주택)",
+   "text": "양재시민의숲역 도보 6분거리 원룸",
+   "built": "1990",
+   "commute": 21,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 1,
+    "approved": "1990",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제2종근린생활시설(제조업소)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659318233",
+   "dong": "역삼동",
+   "jibun": "752-40",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 15,
+   "real": 70,
+   "m2": 16.07,
+   "floor": "2/5",
+   "grade": "○",
+   "note": "공동주택, 지상5층, 가구0·세대22, 승인2010, 2층 다세대주택(다세대주택(7세대))",
+   "text": "아크빌 강남역 도보 10분  깔끔한구조 풀옵션 가성비최상",
+   "built": "2010",
+   "commute": 24,
+   "building": {
+    "main": "공동주택",
+    "ground": 5,
+    "under": 0,
+    "households": 22,
+    "approved": "2010",
+    "floors": [
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단실"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다세대주택(7세대)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다세대주택(7세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다세대주택(7세대)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "다세대주택(1세대)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657098290",
+   "dong": "역삼동",
+   "jibun": "782-31",
+   "deposit": 3000,
+   "rent": 50,
+   "fee": 10,
+   "real": 70,
+   "m2": 26.8,
+   "floor": "2/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구14·세대0, 승인1994, 2층 다가구주택(다가구주택(4가구))",
+   "text": "다가구 주변대비 최저가 수준, 초 큰방 풀옵션 지상원룸, 바로계약 입주가능한 집",
+   "built": "1994",
+   "commute": 17,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 14,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51224975",
+   "dong": "양재동",
+   "jibun": "345",
+   "deposit": 2000,
+   "rent": 57,
+   "fee": 10.0,
+   "real": 72,
+   "m2": null,
+   "floor": "3",
+   "grade": "○",
+   "note": "공동주택, 지상5층, 가구0·세대13, 승인2015, 3층 다세대주택(다세대주택(4세대))",
+   "text": "준신축 역세권 깔끔한 풀옵션 원룸",
+   "built": "2015",
+   "commute": 21,
+   "building": {
+    "main": "공동주택",
+    "ground": 5,
+    "under": 0,
+    "households": 13,
+    "approved": "2015",
+    "floors": [
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단실"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "다세대주택(1세대)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659970371",
+   "dong": "역삼동",
+   "jibun": "834-12",
+   "deposit": 3000,
+   "rent": 59,
+   "fee": 10,
+   "real": 79,
+   "m2": 21.44,
+   "floor": "3/4",
+   "grade": "○",
+   "note": "단독주택, 지상4층, 가구8·세대0, 승인2011, 3층 다가구주택(다가구주택(3가구))",
+   "text": "일반원룸 ",
+   "built": "2011",
+   "commute": 22,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 0,
+    "households": 8,
+    "approved": "2011",
+    "floors": [
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단실"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661354139",
+   "dong": "대치동",
+   "jibun": "920-20",
+   "deposit": 3000,
+   "rent": 60,
+   "fee": 10,
+   "real": 80,
+   "m2": 23.1,
+   "floor": "3/3",
+   "grade": "○",
+   "note": "단독주택, 지상3층, 가구10·세대0, 승인1994, 3층 다가구주택(다가구주택(1가구))",
+   "text": "다가구 대치동학원가 관리비에 모든 공과금포함된 가성비 끝판왕 남향풀옵션 원룸, ",
+   "built": "1994",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 10,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660679460",
+   "dong": "역삼동",
+   "jibun": "837-26",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 24,
+   "real": 82,
+   "m2": 28.97,
+   "floor": "9/15",
+   "grade": "○",
+   "note": "업무시설, 지상16층, 가구0·세대0, 승인1992, 9층 오피스텔(오피스텔)",
+   "text": "삼일프라자 강남역 역세권 가성비갑 중소형 업무용 오피스텔",
+   "built": "1992",
+   "commute": 17,
+   "building": {
+    "main": "업무시설",
+    "ground": 16,
+    "under": 6,
+    "households": 0,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "계단실,승강기 · 기계실 · 전기실 · 주차장"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "배연실 · 주차관리실 · 주차장 · 화장실"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "공조실 · 주차관리실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "계단실,승강기 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단실,승강기 · 화장실"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "가스정압실 · 교환실 · 근린생활시설 · 주차램프 "
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실,승강기 · 공조실 · 근린생활시설 · 복도 "
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단실,승강기 · 복도 · 예능계학원 · 제1종근린"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "사무소 · 화장실"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "공조실 · 복도 · 사무소 · 화장실"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "복도 · 화장실"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 16,
+      "use": "shop",
+      "label": "계단실,승강기 · 공조실"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662329330",
+   "dong": "역삼동",
+   "jibun": "830-33",
+   "deposit": 500,
+   "rent": 45,
+   "fee": 5,
+   "real": 48,
+   "m2": 23.14,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1997, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "일반원룸 강남역 근처 저렴한 원룸",
+   "built": "1997",
+   "commute": 19,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659970395",
+   "dong": "역삼동",
+   "jibun": "792-23",
+   "deposit": 500,
+   "rent": 40,
+   "fee": 10,
+   "real": 48,
+   "m2": 18.5,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1993, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "일반원룸 ",
+   "built": "1993",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2656817046",
+   "dong": "서초동",
+   "jibun": "1357-62",
+   "deposit": 1000,
+   "rent": 30,
+   "fee": 20,
+   "real": 50,
+   "m2": 28,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 뱅뱅사거리 이면 가성비 좋고 넓은 원룸분리형",
+   "built": "1995",
+   "commute": 12,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661165768",
+   "dong": "개포동",
+   "jibun": "1173-10",
+   "deposit": 500,
+   "rent": 53,
+   "fee": 2,
+   "real": 52,
+   "m2": 26,
+   "floor": "저/2",
+   "grade": "△",
+   "note": "단독주택, 지상2층, 가구1·세대0, 승인1988, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "일반원룸 w1층같은지층 리모델링된 깨끗한분리형원룸 빠른입주가능",
+   "built": "1988",
+   "commute": 16,
+   "building": {
+    "main": "단독주택",
+    "ground": 2,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "주택"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657536351",
+   "dong": "역삼동",
+   "jibun": "836-41",
+   "deposit": 2000,
+   "rent": 40,
+   "fee": 10,
+   "real": 55,
+   "m2": 19.38,
+   "floor": "저/5",
+   "grade": "△",
+   "note": "공동주택, 지상5층, 가구0·세대18, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "빌라 강남역 양재역 도보5분 깔끔한 가성비 원룸",
+   "built": "2001",
+   "commute": 16,
+   "building": {
+    "main": "공동주택",
+    "ground": 5,
+    "under": 1,
+    "households": 18,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다세대주택(3세대)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다세대주택(4세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다세대주택(3세대)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "다세대주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660118928",
+   "dong": "역삼동",
+   "jibun": "756-1",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 5,
+   "real": 55,
+   "m2": 23,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 한티역 도보 3분 가성비 원룸 빠른 입주 가능",
+   "built": "1996",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659944625",
+   "dong": "역삼동",
+   "jibun": "756-1",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 5,
+   "real": 55,
+   "m2": 20,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 초가성비 깔끔한 분리형 원룸",
+   "built": "1996",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659344729",
+   "dong": "역삼동",
+   "jibun": "830-60",
+   "deposit": 500,
+   "rent": 58,
+   "fee": 0,
+   "real": 56,
+   "m2": 27,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구9·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "일반원룸 강남역 도보 8분 가성비 좋은 분리형 원룸, 내부 수리 완료, 즉시 입주",
+   "built": "1995",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 9,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661183970",
+   "dong": "도곡동",
+   "jibun": "942-7",
+   "deposit": 1000,
+   "rent": 47,
+   "fee": 10,
+   "real": 57,
+   "m2": 27,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구17·세대0, 승인1993, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 초가성비 깔끔한 풀옵션 원룸 양재역 강남역 도보이용가능",
+   "built": "1993",
+   "commute": 17,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 17,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662358088",
+   "dong": "역삼동",
+   "jibun": "724-37",
+   "deposit": 500,
+   "rent": 50,
+   "fee": 10,
+   "real": 58,
+   "m2": 23.14,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구14·세대0, 승인1994, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "일반원룸 역삼역 근처 저렴한 원룸",
+   "built": "1994",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 14,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657324904",
+   "dong": "개포동",
+   "jibun": "1179",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 5,
+   "real": 60,
+   "m2": 25,
+   "floor": "중/4",
+   "grade": "△",
+   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1989, 층 표기 모호",
+   "text": "일반원룸 w인근최저가 최고가성비오픈형원룸 보증금조절불가 전입신고및즉시입주가능",
+   "built": "1989",
+   "commute": 15,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점(업)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662238662",
+   "dong": "양재동",
+   "jibun": "388",
+   "deposit": 3000,
+   "rent": 50,
+   "fee": 0,
+   "real": 60,
+   "m2": 25,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구18·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "빌라 분리형 큰방1개 주방겸 거실 입니다",
+   "built": "1995",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 18,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(5가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661364455",
+   "dong": "도곡동",
+   "jibun": "954-9",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 10,
+   "real": 60,
+   "m2": 26.45,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구14·세대0, 승인1993, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 양재역 도보권 화이트톤의 분리형 원룸",
+   "built": "1993",
+   "commute": 13,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 14,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659702918",
+   "dong": "역삼동",
+   "jibun": "782-53",
+   "deposit": 1000,
+   "rent": 59,
+   "fee": 1,
+   "real": 60,
+   "m2": 33.1,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구9·세대0, 승인1992, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 가성비 풀옵션 깔끔한 원룸",
+   "built": "1992",
+   "commute": 17,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 9,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657259211",
+   "dong": "양재동",
+   "jibun": "10-50",
+   "deposit": 2000,
+   "rent": 40,
+   "fee": 15,
+   "real": 60,
+   "m2": 34,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구13·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 양재역 도보 이용 가능 가성비 투룸",
+   "built": "1996",
+   "commute": 11,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 13,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658449927",
+   "dong": "역삼동",
+   "jibun": "792-39",
+   "deposit": 500,
+   "rent": 58,
+   "fee": 5,
+   "real": 60,
+   "m2": 22,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구7·세대0, 승인1994, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 Eng,전입신고가능 ,오픈형 원룸 , 크기 잘나옴,풀옵션,협의입주",
+   "built": "1994",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 7,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661127739",
+   "dong": "양재동",
+   "jibun": "83-8",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 6,
+   "real": 61,
+   "m2": 23.1,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구16·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 올수리 초가성비 풀옵션원룸",
+   "built": "1995",
+   "commute": 8,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 16,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택(4가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661175457",
+   "dong": "역삼동",
+   "jibun": "830-54",
+   "deposit": 1000,
+   "rent": 52,
+   "fee": 10,
+   "real": 62,
+   "m2": 16.53,
+   "floor": "고/4",
+   "grade": "△",
+   "note": "제2종근린생활시설, 지상4층, 가구1·세대0, 승인1988, 층 표기 모호",
+   "text": "다가구 강남역 인근 가성비 원룸",
+   "built": "1988",
+   "commute": 19,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(일"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662622048",
+   "dong": "역삼동",
+   "jibun": "756-2",
+   "deposit": 1000,
+   "rent": 57,
+   "fee": 6,
+   "real": 63,
+   "m2": 31,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 한티역 도보 이용 분리형 가성비 원룸",
+   "built": "1995",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657787996",
+   "dong": "역삼동",
+   "jibun": "732-7",
+   "deposit": 700,
+   "rent": 45,
+   "fee": 20,
+   "real": 64,
+   "m2": 36.37,
+   "floor": "저/4",
+   "grade": "△",
+   "note": "단독주택, 지상4층, 가구12·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 역세권 거대한 원룸 놓치면 후회",
+   "built": "1996",
+   "commute": 23,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 12,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단실통로,주차장"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662482859",
+   "dong": "양재동",
+   "jibun": "255-6",
+   "deposit": 500,
+   "rent": 57,
+   "fee": 10,
+   "real": 64,
+   "m2": 19.7,
+   "floor": "중/4",
+   "grade": "△",
+   "note": "단독주택, 지상4층, 가구6·세대0, 승인1987, 층 표기 모호",
+   "text": "일반원룸 양재시민의숲역 인근 채광 좋은 풀옵션 가성비 원룸",
+   "built": "1987",
+   "commute": 16,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 6,
+    "approved": "1987",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "근린생활시설(사무소) · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661079753",
+   "dong": "역삼동",
+   "jibun": "830-54",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 15,
+   "real": 65,
+   "m2": 16.53,
+   "floor": "고/4",
+   "grade": "△",
+   "note": "제2종근린생활시설, 지상4층, 가구1·세대0, 승인1988, 층 표기 모호",
+   "text": "일반원룸 신분당선판교강남역,더블역세권,풀옵",
+   "built": "1988",
+   "commute": 19,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(일"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658434487",
+   "dong": "대치동",
+   "jibun": "933-2",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5,
+   "real": 65,
+   "m2": 30,
+   "floor": "저/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1993, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 한티역 대치동학원가 도보 이용 가성비 분리형 원룸",
+   "built": "1993",
+   "commute": 22,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51208643",
+   "dong": "대치동",
+   "jibun": "928-1",
+   "deposit": 200,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 66,
+   "m2": null,
+   "floor": "옥탑방",
+   "grade": "△",
+   "note": "단독주택, 지상4층, 가구10·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "vV풀옵션 최다매물보유Vv 대치동 가성비 좋은 원룸",
+   "built": "2001",
+   "commute": 23,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 10,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659870634",
+   "dong": "역삼동",
+   "jibun": "740-14",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 12,
+   "real": 67,
+   "m2": 19.83,
+   "floor": "저/4",
+   "grade": "△",
+   "note": "단독주택, 지상4층, 가구9·세대0, 승인2000, 층 표기 모호",
+   "text": "다가구 오늘 하루, 최고의 매물",
+   "built": "2000",
+   "commute": 22,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 9,
+    "approved": "2000",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662185674",
+   "dong": "양재동",
+   "jibun": "11-49",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 10,
+   "real": 68,
+   "m2": 16,
+   "floor": "고/5",
+   "grade": "△",
+   "note": "제2종근린생활시설, 지상5층, 가구0·세대0, 승인2001, 층 표기 모호",
+   "text": "일반원룸 양재역1분 리모델링한 깔끔한 풀옵션 원룸 입니다",
+   "built": "2001",
+   "commute": 8,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 0,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(독서실)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설(소매점) · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(독서실)"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661399130",
+   "dong": "양재동",
+   "jibun": "275-1",
+   "deposit": 500,
+   "rent": 45,
+   "fee": 27,
+   "real": 70,
+   "m2": 27.36,
+   "floor": "고/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "삼호물산 업무용 오피스텔 저렴한 임대료 ",
+   "built": "1991",
+   "commute": 9,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 6,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "기계실 · 업무시설"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "근린생활시설,주차장 · 업무시설"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설 · 업무시설"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662331816",
+   "dong": "양재동",
+   "jibun": "275-1",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 20,
+   "real": 70,
+   "m2": 27.36,
+   "floor": "고/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "삼호물산 남향,전망굿,상태양호,양재천수변공원인접,",
+   "built": "1991",
+   "commute": 9,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 6,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "기계실 · 업무시설"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "근린생활시설,주차장 · 업무시설"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설 · 업무시설"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660397796",
+   "dong": "역삼동",
+   "jibun": "732-6",
+   "deposit": 3000,
+   "rent": 60,
+   "fee": 12,
+   "real": 82,
+   "m2": 23.1,
+   "floor": "중/3",
+   "grade": "△",
+   "note": "단독주택, 지상3층, 가구9·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "text": "다가구 DIA 완전 풀옵션 원룸",
+   "built": "2001",
+   "commute": 23,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 9,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(1가구) · 주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5b03cbc249a173f9f52a1",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 45,
+   "rent": 45,
+   "fee": 9.0,
+   "real": 49,
+   "m2": 17.9,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅁ365일 오픈ㅁ초가성비 ACE 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5b05d0aceba17544c2822",
+   "dong": "논현동",
+   "jibun": null,
+   "deposit": 48,
+   "rent": 48,
+   "fee": 7.0,
+   "real": 50,
+   "m2": 19.8,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅁ365일 오픈ㅁ초특가 가성비 이 가격에 풀옵션까지",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50895204",
+   "dong": "반포동",
+   "jibun": "735-15",
+   "deposit": 50,
+   "rent": 50,
+   "fee": 5.0,
+   "real": 50,
+   "m2": null,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "꒰꒰엘베있는 최저가 신축급 깔끔한 원룸 ꒱꒱",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5b07da80362173f60ccca",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 100,
+   "rent": 50,
+   "fee": 7.0,
+   "real": 52,
+   "m2": 23.14,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅁ365일 오픈ㅁ신논현역 3분 초특가 가성비 분리형",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af1621710f59533229b0148",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 100,
+   "rent": 50,
+   "fee": 7.0,
+   "real": 52,
+   "m2": 26.44,
+   "floor": "",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "o월세 가드결제가능o리모델링 완료 화이트 대리석",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afcffac57fddb64e50c95e2",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 50,
+   "rent": 50,
+   "fee": 8.0,
+   "real": 53,
+   "m2": 19.8,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "리모델링 완전 에이스 매물입니다",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5b1356f058d16fc1f5512",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 100,
+   "rent": 50,
+   "fee": 9.0,
+   "real": 54,
+   "m2": 26.44,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅁ365일 오픈ㅁNo.1 가성비 이 가격에 풀옵션이",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ad85d0c32be57110068fc05",
+   "dong": "개포동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 5.0,
+   "real": 55,
+   "m2": 19.83,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "포이초등근처 밝은 원룸 월세",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afa62f0a5f3c36b61f82293",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 0.001,
+   "real": 55,
+   "m2": 46.36,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "강남역 도보 5분 이내, 넓은 원룸, 컨디션 좋음",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afd667b92b457059df72e67",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 500,
+   "rent": 50,
+   "fee": 8.0,
+   "real": 56,
+   "m2": 27.0,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "강남역4번출구 도보3분이내도착 깔끔하고 넓은 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51205835",
+   "dong": "반포동",
+   "jibun": "723-17",
+   "deposit": 500,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 58,
+   "m2": null,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "논현역 5분 강남 지상층 최저 월세,내부깔끔 베란다",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6aeac2858685bc76a0686fc7",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 55,
+   "rent": 55,
+   "fee": 8.0,
+   "real": 58,
+   "m2": 28.83,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "l 24시간 친절상담 l- 가성비 만점 주방 세미분",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6aeedc5113aede0725b1ed7c",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 55,
+   "rent": 55,
+   "fee": 9.0,
+   "real": 59,
+   "m2": 21.35,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "o실시간 업뎃o 올리모델링 완료된 엄청 깔끔한 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5b075c032ef173f2e297a",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 55,
+   "rent": 55,
+   "fee": 9.0,
+   "real": 59,
+   "m2": 19.83,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅁNew업데이트ㅁ 붙박이가 미쳤어요 역삼동 중심부에",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af5716cb14fc73ef97298f9",
+   "dong": "논현동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 52,
+   "fee": 8.0,
+   "real": 60,
+   "m2": 16.52,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "신논현 논현++깔끔수리++초가성비 원룸++",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6a72d52726f9704d2f80e364",
+   "dong": "도곡동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 60,
+   "m2": 29.75,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "전입OK, 양재역 도보권 ++ 넓은 분리형 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af56fc80505ce26428634b3",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 60,
+   "m2": 14.77,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "집에서 나오면 한티역 + 즉시입주 가능 +즉시문의 ",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50856336",
+   "dong": "반포동",
+   "jibun": "733-42",
+   "deposit": 55,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 60,
+   "m2": null,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅡ 초가성비 풀옵션 원룸 ㅡ",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af6978e196df048e4727ed4",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 2000,
+   "rent": 50,
+   "fee": 6.0,
+   "real": 61,
+   "m2": 16.52,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "풀옵션 원룸 전입가능",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20096894",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 52,
+   "fee": 10.0,
+   "real": 62,
+   "m2": 19.84,
+   "floor": "3",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "강남역 도보 5분 위치 좋은 원룸 ~!",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae551ae273f7779dc33af3b",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 60,
+   "rent": 60,
+   "fee": 7.0,
+   "real": 62,
+   "m2": 29.75,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "언주역 인근 가장 깔끔하고 좋은 방.",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae5515e84ff1c774fe53f7e",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 7.0,
+   "real": 62,
+   "m2": 32.95,
+   "floor": "저",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "주차협의 가능 채광좋은 원룸 깔끔한 화장실 선호하신",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51089319",
+   "dong": "잠실동",
+   "jibun": "301-12",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 62,
+   "m2": null,
+   "floor": "4",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ㅣ풀옵션 지상층 원룸ㅣ주차가능ㅣ베란다 있음ㅣ",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51187537",
+   "dong": "반포동",
+   "jibun": "734-3",
+   "deposit": 100,
+   "rent": 60,
+   "fee": 7.0,
+   "real": 62,
+   "m2": null,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "vV풀옵션 최다매물보유V가성비 왕 좋은 아담 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51150571",
+   "dong": "반포동",
+   "jibun": "734-28",
+   "deposit": 60,
+   "rent": 60,
+   "fee": 8.0,
+   "real": 63,
+   "m2": null,
+   "floor": "4",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "l 실매물 l 찐 가성비 l 퍼펙트 채광 l",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af6cc5e26901f1b64fae2ae",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 500,
+   "rent": 57,
+   "fee": 10.0,
+   "real": 64,
+   "m2": 23.14,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "무조건BEST만소개해드립니다",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae84c91510ce30bf96852f4",
+   "dong": "도곡동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 65,
+   "m2": 29.75,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "뱅뱅사거리 근처 가성비 좋은 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afd3b0653184152517256b6",
+   "dong": "개포동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 16.52,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "저렴한 풀옵션 원룸 전입가능",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6aec30bb2236221308c0897b",
+   "dong": "논현동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 39.66,
+   "floor": "",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "+신논현역 도보 3분거리 +초역세권",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af3d5ae0aaa21414460c6d6",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 65,
+   "m2": 16.5,
+   "floor": "3",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "양시숲 도보7분 풀옵션 전입가능",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20110984",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 65,
+   "m2": 23.14,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": " 실사진   가장저렴 기본옵션있습니다",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20159437",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 19.1,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "양재시민의숲역부근원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afa9a017e7711454e39beb1",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 60,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 24.0,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "o월세 가드결제가능o  언주역 도보 1분거리 깔끄미",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae45e16edc1881aea6a63e6",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 60,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 19.83,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "o실시간 업뎃o 채광만점 신축급 컨디션 넓은 원룸.",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/69e1972507c79e5dc17ad540",
+   "dong": "서초동",
+   "jibun": null,
+   "deposit": 60,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 16.52,
+   "floor": "5",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "양재역 도보 4분, 신축 실용적인 원룸 화이트톤으로",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6aa0f0a0b5347243512f1846",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 14.29,
+   "floor": "14",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "역세권 코앞 화이트톤 복층 오피스텔",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6afa65cb37b5f76c8b061796",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 29.61,
+   "floor": "3",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "//역삼역부근// 깔끔한 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae73e3f72ecba65cc7fa6cb",
+   "dong": "삼성동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 19.89,
+   "floor": "7",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "선릉역 도보1분 초역세권// 채광좋은집 고민하지말고",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6acc3f90424e2339bae1efc6",
+   "dong": "논현동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 24.88,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "//신논현역 3분// 채광 좋은 복층 오피스텔",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/69e19730555a7559f1dc11b9",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 14.77,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "언주역 도보 1분, 신축 고층 복층 오피스텔",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6a387a2853431b13632cee65",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 24.61,
+   "floor": "4",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "-강남역 바로앞- 화이트톤 통창 오피스텔",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae3f61394462f22f93e7474",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 39.66,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "화이트톤 풀옵션 컨디션 좋고 깔끔한 분리형 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20106034",
+   "dong": "논현동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 28.02,
+   "floor": "5",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "깔끔한 화이트톤 복층",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20105995",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 65,
+   "m2": 18.57,
+   "floor": "4",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "공주들이 살 법한 풀옵션 신축 오피스텔",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae3f625f9342d1e42a69f2f",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 100,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 66,
+   "m2": 26.44,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "내부 신축급 화이트톤 대리석 올리모델링 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af80437fd9e86217e49f0c2",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 100,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 66,
+   "m2": 29.76,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "+카드OK+풀옵션 단기전문++주차+가성비 완벽++특",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae9520b7a6ffe7ea720de7c",
+   "dong": "반포동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 54,
+   "fee": 12.0,
+   "real": 66,
+   "m2": 29.28,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "가성비갑 / 올라가는1층 / 넉넉한분리형 / 강남최",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae7fb798b8d513cc674623b",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 60,
+   "rent": 60,
+   "fee": 11.0,
+   "real": 66,
+   "m2": 21.26,
+   "floor": "10",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "ENG OK -역삼역 5번출구 5분거리- 깔끔한 풀",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae1554bd93ecf214928d516",
+   "dong": "삼성동",
+   "jibun": null,
+   "deposit": 500,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 68,
+   "m2": 21.12,
+   "floor": "중",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "선릉 가성비 오피스텔 엘베O 주차O",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662374412",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 53,
+   "fee": 17,
+   "real": 68,
+   "m2": 31.84,
+   "floor": "9/20",
+   "grade": "?",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
+   "text": "트윈타워 중앙냉난방, (입주협의)",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "사무실"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -7,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -6,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20180017",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 8.0,
+   "real": 68,
+   "m2": 25.0,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "사이즈 좋고 가성비 좋아서 나오면 바로 나가는 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ad57b9537052703c5ed34aa",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 13.0,
+   "real": 68,
+   "m2": 27.64,
+   "floor": "3",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "-역삼역 3번출구 5분거리- 화이트모던톤 분리형 오",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20088675",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 70,
+   "rent": 60,
+   "fee": 13.0,
+   "real": 68,
+   "m2": 28.86,
+   "floor": "3",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "vV강남역 4번출구 5분거리Vv  -풀옵션 깔끔한 ",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662375640",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 55,
+   "fee": 17,
+   "real": 70,
+   "m2": 31.84,
+   "floor": "9/20",
+   "grade": "?",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
+   "text": "트윈타워 중앙냉난방, (입주협의)",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "사무실"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -7,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -6,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6ae7f4e1df2e1637a78fe34c",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 15.0,
+   "real": 70,
+   "m2": 24.56,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "가성비갑 / 전기수도가스인터넷케이블포함 / 풀옵션 ",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6aeae13639a6a41135fb9da2",
+   "dong": "양재동",
+   "jibun": null,
+   "deposit": 2000,
+   "rent": 60,
+   "fee": 5.0,
+   "real": 70,
+   "m2": 20.0,
+   "floor": "2",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "역세권 혼자살기 좋은 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "peterpan",
+   "url": "https://www.peterpanz.com/house/20152139",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 70,
+   "m2": 26.14,
+   "floor": "1",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "++초등학교 인접 치안 좋고 + 깔끔한 분리형 매물",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658296372",
+   "dong": "역삼동",
+   "jibun": "782",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 10,
+   "real": 70,
+   "m2": 27,
+   "floor": "2/4",
+   "grade": "?",
+   "note": "공동주택, 지상6층, 가구0·세대46, 승인2025, 2층 연립주택(도시형생활주택(단지형연), 매물 1994년과 대장 승인 2025년이 달라 다른 건물일 수 있음",
+   "text": "일반원룸 침대 없는 풀옵션",
+   "built": "1994",
+   "commute": 18,
+   "building": {
+    "main": "공동주택",
+    "ground": 6,
+    "under": 4,
+    "households": 46,
+    "approved": "2025",
+    "floors": [
+     {
+      "n": -4,
+      "use": "under",
+      "label": "주차장,기계전기실"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "주차장,휀룸,재활용품분리실,용"
+     },
+     {
+      "n": -2,
+      "use": "under",
+      "label": "주차장,용원실,부대편의시설(세"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설 · 부대편의시설(북카페,미팅룸 등"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "ELEV홀,관리실 등 · 근린생활시설"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "도시형생활주택(단지형연립주택)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "도시형생활주택(단지형연립주택)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "도시형생활주택(단지형연립주택)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "도시형생활주택(단지형연립주택)"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "도시형생활주택(단지형연립주택)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af40875c94cc475f1adc1c3",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 80,
+   "rent": 60,
+   "fee": 15.0,
+   "real": 70,
+   "m2": 26.64,
+   "floor": "16",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "역세권 깔끔한 원룸",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658415508",
+   "dong": "양재동",
+   "jibun": "275-1",
+   "deposit": 1000,
+   "rent": 53,
+   "fee": 18,
+   "real": 71,
+   "m2": 30.4,
+   "floor": "16/20",
+   "grade": "?",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
+   "text": "삼호물산  양재동  가성비 아주좋은 삼호물산빌딩 임대,59제곱 업무용 오피스텔월세",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 6,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": -7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "기계실 · 업무시설"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "업무시설 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "근린생활시설,주차장 · 업무시설"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설 · 업무시설"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661373976",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 55,
+   "fee": 20,
+   "real": 72,
+   "m2": 20.24,
+   "floor": "19/20",
+   "grade": "?",
+   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
+   "text": "트윈타워 입주 협의 가능, ",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -20,
+      "use": "under",
+      "label": "사무실"
+     },
+     {
+      "n": -19,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -18,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -17,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -16,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -15,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -14,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -13,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -12,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -11,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -10,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -9,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -8,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -7,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -6,
+      "use": "under",
+      "label": "오피스텔"
+     },
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 오피스텔 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af691ebd5cd1a43db85764f",
+   "dong": "역삼동",
+   "jibun": null,
+   "deposit": 75,
+   "rent": 60,
+   "fee": 18.0,
+   "real": 73,
+   "m2": 28.86,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "강남역 첫세팅 신축 분리형 오피스텔 고민하지말고연락",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661223702",
+   "dong": "서초동",
+   "jibun": "1330-18",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 16,
+   "real": 74,
+   "m2": 28.3,
+   "floor": "3/15",
+   "grade": "?",
+   "note": "업무시설, 지상15층, 가구0·세대0, 승인1991, 층별 정보 없음",
+   "text": "현대기림 강남역 도보권 핵심 입지 출퇴근 모두 잡은 실속형 오피스",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 15,
+    "under": 4,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -15,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -14,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -13,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -12,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -11,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -10,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -9,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -8,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -7,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀 · 기계실,전기실 · 엘리베이타"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실 · 엘리베이타홀,계단실,"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실 · 상점 · 주차장 · "
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실,창 · 문화 및 집회시설"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "dabang",
+   "url": "https://www.dabangapp.com/room/6af2e24a28c6d72f2e9ad076",
+   "dong": "도곡동",
+   "jibun": null,
+   "deposit": 2000,
+   "rent": 60,
+   "fee": 9.0,
+   "real": 74,
+   "m2": 24.0,
+   "floor": "고",
+   "grade": "?",
+   "note": "지번 없음",
+   "text": "무조건BEST만소개해드립니다",
+   "built": "",
+   "commute": null,
+   "building": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51241869",
+   "dong": "도곡동",
+   "jibun": "942-9",
+   "deposit": 300,
+   "rent": 42,
+   "fee": 6.0,
+   "real": 44,
+   "m2": null,
+   "floor": "3",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상7층, 가구1·세대0, 승인2010, 3층 고시원",
+   "text": "강남 최저가 월세",
+   "built": "2010",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 7,
+    "under": 1,
+    "households": 1,
+    "approved": "2010",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "일반음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "일반음식점"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "고시원"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "고시원"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "고시원"
+     },
+     {
+      "n": 5,
+      "use": "goshi",
+      "label": "고시원"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "단독주택(하층)"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "단독주택(상층)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50504951",
+   "dong": "개포동",
+   "jibun": "1190-2",
+   "deposit": 500,
+   "rent": 45,
+   "fee": 5.0,
+   "real": 48,
+   "m2": null,
+   "floor": "4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상5층, 가구1·세대0, 승인1991, 4층 고시원",
+   "text": "즉시입주가능 풀옵션 아담원룸",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "점포"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(다중생활시설"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(다중생활시설"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원-6실"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657738422",
+   "dong": "역삼동",
+   "jibun": "828-24",
+   "deposit": 3000,
+   "rent": 30,
+   "fee": 9,
+   "real": 49,
+   "m2": 18,
+   "floor": "3/4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1996, 3층 고시원",
+   "text": "일반원룸 l추천l 원룸 전용5 전입신고 확정일자 자주식주차 관리비9 공과금별도",
+   "built": "1996",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662318983",
+   "dong": "역삼동",
+   "jibun": "828-24",
+   "deposit": 3000,
+   "rent": 30,
+   "fee": 10,
+   "real": 50,
+   "m2": 16.52,
+   "floor": "3/4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1996, 3층 고시원",
+   "text": "일반원룸 지하철 더블 강남역 도보5분",
+   "built": "1996",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661936273",
+   "dong": "역삼동",
+   "jibun": "828-24",
+   "deposit": 3000,
+   "rent": 30,
+   "fee": 10,
+   "real": 50,
+   "m2": 19.8,
+   "floor": "3/4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1996, 3층 고시원",
+   "text": "일반원룸 강남역, 역삼역 도보 6분, 풀옵션 원룸 월세 매물입니다",
+   "built": "1996",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662361902",
+   "dong": "역삼동",
+   "jibun": "828-24",
+   "deposit": 3000,
+   "rent": 35,
+   "fee": 10,
+   "real": 55,
+   "m2": 16.52,
+   "floor": "1/4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1996, 1층 고시원",
+   "text": "일반원룸 지하철 강남더블역 도보5분",
+   "built": "1996",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51018990",
+   "dong": "역삼동",
+   "jibun": "663-25",
+   "deposit": 50,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 55,
+   "m2": null,
+   "floor": "2",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1997, 2층 고시원",
+   "text": "ㅡ 초가성비 풀옵션 원룸 ㅡ",
+   "built": "1997",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점(업)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실통로"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50987066",
+   "dong": "양재동",
+   "jibun": "262-4",
+   "deposit": 100,
+   "rent": 55,
+   "fee": 7.0,
+   "real": 58,
+   "m2": null,
+   "floor": "3",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상5층, 가구0·세대0, 승인1988, 3층 고시원",
+   "text": "꒰꒰양재최저가원룸꒱꒱전입도 가능한 풀옵션",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 0,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "세차장 · 소매점 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무소"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "관리실"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660483957",
+   "dong": "양재동",
+   "jibun": "360-13",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 0,
+   "real": 60,
+   "m2": 30,
+   "floor": "3/5",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상5층, 가구1·세대0, 승인1991, 3층 고시원",
+   "text": "일반원룸 수리완료  현 공실     하시입주",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(부동산중개업"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51216292",
+   "dong": "역삼동",
+   "jibun": "827-29",
+   "deposit": 70,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 60,
+   "m2": null,
+   "floor": "1",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상6층, 가구1·세대0, 승인2012, 1층 고시원",
+   "text": "위치OK 가격OK 컨디션OK 이런 집 구하기 정말 ",
+   "built": "2012",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 6,
+    "under": 1,
+    "households": 1,
+    "approved": "2012",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "고시원(5실) · 기계실"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "고시원(6실)"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "고시원(6실)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "고시원(6실)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "단독주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "단독주택"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "단독주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50964042",
+   "dong": "역삼동",
+   "jibun": "830-54",
+   "deposit": 1000,
+   "rent": 52,
+   "fee": 10.0,
+   "real": 62,
+   "m2": null,
+   "floor": "3",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구1·세대0, 승인1988, 3층 고시원",
+   "text": "초깔끔한 풀옵션 원룸강남역도보4분",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(일"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51128597",
+   "dong": "역삼동",
+   "jibun": "643-15",
+   "deposit": 100,
+   "rent": 60,
+   "fee": 8.0,
+   "real": 64,
+   "m2": null,
+   "floor": "1",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인2011, 1층 고시원",
+   "text": "역삼역 도보 3분거리 가성비 정말 잘나온 오픈형 원",
+   "built": "2011",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "2011",
+    "floors": [
+     {
+      "n": -1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원4실) · 제2종근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원6실) · 제2종근린생활시설"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원6실) · 제2종근린생활시설"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원4실)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원3실)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51141455",
+   "dong": "양재동",
+   "jibun": "262-4",
+   "deposit": 100,
+   "rent": 60,
+   "fee": 9.0,
+   "real": 64,
+   "m2": null,
+   "floor": "3",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상5층, 가구0·세대0, 승인1988, 3층 고시원",
+   "text": "양재천코앞 나무가보이는 가성비 오픈형",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 0,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "세차장 · 소매점 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무소"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "관리실"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660484250",
+   "dong": "양재동",
+   "jibun": "360-13",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 15,
+   "real": 65,
+   "m2": 25,
+   "floor": "3/5",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상5층, 가구1·세대0, 승인1991, 3층 고시원",
+   "text": "일반원룸 즉시입주 가능한 교통좋은  원룸",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(부동산중개업"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657594185",
+   "dong": "역삼동",
+   "jibun": "830-54",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 10,
+   "real": 70,
+   "m2": 15.4,
+   "floor": "3/4",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상4층, 가구1·세대0, 승인1988, 3층 고시원",
+   "text": "기타 강남역 인근 , 저렴한 원룸, 전입가능",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(일"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661422035",
+   "dong": "도곡동",
+   "jibun": "546-4",
+   "deposit": 2000,
+   "rent": 60,
+   "fee": 9,
+   "real": 74,
+   "m2": 21.49,
+   "floor": "4/6",
+   "grade": "⚠",
+   "note": "제2종근린생활시설, 지상6층, 가구0·세대0, 승인2004, 4층 고시원",
+   "text": "일반원룸 ",
+   "built": "2004",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 6,
+    "under": 1,
+    "households": 0,
+    "approved": "2004",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "일반음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "창고"
+     },
+     {
+      "n": 2,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원1실)"
+     },
+     {
+      "n": 3,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원2실)"
+     },
+     {
+      "n": 4,
+      "use": "goshi",
+      "label": "제2종근린생활시설(고시원2실)"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "기타사무소"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "기타사무소"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51230645",
+   "dong": "역삼동",
+   "jibun": "789-21",
+   "deposit": 10,
+   "rent": 48,
+   "fee": 5.0,
+   "real": 48,
+   "m2": null,
+   "floor": "4",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상5층, 가구1·세대0, 승인1989, 4층 기원(제2종근린생활시설(기원)/사무소(제2종근린생활시설",
+   "text": "ㅁ안심추천매물ㅁ 공과금 제로 깔끔한 역삼동 리모델링",
+   "built": "1989",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점) · 제2종근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(치과의원) · 주차통로"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제1종근린생활시설(치과의원)"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "독서실"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(기원) · 제2종근린생활시설(사무"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662452315",
+   "dong": "대치동",
+   "jibun": "925-19",
+   "deposit": 1000,
+   "rent": 47,
+   "fee": 7,
+   "real": 54,
+   "m2": 23,
+   "floor": "4/4",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구13·세대0, 승인1994, 매물 4층이 대장에 없음",
+   "text": "다가구 여자분만 가능 반려동물 불가 주차불가 ",
+   "built": "1994",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 13,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51048829",
+   "dong": "논현동",
+   "jibun": "184-7",
+   "deposit": 50,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 55,
+   "m2": null,
+   "floor": "3",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1991, 3층 의원(의원)",
+   "text": "신논현역 초역세권 위치. 가성비 만점 지상층 원룸o",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51005293",
+   "dong": "논현동",
+   "jibun": "184-7",
+   "deposit": 60,
+   "rent": 50,
+   "fee": 10.0,
+   "real": 55,
+   "m2": null,
+   "floor": "3",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1991, 3층 의원(의원)",
+   "text": "꒰꒰실가격 최저가 풀옵션 단기 ꒱꒱최고의 가성비방",
+   "built": "1991",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "의원"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662618564",
+   "dong": "대치동",
+   "jibun": "925-19",
+   "deposit": 1000,
+   "rent": 47,
+   "fee": 9,
+   "real": 56,
+   "m2": 39.67,
+   "floor": "고/3",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구13·세대0, 승인1994, 층 표기 모호, 지하에 주거 있음(반지하 확인), 문구에 옥탑",
+   "text": "다가구 옥탑방 l",
+   "built": "1994",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 13,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662485508",
+   "dong": "대치동",
+   "jibun": "925-19",
+   "deposit": 1000,
+   "rent": 47,
+   "fee": 9,
+   "real": 56,
+   "m2": 58.68,
+   "floor": "4/4",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구13·세대0, 승인1994, 매물 4층이 대장에 없음",
+   "text": "다가구 대치동 가성비 좋은 풀옵션 여성분 원룸 ",
+   "built": "1994",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 13,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661433845",
+   "dong": "역삼동",
+   "jibun": "748-29",
+   "deposit": 1000,
+   "rent": 54,
+   "fee": 6,
+   "real": 60,
+   "m2": 24.7,
+   "floor": "5/5",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상5층, 가구1·세대0, 승인1996, 5층 단독주택(주택), 문구에 옥탑",
+   "text": "일반원룸 역삼동. 상가주택. 저렴한가성비원룸. 옥탑방",
+   "built": "1996",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "노래연습실 · 소매점(업)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점(업) · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657029913",
+   "dong": "개포동",
+   "jibun": "1204-3",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 5,
+   "real": 60,
+   "m2": 23.1,
+   "floor": "1/5",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상5층, 가구1·세대0, 승인1993, 1층 소매점(소매점(업))",
+   "text": "일반원룸 1층 풀옵션 일반원룸",
+   "built": "1993",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 1,
+    "approved": "1993",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점(업)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(의약품판매소"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51099261",
+   "dong": "역삼동",
+   "jibun": "674-26",
+   "deposit": 55,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 60,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인2003, 2층 다중생활시설(제2종근린생활시설(다중)",
+   "text": "초 저렴 원룸텔",
+   "built": "2003",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "2003",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "창고,주차장"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "일반음식점"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(다중생활시설"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(다중생활시설"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50664913",
+   "dong": "양재동",
+   "jibun": "337-7",
+   "deposit": 2000,
+   "rent": 50,
+   "fee": 6.0,
+   "real": 61,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구1·세대0, 승인1992, 2층 사무소(사무실)",
+   "text": "소형 원룸 풀옵션 전입가능",
+   "built": "1992",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제2종근린생활시설(일반음식점)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51230652",
+   "dong": "역삼동",
+   "jibun": "823-4",
+   "deposit": 60,
+   "rent": 60,
+   "fee": 7.0,
+   "real": 62,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1984, 2층 사무소(제2종근린생활시설(사무)",
+   "text": "o0오늘의 방0o   오픈형 원룸.. 큰길 바로 인",
+   "built": "1984",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1984",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "제1종근린생활시설(휴게음식점)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(일"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무실)"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "제1종근린생활시설(의원)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660746976",
+   "dong": "양재동",
+   "jibun": "3-6",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 5,
+   "real": 62,
+   "m2": 21.48,
+   "floor": "고/4",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상3층, 가구1·세대0, 승인1988, 층 표기 모호, 매물 전체층 4층이 대장 지상 3층보다 많음(옥탑·증축 의심)",
+   "text": "일반원룸 양재역 깨끗한 풀옵션 원룸 입주협의",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 3,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "제2종근린생활시설(교습소) · 제2종근린생활시설(사"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/50710740",
+   "dong": "양재동",
+   "jibun": "264-14",
+   "deposit": 1000,
+   "rent": 58,
+   "fee": 6.0,
+   "real": 64,
+   "m2": null,
+   "floor": "5",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상5층, 가구0·세대0, 승인1992, 5층 사무소(사무소)",
+   "text": "주차가능 풀옵션 원룸",
+   "built": "1992",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 5,
+    "under": 1,
+    "households": 0,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제2종근린생활시설(게임제공업소 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "예능계학원"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "사무소"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "사무소"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51238390",
+   "dong": "개포동",
+   "jibun": "1228-2",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 10.0,
+   "real": 65,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1989, 2층 기타제2종근린생활시설(계단실통로)/기타제2종근린생활시설",
+   "text": "리모델링 풀옵션원룸 전입ok",
+   "built": "1989",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단실통로 · 대중음식점 · 제2종근린생활시설(일반"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실통로,복도계단 · 제1종근린생활시설(소매점) "
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662348813",
+   "dong": "역삼동",
+   "jibun": "830-33",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5,
+   "real": 65,
+   "m2": 23.14,
+   "floor": "1/4",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1997, 1층 다가구주택(다가구주택(2가구)), 매물 전체층 4층이 대장 지상 3층보다 많음(옥탑·증축 의심)",
+   "text": "일반원룸 강남역 4번 출구 도보 4분, 교통 편리, 월 60만 원룸",
+   "built": "1993",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1997",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658941958",
+   "dong": "개포동",
+   "jibun": "1179",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 5,
+   "real": 65,
+   "m2": 14,
+   "floor": "2/4",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1989, 2층 사무소(사무실)",
+   "text": "일반원룸 포이초 근처 원룸 전세",
+   "built": "1989",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점(업)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661472372",
+   "dong": "양재동",
+   "jibun": "255-6",
+   "deposit": 1000,
+   "rent": 57,
+   "fee": 10,
+   "real": 67,
+   "m2": 19.8,
+   "floor": "2/4",
+   "grade": "✕",
+   "note": "단독주택, 지상4층, 가구6·세대0, 승인1987, 2층 사무소(근린생활시설(사무소))/사무소(제2종근린생활시설",
+   "text": "일반원룸 깔끔한 풀옵션 원룸 양재시민의숲역 인근 가성비 최고",
+   "built": "1987",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 6,
+    "approved": "1987",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "근린생활시설(사무소) · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660131245",
+   "dong": "개포동",
+   "jibun": "1228-2",
+   "deposit": 2000,
+   "rent": 60,
+   "fee": 5,
+   "real": 70,
+   "m2": 20.4,
+   "floor": "2/4",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1989, 2층 기타제2종근린생활시설(계단실통로)/기타제2종근린생활시설",
+   "text": "일반원룸 풀옵션 1룸 건물, 내부 전체적으로 올수리됨",
+   "built": "1989",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단실통로 · 대중음식점 · 제2종근린생활시설(일반"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실통로,복도계단 · 제1종근린생활시설(소매점) "
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661895827",
+   "dong": "대치동",
+   "jibun": "927-19",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 10,
+   "real": 70,
+   "m2": 23.1,
+   "floor": "6/6",
+   "grade": "✕",
+   "note": "단독주택, 지상4층, 가구14·세대0, 승인1996, 매물 6층이 대장에 없음",
+   "text": "빌라 ",
+   "built": "2002",
+   "commute": null,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 14,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "사무소"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51113331",
+   "dong": "양재동",
+   "jibun": "366-13",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 20.0,
+   "real": 75,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상3층, 가구1·세대0, 승인1988, 2층 사무소(사무실)",
+   "text": "풀옵션 원룸 월세",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 3,
+    "under": 1,
+    "households": 1,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "대중음식점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "제1종근린생활시설(소매점) · 제2종근린생활시설(부"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2659153514",
+   "dong": "역삼동",
+   "jibun": "828-10",
+   "deposit": 600,
+   "rent": 60,
+   "fee": 22.1,
+   "real": 80,
+   "m2": 22.34,
+   "floor": "9/10",
+   "grade": "✕",
+   "note": "업무시설, 지상10층, 가구0·세대111, 승인1988, 9층 기타일반업무시설(업무시설)/기타일반업무시설(화장실,계단",
+   "text": "올림피아 ",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 10,
+    "under": 3,
+    "households": 111,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "기계실 · 주차장 · 화장실,계단"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "목욕탕 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "기계실 · 제2종근생(일반음식점) · 주차통로 · "
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설 · 문화및집회시설(예식장) · 화장실,"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "문화및집회시설(예식장) · 제1종근생(미용실) · "
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "기계실 · 업무시설 · 화장실,계단"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "기계실 · 업무시설 · 화장실,계단"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "업무시설 · 제2종근린생활시설(학원) · 화장실,계"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 8,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 9,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 10,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657760649",
+   "dong": "역삼동",
+   "jibun": "828-10",
+   "deposit": 600,
+   "rent": 55,
+   "fee": 28.9,
+   "real": 82,
+   "m2": 22.34,
+   "floor": "9/10",
+   "grade": "✕",
+   "note": "업무시설, 지상10층, 가구0·세대111, 승인1988, 9층 기타일반업무시설(업무시설)/기타일반업무시설(화장실,계단",
+   "text": "올림피아 역삼동 올림피아 사무실 임대",
+   "built": "1988",
+   "commute": null,
+   "building": {
+    "main": "업무시설",
+    "ground": 10,
+    "under": 3,
+    "households": 111,
+    "approved": "1988",
+    "floors": [
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "기계실 · 주차장 · 화장실,계단"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "목욕탕 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "기계실 · 제2종근생(일반음식점) · 주차통로 · "
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설 · 문화및집회시설(예식장) · 화장실,"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "문화및집회시설(예식장) · 제1종근생(미용실) · "
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "기계실 · 업무시설 · 화장실,계단"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "기계실 · 업무시설 · 화장실,계단"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "업무시설 · 제2종근린생활시설(학원) · 화장실,계"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 8,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 9,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     },
+     {
+      "n": 10,
+      "use": "shop",
+      "label": "업무시설 · 화장실,계단"
+     }
+    ]
+   }
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51234994",
+   "dong": "대치동",
+   "jibun": "898-18",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 25.0,
+   "real": 82,
+   "m2": null,
+   "floor": "2",
+   "grade": "✕",
+   "note": "공동주택, 지상6층, 가구0·세대11, 승인2003, 2층 기타사무소(기타사무소)",
+   "text": "선릉역3분ㅣ풀옵션ㅣ보안좋음ㅣ기계주차ㅣ가성비ㅣ단기가능",
+   "built": "2003",
+   "commute": null,
+   "building": {
+    "main": "공동주택",
+    "ground": 6,
+    "under": 1,
+    "households": 11,
+    "approved": "2003",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "주차장"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실 · 주차관리실 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "기타사무소"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다세대주택(7세대)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다세대주택(1세대)"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "다세대주택(1세대)"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "다세대주택(2세대)"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660203207",
+   "dong": "개포동",
+   "jibun": "1228-2",
+   "deposit": 1000,
+   "rent": 60,
+   "fee": 80,
+   "real": 140,
+   "m2": 19.8,
+   "floor": "3/5",
+   "grade": "✕",
+   "note": "제2종근린생활시설, 지상4층, 가구0·세대0, 승인1989, 3층 기타제2종근린생활시설(계단실통로)/기타제2종근린생활시설",
+   "text": "일반원룸 ",
+   "built": "1989",
+   "commute": null,
+   "building": {
+    "main": "제2종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 0,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단실통로 · 대중음식점 · 제2종근린생활시설(일반"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실통로,복도계단 · 제1종근린생활시설(소매점) "
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "계단실통로 · 제2종근린생활시설(다중생활시설 · 화"
+     }
+    ]
+   }
+  }
+ ]
+}

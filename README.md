@@ -4,6 +4,7 @@
 
 ## 상태
 2026-11-13 기준 운영 중이다. 분야는 Frontend와 Motion 둘이고, main에 push하면 배포된다.<br>
+개인용 noindex 리포트: `/frontend/jachwi-2612/`(매봉역 30분 자취방, 목록 카드·sitemap에 넣지 않음). 데이터는 `_workspace/jachwi-2612/build_data.py`가 만든다.<br>
 진행 중: Harness 분야(BK가 만들어 쓰는 하네스를 도식과 실측으로 소개). 첫 글 초안은 아직 공개 전이라 랜딩과 sitemap에 연결하지 않았다.
 
 ## 구조
@@ -12,6 +13,7 @@ Next.js 정적 내보내기(`output: 'export'`)다. 서버 없이 HTML 파일로
 - `public/`: 손대지 않고 그대로 복사하는 폴더. 손으로 쓴 실험 본체(`public/<분야>/<슬러그>/index.html` + 미리보기용 `og.jpg`), 공용 자산(`public/assets/`), `_headers`, `_routes.json`.
 - `data/<분야>.json`: 목록 카드 내용. 랜딩의 실험 개수, 목록 카드, sitemap이 여기서 같이 나온다.
 - `components/`: 목록 카드(`SectionPage.tsx`)와 지표 상자(`Ledger.tsx`). 화면 스타일은 손으로 쓴 `public/assets/lab.css`를 그대로 쓴다.
+- `components/<실험>/`, `stories/<실험>/`, `.storybook/`: MUI로 만드는 실험의 컴포넌트와 작업대(2026-11-19~, 첫 사례 `jachwi-2612`). 작업대는 Storybook이고 로컬 전용이다(`pnpm storybook`, http://localhost:6006). `stories/<실험>/docs/`에 화면보다 먼저 쓴 글 세 개(기획서·UX 설계·비주얼 디렉션)와 `tokens.json`(dembrandt `--tokens` 기준)을 둔다. MUI 테마는 그 페이지 안에서만 쓰고 공용 `lab.css`는 건드리지 않는다.
 
 기존 실험을 React로 다시 짜고 싶으면 그 하나만 `public/<분야>/<슬러그>/index.html`을 지우고 `app/<분야>/<슬러그>/page.tsx`를 만든다(주소 그대로, 사진·영상은 `public/`에 남김). 같은 주소에 둘이 있으면 빌드가 실패한다.
 
@@ -63,6 +65,7 @@ Next.js 정적 내보내기(`output: 'export'`)다. 서버 없이 HTML 파일로
 
 ## 결정
 - **Next.js 정적 내보내기로 껍데기만 옮겼다(2026-11-13).** 기존 실험 10개는 고치지 않고 `public/`에 그대로 두어 공유한 주소를 지켰고, 랜딩·분야 목록·404만 `app/`으로 옮겼다.<br>전면 교체와 Astro도 검토했지만, 기존 주소를 지키면서 React 시각 라이브러리를 바로 쓰기 편한 쪽을 골랐다.
+- **MUI·Storybook 실험은 DDD 방식(글 세 개 -> 재료 -> 작업대 -> 조립)으로 만든다(2026-11-19, `jachwi-2612`).** BK가 DDD 원형(React + MUI + Storybook)을 골랐다. 판은 MUI 9.5.0, Storybook 10.6.3(나온 지 2주 넘은 판)이다. 방법의 정본은 vault `docs/reference/design-ref/ddd-lumenstate-guide.md`다.
 - **`lab.bkan.dev`는 DNS only로 둔다(2026-11-04).** 이유와 그 대가(Range 응답을 Pages Function으로 만듦)는 "영상 전달"에 있다.
 
 ## 다음 할 일
