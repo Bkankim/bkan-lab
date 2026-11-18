@@ -51,7 +51,7 @@ JachwiPage
 |---|---|---|---|
 | origin | 고정 1 | 주소, 역, 좌표 | data JSON |
 | market | dong | 동, 유형(다가구·빌라·오피스텔), 표본 수, 환산 월세 중앙값·p25·p75 | data JSON (국토부 2026-08~10) |
-| listing | src+id | 출처, 동, 지번, 보증금, 월세, 관리비, 실부담, 면적, 층, 판정, 건물 요약, 층 목록, 출퇴근 분(잰 것만), URL, 중개사무소(상호·대표번호, ○·△만) | data JSON |
+| listing | src+id | 출처, 동, 지번, 보증금, 월세, 관리비, 실부담, 면적, 층, 판정, 건물 요약, 층 목록, 출퇴근 분(잰 것만), URL, 중개사무소(상호·대표번호, ○·△만), 좌표(경도·위도, 네이버 길찾기용) | data JSON |
 | grade | ○ △ ? ⚠ ✕ | 라벨, 뜻, 건수 | data JSON |
 | trap | key | 제목, 가격, 겉보기, 실제, 근거, 건물 층 목록, 매물 층 | data JSON |
 | benefit | key | 이름, 금액 규칙, 조건, 신청 시기, 출처 URL | data JSON + 계산 함수 |
@@ -82,7 +82,7 @@ JachwiPage
 | TrapCard | Traps | 신규 | content | 겉보기/실제 두 줄 + FloorStack |
 | CostCalculator | Cost | 신규 | input | MUI Slider·TextField, 결과 분해 막대 (원칙 3) |
 | GradeFilter | Shortlist | 신규 | input | MUI ToggleButtonGroup (원칙 4) |
-| ListingRow | Shortlist | 신규 | data | 가격·실부담·층·출퇴근·링크·중개사무소 전화(tel:), 400px 카드 (원칙 5) |
+| ListingRow | Shortlist | 신규 | data | 가격·실부담·층·출퇴근·링크·중개사무소 전화(tel:)·네이버 지도 대중교통 길찾기(매물→회사), 400px 카드 (원칙 5). v2(11-19): 출퇴근 시간을 BK가 바로 다시 볼 수 있게 길찾기 링크 추가 |
 | StepList | Plan | 신규 | content | 시기 + 할 일 |
 | SourceNote | Sources | 신규 | content | 출처·수집일·한계 |
 

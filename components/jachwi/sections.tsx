@@ -358,7 +358,14 @@ export function CostSection({ d }: { d: JachwiData }) {
   );
 }
 
-function ListingRow({ l }: { l: Listing }) {
+// 네이버 지도 대중교통 길찾기(매물 -> 회사). 형식: /p/directions/경도,위도,이름,,/경도,위도,이름,,/-/transit (2026-11-19 확인)
+function naverTransit(l: Listing, o: JachwiData['origin']) {
+  if (!l.coord) return null;
+  const name = encodeURIComponent(`${l.dong} ${l.jibun ?? ''}`.trim());
+  return `https://map.naver.com/p/directions/${l.coord.lon},${l.coord.lat},${name},,/${o.lon},${o.lat},${encodeURIComponent('회사')},,/-/transit`;
+}
+
+function ListingRow({ l, origin }: { l: Listing; origin: JachwiData['origin'] }) {
   // 옥탑은 단면의 옥탑 칸(n=99)을 가리킨다. 저·중·고·빈 값은 층을 모르므로 표시하지 않는다
   const at = /^-?\d+/.test(l.floor) ? parseInt(l.floor, 10) : l.floor.includes('옥탑') ? 99 : null;
   const floorLabel = !l.floor ? '층 정보 없음' : /^[-\d저중고]/.test(l.floor) ? `${l.floor}층` : l.floor;
@@ -367,7 +374,7 @@ function ListingRow({ l }: { l: Listing }) {
       component="li"
       sx={{
         display: 'grid',
-        gridTemplateColumns: { xs: '1fr', md: '28px 110px 1.4fr 92px 70px 1.6fr 76px' },
+        gridTemplateColumns: { xs: '1fr', md: '28px 110px 1.4fr 92px 96px 1.6fr 76px' },
         gap: { xs: 0.5, md: 2 },
         alignItems: 'center',
         py: 1.5,
@@ -406,9 +413,24 @@ function ListingRow({ l }: { l: Listing }) {
           실부담
         </Typography>
       </Typography>
-      <Typography variant="num" color={l.commute && l.commute > 30 ? 'primary' : 'text.primary'}>
-        {l.commute ? `${l.commute}분` : '-'}
-      </Typography>
+      <Box>
+        <Typography variant="num" color={l.commute && l.commute > 30 ? 'primary' : 'text.primary'}>
+          {l.commute ? `${l.commute}분` : '-'}
+        </Typography>
+        {naverTransit(l, origin) && (
+          <Link
+            href={naverTransit(l, origin) as string}
+            target="_blank"
+            rel="noopener"
+            variant="overline"
+            title={l.coord?.approx ? '지번이 없어 플랫폼이 흐린 위치 기준' : '네이버 지도 대중교통 길찾기(매물 → 회사)'}
+            // 행 전체 링크(::after) 위에 올려 이 링크만 따로 누르게 한다
+            sx={{ position: 'relative', zIndex: 1, display: 'block', lineHeight: 1.4 }}
+          >
+            네이버 길찾기{l.coord?.approx ? '(대략)' : ''} ↗
+          </Link>
+        )}
+      </Box>
       <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
         {/* ?(대장 확인 필요)는 대장이 이 매물의 건물인지 모르므로 매물 층을 표시하지 않는다(final-review C15) */}
         {l.building && <FloorStack building={l.building} at={l.grade === '?' ? null : at} compact />}
@@ -459,7 +481,7 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
-      <Box sx={{ display: { xs: 'none', md: 'grid' }, gridTemplateColumns: '28px 110px 1.4fr 92px 70px 1.6fr 76px', gap: 2, pb: 1, borderBottom: 2, borderColor: 'text.primary' }}>
+      <Box sx={{ display: { xs: 'none', md: 'grid' }, gridTemplateColumns: '28px 110px 1.4fr 92px 96px 1.6fr 76px', gap: 2, pb: 1, borderBottom: 2, borderColor: 'text.primary' }}>
         {['', '위치', '보증금/월세+관리비', '실부담', '출퇴근', '건축물대장', ''].map((h, i) => (
           <Typography key={i} variant="overline" color="text.secondary">
             {h}
@@ -468,7 +490,7 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
       </Box>
       <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
         {rows.map((l) => (
-          <ListingRow key={l.url} l={l} />
+          <ListingRow key={l.url} l={l} origin={d.origin} />
         ))}
       </Box>
       <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>

@@ -579,6 +579,11 @@
    "broker": {
     "name": "명품부동산중개사사무소",
     "phone": "02-6338-7752"
+   },
+   "coord": {
+    "lat": 37.477141,
+    "lon": 127.047024,
+    "approx": false
    }
   },
   {
@@ -629,6 +634,11 @@
    "broker": {
     "name": "럭키공인중개사사무소",
     "phone": "02-575-4989"
+   },
+   "coord": {
+    "lat": 37.477141,
+    "lon": 127.047024,
+    "approx": false
    }
   },
   {
@@ -684,6 +694,11 @@
    "broker": {
     "name": "커피한잔공인중개사사무소",
     "phone": "02-562-3012"
+   },
+   "coord": {
+    "lat": 37.504021,
+    "lon": 127.02663,
+    "approx": false
    }
   },
   {
@@ -739,6 +754,11 @@
    "broker": {
     "name": "한백부동산중개사사무소",
     "phone": "02-555-2231"
+   },
+   "coord": {
+    "lat": 37.493587,
+    "lon": 127.035331,
+    "approx": false
    }
   },
   {
@@ -794,6 +814,11 @@
    "broker": {
     "name": "하트공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.504021,
+    "lon": 127.02663,
+    "approx": false
    }
   },
   {
@@ -854,6 +879,11 @@
    "broker": {
     "name": "에덴부동산중개사무소",
     "phone": "02-552-4477"
+   },
+   "coord": {
+    "lat": 37.499307,
+    "lon": 127.059261,
+    "approx": false
    }
   },
   {
@@ -914,6 +944,11 @@
    "broker": {
     "name": "명품부동산중개사사무소",
     "phone": "02-6338-7752"
+   },
+   "coord": {
+    "lat": 37.469163,
+    "lon": 127.043588,
+    "approx": false
    }
   },
   {
@@ -964,6 +999,11 @@
    "broker": {
     "name": "강남OK공인중개사사무소",
     "phone": "02-575-2022"
+   },
+   "coord": {
+    "lat": 37.489117,
+    "lon": 127.033944,
+    "approx": false
    }
   },
   {
@@ -1014,6 +1054,11 @@
    "broker": {
     "name": "대영공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.494193,
+    "lon": 127.037723,
+    "approx": false
    }
   },
   {
@@ -1079,6 +1124,11 @@
    "broker": {
     "name": "원스톤부동산중개",
     "phone": "02-542-3691"
+   },
+   "coord": {
+    "lat": 37.496226,
+    "lon": 127.035167,
+    "approx": false
    }
   },
   {
@@ -1134,6 +1184,11 @@
    "broker": {
     "name": "퍼스트공인중개사사무소",
     "phone": "02-515-8777"
+   },
+   "coord": {
+    "lat": 37.506368,
+    "lon": 127.049192,
+    "approx": false
    }
   },
   {
@@ -1189,6 +1244,11 @@
    "broker": {
     "name": "주식회사태원부동산중개",
     "phone": "02-567-4944"
+   },
+   "coord": {
+    "lat": 37.506253,
+    "lon": 127.044745,
+    "approx": false
    }
   },
   {
@@ -1244,6 +1304,11 @@
    "broker": {
     "name": "R.퍼펙트공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.470566,
+    "lon": 127.047473,
+    "approx": false
    }
   },
   {
@@ -1294,6 +1359,11 @@
    "broker": {
     "name": "명품부동산중개사사무소",
     "phone": "02-6338-7752"
+   },
+   "coord": {
+    "lat": 37.46927,
+    "lon": 127.043027,
+    "approx": false
    }
   },
   {
@@ -1354,6 +1424,11 @@
    "broker": {
     "name": "강남뷰공인중개사사무소",
     "phone": "02-556-0993"
+   },
+   "coord": {
+    "lat": 37.494611,
+    "lon": 127.033971,
+    "approx": false
    }
   },
   {
@@ -1404,6 +1479,11 @@
    "broker": {
     "name": "강남참공인중개사사무소",
     "phone": "02-501-9077"
+   },
+   "coord": {
+    "lat": 37.494076,
+    "lon": 127.042648,
+    "approx": false
    }
   },
   {
@@ -1464,6 +1544,11 @@
    "broker": {
     "name": "명품부동산중개사사무소",
     "phone": "02-6338-7752"
+   },
+   "coord": {
+    "lat": 37.468741,
+    "lon": 127.043331,
+    "approx": false
    }
   },
   {
@@ -1519,6 +1604,11 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.493812,
+    "lon": 127.034258,
+    "approx": false
    }
   },
   {
@@ -1569,6 +1659,11 @@
    "broker": {
     "name": "강남참공인중개사사무소",
     "phone": "02-501-9077"
+   },
+   "coord": {
+    "lat": 37.499535,
+    "lon": 127.053017,
+    "approx": false
    }
   },
   {
@@ -1624,6 +1719,11 @@
    "broker": {
     "name": "새로공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.49454,
+    "lon": 127.031686,
+    "approx": false
    }
   },
   {
@@ -1674,6 +1774,11 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.493926,
+    "lon": 127.036318,
+    "approx": false
    }
   },
   {
@@ -1724,6 +1829,11 @@
    "broker": {
     "name": "파트너공인중개사사무소",
     "phone": "02-581-7181"
+   },
+   "coord": {
+    "lat": 37.487771,
+    "lon": 127.031331,
+    "approx": false
    }
   },
   {
@@ -1769,6 +1879,11 @@
    "broker": {
     "name": "새롬공인중개사사무소",
     "phone": "02-576-7489"
+   },
+   "coord": {
+    "lat": 37.473371,
+    "lon": 127.051872,
+    "approx": false
    }
   },
   {
@@ -1829,6 +1944,11 @@
    "broker": {
     "name": "더큼공인중개사사무소",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.491633,
+    "lon": 127.033922,
+    "approx": false
    }
   },
   {
@@ -1884,6 +2004,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.498224,
+    "lon": 127.051122,
+    "approx": false
    }
   },
   {
@@ -1939,6 +2064,11 @@
    "broker": {
     "name": "더큼공인중개사사무소",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.498224,
+    "lon": 127.051122,
+    "approx": false
    }
   },
   {
@@ -1994,6 +2124,11 @@
    "broker": {
     "name": "33공인중개사사무소",
     "phone": "02-568-3330"
+   },
+   "coord": {
+    "lat": 37.494751,
+    "lon": 127.03243,
+    "approx": false
    }
   },
   {
@@ -2044,6 +2179,11 @@
    "broker": {
     "name": "더큼공인중개사사무소",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.489763,
+    "lon": 127.033928,
+    "approx": false
    }
   },
   {
@@ -2094,6 +2234,11 @@
    "broker": {
     "name": "새로공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.499301,
+    "lon": 127.042453,
+    "approx": false
    }
   },
   {
@@ -2149,6 +2294,11 @@
    "broker": {
     "name": "새롬공인중개사사무소",
     "phone": "02-576-7489"
+   },
+   "coord": {
+    "lat": 37.474939,
+    "lon": 127.053351,
+    "approx": false
    }
   },
   {
@@ -2204,6 +2354,11 @@
    "broker": {
     "name": "신영공인중개사사무소",
     "phone": "02-575-0016"
+   },
+   "coord": {
+    "lat": 37.470433,
+    "lon": 127.047298,
+    "approx": false
    }
   },
   {
@@ -2254,6 +2409,11 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": "070-4119-7832"
+   },
+   "coord": {
+    "lat": 37.485594,
+    "lon": 127.034648,
+    "approx": false
    }
   },
   {
@@ -2304,6 +2464,11 @@
    "broker": {
     "name": "더큼공인중개사사무소",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.49387,
+    "lon": 127.042183,
+    "approx": false
    }
   },
   {
@@ -2359,6 +2524,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.482713,
+    "lon": 127.038047,
+    "approx": false
    }
   },
   {
@@ -2409,6 +2579,11 @@
    "broker": {
     "name": "박영준공인중개사사무소",
     "phone": "02-555-5706"
+   },
+   "coord": {
+    "lat": 37.493961,
+    "lon": 127.036938,
+    "approx": false
    }
   },
   {
@@ -2459,6 +2634,11 @@
    "broker": {
     "name": "더큼공인중개사사무소",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.480432,
+    "lon": 127.042149,
+    "approx": false
    }
   },
   {
@@ -2514,6 +2694,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.494319,
+    "lon": 127.03246,
+    "approx": false
    }
   },
   {
@@ -2569,6 +2754,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.498103,
+    "lon": 127.051179,
+    "approx": false
    }
   },
   {
@@ -2629,6 +2819,11 @@
    "broker": {
     "name": "새로공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.49781,
+    "lon": 127.041971,
+    "approx": false
    }
   },
   {
@@ -2689,6 +2884,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.473575,
+    "lon": 127.042844,
+    "approx": false
    }
   },
   {
@@ -2744,6 +2944,11 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": "070-4119-7832"
+   },
+   "coord": {
+    "lat": 37.494319,
+    "lon": 127.03246,
+    "approx": false
    }
   },
   {
@@ -2799,6 +3004,11 @@
    "broker": {
     "name": "더큼공인중개사",
     "phone": "02-6080-5328"
+   },
+   "coord": {
+    "lat": 37.499043,
+    "lon": 127.057492,
+    "approx": false
    }
   },
   {
@@ -2854,6 +3064,11 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.497573,
+    "lon": 127.035208,
+    "approx": false
    }
   },
   {
@@ -3014,6 +3229,11 @@
    "broker": {
     "name": "이레공인중개사사무소",
     "phone": "02-579-0026"
+   },
+   "coord": {
+    "lat": 37.47659,
+    "lon": 127.044293,
+    "approx": false
    }
   },
   {
@@ -3079,6 +3299,11 @@
    "broker": {
     "name": "금정공인중개사사무소",
     "phone": "02-575-8858"
+   },
+   "coord": {
+    "lat": 37.484114,
+    "lon": 127.036618,
+    "approx": false
    }
   },
   {
@@ -3244,6 +3469,11 @@
    "broker": {
     "name": "삼덕부동산중개",
     "phone": "02-576-4200"
+   },
+   "coord": {
+    "lat": 37.477251,
+    "lon": 127.044492,
+    "approx": false
    }
   },
   {
@@ -3404,6 +3634,11 @@
    "broker": {
     "name": "이레공인중개사사무소",
     "phone": "02-579-0026"
+   },
+   "coord": {
+    "lat": 37.47659,
+    "lon": 127.044293,
+    "approx": false
    }
   },
   {
@@ -3569,6 +3804,11 @@
    "broker": {
     "name": "유화공인중개사사무소",
     "phone": "02-589-1544"
+   },
+   "coord": {
+    "lat": 37.477251,
+    "lon": 127.044492,
+    "approx": false
    }
   },
   {
@@ -3734,6 +3974,11 @@
    "broker": {
     "name": "삼호물산공인중개사사무소",
     "phone": null
+   },
+   "coord": {
+    "lat": 37.477251,
+    "lon": 127.044492,
+    "approx": false
    }
   },
   {
@@ -3894,6 +4139,11 @@
    "broker": {
     "name": "이레공인중개사사무소",
     "phone": "02-579-0026"
+   },
+   "coord": {
+    "lat": 37.47659,
+    "lon": 127.044293,
+    "approx": false
    }
   },
   {
@@ -4024,6 +4274,11 @@
    "broker": {
     "name": "아크로공인중개사사무소",
     "phone": "02-3473-0140"
+   },
+   "coord": {
+    "lat": 37.494003,
+    "lon": 127.028354,
+    "approx": false
    }
   },
   {
@@ -4144,6 +4399,11 @@
    "broker": {
     "name": "무진공인중개사사무소",
     "phone": "02-2135-7435"
+   },
+   "coord": {
+    "lat": 37.490946,
+    "lon": 127.032312,
+    "approx": false
    }
   },
   {
@@ -4199,6 +4459,11 @@
    "broker": {
     "name": "다이아부동산중개",
     "phone": "02-549-8383"
+   },
+   "coord": {
+    "lat": 37.497879,
+    "lon": 127.042115,
+    "approx": false
    }
   },
   {
@@ -4218,7 +4483,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506909,
+    "lon": 127.021955,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4237,7 +4507,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506266,
+    "lon": 127.025312,
+    "approx": true
+   }
   },
   {
    "src": "zigbang",
@@ -4256,7 +4531,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506965,
+    "lon": 127.022053,
+    "approx": false
+   }
   },
   {
    "src": "dabang",
@@ -4275,7 +4555,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505235,
+    "lon": 127.022623,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4294,7 +4579,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50453,
+    "lon": 127.039283,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4313,7 +4603,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505931,
+    "lon": 127.021679,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4332,7 +4627,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505565,
+    "lon": 127.020218,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4351,7 +4651,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475007,
+    "lon": 127.053417,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4370,7 +4675,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.501821,
+    "lon": 127.028971,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4389,7 +4699,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494702,
+    "lon": 127.0324,
+    "approx": true
+   }
   },
   {
    "src": "zigbang",
@@ -4408,7 +4723,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.507884,
+    "lon": 127.021987,
+    "approx": false
+   }
   },
   {
    "src": "dabang",
@@ -4427,7 +4747,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.496496,
+    "lon": 127.037067,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4446,7 +4771,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506968,
+    "lon": 127.02126,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4465,7 +4795,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505639,
+    "lon": 127.038737,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4484,7 +4819,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.507333,
+    "lon": 127.025151,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4503,7 +4843,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.486912,
+    "lon": 127.038521,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4522,7 +4867,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.498196,
+    "lon": 127.051179,
+    "approx": true
+   }
   },
   {
    "src": "zigbang",
@@ -4541,7 +4891,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50523,
+    "lon": 127.020764,
+    "approx": false
+   }
   },
   {
    "src": "dabang",
@@ -4560,7 +4915,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.469255,
+    "lon": 127.043149,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -4579,7 +4939,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494323,
+    "lon": 127.032476,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4598,7 +4963,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506493,
+    "lon": 127.036356,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4617,7 +4987,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506754,
+    "lon": 127.045156,
+    "approx": true
+   }
   },
   {
    "src": "zigbang",
@@ -4636,7 +5011,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.504253,
+    "lon": 127.079392,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -4655,7 +5035,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50648,
+    "lon": 127.021267,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -4674,7 +5059,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505985,
+    "lon": 127.021531,
+    "approx": false
+   }
   },
   {
    "src": "dabang",
@@ -4693,7 +5083,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.473578,
+    "lon": 127.042935,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4712,7 +5107,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.489029,
+    "lon": 127.034075,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4731,7 +5131,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475571,
+    "lon": 127.047111,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4750,7 +5155,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506402,
+    "lon": 127.024943,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4769,7 +5179,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.469248,
+    "lon": 127.043475,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -4788,7 +5203,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.483878,
+    "lon": 127.036911,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -4807,7 +5227,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.468946,
+    "lon": 127.043278,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4826,7 +5251,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506006,
+    "lon": 127.035733,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4845,7 +5275,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497815,
+    "lon": 127.035234,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4864,7 +5299,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.485188,
+    "lon": 127.030813,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4883,7 +5323,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50672,
+    "lon": 127.033124,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4902,7 +5347,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.498125,
+    "lon": 127.040549,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4921,7 +5371,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505954,
+    "lon": 127.049929,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4940,7 +5395,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505553,
+    "lon": 127.027176,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4959,7 +5419,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506721,
+    "lon": 127.032831,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4978,7 +5443,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497706,
+    "lon": 127.029001,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -4997,7 +5467,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494563,
+    "lon": 127.037047,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -5016,7 +5491,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.507261,
+    "lon": 127.029298,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -5035,7 +5515,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.500509,
+    "lon": 127.03308,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5054,7 +5539,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505472,
+    "lon": 127.036409,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5073,7 +5563,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505064,
+    "lon": 127.04046,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5092,7 +5587,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.507941,
+    "lon": 127.020541,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5111,7 +5611,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50452,
+    "lon": 127.044352,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5130,7 +5635,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.506552,
+    "lon": 127.052741,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -5149,7 +5659,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.495229,
+    "lon": 127.044349,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5168,7 +5683,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.498031,
+    "lon": 127.033261,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -5187,7 +5707,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.492946,
+    "lon": 127.030976,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5206,7 +5731,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494727,
+    "lon": 127.033944,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5225,7 +5755,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.469218,
+    "lon": 127.042927,
+    "approx": true
+   }
   },
   {
    "src": "peterpan",
@@ -5244,7 +5779,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.491582,
+    "lon": 127.033749,
+    "approx": true
+   }
   },
   {
    "src": "naver",
@@ -5326,7 +5866,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494015,
+    "lon": 127.041265,
+    "approx": false
+   }
   },
   {
    "src": "dabang",
@@ -5345,7 +5890,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.502628,
+    "lon": 127.039524,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5364,7 +5914,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.492995,
+    "lon": 127.030946,
+    "approx": true
+   }
   },
   {
    "src": "dabang",
@@ -5383,7 +5938,12 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.491326,
+    "lon": 127.037853,
+    "approx": true
+   }
   },
   {
    "src": "zigbang",
@@ -5450,7 +6010,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.489687,
+    "lon": 127.033677,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -5512,7 +6077,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.473528,
+    "lon": 127.049949,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -5564,7 +6134,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497618,
+    "lon": 127.033503,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -5616,7 +6191,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497618,
+    "lon": 127.033503,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -5668,7 +6248,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497618,
+    "lon": 127.033503,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -5720,7 +6305,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.497618,
+    "lon": 127.033503,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -5777,7 +6367,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.505612,
+    "lon": 127.039021,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -5834,7 +6429,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475935,
+    "lon": 127.042146,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -5896,7 +6496,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.46873,
+    "lon": 127.044768,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -5958,7 +6563,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.496064,
+    "lon": 127.031357,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6010,7 +6620,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494319,
+    "lon": 127.03246,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6062,7 +6677,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.501798,
+    "lon": 127.034305,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6119,7 +6739,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475935,
+    "lon": 127.042146,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6181,7 +6806,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.46873,
+    "lon": 127.044768,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6233,7 +6863,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494319,
+    "lon": 127.03246,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6295,7 +6930,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.491235,
+    "lon": 127.037848,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6352,7 +6992,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.494459,
+    "lon": 127.036643,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6399,7 +7044,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.499042,
+    "lon": 127.055596,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6456,7 +7106,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50623,
+    "lon": 127.025255,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6513,7 +7168,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.50623,
+    "lon": 127.025255,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6560,7 +7220,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.499042,
+    "lon": 127.055596,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6607,7 +7272,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.499042,
+    "lon": 127.055596,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6669,7 +7339,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.495616,
+    "lon": 127.036749,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6726,7 +7401,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.477393,
+    "lon": 127.050132,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6778,7 +7458,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.504186,
+    "lon": 127.04066,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6835,7 +7520,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.469347,
+    "lon": 127.043133,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6887,7 +7577,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.498213,
+    "lon": 127.031638,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -6934,7 +7629,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.483687,
+    "lon": 127.041585,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -6996,7 +7696,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475565,
+    "lon": 127.042642,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -7048,7 +7753,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475674,
+    "lon": 127.047117,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7100,7 +7810,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.49454,
+    "lon": 127.031686,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7152,7 +7867,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.474939,
+    "lon": 127.053351,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -7209,7 +7929,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.500338,
+    "lon": 127.057173,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7266,7 +7991,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.473575,
+    "lon": 127.042844,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7318,7 +8048,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475674,
+    "lon": 127.047117,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7370,7 +8105,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.500315,
+    "lon": 127.056784,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -7417,7 +8157,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.46927,
+    "lon": 127.045394,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7509,7 +8254,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.496086,
+    "lon": 127.033008,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7601,7 +8351,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.496086,
+    "lon": 127.033008,
+    "approx": false
+   }
   },
   {
    "src": "zigbang",
@@ -7668,7 +8423,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.502275,
+    "lon": 127.050791,
+    "approx": false
+   }
   },
   {
    "src": "naver",
@@ -7720,7 +8480,12 @@
      }
     ]
    },
-   "broker": null
+   "broker": null,
+   "coord": {
+    "lat": 37.475674,
+    "lon": 127.047117,
+    "approx": false
+   }
   }
  ]
 }
