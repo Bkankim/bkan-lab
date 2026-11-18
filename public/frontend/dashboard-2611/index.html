@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#f4f4f5">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="db.css?v=1">
+<link rel="stylesheet" href="db.css?v=2">
 </head>
 <body>
 <header class="head">
@@ -27,7 +27,7 @@
 
 <section class="final" aria-label="마스터 화면">
   <figure class="shot">
-    <img src="img/master.webp" width="1440" height="830" alt="왼쪽에 아이콘 레일이 있고, 사이트 탭과 기간 선택, 섹션 줄 아래에 방문 지표 여섯 칸과 시간대별 차트가 놓인 Cloudflare 페이지">
+    <a class="zoom" href="img/master.webp" aria-label="원본 크기로 보기"><img src="img/master.webp" width="1440" height="830" alt="왼쪽에 아이콘 레일이 있고, 사이트 탭과 기간 선택, 섹션 줄 아래에 방문 지표 여섯 칸과 시간대별 차트가 놓인 Cloudflare 페이지"></a>
     <figcaption>마스터: Astryx 바탕에 taste의 아이콘 레일과 impeccable의 지금 섹션 표시를 붙인 판 (1440폭, Cloudflare 페이지 첫 화면)</figcaption>
   </figure>
 </section>
@@ -41,7 +41,7 @@
         <b>출발점: 데이터는 다 붙었지만 화면은 와이어프레임이었습니다.</b>
         <p>색 없이 검은 선과 빗금, 점선만으로 칸과 계열을 구분했습니다.<br>칸마다 어떤 API 필드를 쓰는지 작은 글씨로 적어 두었습니다.</p>
         <figure class="shot">
-          <img src="img/wire.webp" width="1440" height="830" loading="lazy" alt="흰 바탕에 검은 테두리 상자와 점선 차트만 있는 와이어프레임 판 Cloudflare 페이지">
+          <a class="zoom" href="img/wire.webp" aria-label="원본 크기로 보기"><img src="img/wire.webp" width="1440" height="830" loading="lazy" alt="흰 바탕에 검은 테두리 상자와 점선 차트만 있는 와이어프레임 판 Cloudflare 페이지"></a>
         </figure>
       </li>
       <li>
@@ -78,7 +78,7 @@
       <li style="--c: var(--c-ddd)">
         <p class="who"><i></i>ddd</p>
         <p class="how">글 세 개(기획서·UX 설계·비주얼 디렉션)를 먼저 쓰고 토큰을 만든 뒤 작은 부품부터 조립</p>
-        <figure class="shot"><img src="img/ddd.webp" width="1440" height="830" loading="lazy" alt="따뜻한 종이색 바탕에 섹션 번호가 붙은 ddd 판"></figure>
+        <figure class="shot"><a class="zoom" href="img/ddd.webp" aria-label="원본 크기로 보기"><img src="img/ddd.webp" width="1440" height="830" loading="lazy" alt="따뜻한 종이색 바탕에 섹션 번호가 붙은 ddd 판"></a></figure>
         <p><span class="tag">장점</span>넷 가운데 가장 빠르고 쌌습니다.<br>결정마다 문서가 남아 다음에 이어 가기 쉽습니다.</p>
         <p><span class="tag bad">단점</span>의논할 상대가 없는 에이전트 혼자서는 브랜드를 좁히는 첫 단계를 추측으로 채웠습니다.<br>원래 방법이 기대는 Storybook 작업대도 생략했습니다.</p>
         <p><span class="tag got">가져감</span>결정 현황 표(확정·미정·열림·변론)</p>
@@ -87,7 +87,7 @@
       <li style="--c: var(--c-astryx)">
         <p class="who"><i></i>Astryx<span class="main">바탕</span></p>
         <p class="how">Meta의 디자인 시스템 Astryx(부품 174개, 테마 7종)의 neutral 테마로 카드·표·탭을 갈아 끼움</p>
-        <figure class="shot"><img src="img/astryx.webp" width="1440" height="830" loading="lazy" alt="옅은 회색 바탕에 둥근 흰 카드가 놓인 Astryx 판"></figure>
+        <figure class="shot"><a class="zoom" href="img/astryx.webp" aria-label="원본 크기로 보기"><img src="img/astryx.webp" width="1440" height="830" loading="lazy" alt="옅은 회색 바탕에 둥근 흰 카드가 놓인 Astryx 판"></a></figure>
         <p><span class="tag">장점</span>화면이 가장 정돈돼 보였고 라이트·다크가 함께 따라왔습니다.<br>에이전트용 문서 덕에 부품 쓰는 법을 추측할 일이 거의 없었습니다.</p>
         <p><span class="tag bad">단점</span>Cloudflare 페이지의 JS가 174kB에서 392kB(gzip)로 2.3배 늘었습니다.<br>쓰지 않는 부품까지 담은 통짜 CSS와, 서버에서 그리던 표·카드가 브라우저로 옮겨 간 탓입니다.<br>기본 글꼴에 한글이 없어 직접 덮었습니다.</p>
         <p class="meta">17분 · $8.48 · 도구 호출 135회</p>
@@ -95,7 +95,7 @@
       <li style="--c: var(--c-taste)">
         <p class="who"><i></i>taste</p>
         <p class="how">취향 라이브러리에서 방향 세 안을 뽑아 하나를 고르고, 실브라우저 검사기와 캡처로 세 번 고침</p>
-        <figure class="shot"><img src="img/taste.webp" width="1440" height="830" loading="lazy" alt="어두운 바탕에 왼쪽 아이콘 레일이 있고 첫 계열만 파란 taste 판"></figure>
+        <figure class="shot"><a class="zoom" href="img/taste.webp" aria-label="원본 크기로 보기"><img src="img/taste.webp" width="1440" height="830" loading="lazy" alt="어두운 바탕에 왼쪽 아이콘 레일이 있고 첫 계열만 파란 taste 판"></a></figure>
         <p><span class="tag">장점</span>검사기가 작은 글씨, 왼쪽 정렬된 숫자 같은 실수를 수치로 짚었습니다.<br>365일 달력처럼 이 화면에만 있는 얼굴이 나왔습니다.</p>
         <p><span class="tag bad">단점</span>서체 추첨이 한글을 몰라 한글 없는 글꼴을 골랐습니다.<br>어두운 화면 하나뿐입니다.</p>
         <p><span class="tag got">가져감</span>아이콘 레일과 b 표시, 365일 달력, 주 계열 하나만 색, 검사기</p>
@@ -104,7 +104,7 @@
       <li style="--c: var(--c-impeccable)">
         <p class="who"><i></i>impeccable</p>
         <p class="how">지금 화면을 먼저 비평해 문제 11개를 찾고, 콘셉트를 뽑아 다시 그린 뒤 다듬기</p>
-        <figure class="shot"><img src="img/impeccable.webp" width="1440" height="830" loading="lazy" alt="짙은 청록 머리 띠와 왼쪽 섹션 목록이 있는 impeccable 판"></figure>
+        <figure class="shot"><a class="zoom" href="img/impeccable.webp" aria-label="원본 크기로 보기"><img src="img/impeccable.webp" width="1440" height="830" loading="lazy" alt="짙은 청록 머리 띠와 왼쪽 섹션 목록이 있는 impeccable 판"></a></figure>
         <p><span class="tag">장점</span>쓰기 편해진 곳이 가장 많았습니다.<br>기준을 넘은 값에 도장을 찍고, 긴 페이지에서 지금 섹션을 따라가며, 폰 페이지 길이를 85,104px에서 40,649px로 줄였습니다.<br>화면의 규칙을 DESIGN.md로 남겼습니다.</p>
         <p><span class="tag bad">단점</span>원래 절차가 하위 에이전트 여럿과 사람의 선택 화면을 전제해서, 혼자 도는 이번 판에서는 몇 단계를 줄여 돌렸습니다.</p>
         <p><span class="tag got">가져감</span>지금 섹션 표시, 비평 다음 고치기 루프, DESIGN.md</p>
@@ -145,8 +145,8 @@
     <h2>마스터에 들어간 것</h2>
     <p>365일 추이 섹션의 "일별 요청" 칸 맨 위에 하루를 한 칸으로 나타내는 달력을 넣었습니다.<br>데이터 색은 파랑 하나이고 둘째 계열부터는 회색 단계로 구분합니다.<br>폰에서는 레일이 아래 막대로 바뀝니다.</p>
     <div class="pair">
-      <figure class="shot"><img src="img/history.webp" width="1440" height="570" loading="lazy" alt="365일 추이 지표 여섯 칸 아래 파란 칸이 주 단위로 깔린 달력과 회색 둘째 계열 차트"><figcaption>365일 달력과 주 계열 하나만 색 (taste에서)</figcaption></figure>
-      <figure class="shot"><img src="img/mobile.webp" width="400" height="860" loading="lazy" alt="400폭에서 아래쪽에 포털·Cloudflare 등 다섯 버튼 막대가 있는 마스터 화면"><figcaption>폰: 아래 막대 (400폭)</figcaption></figure>
+      <figure class="shot"><a class="zoom" href="img/history.webp" aria-label="원본 크기로 보기"><img src="img/history.webp" width="1440" height="570" loading="lazy" alt="365일 추이 지표 여섯 칸 아래 파란 칸이 주 단위로 깔린 달력과 회색 둘째 계열 차트"></a><figcaption>365일 달력과 주 계열 하나만 색 (taste에서)</figcaption></figure>
+      <figure class="shot"><a class="zoom" href="img/mobile.webp" aria-label="원본 크기로 보기"><img src="img/mobile.webp" width="400" height="860" loading="lazy" alt="400폭에서 아래쪽에 포털·Cloudflare 등 다섯 버튼 막대가 있는 마스터 화면"></a><figcaption>폰: 아래 막대 (400폭)</figcaption></figure>
     </div>
   </section>
 
@@ -166,6 +166,28 @@
   <p>bkan dashboard는 맥에서 돌고 테일넷으로만 접속하는 개인용 운영 포털입니다.<br>사진은 Cloudflare 집계 화면만 실었고, 방문자 IP와 요청 기록, 다른 도구의 화면은 싣지 않았습니다.</p>
   <p>만든 사람 김병현. 포트폴리오와 블로그는 bkan.dev에 있습니다.</p>
 </footer>
+<dialog class="lightbox" aria-label="원본 사진">
+  <button type="button" class="lb-close" aria-label="닫기">닫기</button>
+  <div class="lb-scroll"><img alt=""></div>
+</dialog>
+<script>
+(() => {
+  const dlg = document.querySelector(".lightbox");
+  const pic = dlg.querySelector("img");
+  document.querySelectorAll("a.zoom").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      if (!dlg.showModal) return; // dialog를 못 쓰는 브라우저는 링크로 원본을 연다
+      e.preventDefault();
+      const img = a.querySelector("img");
+      pic.src = a.getAttribute("href");
+      pic.alt = img.alt;
+      dlg.showModal();
+    });
+  });
+  // 배경이나 닫기 버튼을 누르면 닫는다. 사진 위 클릭은 무시해 스크롤·확대를 방해하지 않는다.
+  dlg.addEventListener("click", (e) => { if (e.target !== pic) dlg.close(); });
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ae655c6ae08e401ea37ed39f25af4d6e"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

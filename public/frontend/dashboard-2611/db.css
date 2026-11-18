@@ -120,3 +120,13 @@ h1 { margin: 6px 0 14px; font-size: clamp(30px, 5vw, 44px); line-height: 1.2; le
 @media (min-width: 900px) {
   .pros { grid-template-columns: 1fr 1fr; }
 }
+
+/* 사진 확대: 누르면 원본 크기로 띄운다. 화면보다 넓으면 가로로 스크롤한다 */
+a.zoom { display: block; cursor: zoom-in; }
+a.zoom:focus-visible { outline: 2px solid var(--up); outline-offset: 2px; border-radius: 10px; }
+.lightbox { max-width: none; max-height: none; width: 100vw; height: 100dvh; margin: 0; padding: 0; border: 0; background: rgba(14, 14, 16, 0.92); }
+.lightbox::backdrop { background: rgba(14, 14, 16, 0.6); }
+/* grid 가운데 정렬은 화면보다 넓은 사진의 왼쪽을 잘라 스크롤로도 못 보게 한다. 글줄 가운데 정렬로 넘치면 오른쪽으로 스크롤되게 한다 */
+.lb-scroll { width: 100%; height: 100%; overflow: auto; text-align: center; white-space: nowrap; padding: 56px 16px 24px; box-sizing: border-box; cursor: zoom-out; }
+.lb-scroll img { display: inline-block; max-width: none; width: auto; height: auto; border-radius: 6px; cursor: default; }
+.lb-close { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; z-index: 1; padding: 6px 12px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 6px; background: rgba(0, 0, 0, 0.4); color: #fff; font: inherit; font-size: 14px; cursor: pointer; }
