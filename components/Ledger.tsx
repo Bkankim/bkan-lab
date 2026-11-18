@@ -7,6 +7,8 @@ function fmtMs(ms: number): string {
 }
 
 function modelName(model: string): string {
+  // gpt-6.2-sol → GPT 6.2 sol (Claude 형식 'opus-5-5'처럼 점으로 잇지 않는다)
+  if (model.startsWith('gpt-')) return `GPT ${model.slice(4).split('-').join(' ')}`;
   const parts = model.replace(/^claude-/, '').split('-');
   const head = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
   return `${head} ${parts.slice(1).join('.')}`.trim();

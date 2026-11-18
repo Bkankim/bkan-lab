@@ -1,0 +1,69 @@
+{
+  "slug": "jachwi-2612",
+  "measured_at": "2026-11-18T18:37:46Z",
+  "pricing_as_of": "2026-10-06",
+  "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
+  "elapsed_ms": 16985294,
+  "ai_work_ms": 5111513,
+  "agent_sum_ms": 7541016,
+  "parallelism": 1.48,
+  "clicks": 20,
+  "resends_merged": 0,
+  "corrections": 1,
+  "approvals": 1,
+  "approval_wait_ms": 111019,
+  "input_chars": 1790,
+  "ai_ms_per_click": 255575,
+  "subagents": 4,
+  "subagent_types": {
+    "general-purpose": 4
+  },
+  "tool_calls": 386,
+  "aside_exec_calls": 2,
+  "web_search_requests": 0,
+  "models": [
+    {
+      "model": "claude-opus-5-5",
+      "requests": 332,
+      "output_tokens": 277138,
+      "output_share": 0.901
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "requests": 60,
+      "output_tokens": 30557,
+      "output_share": 0.099
+    }
+  ],
+  "tokens": {
+    "input": 322339,
+    "cache_write_5m": 323330,
+    "cache_write_1h": 627710,
+    "cache_read": 115894292,
+    "output": 307695
+  },
+  "cost_usd_api_equiv": 34.55,
+  "unpriced_models": {
+    "gpt-6.2-sol": 60
+  },
+  "period": {
+    "from": "2026-11-18T13:52:13Z",
+    "to": "2026-11-18T18:35:19Z"
+  },
+  "runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "sessions": 7,
+  "made": "월세 매물 3,463건 수집, 건축물대장 층별 판정 153건, 출퇴근 50곳 측정, 혜택 계산 리포트",
+  "used": null,
+  "revisions": 1,
+  "first_release": {
+    "elapsed_ms": 16546416,
+    "ai_work_ms": 4976070,
+    "clicks": 19,
+    "corrections": 1,
+    "input_chars": 1787,
+    "cost_usd_api_equiv": 33.21
+  }
+}

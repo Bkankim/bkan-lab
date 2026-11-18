@@ -136,6 +136,53 @@
       "used": "공유 링크로 실제 진료 예약 전 비교에 쓰고 있습니다",
       "revisions": 1,
       "corrections_why": {}
+    },
+    "jachwi-2612": {
+      "segments": [
+        {
+          "runtime": "claude-code",
+          "session": "33eeac60-45e4-45f5-b3be-df11a9607d3b",
+          "to": "2026-11-18T18:36:41Z"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efd3-fae2-7d32-a379-554f769bf155"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efd3-fc19-7ad3-9834-04894be5c038"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efd8-06d8-7182-9320-718ab661dfc4"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efd8-07f7-7761-ac46-c20032348077"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efda-1b21-78b2-89e1-18bff546fd5d"
+        },
+        {
+          "runtime": "codex",
+          "session": "01a1efda-1c45-7d21-877c-643ebc9cbce2"
+        }
+      ],
+      "exclude": [
+        "81bb8032",
+        "659c9c76",
+        "515f85ff"
+      ],
+      "corrections": [
+        "1294a188"
+      ],
+      "corrections_why": {
+        "1294a188": "저게 전부야?: 후보 153건 중 10건만 골라 보여 주고 전체처럼 정리함"
+      },
+      "made": "월세 매물 3,463건 수집, 건축물대장 층별 판정 153건, 출퇴근 50곳 측정, 혜택 계산 리포트",
+      "revisions": 1,
+      "first_release_to": "2026-11-18T18:28:06Z"
     }
   }
 }

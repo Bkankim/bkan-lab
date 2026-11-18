@@ -6,6 +6,85 @@
   "lede": "UI / UX 를 기반으로 가벼운 실험들을 합니다.<br/>전부 AI 드라이빙.<br/>얼마나 간단하게 만들었는지와 얼마가 들었는지를 표기합니다.",
   "cards": [
     {
+      "slug": "jachwi-2612",
+      "name": "매봉역 30분 자취방",
+      "when": "2026년 11월 19일",
+      "image": "/frontend/jachwi-2612/og.jpg?v=2",
+      "alt": "3,463개에서 19개로라는 제목 아래 모은 매물·정상 주택·실부담·공과금 수치가 놓인 첫 화면",
+      "desc": "12월에 독립하며 회사까지 대중교통 30분 안의 원룸을 찾는데,<br/>1000/50처럼 싼 방이 반지하·고시원·사무실 개조인 경우가 많아 만들었습니다.<br/>월세 매물 3,463건을 건축물대장 층별 용도로 걸러 정상 주택만 남기고,<br/>관리비와 청년 혜택까지 넣은 실제 부담으로 문의할 방을 고르는 것이 목적입니다.",
+      "metrics": true,
+      "sitemap": false,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (조사·제작, final-review 리뷰어)",
+            "<b>GPT 6.2 sol</b> (effort high, final-review 교차 리뷰)"
+          ]
+        },
+        {
+          "label": "조사",
+          "chips": [
+            {
+              "name": "Aside",
+              "href": "https://aside.com"
+            },
+            {
+              "name": "agent-browser",
+              "href": "https://github.com/vercel-labs/agent-browser"
+            },
+            {
+              "name": "k-skill",
+              "href": "https://github.com/NomaDamas/k-skill"
+            },
+            {
+              "name": "공공데이터포털",
+              "href": "https://www.data.go.kr"
+            },
+            {
+              "name": "카카오맵",
+              "href": "https://map.kakao.com"
+            }
+          ],
+          "note": "매물 수집, 건축물대장 층별 용도, 출퇴근 측정"
+        },
+        {
+          "label": "화면",
+          "chips": [
+            {
+              "name": "MUI",
+              "href": "https://mui.com"
+            },
+            {
+              "name": "Storybook",
+              "href": "https://storybook.js.org"
+            },
+            {
+              "name": "dembrandt",
+              "href": "https://github.com/dembrandt/dembrandt"
+            }
+          ],
+          "note": "글 세 개 → 재료 → 작업대 → 조립(디자이너DDD 방식)"
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "Codex CLI",
+              "href": "https://github.com/openai/codex"
+            }
+          ]
+        },
+        {
+          "label": "자작 도구",
+          "own": [
+            "budongsan (네이버·직방·다방·피터팬 매물 수집과 실거래 비교 스킬)",
+            "final-review (스펙 대조·버그 리뷰 스킬)"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "shoulder-slap-2610",
       "name": "어깨 노트 · SLAP·이두건 어깨 전문의",
       "when": "2026년 10월 29일",
