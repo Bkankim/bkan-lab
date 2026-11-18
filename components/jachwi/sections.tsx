@@ -329,6 +329,10 @@ function ListingRow({ l }: { l: Listing }) {
         py: 1.5,
         borderBottom: 1,
         borderColor: 'divider',
+        // 02 UX 원칙 5: 행 전체가 링크다(링크의 ::after가 행을 덮는 stretched link)
+        position: 'relative',
+        '&:hover': { bgcolor: 'action.hover' },
+        '&:focus-within': { outline: 2, outlineColor: 'primary.main', outlineStyle: 'solid', outlineOffset: -2 },
       }}
     >
       <Typography variant="body1" color={l.grade === '○' ? 'use.home' : l.grade === '✕' || l.grade === '⚠' ? 'primary' : 'text.secondary'} sx={{ fontWeight: 700 }}>
@@ -367,7 +371,14 @@ function ListingRow({ l }: { l: Listing }) {
           {l.note.replace(/^[^,]+, /, '')}
         </Typography>
       </Box>
-      <Link href={l.url} target="_blank" rel="noopener" variant="body2" sx={{ fontWeight: 500 }}>
+      <Link
+        href={l.url}
+        target="_blank"
+        rel="noopener"
+        variant="body2"
+        aria-label={`${l.dong} ${l.jibun ?? ''} ${l.deposit}/${l.rent} ${SRC_LABEL[l.src]} 매물 열기`}
+        sx={{ fontWeight: 500, '&::after': { content: '""', position: 'absolute', inset: 0 }, '&:focus-visible': { outline: 'none' } }}
+      >
         {SRC_LABEL[l.src]} ↗
       </Link>
     </Box>
@@ -376,7 +387,8 @@ function ListingRow({ l }: { l: Listing }) {
 
 export function ShortlistSection({ d }: { d: JachwiData }) {
   const [on, setOn] = useState<Grade[]>(['○']);
-  const rows = d.listings.filter((l) => on.includes(l.grade));
+  // 02 UX 원칙 4: 정렬은 실부담 오름차순 고정(판정을 여럿 골라도 섞어서 정렬)
+  const rows = d.listings.filter((l) => on.includes(l.grade)).sort((a, b) => a.real - b.real);
   return (
     <Section no={5} id="shortlist" title="후보" figure={<>판정을 골라 본다. 정렬은 실부담 순.<br />출퇴근은 카카오맵 대중교통 최단 경로, 잰 곳만.</>}>
       <ToggleButtonGroup value={on} onChange={(_, v: Grade[]) => setOn(v.length ? v : on)} size="small" aria-label="판정 고르기" sx={{ flexWrap: 'wrap', mb: 2 }}>
