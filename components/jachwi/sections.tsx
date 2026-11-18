@@ -62,9 +62,11 @@ export function Hero({ d }: { d: JachwiData }) {
       <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 640 }}>
         출발지는 {d.origin.address}({d.origin.station} {d.origin.walk}).
         <br />
-        여기서 대중교통 30분 안의 원룸 월세를 네 플랫폼에서 모았다.
+        여기서 반경 약 3km의 월세·전세 매물을 네 플랫폼에서 모았다.
         <br />
         반지하·전입 불가·근생·고시원·옥탑을 차례로 걸러, 건축물대장상 정상 주택만 남겼다.
+        <br />
+        남은 후보는 카카오맵 대중교통 최단 경로로 잰 출퇴근이 모두 30분 안이다.
       </Typography>
       <Box
         component="dl"
@@ -276,6 +278,8 @@ export function CostSection({ d }: { d: JachwiData }) {
   ];
   const parts = [
     { k: '월세+관리비', v: (rent + fee) * 12, c: 'text.primary' },
+    // 보증금 1,000만원 기준 환산(02 UX 3.2). 많이 넣으면 더하고, 적게 넣으면 뺀다
+    { k: '보증금 환산(1,000만원 기준, 6%)', v: (deposit - 1000) * 0.06, c: 'text.primary' },
     { k: '세액공제', v: -c.taxCredit, c: 'use.home' },
     { k: '서울 청년월세', v: -c.seoulYouth, c: 'use.home' },
   ];
@@ -355,7 +359,9 @@ export function CostSection({ d }: { d: JachwiData }) {
 }
 
 function ListingRow({ l }: { l: Listing }) {
-  const at = /^-?\d+/.test(l.floor) ? parseInt(l.floor, 10) : null;
+  // 옥탑은 단면의 옥탑 칸(n=99)을 가리킨다. 저·중·고·빈 값은 층을 모르므로 표시하지 않는다
+  const at = /^-?\d+/.test(l.floor) ? parseInt(l.floor, 10) : l.floor.includes('옥탑') ? 99 : null;
+  const floorLabel = !l.floor ? '층 정보 없음' : /^[-\d저중고]/.test(l.floor) ? `${l.floor}층` : l.floor;
   return (
     <Box
       component="li"
@@ -390,7 +396,7 @@ function ListingRow({ l }: { l: Listing }) {
         </Typography>
         <Typography variant="overline" color="text.secondary" component="p">
           {l.m2 ? `${l.m2}㎡ · ` : ''}
-          {l.floor}층{l.built ? ` · ${l.built}년` : ''}
+          {floorLabel}{l.built ? ` · ${l.built}년` : ''}
         </Typography>
       </Box>
       <Typography variant="num" sx={{ fontSize: '1.1rem' }} title="월세+관리비, 보증금 1,000만원 기준 환산">
@@ -404,7 +410,8 @@ function ListingRow({ l }: { l: Listing }) {
         {l.commute ? `${l.commute}분` : '-'}
       </Typography>
       <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
-        {l.building && <FloorStack building={l.building} at={at} compact />}
+        {/* ?(대장 확인 필요)는 대장이 이 매물의 건물인지 모르므로 매물 층을 표시하지 않는다(final-review C15) */}
+        {l.building && <FloorStack building={l.building} at={l.grade === '?' ? null : at} compact />}
         <Box>
           <Typography variant="overline" color="text.secondary" sx={{ lineHeight: 1.4, display: 'block' }}>
             {l.note.replace(/^[^,]+, /, '')}

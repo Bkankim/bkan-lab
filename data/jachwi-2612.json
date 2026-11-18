@@ -1,6 +1,6 @@
 {
  "asof": "2026-11-19",
- "tagline": "3,463개에서 20개로.",
+ "tagline": "3,463개에서 19개로.",
  "origin": {
   "address": "서울 강남구 논현로30길 51",
   "station": "3호선 매봉역",
@@ -36,7 +36,7 @@
   },
   {
    "label": "건축물대장상 정상 주택",
-   "n": 20,
+   "n": 19,
    "why": "그 층이 주택·다가구로 등록된 방. 고시원·사무실·대장에 없는 층·옥탑 제외"
   }
  ],
@@ -506,18 +506,18 @@
  "grades": [
   {
    "key": "○",
-   "count": 20,
+   "count": 19,
    "label": "정상 주택, 그 층이 주거"
   },
   {
    "key": "△",
-   "count": 29,
-   "label": "주택이나 층 모호·지하 주거"
+   "count": 34,
+   "label": "층 모호·지하 주거·업무시설 오피스텔"
   },
   {
    "key": "?",
-   "count": 64,
-   "label": "지번 없음"
+   "count": 59,
+   "label": "대장 확인 필요"
   },
   {
    "key": "⚠",
@@ -526,7 +526,7 @@
   },
   {
    "key": "✕",
-   "count": 24,
+   "count": 25,
    "label": "비주거 층·대장에 없는 층·옥탑"
   }
  ],
@@ -1569,126 +1569,6 @@
    "broker": {
     "name": "강남참공인중개사사무소",
     "phone": "02-501-9077"
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2660679460",
-   "dong": "역삼동",
-   "jibun": "837-26",
-   "deposit": 500,
-   "rent": 60,
-   "fee": 24,
-   "real": 82,
-   "m2": 28.97,
-   "floor": "9/15",
-   "grade": "○",
-   "note": "업무시설, 지상16층, 가구0·세대0, 승인1992, 9층 오피스텔(오피스텔)",
-   "text": "삼일프라자 강남역 역세권 가성비갑 중소형 업무용 오피스텔",
-   "built": "1992",
-   "commute": 17,
-   "building": {
-    "main": "업무시설",
-    "ground": 16,
-    "under": 6,
-    "households": 0,
-    "approved": "1992",
-    "floors": [
-     {
-      "n": -6,
-      "use": "shop",
-      "label": "계단실,승강기 · 기계실 · 전기실 · 주차장"
-     },
-     {
-      "n": -5,
-      "use": "shop",
-      "label": "배연실 · 주차관리실 · 주차장 · 화장실"
-     },
-     {
-      "n": -4,
-      "use": "shop",
-      "label": "공조실 · 주차관리실 · 주차장"
-     },
-     {
-      "n": -3,
-      "use": "shop",
-      "label": "계단실,승강기 · 주차장"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "계단실,승강기 · 화장실"
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "가스정압실 · 교환실 · 근린생활시설 · 주차램프 "
-     },
-     {
-      "n": 1,
-      "use": "shop",
-      "label": "계단실,승강기 · 공조실 · 근린생활시설 · 복도 "
-     },
-     {
-      "n": 2,
-      "use": "shop",
-      "label": "계단실,승강기 · 복도 · 예능계학원 · 제1종근린"
-     },
-     {
-      "n": 3,
-      "use": "shop",
-      "label": "사무소 · 화장실"
-     },
-     {
-      "n": 4,
-      "use": "shop",
-      "label": "공조실 · 복도 · 사무소 · 화장실"
-     },
-     {
-      "n": 5,
-      "use": "shop",
-      "label": "복도 · 화장실"
-     },
-     {
-      "n": 6,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 7,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 9,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 10,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 11,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 15,
-      "use": "home",
-      "label": "오피스텔"
-     },
-     {
-      "n": 16,
-      "use": "shop",
-      "label": "계단실,승강기 · 공조실"
-     }
-    ]
-   },
-   "broker": {
-    "name": "무진공인중개사사무소",
-    "phone": "02-2135-7435"
    }
   },
   {
@@ -2922,66 +2802,6 @@
    }
   },
   {
-   "src": "zigbang",
-   "url": "https://www.zigbang.com/home/oneroom/items/51208643",
-   "dong": "대치동",
-   "jibun": "928-1",
-   "deposit": 200,
-   "rent": 60,
-   "fee": 10.0,
-   "real": 66,
-   "m2": null,
-   "floor": "옥탑방",
-   "grade": "△",
-   "note": "단독주택, 지상4층, 가구10·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
-   "text": "vV풀옵션 최다매물보유Vv 대치동 가성비 좋은 원룸",
-   "built": "2001",
-   "commute": 23,
-   "building": {
-    "main": "단독주택",
-    "ground": 4,
-    "under": 1,
-    "households": 10,
-    "approved": "2001",
-    "floors": [
-     {
-      "n": -1,
-      "use": "under",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 1,
-      "use": "shop",
-      "label": "근린생활시설"
-     },
-     {
-      "n": 2,
-      "use": "home",
-      "label": "다가구주택(4가구)"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 4,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
-   "broker": {
-    "name": "정담공인중개사사무소",
-    "phone": null
-   }
-  },
-  {
    "src": "naver",
    "url": "https://fin.land.naver.com/articles/2659870634",
    "dong": "역삼동",
@@ -3034,6 +2854,166 @@
    "broker": {
     "name": "하루공인중개사사무소",
     "phone": null
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662374412",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 53,
+   "fee": 17,
+   "real": 68,
+   "m2": 31.84,
+   "floor": "9/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "트윈타워 중앙냉난방, (입주협의)",
+   "built": "1991",
+   "commute": 11,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 근린생활시설 · 방재센타 · 업무"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단화장실등 · 금융업소 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단화장실등 · 사무소"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "사무실"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": {
+    "name": "이레공인중개사사무소",
+    "phone": "02-579-0026"
    }
   },
   {
@@ -3113,7 +3093,7 @@
    "m2": 27.36,
    "floor": "고/20",
    "grade": "△",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
    "text": "삼호물산 업무용 오피스텔 저렴한 임대료 ",
    "built": "1991",
    "commute": 9,
@@ -3125,104 +3105,134 @@
     "approved": "1991",
     "floors": [
      {
-      "n": -20,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -7,
-      "use": "shop",
-      "label": "업무시설"
-     },
-     {
       "n": -6,
       "use": "shop",
-      "label": "기계실 · 업무시설"
+      "label": "기계실"
      },
      {
       "n": -5,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -4,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -3,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -2,
       "use": "shop",
-      "label": "근린생활시설,주차장 · 업무시설"
+      "label": "근린생활시설,주차장"
      },
      {
       "n": -1,
       "use": "shop",
-      "label": "근린생활시설 · 업무시설"
+      "label": "근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "주거겸용업무시설"
      },
      {
       "n": 99,
@@ -3238,6 +3248,166 @@
   },
   {
    "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662375640",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 55,
+   "fee": 17,
+   "real": 70,
+   "m2": 31.84,
+   "floor": "9/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "트윈타워 중앙냉난방, (입주협의)",
+   "built": "1991",
+   "commute": 11,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 근린생활시설 · 방재센타 · 업무"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단화장실등 · 금융업소 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단화장실등 · 사무소"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "사무실"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": {
+    "name": "이레공인중개사사무소",
+    "phone": "02-579-0026"
+   }
+  },
+  {
+   "src": "naver",
    "url": "https://fin.land.naver.com/articles/2662331816",
    "dong": "양재동",
    "jibun": "275-1",
@@ -3248,7 +3418,7 @@
    "m2": 27.36,
    "floor": "고/20",
    "grade": "△",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
    "text": "삼호물산 남향,전망굿,상태양호,양재천수변공원인접,",
    "built": "1991",
    "commute": 9,
@@ -3260,104 +3430,134 @@
     "approved": "1991",
     "floors": [
      {
-      "n": -20,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -7,
-      "use": "shop",
-      "label": "업무시설"
-     },
-     {
       "n": -6,
       "use": "shop",
-      "label": "기계실 · 업무시설"
+      "label": "기계실"
      },
      {
       "n": -5,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -4,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -3,
       "use": "shop",
-      "label": "업무시설 · 주차장"
+      "label": "주차장"
      },
      {
       "n": -2,
       "use": "shop",
-      "label": "근린생활시설,주차장 · 업무시설"
+      "label": "근린생활시설,주차장"
      },
      {
       "n": -1,
       "use": "shop",
-      "label": "근린생활시설 · 업무시설"
+      "label": "근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "주거겸용업무시설"
      },
      {
       "n": 99,
@@ -3369,6 +3569,581 @@
    "broker": {
     "name": "유화공인중개사사무소",
     "phone": "02-589-1544"
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658415508",
+   "dong": "양재동",
+   "jibun": "275-1",
+   "deposit": 1000,
+   "rent": 53,
+   "fee": 18,
+   "real": 71,
+   "m2": 30.4,
+   "floor": "16/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "삼호물산  양재동  가성비 아주좋은 삼호물산빌딩 임대,59제곱 업무용 오피스텔월세",
+   "built": "1991",
+   "commute": 9,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 6,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "기계실"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "주차장"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "근린생활시설,주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "근린생활시설"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "업무시설"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "주거겸용업무시설"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": {
+    "name": "삼호물산공인중개사사무소",
+    "phone": null
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661373976",
+   "dong": "양재동",
+   "jibun": "275-3",
+   "deposit": 500,
+   "rent": 55,
+   "fee": 20,
+   "real": 72,
+   "m2": 20.24,
+   "floor": "19/20",
+   "grade": "△",
+   "note": "업무시설, 지상20층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "트윈타워 입주 협의 가능, ",
+   "built": "1991",
+   "commute": 11,
+   "building": {
+    "main": "업무시설",
+    "ground": 20,
+    "under": 5,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -5,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -4,
+      "use": "under",
+      "label": "계단,화장실등 · 기계전기실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "under",
+      "label": "계단,화장실등 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단,화장실등 · 근린생활시설 · 방재센타 · 업무"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "계단화장실등 · 금융업소 · 주차장"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단화장실등 · 사무소"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 5,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 8,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 12,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 13,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 14,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 16,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 17,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 18,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 19,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 20,
+      "use": "home",
+      "label": "사무실"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": {
+    "name": "이레공인중개사사무소",
+    "phone": "02-579-0026"
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2661223702",
+   "dong": "서초동",
+   "jibun": "1330-18",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 16,
+   "real": 74,
+   "m2": 28.3,
+   "floor": "3/15",
+   "grade": "△",
+   "note": "업무시설, 지상15층, 승인1991, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "현대기림 강남역 도보권 핵심 입지 출퇴근 모두 잡은 실속형 오피스",
+   "built": "1991",
+   "commute": 17,
+   "building": {
+    "main": "업무시설",
+    "ground": 15,
+    "under": 4,
+    "households": 0,
+    "approved": "1991",
+    "floors": [
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀 · 기계실,전기실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실 · 주차장"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "계단실,엘리베이타홀,화장실,창 · 주차장"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "문화 및 집회시설(전시장) · 화장실,카리프트,엘리"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "상점 · 화장실,엘리베이타홀,계단실"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 6,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 8,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 12,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 13,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 14,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "shop",
+      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
+     },
+     {
+      "n": 99,
+      "use": "shop",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": {
+    "name": "아크로공인중개사사무소",
+    "phone": "02-3473-0140"
+   }
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660679460",
+   "dong": "역삼동",
+   "jibun": "837-26",
+   "deposit": 500,
+   "rent": 60,
+   "fee": 24,
+   "real": 82,
+   "m2": 28.97,
+   "floor": "9/15",
+   "grade": "△",
+   "note": "업무시설, 지상16층, 승인1992, 업무시설 오피스텔(주거용 사용·전입 확인)",
+   "text": "삼일프라자 강남역 역세권 가성비갑 중소형 업무용 오피스텔",
+   "built": "1992",
+   "commute": 17,
+   "building": {
+    "main": "업무시설",
+    "ground": 16,
+    "under": 6,
+    "households": 0,
+    "approved": "1992",
+    "floors": [
+     {
+      "n": -6,
+      "use": "shop",
+      "label": "계단실,승강기 · 기계실 · 전기실 · 주차장"
+     },
+     {
+      "n": -5,
+      "use": "shop",
+      "label": "배연실 · 주차관리실 · 주차장 · 화장실"
+     },
+     {
+      "n": -4,
+      "use": "shop",
+      "label": "공조실 · 주차관리실 · 주차장"
+     },
+     {
+      "n": -3,
+      "use": "shop",
+      "label": "계단실,승강기 · 주차장"
+     },
+     {
+      "n": -2,
+      "use": "shop",
+      "label": "계단실,승강기 · 화장실"
+     },
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "가스정압실 · 교환실 · 근린생활시설 · 주차램프 "
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "계단실,승강기 · 공조실 · 근린생활시설 · 복도 "
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "계단실,승강기 · 복도 · 예능계학원 · 제1종근린"
+     },
+     {
+      "n": 3,
+      "use": "shop",
+      "label": "사무소 · 화장실"
+     },
+     {
+      "n": 4,
+      "use": "shop",
+      "label": "공조실 · 복도 · 사무소 · 화장실"
+     },
+     {
+      "n": 5,
+      "use": "shop",
+      "label": "복도 · 화장실"
+     },
+     {
+      "n": 6,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 7,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 9,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 10,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 11,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 15,
+      "use": "home",
+      "label": "오피스텔"
+     },
+     {
+      "n": 16,
+      "use": "shop",
+      "label": "계단실,승강기 · 공조실"
+     }
+    ]
+   },
+   "broker": {
+    "name": "무진공인중개사사무소",
+    "phone": "02-2135-7435"
    }
   },
   {
@@ -4358,138 +5133,6 @@
    "broker": null
   },
   {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2662374412",
-   "dong": "양재동",
-   "jibun": "275-3",
-   "deposit": 500,
-   "rent": 53,
-   "fee": 17,
-   "real": 68,
-   "m2": 31.84,
-   "floor": "9/20",
-   "grade": "?",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
-   "text": "트윈타워 중앙냉난방, (입주협의)",
-   "built": "1991",
-   "commute": null,
-   "building": {
-    "main": "업무시설",
-    "ground": 20,
-    "under": 5,
-    "households": 0,
-    "approved": "1991",
-    "floors": [
-     {
-      "n": -20,
-      "use": "under",
-      "label": "사무실"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -7,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -6,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -5,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -4,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -3,
-      "use": "under",
-      "label": "계단,화장실등 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
-   "broker": null
-  },
-  {
    "src": "peterpan",
    "url": "https://www.peterpanz.com/house/20180017",
    "dong": "역삼동",
@@ -4544,138 +5187,6 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2662375640",
-   "dong": "양재동",
-   "jibun": "275-3",
-   "deposit": 500,
-   "rent": 55,
-   "fee": 17,
-   "real": 70,
-   "m2": 31.84,
-   "floor": "9/20",
-   "grade": "?",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
-   "text": "트윈타워 중앙냉난방, (입주협의)",
-   "built": "1991",
-   "commute": null,
-   "building": {
-    "main": "업무시설",
-    "ground": 20,
-    "under": 5,
-    "households": 0,
-    "approved": "1991",
-    "floors": [
-     {
-      "n": -20,
-      "use": "under",
-      "label": "사무실"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -7,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -6,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -5,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -4,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -3,
-      "use": "under",
-      "label": "계단,화장실등 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
    "broker": null
   },
   {
@@ -4837,270 +5348,6 @@
    "broker": null
   },
   {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2658415508",
-   "dong": "양재동",
-   "jibun": "275-1",
-   "deposit": 1000,
-   "rent": 53,
-   "fee": 18,
-   "real": 71,
-   "m2": 30.4,
-   "floor": "16/20",
-   "grade": "?",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
-   "text": "삼호물산  양재동  가성비 아주좋은 삼호물산빌딩 임대,59제곱 업무용 오피스텔월세",
-   "built": "1991",
-   "commute": null,
-   "building": {
-    "main": "업무시설",
-    "ground": 20,
-    "under": 6,
-    "households": 0,
-    "approved": "1991",
-    "floors": [
-     {
-      "n": -20,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "주거겸용업무시설"
-     },
-     {
-      "n": -7,
-      "use": "shop",
-      "label": "업무시설"
-     },
-     {
-      "n": -6,
-      "use": "shop",
-      "label": "기계실 · 업무시설"
-     },
-     {
-      "n": -5,
-      "use": "shop",
-      "label": "업무시설 · 주차장"
-     },
-     {
-      "n": -4,
-      "use": "shop",
-      "label": "업무시설 · 주차장"
-     },
-     {
-      "n": -3,
-      "use": "shop",
-      "label": "업무시설 · 주차장"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "근린생활시설,주차장 · 업무시설"
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "근린생활시설 · 업무시설"
-     },
-     {
-      "n": 99,
-      "use": "shop",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
-   "broker": null
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2661373976",
-   "dong": "양재동",
-   "jibun": "275-3",
-   "deposit": 500,
-   "rent": 55,
-   "fee": 20,
-   "real": 72,
-   "m2": 20.24,
-   "floor": "19/20",
-   "grade": "?",
-   "note": "업무시설, 지상20층, 가구0·세대0, 승인1991, 층별 정보 없음",
-   "text": "트윈타워 입주 협의 가능, ",
-   "built": "1991",
-   "commute": null,
-   "building": {
-    "main": "업무시설",
-    "ground": 20,
-    "under": 5,
-    "households": 0,
-    "approved": "1991",
-    "floors": [
-     {
-      "n": -20,
-      "use": "under",
-      "label": "사무실"
-     },
-     {
-      "n": -19,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -18,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -17,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -16,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -15,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -14,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -13,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -12,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -11,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -10,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -9,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -8,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -7,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -6,
-      "use": "under",
-      "label": "오피스텔"
-     },
-     {
-      "n": -5,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -4,
-      "use": "under",
-      "label": "계단,화장실등 · 기계전기실 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -3,
-      "use": "under",
-      "label": "계단,화장실등 · 오피스텔 · 주차장"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 사무소 · 주차장"
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "계단,화장실등 · 계단화장실등 · 근린생활시설 · "
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
-   "broker": null
-  },
-  {
    "src": "dabang",
    "url": "https://www.dabangapp.com/room/6af691ebd5cd1a43db85764f",
    "dong": "역삼동",
@@ -5117,113 +5364,6 @@
    "built": "",
    "commute": null,
    "building": null,
-   "broker": null
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2661223702",
-   "dong": "서초동",
-   "jibun": "1330-18",
-   "deposit": 500,
-   "rent": 60,
-   "fee": 16,
-   "real": 74,
-   "m2": 28.3,
-   "floor": "3/15",
-   "grade": "?",
-   "note": "업무시설, 지상15층, 가구0·세대0, 승인1991, 층별 정보 없음",
-   "text": "현대기림 강남역 도보권 핵심 입지 출퇴근 모두 잡은 실속형 오피스",
-   "built": "1991",
-   "commute": null,
-   "building": {
-    "main": "업무시설",
-    "ground": 15,
-    "under": 4,
-    "households": 0,
-    "approved": "1991",
-    "floors": [
-     {
-      "n": -15,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -14,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -13,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -12,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -11,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -10,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -9,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -8,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -7,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -6,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -5,
-      "use": "shop",
-      "label": "엘리베이타홀,계단실,복도 · 오피스텔"
-     },
-     {
-      "n": -4,
-      "use": "shop",
-      "label": "계단실,엘리베이타홀 · 기계실,전기실 · 엘리베이타"
-     },
-     {
-      "n": -3,
-      "use": "shop",
-      "label": "계단실,엘리베이타홀,화장실 · 엘리베이타홀,계단실,"
-     },
-     {
-      "n": -2,
-      "use": "shop",
-      "label": "계단실,엘리베이타홀,화장실 · 상점 · 주차장 · "
-     },
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "계단실,엘리베이타홀,화장실,창 · 문화 및 집회시설"
-     },
-     {
-      "n": 99,
-      "use": "shop",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
-   },
    "broker": null
   },
   {
@@ -7009,6 +7149,63 @@
       "n": 4,
       "use": "home",
       "label": "주택"
+     }
+    ]
+   },
+   "broker": null
+  },
+  {
+   "src": "zigbang",
+   "url": "https://www.zigbang.com/home/oneroom/items/51208643",
+   "dong": "대치동",
+   "jibun": "928-1",
+   "deposit": 200,
+   "rent": 60,
+   "fee": 10.0,
+   "real": 66,
+   "m2": null,
+   "floor": "옥탑방",
+   "grade": "✕",
+   "note": "단독주택, 지상4층, 가구10·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인), 매물 층이 옥탑",
+   "text": "vV풀옵션 최다매물보유Vv 대치동 가성비 좋은 원룸",
+   "built": "2001",
+   "commute": 23,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 10,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "근린생활시설"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(4가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
      }
     ]
    },
