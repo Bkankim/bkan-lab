@@ -401,6 +401,11 @@ function ListingRow({ l, origin }: { l: Listing; origin: JachwiData['origin'] })
         <Typography variant="num">
           {won(l.deposit)}/{l.rent} + {l.fee}
         </Typography>
+        {l.junip && (
+          <Typography variant="overline" component="p" sx={{ color: 'use.home', fontWeight: 700 }}>
+            전입 가능 명시
+          </Typography>
+        )}
         <Typography variant="overline" color="text.secondary" component="p">
           {l.m2 ? `${l.m2}㎡ · ` : ''}
           {floorLabel}{l.built ? ` · ${l.built}년` : ''}
@@ -494,7 +499,7 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
         ))}
       </Box>
       <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-        {rows.length}건. 반지하·전입 불가 매물은 이미 뺐다. 건물 단면에서 빨간 테두리로 표시한 곳이 매물의 층이다(층이 저·중·고로만 나온 매물은 표시하지 않았다).
+        {rows.length}건. 상세 설명까지 읽어 반지하·전입 불가·위반건축물 매물을 뺐다. '전입 가능 명시'가 없는 매물은 전입이 되는지 문의 때 꼭 확인한다. 건물 단면에서 빨간 테두리로 표시한 곳이 매물의 층이다(층이 저·중·고로만 나온 매물은 표시하지 않았다).
       </Typography>
     </Section>
   );

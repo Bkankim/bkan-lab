@@ -34,6 +34,8 @@ export type Listing = {
   broker: { name: string | null; phone: string | null } | null;
   /** 네이버 지도 길찾기용 좌표. approx면 지번이 없어 플랫폼이 흐린 좌표 */
   coord: { lat: number; lon: number; approx: boolean } | null;
+  /** 상세 설명에 '전입 가능'이 적힌 경우만 '가능'. null은 언급 없음(문의 필요) */
+  junip: '가능' | null;
 };
 
 export type Trap = {

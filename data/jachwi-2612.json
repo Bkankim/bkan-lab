@@ -511,7 +511,7 @@
   },
   {
    "key": "△",
-   "count": 34,
+   "count": 28,
    "label": "층 모호·지하 주거·업무시설 오피스텔"
   },
   {
@@ -526,7 +526,7 @@
   },
   {
    "key": "✕",
-   "count": 25,
+   "count": 31,
    "label": "비주거 층·대장에 없는 층·옥탑"
   }
  ],
@@ -584,7 +584,8 @@
     "lat": 37.477141,
     "lon": 127.047024,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -639,7 +640,8 @@
     "lat": 37.477141,
     "lon": 127.047024,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -699,7 +701,8 @@
     "lat": 37.504021,
     "lon": 127.02663,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -759,7 +762,8 @@
     "lat": 37.493587,
     "lon": 127.035331,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -819,7 +823,8 @@
     "lat": 37.504021,
     "lon": 127.02663,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -884,7 +889,8 @@
     "lat": 37.499307,
     "lon": 127.059261,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -949,7 +955,8 @@
     "lat": 37.469163,
     "lon": 127.043588,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1004,7 +1011,8 @@
     "lat": 37.489117,
     "lon": 127.033944,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1059,7 +1067,8 @@
     "lat": 37.494193,
     "lon": 127.037723,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -1129,7 +1138,8 @@
     "lat": 37.496226,
     "lon": 127.035167,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -1189,7 +1199,8 @@
     "lat": 37.506368,
     "lon": 127.049192,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -1249,7 +1260,8 @@
     "lat": 37.506253,
     "lon": 127.044745,
     "approx": false
-   }
+   },
+   "junip": "가능"
   },
   {
    "src": "naver",
@@ -1309,7 +1321,8 @@
     "lat": 37.470566,
     "lon": 127.047473,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -1364,7 +1377,8 @@
     "lat": 37.46927,
     "lon": 127.043027,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1429,7 +1443,8 @@
     "lat": 37.494611,
     "lon": 127.033971,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1484,7 +1499,8 @@
     "lat": 37.494076,
     "lon": 127.042648,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -1549,7 +1565,8 @@
     "lat": 37.468741,
     "lon": 127.043331,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1609,7 +1626,8 @@
     "lat": 37.493812,
     "lon": 127.034258,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1664,7 +1682,8 @@
     "lat": 37.499535,
     "lon": 127.053017,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1724,7 +1743,8 @@
     "lat": 37.49454,
     "lon": 127.031686,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1779,62 +1799,8 @@
     "lat": 37.493926,
     "lon": 127.036318,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2656817046",
-   "dong": "서초동",
-   "jibun": "1357-62",
-   "deposit": 1000,
-   "rent": 30,
-   "fee": 20,
-   "real": 50,
-   "m2": 28,
-   "floor": "저/3",
-   "grade": "△",
-   "note": "단독주택, 지상3층, 가구12·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
-   "text": "다가구 뱅뱅사거리 이면 가성비 좋고 넓은 원룸분리형",
-   "built": "1995",
-   "commute": 12,
-   "building": {
-    "main": "단독주택",
-    "ground": 3,
-    "under": 1,
-    "households": 12,
-    "approved": "1995",
-    "floors": [
-     {
-      "n": -1,
-      "use": "under",
-      "label": "다가구 주택3가구"
-     },
-     {
-      "n": 1,
-      "use": "home",
-      "label": "다가구 주택3가구"
-     },
-     {
-      "n": 2,
-      "use": "home",
-      "label": "다가구 주택3가구"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구 주택3가구"
-     }
-    ]
    },
-   "broker": {
-    "name": "파트너공인중개사사무소",
-    "phone": "02-581-7181"
-   },
-   "coord": {
-    "lat": 37.487771,
-    "lon": 127.031331,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "naver",
@@ -1884,7 +1850,8 @@
     "lat": 37.473371,
     "lon": 127.051872,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -1949,67 +1916,8 @@
     "lat": 37.491633,
     "lon": 127.033922,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2660118928",
-   "dong": "역삼동",
-   "jibun": "756-1",
-   "deposit": 1000,
-   "rent": 50,
-   "fee": 5,
-   "real": 55,
-   "m2": 23,
-   "floor": "저/3",
-   "grade": "△",
-   "note": "단독주택, 지상3층, 가구8·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
-   "text": "다가구 한티역 도보 3분 가성비 원룸 빠른 입주 가능",
-   "built": "1996",
-   "commute": 18,
-   "building": {
-    "main": "단독주택",
-    "ground": 3,
-    "under": 1,
-    "households": 8,
-    "approved": "1996",
-    "floors": [
-     {
-      "n": -1,
-      "use": "under",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 1,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 2,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
    },
-   "broker": {
-    "name": "더큼공인중개사",
-    "phone": "02-6080-5328"
-   },
-   "coord": {
-    "lat": 37.498224,
-    "lon": 127.051122,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "naver",
@@ -2069,7 +1977,8 @@
     "lat": 37.498224,
     "lon": 127.051122,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2129,7 +2038,8 @@
     "lat": 37.494751,
     "lon": 127.03243,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2184,7 +2094,8 @@
     "lat": 37.489763,
     "lon": 127.033928,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2239,67 +2150,8 @@
     "lat": 37.499301,
     "lon": 127.042453,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2657324904",
-   "dong": "개포동",
-   "jibun": "1179",
-   "deposit": 1000,
-   "rent": 55,
-   "fee": 5,
-   "real": 60,
-   "m2": 25,
-   "floor": "중/4",
-   "grade": "△",
-   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1989, 층 표기 모호",
-   "text": "일반원룸 w인근최저가 최고가성비오픈형원룸 보증금조절불가 전입신고및즉시입주가능",
-   "built": "1989",
-   "commute": 15,
-   "building": {
-    "main": "제1종근린생활시설",
-    "ground": 4,
-    "under": 1,
-    "households": 1,
-    "approved": "1989",
-    "floors": [
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "다방"
-     },
-     {
-      "n": 1,
-      "use": "shop",
-      "label": "소매점(업)"
-     },
-     {
-      "n": 2,
-      "use": "shop",
-      "label": "사무실"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "주택"
-     },
-     {
-      "n": 4,
-      "use": "home",
-      "label": "주택"
-     }
-    ]
    },
-   "broker": {
-    "name": "새롬공인중개사사무소",
-    "phone": "02-576-7489"
-   },
-   "coord": {
-    "lat": 37.474939,
-    "lon": 127.053351,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "naver",
@@ -2359,7 +2211,8 @@
     "lat": 37.470433,
     "lon": 127.047298,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2414,7 +2267,8 @@
     "lat": 37.485594,
     "lon": 127.034648,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2469,7 +2323,8 @@
     "lat": 37.49387,
     "lon": 127.042183,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2529,62 +2384,8 @@
     "lat": 37.482713,
     "lon": 127.038047,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2658449927",
-   "dong": "역삼동",
-   "jibun": "792-39",
-   "deposit": 500,
-   "rent": 58,
-   "fee": 5,
-   "real": 60,
-   "m2": 22,
-   "floor": "저/3",
-   "grade": "△",
-   "note": "단독주택, 지상3층, 가구7·세대0, 승인1994, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
-   "text": "다가구 Eng,전입신고가능 ,오픈형 원룸 , 크기 잘나옴,풀옵션,협의입주",
-   "built": "1994",
-   "commute": 20,
-   "building": {
-    "main": "단독주택",
-    "ground": 3,
-    "under": 1,
-    "households": 7,
-    "approved": "1994",
-    "floors": [
-     {
-      "n": -1,
-      "use": "under",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 1,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 2,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구주택(1가구)"
-     }
-    ]
    },
-   "broker": {
-    "name": "박영준공인중개사사무소",
-    "phone": "02-555-5706"
-   },
-   "coord": {
-    "lat": 37.493961,
-    "lon": 127.036938,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "naver",
@@ -2639,7 +2440,8 @@
     "lat": 37.480432,
     "lon": 127.042149,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2699,7 +2501,8 @@
     "lat": 37.494319,
     "lon": 127.03246,
     "approx": false
-   }
+   },
+   "junip": "가능"
   },
   {
    "src": "naver",
@@ -2759,7 +2562,8 @@
     "lat": 37.498103,
     "lon": 127.051179,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -2824,72 +2628,8 @@
     "lat": 37.49781,
     "lon": 127.041971,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2662482859",
-   "dong": "양재동",
-   "jibun": "255-6",
-   "deposit": 500,
-   "rent": 57,
-   "fee": 10,
-   "real": 64,
-   "m2": 19.7,
-   "floor": "중/4",
-   "grade": "△",
-   "note": "단독주택, 지상4층, 가구6·세대0, 승인1987, 층 표기 모호",
-   "text": "일반원룸 양재시민의숲역 인근 채광 좋은 풀옵션 가성비 원룸",
-   "built": "1987",
-   "commute": 16,
-   "building": {
-    "main": "단독주택",
-    "ground": 4,
-    "under": 1,
-    "households": 6,
-    "approved": "1987",
-    "floors": [
-     {
-      "n": -1,
-      "use": "shop",
-      "label": "소매점"
-     },
-     {
-      "n": 1,
-      "use": "shop",
-      "label": "소매점 · 제2종근린생활시설(사무소)"
-     },
-     {
-      "n": 2,
-      "use": "shop",
-      "label": "근린생활시설(사무소) · 제2종근린생활시설(사무소)"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 4,
-      "use": "home",
-      "label": "다가구주택(3가구)"
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
    },
-   "broker": {
-    "name": "더큼공인중개사",
-    "phone": "02-6080-5328"
-   },
-   "coord": {
-    "lat": 37.473575,
-    "lon": 127.042844,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "naver",
@@ -2949,7 +2689,8 @@
     "lat": 37.494319,
     "lon": 127.03246,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3009,7 +2750,8 @@
     "lat": 37.499043,
     "lon": 127.057492,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3069,7 +2811,8 @@
     "lat": 37.497573,
     "lon": 127.035208,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3234,7 +2977,8 @@
     "lat": 37.47659,
     "lon": 127.044293,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3304,7 +3048,8 @@
     "lat": 37.484114,
     "lon": 127.036618,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3474,7 +3219,8 @@
     "lat": 37.477251,
     "lon": 127.044492,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3639,7 +3385,8 @@
     "lat": 37.47659,
     "lon": 127.044293,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3809,7 +3556,8 @@
     "lat": 37.477251,
     "lon": 127.044492,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -3979,7 +3727,8 @@
     "lat": 37.477251,
     "lon": 127.044492,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -4144,7 +3893,8 @@
     "lat": 37.47659,
     "lon": 127.044293,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -4279,7 +4029,8 @@
     "lat": 37.494003,
     "lon": 127.028354,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -4404,67 +4155,8 @@
     "lat": 37.490946,
     "lon": 127.032312,
     "approx": false
-   }
-  },
-  {
-   "src": "naver",
-   "url": "https://fin.land.naver.com/articles/2660397796",
-   "dong": "역삼동",
-   "jibun": "732-6",
-   "deposit": 3000,
-   "rent": 60,
-   "fee": 12,
-   "real": 82,
-   "m2": 23.1,
-   "floor": "중/3",
-   "grade": "△",
-   "note": "단독주택, 지상3층, 가구9·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인)",
-   "text": "다가구 DIA 완전 풀옵션 원룸",
-   "built": "2001",
-   "commute": 23,
-   "building": {
-    "main": "단독주택",
-    "ground": 3,
-    "under": 1,
-    "households": 9,
-    "approved": "2001",
-    "floors": [
-     {
-      "n": -1,
-      "use": "under",
-      "label": "다가구주택(1가구) · 주차장"
-     },
-     {
-      "n": 1,
-      "use": "home",
-      "label": "다가구주택(3가구)"
-     },
-     {
-      "n": 2,
-      "use": "home",
-      "label": "다가구주택(3가구)"
-     },
-     {
-      "n": 3,
-      "use": "home",
-      "label": "다가구주택(2가구)"
-     },
-     {
-      "n": 99,
-      "use": "home",
-      "label": "옥탑(연면적 제외)"
-     }
-    ]
    },
-   "broker": {
-    "name": "다이아부동산중개",
-    "phone": "02-549-8383"
-   },
-   "coord": {
-    "lat": 37.497879,
-    "lon": 127.042115,
-    "approx": false
-   }
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4488,7 +4180,8 @@
     "lat": 37.506909,
     "lon": 127.021955,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4512,7 +4205,8 @@
     "lat": 37.506266,
     "lon": 127.025312,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -4536,7 +4230,8 @@
     "lat": 37.506965,
     "lon": 127.022053,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4560,7 +4255,8 @@
     "lat": 37.505235,
     "lon": 127.022623,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4584,7 +4280,8 @@
     "lat": 37.50453,
     "lon": 127.039283,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4608,7 +4305,8 @@
     "lat": 37.505931,
     "lon": 127.021679,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4632,7 +4330,8 @@
     "lat": 37.505565,
     "lon": 127.020218,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4656,7 +4355,8 @@
     "lat": 37.475007,
     "lon": 127.053417,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4680,7 +4380,8 @@
     "lat": 37.501821,
     "lon": 127.028971,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4704,7 +4405,8 @@
     "lat": 37.494702,
     "lon": 127.0324,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -4728,7 +4430,8 @@
     "lat": 37.507884,
     "lon": 127.021987,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4752,7 +4455,8 @@
     "lat": 37.496496,
     "lon": 127.037067,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4776,7 +4480,8 @@
     "lat": 37.506968,
     "lon": 127.02126,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4800,7 +4505,8 @@
     "lat": 37.505639,
     "lon": 127.038737,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4824,7 +4530,8 @@
     "lat": 37.507333,
     "lon": 127.025151,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4848,7 +4555,8 @@
     "lat": 37.486912,
     "lon": 127.038521,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4872,7 +4580,8 @@
     "lat": 37.498196,
     "lon": 127.051179,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -4896,7 +4605,8 @@
     "lat": 37.50523,
     "lon": 127.020764,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4920,7 +4630,8 @@
     "lat": 37.469255,
     "lon": 127.043149,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -4944,7 +4655,8 @@
     "lat": 37.494323,
     "lon": 127.032476,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4968,7 +4680,8 @@
     "lat": 37.506493,
     "lon": 127.036356,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -4992,7 +4705,8 @@
     "lat": 37.506754,
     "lon": 127.045156,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -5016,7 +4730,8 @@
     "lat": 37.504253,
     "lon": 127.079392,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -5040,7 +4755,8 @@
     "lat": 37.50648,
     "lon": 127.021267,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -5064,7 +4780,8 @@
     "lat": 37.505985,
     "lon": 127.021531,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5088,7 +4805,8 @@
     "lat": 37.473578,
     "lon": 127.042935,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5112,7 +4830,8 @@
     "lat": 37.489029,
     "lon": 127.034075,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5136,7 +4855,8 @@
     "lat": 37.475571,
     "lon": 127.047111,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5160,7 +4880,8 @@
     "lat": 37.506402,
     "lon": 127.024943,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5184,7 +4905,8 @@
     "lat": 37.469248,
     "lon": 127.043475,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5208,7 +4930,8 @@
     "lat": 37.483878,
     "lon": 127.036911,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5232,7 +4955,8 @@
     "lat": 37.468946,
     "lon": 127.043278,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5256,7 +4980,8 @@
     "lat": 37.506006,
     "lon": 127.035733,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5280,7 +5005,8 @@
     "lat": 37.497815,
     "lon": 127.035234,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5304,7 +5030,8 @@
     "lat": 37.485188,
     "lon": 127.030813,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5328,7 +5055,8 @@
     "lat": 37.50672,
     "lon": 127.033124,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5352,7 +5080,8 @@
     "lat": 37.498125,
     "lon": 127.040549,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5376,7 +5105,8 @@
     "lat": 37.505954,
     "lon": 127.049929,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5400,7 +5130,8 @@
     "lat": 37.505553,
     "lon": 127.027176,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5424,7 +5155,8 @@
     "lat": 37.506721,
     "lon": 127.032831,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5448,7 +5180,8 @@
     "lat": 37.497706,
     "lon": 127.029001,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5472,7 +5205,8 @@
     "lat": 37.494563,
     "lon": 127.037047,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5496,7 +5230,8 @@
     "lat": 37.507261,
     "lon": 127.029298,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5520,7 +5255,8 @@
     "lat": 37.500509,
     "lon": 127.03308,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5544,7 +5280,8 @@
     "lat": 37.505472,
     "lon": 127.036409,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5568,7 +5305,8 @@
     "lat": 37.505064,
     "lon": 127.04046,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5592,7 +5330,8 @@
     "lat": 37.507941,
     "lon": 127.020541,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5616,7 +5355,8 @@
     "lat": 37.50452,
     "lon": 127.044352,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5640,7 +5380,8 @@
     "lat": 37.506552,
     "lon": 127.052741,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5664,7 +5405,8 @@
     "lat": 37.495229,
     "lon": 127.044349,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5688,7 +5430,8 @@
     "lat": 37.498031,
     "lon": 127.033261,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5712,7 +5455,8 @@
     "lat": 37.492946,
     "lon": 127.030976,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5736,7 +5480,8 @@
     "lat": 37.494727,
     "lon": 127.033944,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5760,7 +5505,8 @@
     "lat": 37.469218,
     "lon": 127.042927,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "peterpan",
@@ -5784,7 +5530,8 @@
     "lat": 37.491582,
     "lon": 127.033749,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -5871,7 +5618,8 @@
     "lat": 37.494015,
     "lon": 127.041265,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5895,7 +5643,8 @@
     "lat": 37.502628,
     "lon": 127.039524,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5919,7 +5668,8 @@
     "lat": 37.492995,
     "lon": 127.030946,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "dabang",
@@ -5943,7 +5693,8 @@
     "lat": 37.491326,
     "lon": 127.037853,
     "approx": true
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6015,7 +5766,8 @@
     "lat": 37.489687,
     "lon": 127.033677,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6082,7 +5834,8 @@
     "lat": 37.473528,
     "lon": 127.049949,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6139,7 +5892,8 @@
     "lat": 37.497618,
     "lon": 127.033503,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6196,7 +5950,8 @@
     "lat": 37.497618,
     "lon": 127.033503,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6253,7 +6008,8 @@
     "lat": 37.497618,
     "lon": 127.033503,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6310,7 +6066,8 @@
     "lat": 37.497618,
     "lon": 127.033503,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6372,7 +6129,8 @@
     "lat": 37.505612,
     "lon": 127.039021,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6434,7 +6192,8 @@
     "lat": 37.475935,
     "lon": 127.042146,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6501,7 +6260,8 @@
     "lat": 37.46873,
     "lon": 127.044768,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6568,7 +6328,8 @@
     "lat": 37.496064,
     "lon": 127.031357,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6625,7 +6386,8 @@
     "lat": 37.494319,
     "lon": 127.03246,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6682,7 +6444,8 @@
     "lat": 37.501798,
     "lon": 127.034305,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6744,7 +6507,8 @@
     "lat": 37.475935,
     "lon": 127.042146,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6811,7 +6575,8 @@
     "lat": 37.46873,
     "lon": 127.044768,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6868,7 +6633,8 @@
     "lat": 37.494319,
     "lon": 127.03246,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -6935,7 +6701,8 @@
     "lat": 37.491235,
     "lon": 127.037848,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -6997,7 +6764,61 @@
     "lat": 37.494459,
     "lon": 127.036643,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2656817046",
+   "dong": "서초동",
+   "jibun": "1357-62",
+   "deposit": 1000,
+   "rent": 30,
+   "fee": 20,
+   "real": 50,
+   "m2": 28,
+   "floor": "저/3",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구12·세대0, 승인1995, 층 표기 모호, 지하에 주거 있음(반지하 확인), 상세에 반지하",
+   "text": "다가구 뱅뱅사거리 이면 가성비 좋고 넓은 원룸분리형",
+   "built": "1995",
+   "commute": 12,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 12,
+    "approved": "1995",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구 주택3가구"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.487771,
+    "lon": 127.031331,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7049,7 +6870,66 @@
     "lat": 37.499042,
     "lon": 127.055596,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660118928",
+   "dong": "역삼동",
+   "jibun": "756-1",
+   "deposit": 1000,
+   "rent": 50,
+   "fee": 5,
+   "real": 55,
+   "m2": 23,
+   "floor": "저/3",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구8·세대0, 승인1996, 층 표기 모호, 지하에 주거 있음(반지하 확인), 상세에 반지하",
+   "text": "다가구 한티역 도보 3분 가성비 원룸 빠른 입주 가능",
+   "built": "1996",
+   "commute": 18,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 8,
+    "approved": "1996",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.498224,
+    "lon": 127.051122,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7111,7 +6991,8 @@
     "lat": 37.50623,
     "lon": 127.025255,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7173,7 +7054,8 @@
     "lat": 37.50623,
     "lon": 127.025255,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7225,7 +7107,8 @@
     "lat": 37.499042,
     "lon": 127.055596,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7277,7 +7160,8 @@
     "lat": 37.499042,
     "lon": 127.055596,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7344,7 +7228,66 @@
     "lat": 37.495616,
     "lon": 127.036749,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2657324904",
+   "dong": "개포동",
+   "jibun": "1179",
+   "deposit": 1000,
+   "rent": 55,
+   "fee": 5,
+   "real": 60,
+   "m2": 25,
+   "floor": "중/4",
+   "grade": "✕",
+   "note": "제1종근린생활시설, 지상4층, 가구1·세대0, 승인1989, 층 표기 모호, 매물 용도 사무실",
+   "text": "일반원룸 w인근최저가 최고가성비오픈형원룸 보증금조절불가 전입신고및즉시입주가능",
+   "built": "1989",
+   "commute": 15,
+   "building": {
+    "main": "제1종근린생활시설",
+    "ground": 4,
+    "under": 1,
+    "households": 1,
+    "approved": "1989",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "다방"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점(업)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "사무실"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "주택"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "주택"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.474939,
+    "lon": 127.053351,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7406,7 +7349,8 @@
     "lat": 37.477393,
     "lon": 127.050132,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7463,7 +7407,61 @@
     "lat": 37.504186,
     "lon": 127.04066,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2658449927",
+   "dong": "역삼동",
+   "jibun": "792-39",
+   "deposit": 500,
+   "rent": 58,
+   "fee": 5,
+   "real": 60,
+   "m2": 22,
+   "floor": "저/3",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구7·세대0, 승인1994, 층 표기 모호, 지하에 주거 있음(반지하 확인), 상세에 반지하",
+   "text": "다가구 Eng,전입신고가능 ,오픈형 원룸 , 크기 잘나옴,풀옵션,협의입주",
+   "built": "1994",
+   "commute": 20,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 7,
+    "approved": "1994",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(1가구)"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.493961,
+    "lon": 127.036938,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7525,7 +7523,8 @@
     "lat": 37.469347,
     "lon": 127.043133,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7582,7 +7581,8 @@
     "lat": 37.498213,
     "lon": 127.031638,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7634,7 +7634,8 @@
     "lat": 37.483687,
     "lon": 127.041585,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7701,7 +7702,71 @@
     "lat": 37.475565,
     "lon": 127.042642,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2662482859",
+   "dong": "양재동",
+   "jibun": "255-6",
+   "deposit": 500,
+   "rent": 57,
+   "fee": 10,
+   "real": 64,
+   "m2": 19.7,
+   "floor": "중/4",
+   "grade": "✕",
+   "note": "단독주택, 지상4층, 가구6·세대0, 승인1987, 층 표기 모호, 위반건축물(플랫폼 표시)",
+   "text": "일반원룸 양재시민의숲역 인근 채광 좋은 풀옵션 가성비 원룸",
+   "built": "1987",
+   "commute": 16,
+   "building": {
+    "main": "단독주택",
+    "ground": 4,
+    "under": 1,
+    "households": 6,
+    "approved": "1987",
+    "floors": [
+     {
+      "n": -1,
+      "use": "shop",
+      "label": "소매점"
+     },
+     {
+      "n": 1,
+      "use": "shop",
+      "label": "소매점 · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 2,
+      "use": "shop",
+      "label": "근린생활시설(사무소) · 제2종근린생활시설(사무소)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 4,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.473575,
+    "lon": 127.042844,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7758,7 +7823,8 @@
     "lat": 37.475674,
     "lon": 127.047117,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7815,7 +7881,8 @@
     "lat": 37.49454,
     "lon": 127.031686,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7872,7 +7939,8 @@
     "lat": 37.474939,
     "lon": 127.053351,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -7934,7 +8002,8 @@
     "lat": 37.500338,
     "lon": 127.057173,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -7996,7 +8065,8 @@
     "lat": 37.473575,
     "lon": 127.042844,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -8053,7 +8123,8 @@
     "lat": 37.475674,
     "lon": 127.047117,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -8110,7 +8181,8 @@
     "lat": 37.500315,
     "lon": 127.056784,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -8162,7 +8234,8 @@
     "lat": 37.46927,
     "lon": 127.045394,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -8259,7 +8332,8 @@
     "lat": 37.496086,
     "lon": 127.033008,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -8356,7 +8430,66 @@
     "lat": 37.496086,
     "lon": 127.033008,
     "approx": false
-   }
+   },
+   "junip": null
+  },
+  {
+   "src": "naver",
+   "url": "https://fin.land.naver.com/articles/2660397796",
+   "dong": "역삼동",
+   "jibun": "732-6",
+   "deposit": 3000,
+   "rent": 60,
+   "fee": 12,
+   "real": 82,
+   "m2": 23.1,
+   "floor": "중/3",
+   "grade": "✕",
+   "note": "단독주택, 지상3층, 가구9·세대0, 승인2001, 층 표기 모호, 지하에 주거 있음(반지하 확인), 위반건축물(플랫폼 표시)",
+   "text": "다가구 DIA 완전 풀옵션 원룸",
+   "built": "2001",
+   "commute": 23,
+   "building": {
+    "main": "단독주택",
+    "ground": 3,
+    "under": 1,
+    "households": 9,
+    "approved": "2001",
+    "floors": [
+     {
+      "n": -1,
+      "use": "under",
+      "label": "다가구주택(1가구) · 주차장"
+     },
+     {
+      "n": 1,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 2,
+      "use": "home",
+      "label": "다가구주택(3가구)"
+     },
+     {
+      "n": 3,
+      "use": "home",
+      "label": "다가구주택(2가구)"
+     },
+     {
+      "n": 99,
+      "use": "home",
+      "label": "옥탑(연면적 제외)"
+     }
+    ]
+   },
+   "broker": null,
+   "coord": {
+    "lat": 37.497879,
+    "lon": 127.042115,
+    "approx": false
+   },
+   "junip": null
   },
   {
    "src": "zigbang",
@@ -8428,7 +8561,8 @@
     "lat": 37.502275,
     "lon": 127.050791,
     "approx": false
-   }
+   },
+   "junip": null
   },
   {
    "src": "naver",
@@ -8485,7 +8619,8 @@
     "lat": 37.475674,
     "lon": 127.047117,
     "approx": false
-   }
+   },
+   "junip": null
   }
  ]
 }
