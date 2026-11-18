@@ -6,6 +6,82 @@
   "lede": "UI / UX 를 기반으로 가벼운 실험들을 합니다.<br/>전부 AI 드라이빙.<br/>얼마나 간단하게 만들었는지와 얼마가 들었는지를 표기합니다.",
   "cards": [
     {
+      "slug": "dashboard-2611",
+      "name": "bkan dashboard 디자인 네 갈래",
+      "when": "2026년 11월 19일",
+      "image": "/frontend/dashboard-2611/og.jpg?v=1",
+      "alt": "왼쪽 아이콘 레일과 방문 지표 여섯 칸, 시간대별 차트가 놓인 운영 대시보드 Cloudflare 페이지",
+      "desc": "혼자 쓰는 운영 대시보드가 와이어프레임으로 남아 있었고, 모아 둔 디자인 레퍼런스가 실제로 쓸 만한지 시험해 볼 곳이 필요했습니다.<br/>방법 넷을 같은 화면에 동시에 시켜 비교하고, 하나를 바탕으로 골라 다른 안의 좋은 점을 붙여 마스터를 만드는 것이 목적입니다.",
+      "metrics": true,
+      "sitemap": true,
+      "tools": [
+        {
+          "label": "모델",
+          "own": [
+            "<b>Opus 5.5</b> (본체, 프로토 네 안을 맡은 서브에이전트 4)"
+          ]
+        },
+        {
+          "label": "디자인 방법",
+          "chips": [
+            {
+              "name": "Astryx",
+              "href": "https://github.com/meta/astryx"
+            },
+            {
+              "name": "Taste Skill",
+              "href": "https://tasteskill.dev"
+            },
+            {
+              "name": "Impeccable",
+              "href": "https://impeccable.style"
+            }
+          ],
+          "note": "넷째 방법 ddd는 자작 도구"
+        },
+        {
+          "label": "화면·검증",
+          "chips": [
+            {
+              "name": "Next.js",
+              "href": "https://nextjs.org"
+            },
+            {
+              "name": "Tailwind CSS",
+              "href": "https://tailwindcss.com"
+            },
+            {
+              "name": "dembrandt",
+              "href": "https://github.com/dembrandt/dembrandt"
+            },
+            {
+              "name": "agent-browser",
+              "href": "https://github.com/vercel-labs/agent-browser"
+            }
+          ],
+          "note": "1440·400폭 캡처, 토큰·대비 검사"
+        },
+        {
+          "label": "기타 도구",
+          "chips": [
+            {
+              "name": "Tailscale",
+              "href": "https://tailscale.com"
+            }
+          ],
+          "note": "프로토 다섯 판을 다른 PC에서 탭으로 비교"
+        },
+        {
+          "label": "자작 도구",
+          "own": [
+            "<b>ddd 종합본</b> (디자이너DDD 영상을 분석해 만든 웹 제작 방법 문서)",
+            "<b>winopen</b> (윈도우 PC 브라우저에 탭 열기)",
+            "<b>with-secret</b> (토큰을 실행할 프로세스에만 주입)"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "jachwi-2612",
       "name": "매봉역 30분 자취방",
       "when": "2026년 11월 19일",

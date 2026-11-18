@@ -1,0 +1,122 @@
+/* bkan dashboard 디자인 네 갈래 - 글 구성은 motion/idala-demo를 따르고, 색은 마스터(Astryx neutral)에 맞춘다 */
+:root {
+  --bg: #f4f4f5;
+  --panel: #ffffff;
+  --panel-2: #ececee;
+  --ink: #26262b;
+  --ink-strong: #0e0e10;
+  --ink-soft: #5f5f66;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --up: #0a6cf0;
+  /* 판 색: 스크린샷 속 각 안의 대표색 */
+  --c-wire: #1b1b1b;
+  --c-ddd: #b4430e;
+  --c-astryx: #0a6cf0;
+  --c-taste: #4a8ad6;
+  --c-impeccable: #0c4a3e;
+  --gutter: clamp(16px, 4vw, 40px);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a { color: inherit; }
+b { color: var(--ink-strong); }
+img { max-width: 100%; height: auto; display: block; }
+
+/* 머리 */
+.head { max-width: 1200px; margin: 0 auto; padding: 28px var(--gutter) 8px; }
+.crumb { display: inline-block; font-size: 14px; color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.crumb:hover { color: var(--ink-strong); border-color: var(--ink); }
+.kicker { margin: 28px 0 0; font-size: 15px; font-weight: 600; color: var(--ink-soft); }
+h1 { margin: 6px 0 14px; font-size: clamp(30px, 5vw, 44px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ink-strong); }
+.lede { max-width: 42em; margin: 0; font-size: 17px; color: var(--ink); }
+
+/* 마스터 사진 */
+.final { max-width: 1200px; margin: 28px auto 0; padding: 0 var(--gutter); }
+.shot { margin: 0; }
+.shot img { width: 100%; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--panel); }
+.shot figcaption { margin-top: 8px; font-size: 14px; color: var(--ink-soft); }
+
+/* 본문 */
+.body { max-width: 880px; margin: 0 auto; padding: 0 var(--gutter) 24px; }
+.block { margin-top: 56px; }
+.block h2 { margin: 0 0 14px; font-size: 24px; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink-strong); }
+.block p { margin: 0 0 12px; }
+.note { font-size: 14px; color: var(--ink-soft); }
+.meta { margin: 6px 0 0 !important; font-size: 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* 여기까지 온 길 */
+.path { list-style: none; counter-reset: s; padding: 0; margin: 16px 0 0; display: grid; }
+.path li { counter-increment: s; position: relative; padding: 0 0 22px 44px; }
+.path li::before {
+  content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px;
+  display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-strong);
+  background: var(--panel); font-weight: 800; font-size: 13px; color: var(--ink-strong);
+}
+.path li::after { content: ""; position: absolute; left: 14px; top: 30px; bottom: 2px; width: 1px; background: var(--line-strong); }
+.path li:last-child { padding-bottom: 0; }
+.path li:last-child::after { display: none; }
+.path li:last-child::before { background: var(--ink-strong); border-color: transparent; color: #fff; }
+.path b { display: block; }
+.path p { margin: 4px 0 0; }
+.path .shot { margin-top: 12px; }
+
+/* 네 안 */
+.pros { list-style: none; padding: 0; margin: 16px 0 12px; display: grid; gap: 16px; }
+.pros li { padding: 16px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 10px; }
+.pros p { margin: 0 0 8px; line-height: 1.6; }
+.pros p:last-child { margin-bottom: 0; }
+.pros .who { font-weight: 800; font-size: 20px; line-height: 1.3; margin-bottom: 4px; color: var(--ink-strong); }
+.pros .who i { display: inline-block; width: 10px; height: 10px; margin-right: 8px; border-radius: 50%; background: var(--c); vertical-align: 2px; }
+.pros .how { font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; }
+.pros .shot { margin: 0 0 12px; }
+.pros .shot img { border-radius: 6px; }
+.tag { display: inline-block; margin-right: 8px; padding: 0 7px; border-radius: 4px; font-size: 12px; font-weight: 700; line-height: 20px; background: #e6f0fe; color: #0a4fb0; vertical-align: 1px; }
+.tag.bad { background: #fdecea; color: #a02a1c; }
+.tag.got { background: #e7f5ee; color: #156a43; }
+.main { display: inline-block; margin-left: 8px; padding: 0 7px; border-radius: 4px; font-size: 12px; font-weight: 700; line-height: 20px; background: var(--ink-strong); color: #fff; vertical-align: 3px; }
+
+/* 비교표 */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--panel); }
+.facts { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+.facts th, .facts td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.facts thead th { background: var(--panel-2); color: var(--ink-strong); font-weight: 700; white-space: nowrap; }
+.facts tbody tr:last-child td { border-bottom: 0; }
+.facts td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.facts th.n { text-align: right; }
+.facts td:first-child { font-weight: 800; white-space: nowrap; color: var(--ink-strong); }
+.facts td:first-child i { display: inline-block; width: 10px; height: 10px; margin-right: 8px; border-radius: 50%; background: var(--c); }
+
+/* 결정과 해 보니 */
+.seen { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.seen li { position: relative; padding: 14px 16px 14px 36px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 10px; }
+.seen li::before { content: ""; position: absolute; left: 17px; top: calc(14px + 0.85em - 4px); width: 8px; height: 8px; background: var(--ink-strong); }
+.seen.decide li::before { background: var(--up); }
+.seen b { display: block; margin-bottom: 2px; }
+
+/* 마스터에 들어간 것 */
+.pair { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 12px; }
+@media (min-width: 720px) {
+  .pair { grid-template-columns: 3fr 1fr; align-items: start; }
+}
+
+.foot { max-width: 880px; margin: 56px auto 0; padding: 20px var(--gutter) 40px; border-top: 1px solid var(--line-strong); font-size: 14px; color: var(--ink-soft); }
+.foot p { margin: 0 0 6px; }
+
+@media (min-width: 900px) {
+  .pros { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "dashboard-2611",
+  "measured_at": "2026-11-18T20:37:10Z",
+  "pricing_as_of": "2026-10-06",
+  "scope": "에이전트 세션 기록(본체+서브에이전트). aside exec 등 외부 실행의 LLM 비용은 미포함",
+  "elapsed_ms": 104082841,
+  "ai_work_ms": 2445167,
+  "agent_sum_ms": 5010984,
+  "parallelism": 2.05,
+  "clicks": 9,
+  "resends_merged": 0,
+  "corrections": 0,
+  "approvals": 1,
+  "approval_wait_ms": 86605,
+  "input_chars": 476,
+  "ai_ms_per_click": 271685,
+  "subagents": 4,
+  "subagent_types": {
+    "general-purpose": 4
+  },
+  "tool_calls": 486,
+  "aside_exec_calls": 0,
+  "web_search_requests": 0,
+  "models": [
+    {
+      "model": "claude-opus-5-5",
+      "requests": 423,
+      "output_tokens": 324104,
+      "output_share": 1.0
+    }
+  ],
+  "tokens": {
+    "input": 894,
+    "cache_write_5m": 1629951,
+    "cache_write_1h": 456492,
+    "cache_read": 89115572,
+    "output": 324104
+  },
+  "cost_usd_api_equiv": 36.11,
+  "unpriced_models": {},
+  "period": {
+    "from": "2026-11-17T15:23:16Z",
+    "to": "2026-11-18T20:17:59Z"
+  },
+  "runtimes": [
+    "claude-code"
+  ],
+  "sessions": 1,
+  "made": "디자인 프로토 4안, 좋은 점을 모은 흡수안 1, 운영 포털 마스터 화면",
+  "used": "맥에 상시로 띄워 두고 매일 운영 포털로 씁니다",
+  "revisions": null,
+  "first_release": {
+    "elapsed_ms": 104082841,
+    "ai_work_ms": 2445167,
+    "clicks": 9,
+    "corrections": 0,
+    "input_chars": 476,
+    "cost_usd_api_equiv": 36.11
+  }
+}
