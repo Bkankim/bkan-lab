@@ -60,13 +60,13 @@ export function Hero({ d }: { d: JachwiData }) {
         {d.tagline}
       </Typography>
       <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 640 }}>
-        출발지는 {d.origin.address}({d.origin.station} {d.origin.walk}).
+        출발지는 {d.origin.address}이다({d.origin.station} {d.origin.walk}).
         <br />
-        여기서 반경 약 3km의 월세·전세 매물을 네 플랫폼에서 모았다.
+        여기서 반경 약 3km 안의 월세·전세 매물을 네 플랫폼에서 모았다.
         <br />
-        반지하·전입 불가·근생·고시원·옥탑을 차례로 걸러, 건축물대장상 정상 주택만 남겼다.
+        반지하·전입 불가·근생·고시원·옥탑을 차례로 걸러서 건축물대장상 정상 주택만 남겼다.
         <br />
-        남은 후보는 카카오맵 대중교통 최단 경로로 잰 출퇴근이 모두 30분 안이다.
+        남은 후보는 카카오맵 대중교통 최단 경로로 잰 출퇴근 시간이 모두 30분 안이다.
       </Typography>
       <Box
         component="dl"
@@ -112,7 +112,7 @@ export function MarketSection({ d }: { d: JachwiData }) {
         <>
           국토부 전월세 실거래 2026년 8~10월, 전용 15~35㎡, 보증금 1,000만원 기준 환산.
           <br />
-          지금 나온 매물 호가는 원룸 기준 실거래보다 <b>{won(askRoom - realRoom)}만원</b> 높다(아래 표).
+          지금 나온 매물의 호가는 원룸 기준으로 실거래보다 <b>{won(askRoom - realRoom)}만원</b> 높다(아래 표).
         </>
       }
     >
@@ -194,7 +194,7 @@ export function MarketSection({ d }: { d: JachwiData }) {
 export function FunnelSection({ d }: { d: JachwiData }) {
   const top = d.funnel[0].n;
   return (
-    <Section no={2} id="funnel" title={`왜 ${d.funnel.at(-1)?.n}개인가`} figure={<><Big>{won(top)}</Big>건에서 <Big>{d.funnel.at(-1)?.n}</Big>건. 남은 비율 {(((d.funnel.at(-1)?.n ?? 0) / top) * 100).toFixed(1)}%.</>}>
+    <Section no={2} id="funnel" title={`왜 ${d.funnel.at(-1)?.n}개인가`} figure={<><Big>{won(top)}</Big>건에서 <Big>{d.funnel.at(-1)?.n}</Big>건이 남았다. 남은 비율은 {(((d.funnel.at(-1)?.n ?? 0) / top) * 100).toFixed(1)}%다.</>}>
       <Box component="ol" sx={{ listStyle: 'none', p: 0, m: 0, display: 'grid', gap: 2 }}>
         {d.funnel.map((s, i) => (
           <Box component="li" key={s.label} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 0.5, md: 3 }, alignItems: 'center' }}>
@@ -223,7 +223,7 @@ export function FunnelSection({ d }: { d: JachwiData }) {
 
 export function TrapSection({ d }: { d: JachwiData }) {
   return (
-    <Section no={3} id="traps" title="싼 방은 왜 싼가" figure={<>1,000/50대 방을 건축물대장과 맞춰 보면 이렇게 나온다.<br />매물 화면의 층은 대장의 층과 다를 수 있다.</>}>
+    <Section no={3} id="traps" title="싼 방은 왜 싼가" figure={<>1,000/50대 방을 건축물대장과 맞춰 보면 이렇게 나온다.<br />매물 화면에 적힌 층은 대장에 기록된 층과 다를 수 있다.</>}>
       <Box sx={{ mb: 3 }}>
         <UseLegend />
       </Box>
@@ -292,7 +292,7 @@ export function CostSection({ d }: { d: JachwiData }) {
         <>
           혜택을 빼면 월 <Big>{won(c.netMonthly)}</Big>만원.
           <br />
-          청년월세에 떨어지면 월 {won(c.netMonthlyNoYouth)}만원, 겨울엔 공과금 {d.fee.utilities.winter[0]}~{d.fee.utilities.winter[1]}만원이 더 붙는다.
+          청년월세에 떨어지면 월 {won(c.netMonthlyNoYouth)}만원이고, 겨울에는 공과금 {d.fee.utilities.winter[0]}~{d.fee.utilities.winter[1]}만원이 더 붙는다.
         </>
       }
     >
@@ -313,7 +313,7 @@ export function CostSection({ d }: { d: JachwiData }) {
             </Box>
           ))}
           <Typography variant="body2" color="text.secondary">
-            관리비 중앙값은 원룸 {d.fee.villa.median}만원, 오피스텔 {d.fee.officetel.median}만원(수집 매물 기준).
+            관리비 중앙값은 원룸 {d.fee.villa.median}만원, 오피스텔 {d.fee.officetel.median}만원이다(수집 매물 기준).
           </Typography>
         </Box>
         <Box>
@@ -340,13 +340,13 @@ export function CostSection({ d }: { d: JachwiData }) {
           </Box>
           <Box component="ul" sx={{ mt: 3, pl: 2.5, color: 'text.secondary', '& li': { mb: 0.75 } }}>
             <Typography component="li" variant="body2">
-              세액공제 {Math.round(c.creditRate * 100)}%: 총급여 5,500만원 이하 17%, 8,000만원 이하 15%, 월세 연 1,000만원 한도. 무주택 세대주·전입신고 필요. 다음 해 2월 연말정산에 반영.
+              세액공제 {Math.round(c.creditRate * 100)}%: 총급여 5,500만원 이하 17%, 8,000만원 이하 15%, 월세 연 1,000만원 한도. 무주택 세대주이고 전입신고를 해야 한다. 다음 해 2월 연말정산에 반영된다.
             </Typography>
             <Typography component="li" variant="body2">
               서울 청년월세 {c.seoulEligible ? '대상' : <b>대상 아님</b>}: 월 20만원×12개월, 중위소득 150%(1인 월 384.7만원) 이하, 보증금 8,000만원 이하, 월세 60만원 이하 또는 환산 90만원 이하. 선정제(2025년 약 55%).
             </Typography>
             <Typography component="li" variant="body2">
-              국토부 청년월세는 청년가구 중위소득 60% 이하라 연봉이 월 154만원을 넘으면 대상 아님.
+              국토부 청년월세는 청년가구 중위소득 60% 이하가 대상이라서 연봉이 월 154만원을 넘으면 대상이 아니다.
             </Typography>
             <Typography component="li" variant="body2">
               따로 1회: 서울 중개보수·이사비 최대 {c.moveOnce}만원(영수증 필수).
@@ -451,7 +451,7 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
   // 02 UX 원칙 4: 정렬은 실부담 오름차순 고정(판정을 여럿 골라도 섞어서 정렬)
   const rows = d.listings.filter((l) => on.includes(l.grade)).sort((a, b) => a.real - b.real);
   return (
-    <Section no={5} id="shortlist" title="후보" figure={<>판정을 골라 본다. 정렬은 실부담 순.<br />출퇴근은 카카오맵 대중교통 최단 경로, 잰 곳만.</>}>
+    <Section no={5} id="shortlist" title="후보" figure={<>판정별로 골라 볼 수 있다. 정렬은 실부담 순이다.<br />출퇴근 시간은 카카오맵 대중교통 최단 경로 기준이며, 잰 곳만 나온다.</>}>
       <ToggleButtonGroup value={on} onChange={(_, v: Grade[]) => setOn(v.length ? v : on)} size="small" aria-label="판정 고르기" sx={{ flexWrap: 'wrap', mb: 2 }}>
         {d.grades.map((g) => (
           <ToggleButton key={g.key} value={g.key} aria-label={g.label}>
@@ -472,7 +472,7 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
         ))}
       </Box>
       <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-        {rows.length}건. 반지하·전입 불가는 이미 뺐다. 건물 단면의 빨간 테두리가 매물 층이다(층이 저·중·고로만 나온 매물은 표시 없음).
+        {rows.length}건. 반지하·전입 불가 매물은 이미 뺐다. 건물 단면에서 빨간 테두리로 표시한 곳이 매물의 층이다(층이 저·중·고로만 나온 매물은 표시하지 않았다).
       </Typography>
     </Section>
   );
@@ -481,11 +481,11 @@ export function ShortlistSection({ d }: { d: JachwiData }) {
 const PLAN = [
   { when: '11월 말~12월 초', what: '○ 후보에 문의하고 방문', why: '지상 몇 층인지, 실물 사진, 전입·확정일자 가능 여부, 관리비 포함 항목, 근저당' },
   { when: '12월 첫째 주', what: '계약', why: '임차인 본인 명의, 계약서상 월세 60만원 이하, 중개보수 영수증' },
-  { when: '12월 20~24일', what: '이사, 세대주로 전입신고 + 확정일자', why: '이사비 영수증. 12/31 전 전입이면 12월분 세액공제와 청약 무주택 기간이 시작' },
+  { when: '12월 20~24일', what: '이사, 세대주로 전입신고 + 확정일자', why: '이사비 영수증. 12/31 전에 전입하면 12월분 세액공제와 청약 무주택 기간이 시작된다' },
   { when: '2027년 2월', what: '연말정산: 12월분 월세 세액공제', why: '약 10만원' },
   { when: '2027년 4월·8월', what: '서울 중개보수·이사비 신청', why: '최대 40만원, 2026년은 2024-01-01 이후 이사부터 인정' },
   { when: '2027년 5월', what: '서울 청년월세 신청', why: '월 20만원×12개월, 선정제' },
-  { when: '수시', what: '청년안심주택 추가모집 확인', why: '강남·서초 단지가 몇 주에 한 번 1~7세대' },
+  { when: '수시', what: '청년안심주택 추가모집 확인', why: '강남·서초 단지가 몇 주에 한 번씩 1~7세대를 모집' },
 ];
 
 export function PlanSection() {
@@ -520,13 +520,13 @@ export function SourceNote({ d }: { d: JachwiData }) {
     <Section no={7} id="sources" title="근거와 한계">
       <Box component="ul" sx={{ pl: 2.5, m: 0, color: 'text.secondary', '& li': { mb: 1 } }}>
         <Typography component="li" variant="body2">
-          매물: 네이버부동산·직방·다방·피터팬, {d.asof} 수집. 다방은 15페이지까지만, 피터팬은 무작위 정렬이라 누락이 있다. 당근부동산은 수집 실패.
+          매물: 네이버부동산·직방·다방·피터팬, {d.asof} 수집. 다방은 15페이지까지만 수집했고, 피터팬은 정렬이 무작위라서 누락이 있다. 당근부동산은 수집에 실패했다.
         </Typography>
         <Typography component="li" variant="body2">
           시세: 국토교통부 전월세 실거래(강남·서초·송파, 2026년 8~10월).
         </Typography>
         <Typography component="li" variant="body2">
-          판정: 공공데이터포털 건축물대장 표제부·층별 개요. 위반건축물 표시는 이 API에 없어 계약 전 {L('https://www.gov.kr', '정부24')} 열람으로 확인한다.
+          판정: 공공데이터포털 건축물대장 표제부·층별 개요. 위반건축물 표시는 이 API에 없으므로 계약 전에 {L('https://www.gov.kr', '정부24')}에서 열람해 확인한다.
         </Typography>
         <Typography component="li" variant="body2">
           혜택: 조세특례제한법 제95조의2, 주택임대차보호법 시행령 제10·11조, {L('https://m.bokjiro.go.kr/ssis-tem/cms/mob/customer/notice/1309500_1155.html', '복지로 청년월세')},{' '}
@@ -534,7 +534,7 @@ export function SourceNote({ d }: { d: JachwiData }) {
           {L('https://soco.seoul.go.kr/youth/bbs/BMSR00015/list.do?menuNo=400008', '청년안심주택 공고')}.
         </Typography>
         <Typography component="li" variant="body2">
-          세액공제 계산은 국민연금·건강보험 요율 근사치로 낸 추정이다. 실부담 = 월세 + 관리비 + (보증금 − 1,000) × 6% ÷ 12.
+          세액공제 계산은 국민연금·건강보험 요율의 근사치로 낸 추정이다. 실부담 = 월세 + 관리비 + (보증금 − 1,000) × 6% ÷ 12.
         </Typography>
       </Box>
     </Section>
