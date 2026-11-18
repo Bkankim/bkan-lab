@@ -367,9 +367,25 @@ function ListingRow({ l }: { l: Listing }) {
       </Typography>
       <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
         {l.building && <FloorStack building={l.building} at={at} compact />}
-        <Typography variant="overline" color="text.secondary" sx={{ lineHeight: 1.4 }}>
-          {l.note.replace(/^[^,]+, /, '')}
-        </Typography>
+        <Box>
+          <Typography variant="overline" color="text.secondary" sx={{ lineHeight: 1.4, display: 'block' }}>
+            {l.note.replace(/^[^,]+, /, '')}
+          </Typography>
+          {l.broker?.name && (
+            <Typography variant="overline" sx={{ lineHeight: 1.4, display: 'block', color: 'text.primary' }}>
+              {l.broker.name}
+              {l.broker.phone && (
+                <>
+                  {' · '}
+                  {/* 행 전체 링크(::after) 위에 올려 전화 링크만 따로 누르게 한다 */}
+                  <Link href={`tel:${l.broker.phone.replace(/-/g, '')}`} sx={{ position: 'relative', zIndex: 1, fontWeight: 500 }}>
+                    {l.broker.phone}
+                  </Link>
+                </>
+              )}
+            </Typography>
+          )}
+        </Box>
       </Box>
       <Link
         href={l.url}

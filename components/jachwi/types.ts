@@ -30,6 +30,8 @@ export type Listing = {
   built: string;
   commute: number | null;
   building: Building;
+  /** 중개사무소 상호·대표번호(○·△ 후보만). 개인 휴대폰은 싣지 않는다 */
+  broker: { name: string | null; phone: string | null } | null;
 };
 
 export type Trap = {
