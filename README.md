@@ -4,7 +4,7 @@
 
 ## 상태
 2026-11-13 기준 운영 중이다. 분야는 Frontend와 Motion 둘이고, main에 push하면 배포된다.<br>
-개인용 noindex 리포트: `/frontend/jachwi-2612/`(매봉역 30분 자취방, 목록 카드·sitemap에 넣지 않음).<br>
+개인용 noindex 리포트: `/frontend/jachwi-2612/`(매봉역 30분 자취방, 목록 카드는 있고 sitemap에는 넣지 않음. 2026-11-19 카드 복구).<br>
 개인용 noindex 기록: `/frontend/dashboard-2611/`(bkan dashboard 디자인 네 갈래, 목록 카드는 있고 sitemap에는 넣지 않음). 대시보드는 비공개 리포라 사진은 Cloudflare 집계 화면만 싣는다. 데이터는 `_workspace/jachwi-2612/build_data.py`가 만든다(`_workspace/`는 git 밖이라 BK 로컬에만 있다. 입력은 `~/workspace/budongsan-data`). 다시 조사할 때는 `~/workspace/budongsan-data/jachwi-snapshots/README.md` 절차로 스냅샷을 비교해 없어진·새로 나온 매물을 업데이트한다(첫 스냅샷 20261119).<br>
 진행 중: Harness 분야(BK가 만들어 쓰는 하네스를 도식과 실측으로 소개). 첫 글 초안은 아직 공개 전이라 랜딩과 sitemap에 연결하지 않았다.
 
